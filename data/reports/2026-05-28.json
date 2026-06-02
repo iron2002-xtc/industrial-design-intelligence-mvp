@@ -707,5 +707,8 @@
         "把交互层级画成可读的状态系统"
       ]
     }
-  ]
+  ],
+  "dataMode": "Mock",
+  "collectionStatus": "success",
+  "statusMessage": ""
 }

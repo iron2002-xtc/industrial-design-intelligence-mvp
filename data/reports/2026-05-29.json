@@ -707,5 +707,8 @@
         "用场景地图解释形态为什么变柔和"
       ]
     }
-  ]
+  ],
+  "dataMode": "Mock",
+  "collectionStatus": "success",
+  "statusMessage": ""
 }

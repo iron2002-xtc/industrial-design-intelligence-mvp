@@ -39,6 +39,12 @@ const formatGeneratedAt = (value: string) => {
   }).format(date);
 };
 
+const dataModeLabel: Record<NonNullable<DailyReport["dataMode"]>, string> = {
+  Real: "Real",
+  Fallback: "Fallback",
+  Mock: "Mock",
+};
+
 function App() {
   const [activeDate, setActiveDate] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -118,6 +124,9 @@ function App() {
     () => (report ? getSearchResults(report, searchQuery) : []),
     [report, searchQuery],
   );
+  const dataMode = report?.dataMode ?? "Mock";
+  const shouldShowStatusWarning =
+    report?.collectionStatus === "partial" || report?.collectionStatus === "fallback";
 
   const handleDateChange = (date: string) => {
     setActiveDate(date);
@@ -176,7 +185,7 @@ function App() {
                   <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-600 sm:text-base">
                     面向 3C、智能硬件、清洁电器、机器人、AI硬件、家电、CMF 和作品集求职的个人情报中控台。
                   </p>
-                  <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
                     <span className="inline-flex items-center gap-2 rounded-md border border-line bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-600">
                       <CalendarDays size={14} />
                       日报日期 {report.date}
@@ -193,7 +202,16 @@ function App() {
                       <FileStack size={14} />
                       收录 {report.totalItems} 条
                     </span>
+                    <span className="inline-flex items-center gap-2 rounded-md border border-line bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-600">
+                      <Sparkles size={14} />
+                      模式 {dataModeLabel[dataMode]}
+                    </span>
                   </div>
+                  {shouldShowStatusWarning && (
+                    <div className="mt-3 rounded-md border border-copper/30 bg-copper/10 px-3 py-2 text-sm leading-6 text-copper">
+                      {report.statusMessage || "今日部分数据抓取失败，已使用备用数据。"}
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-[180px_minmax(260px,420px)]">

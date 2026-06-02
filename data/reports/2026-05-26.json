@@ -707,5 +707,8 @@
         "用项目首页承担招聘筛选的第一印象"
       ]
     }
-  ]
+  ],
+  "dataMode": "Mock",
+  "collectionStatus": "success",
+  "statusMessage": ""
 }

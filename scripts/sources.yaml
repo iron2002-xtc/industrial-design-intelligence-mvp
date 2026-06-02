@@ -1,0 +1,179 @@
+request:
+  timeout_seconds: 12
+  delay_seconds: 0.6
+  user_agent: "IndustrialDesignIntelligenceBot/0.1 (+https://github.com/iron2002-xtc/industrial-design-intelligence-mvp)"
+  max_rss_items_per_source: 10
+  max_search_queries_per_run: 6
+
+keywords:
+  core:
+    - 工业设计
+    - product design
+    - industrial design
+    - 3C
+    - consumer electronics
+    - smart hardware
+    - 智能硬件
+    - AI hardware
+    - AI硬件
+    - robot
+    - robotics
+    - 机器人
+    - vacuum
+    - 清洁电器
+    - appliance
+    - 家电
+    - CMF
+    - material
+    - portfolio
+    - 作品集
+    - design tool
+    - AI design
+  jobs:
+    - 工业设计师
+    - 产品设计师
+    - CMF设计师
+    - 外观设计师
+    - 校招
+    - 社招
+    - 实习
+    - 深圳
+    - 上海
+    - 杭州
+    - 苏州
+    - 南京
+    - 广州
+
+rss_sources:
+  - name: 36氪
+    category: 创业与硬件
+    url: https://36kr.com/feed
+  - name: 少数派
+    category: 3C产品
+    url: https://sspai.com/feed
+  - name: 爱范儿
+    category: 3C产品
+    url: https://www.ifanr.com/feed
+  - name: 钛媒体
+    category: 科技趋势
+    url: https://www.tmtpost.com/feed
+  - name: 虎嗅
+    category: 科技趋势
+    url: https://www.huxiu.com/rss/0.xml
+  - name: 机器之心
+    category: AI硬件
+    url: https://www.jiqizhixin.com/rss
+  - name: The Verge
+    category: 3C产品
+    url: https://www.theverge.com/rss/index.xml
+  - name: Dezeen
+    category: 工业设计作品集案例
+    url: https://www.dezeen.com/feed/
+  - name: Yanko Design
+    category: 工业设计作品集案例
+    url: https://www.yankodesign.com/feed/
+  - name: Core77
+    category: 工业设计作品集案例
+    url: https://www.core77.com/rss/featured.xml
+  - name: Designboom
+    category: 工业设计作品集案例
+    url: https://www.designboom.com/feed/
+
+company_careers:
+  - company: DJI 大疆
+    city: 深圳
+    direction: 智能硬件
+    experience: 校招 / 实习 / 社招
+    url: https://www.dji.com/cn/careers
+    keywords: [大疆, DJI, 工业设计, 智能硬件, 深圳]
+  - company: 华为
+    city: 深圳
+    direction: 3C
+    experience: 校招 / 社招
+    url: https://career.huawei.com/reccampportal/portal5/index.html
+    keywords: [华为, 终端, 工业设计, 3C, 深圳]
+  - company: 小米
+    city: 上海
+    direction: 智能硬件
+    experience: 校招 / 社招
+    url: https://hr.xiaomi.com/
+    keywords: [小米, IoT, 智能硬件, 工业设计, 上海]
+  - company: OPPO
+    city: 深圳
+    direction: CMF
+    experience: 校招 / 实习 / 社招
+    url: https://careers.oppo.com/
+    keywords: [OPPO, CMF, 工业设计, 深圳]
+  - company: vivo
+    city: 深圳
+    direction: 3C
+    experience: 校招 / 社招
+    url: https://hr.vivo.com/
+    keywords: [vivo, 手机, 工业设计, 3C, 深圳]
+  - company: Insta360 影石
+    city: 深圳
+    direction: 3C
+    experience: 校招 / 社招
+    url: https://www.insta360.com/cn/careers
+    keywords: [影石, Insta360, 相机, 工业设计, 深圳]
+  - company: 云鲸
+    city: 深圳
+    direction: 清洁电器
+    experience: 校招 / 社招
+    url: https://www.narwal.com/cn/careers
+    keywords: [云鲸, 清洁电器, 机器人, 工业设计, 深圳]
+  - company: 追觅
+    city: 苏州
+    direction: 清洁电器
+    experience: 校招 / 社招
+    url: https://www.dreame.tech/cn/careers
+    keywords: [追觅, 清洁电器, 工业设计, 苏州]
+  - company: 石头科技
+    city: 上海
+    direction: 机器人
+    experience: 校招 / 社招
+    url: https://cn.roborock.com/pages/join-us
+    keywords: [石头科技, 清洁机器人, 工业设计, 上海]
+  - company: TCL
+    city: 广州
+    direction: 家电
+    experience: 校招 / 社招
+    url: https://campus.tcl.com/
+    keywords: [TCL, 家电, 工业设计, 广州]
+  - company: 美的
+    city: 广州
+    direction: 家电
+    experience: 校招 / 社招
+    url: https://careers.midea.com/
+    keywords: [美的, 家电, 产品设计, 广州]
+  - company: 海尔
+    city: 南京
+    direction: CMF
+    experience: 校招 / 社招
+    url: https://maker.haier.net/client/join
+    keywords: [海尔, 智慧家庭, CMF, 南京]
+  - company: 科沃斯
+    city: 苏州
+    direction: 机器人
+    experience: 校招 / 社招
+    url: https://www.ecovacs.cn/careers
+    keywords: [科沃斯, 服务机器人, 清洁电器, 苏州]
+
+search_queries:
+  enabled: true
+  provider: bing
+  queries:
+    - 工业设计师 校招 深圳
+    - 工业设计师 社招 深圳
+    - 工业设计师 上海 3C
+    - 工业设计师 大疆 招聘
+    - 工业设计师 小米 招聘
+    - 工业设计师 OPPO 招聘
+    - 工业设计师 华为 招聘
+    - 工业设计师 云鲸 招聘
+    - 工业设计师 追觅 招聘
+    - 工业设计师 影石 Insta360 招聘
+    - 产品设计师 工业设计 深圳
+    - CMF设计师 招聘 深圳
+    - 智能硬件 工业设计 招聘
+    - 清洁电器 工业设计 招聘

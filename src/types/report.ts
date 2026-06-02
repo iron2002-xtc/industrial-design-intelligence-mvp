@@ -52,6 +52,9 @@ export type DailyReport = {
   generatedAt: string;
   sourceCount: number;
   totalItems: number;
+  dataMode?: "Real" | "Fallback" | "Mock";
+  collectionStatus?: "success" | "partial" | "fallback";
+  statusMessage?: string;
   topNews: NewsItem[];
   trends: TrendItem[];
   aiTools: NewsItem[];

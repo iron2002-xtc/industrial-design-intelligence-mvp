@@ -707,5 +707,8 @@
         "减少大段解释，增加细节特写和材质理由"
       ]
     }
-  ]
+  ],
+  "dataMode": "Mock",
+  "collectionStatus": "success",
+  "statusMessage": ""
 }

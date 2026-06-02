@@ -59,6 +59,42 @@ py -3 scripts/generate_mock_data.py
 - `public/data/reportsIndex.json`
 - `public/data/reports/YYYY-MM-DD.json`
 
+## 手动更新半真实数据
+
+当前版本会优先收集公开 RSS、公开网页、公司官网招聘页和少量公开搜索结果；如果某些来源失败，会记录日志并使用备用数据，保证页面不崩。
+
+先安装 Python 依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+手动运行一次更新：
+
+```bash
+npm run update:data
+```
+
+这个命令会更新：
+
+- `data/latest.json`
+- `data/reports/YYYY-MM-DD.json`
+- `data/reportsIndex.json`
+- `public/data/latest.json`
+- `public/data/reports/YYYY-MM-DD.json`
+- `public/data/reportsIndex.json`
+
+采集到的原始来源快照会写到 `data/collected/`，该目录已加入 `.gitignore`，不会提交到 Git。
+
+如果想用 AI 优化中文摘要，可以设置环境变量：
+
+```bash
+export OPENAI_API_KEY="你的 key"
+npm run update:data
+```
+
+没有 `OPENAI_API_KEY` 也可以运行，会自动使用规则摘要和备用总结。
+
 ## 校验数据
 
 Mac：
@@ -173,6 +209,75 @@ https://iron2002-xtc.github.io/industrial-design-intelligence-mvp/
 ```
 
 如果部署后页面暂时打不开，通常是 GitHub Actions 还在构建，等 1-3 分钟后刷新即可。
+
+## 每天自动更新
+
+自动更新 workflow 写在 `.github/workflows/daily-update.yml`。
+
+运行时间：
+
+- 每天北京时间 7:30 自动运行。
+- 对应 GitHub Actions cron：`30 23 * * *`。
+- 支持在 GitHub 页面手动触发 `workflow_dispatch`。
+
+自动流程：
+
+1. 安装 Python 依赖。
+2. 安装 Node 依赖。
+3. 运行 `npm run update:data`。
+4. 运行 `npm run validate:data`。
+5. 自动提交 `data/` 和 `public/data/` 中更新后的日报 JSON。
+6. 使用 `GITHUB_PAGES=true npm run build` 构建。
+7. 发布到 GitHub Pages。
+
+手动触发方式：
+
+1. 打开 GitHub 仓库。
+2. 进入 `Actions`。
+3. 选择 `Daily Data Update`。
+4. 点击 `Run workflow`。
+5. 选择 `main` 分支并确认运行。
+
+配置 `OPENAI_API_KEY`：
+
+1. 打开 GitHub 仓库。
+2. 进入 `Settings`。
+3. 进入 `Secrets and variables` -> `Actions`。
+4. 点击 `New repository secret`。
+5. Name 填 `OPENAI_API_KEY`。
+6. Secret 填你的 OpenAI API key。
+
+这个 key 是可选的。不配置时，自动更新仍会运行，只是使用规则摘要。
+
+查看是否运行成功：
+
+1. 打开仓库 `Actions` 页面。
+2. 看 `Daily Data Update` 最近一次运行是否为绿色勾。
+3. 如果失败，点进运行记录，看 `Update daily data`、`Validate data` 或 `Build` 哪一步报错。
+4. 如果成功，回到仓库首页看最新 commit 是否为 `Update daily industrial design report`。
+
+确认 GitHub Pages 已更新：
+
+1. 打开公网链接：
+
+```text
+https://iron2002-xtc.github.io/industrial-design-intelligence-mvp/
+```
+
+2. 看页面顶部的 `生成` 时间、`模式`、`来源` 和 `收录` 是否变化。
+3. 也可以直接打开：
+
+```text
+https://iron2002-xtc.github.io/industrial-design-intelligence-mvp/data/latest.json
+```
+
+常见错误排查：
+
+- RSS 或招聘页抓取失败：正常情况，脚本会跳过该来源并使用备用数据。
+- 页面显示 `Fallback`：说明真实来源不足或部分抓取失败，页面仍可用。
+- GitHub Actions 没有自动提交：可能是当天生成内容与仓库一致，workflow 会正常结束。
+- `OPENAI_API_KEY` 报错：删除或更新 GitHub Secret；无 key 时会自动回退到规则摘要。
+- GitHub Pages 页面没更新：等待 1-3 分钟，或检查 `Actions` 里的部署是否成功。
 
 ## 部署到 Vercel
 

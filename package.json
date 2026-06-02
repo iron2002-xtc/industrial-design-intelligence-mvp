@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "validate:data": "python3 scripts/validate_data.py",
-    "generate:mock": "python3 scripts/generate_mock_data.py"
+    "generate:mock": "python3 scripts/generate_mock_data.py",
+    "update:data": "python3 scripts/update_daily_report.py",
+    "deploy": "npm run build && echo \"Push to main to deploy with GitHub Pages Actions.\""
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

@@ -16,6 +16,7 @@ REQUIRED_REPORT_KEYS = [
     "generatedAt",
     "sourceCount",
     "totalItems",
+    "dataMode",
     "topNews",
     "trends",
     "aiTools",
@@ -63,6 +64,12 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
 
     if "totalItems" in report and not isinstance(report["totalItems"], int):
         errors.append(f"{report_name}.totalItems must be an integer")
+
+    if report.get("dataMode") not in {"Real", "Fallback", "Mock"}:
+        errors.append(f"{report_name}.dataMode must be Real, Fallback, or Mock")
+
+    if "collectionStatus" in report and report.get("collectionStatus") not in {"success", "partial", "fallback"}:
+        errors.append(f"{report_name}.collectionStatus must be success, partial, or fallback")
 
     if all(key in report for key in ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions", "totalItems"]):
         expected_total = sum(

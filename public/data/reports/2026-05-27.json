@@ -707,5 +707,8 @@
         "明确哪些是 AI 辅助，哪些是自己的设计判断"
       ]
     }
-  ]
+  ],
+  "dataMode": "Mock",
+  "collectionStatus": "success",
+  "statusMessage": ""
 }
