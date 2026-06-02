@@ -17,6 +17,16 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 PUBLIC_DATA_DIR = ROOT / "public" / "data"
 REPORT_KEYS = ["jobOpportunities", "designHotspots", "companyUpdates", "actions"]
+GENERIC_HOTSPOT_TITLE_TERMS = [
+    "Bing Search",
+    "搜索结果",
+    "早报",
+    "合集",
+    "汇总",
+    "多条新闻混合",
+    "案例值得加入",
+    "热点：产品设计信号",
+]
 
 
 def read_json(path: Path) -> Any | None:
@@ -108,6 +118,7 @@ def legacy_trend_to_hotspot(item: dict[str, Any]) -> dict[str, Any]:
 
 def ensure_job_fields(job: dict[str, Any]) -> dict[str, Any]:
     job.setdefault("jobType", "可跟进")
+    job.setdefault("jobCategory", "")
     job.setdefault("sourceQualityScore", 70)
     job.setdefault("relevanceScore", job.get("matchScore", 70))
     if job.get("verificationStatus") not in {"verified", "likely", "unverified", "fallback"}:
@@ -116,10 +127,30 @@ def ensure_job_fields(job: dict[str, Any]) -> dict[str, Any]:
         job["sourceType"] = "fallback" if job["verificationStatus"] == "fallback" else "search_result"
     job.setdefault("applyUrl", job.get("url", "") if job["verificationStatus"] in {"verified", "likely"} else "")
     job.setdefault("originalUrl", job.get("url", ""))
+    job.setdefault("responsibilitiesSummary", "")
+    job.setdefault("requirementsSummary", "请打开原始链接核对岗位职责、经验要求和作品集要求。")
     job.setdefault("evidenceText", job.get("requirementsSummary", "历史数据缺少校验片段，请打开原始链接核对。"))
     job.setdefault("lastCheckedAt", job.get("date", ""))
     if "confidenceScore" not in job:
         job["confidenceScore"] = {"verified": 92, "likely": 82, "unverified": 55, "fallback": 45}[job["verificationStatus"]]
+    detail_text = " ".join(
+        [
+            str(job.get("title", "")),
+            str(job.get("responsibilitiesSummary", "")),
+            str(job.get("requirementsSummary", "")),
+            str(job.get("evidenceText", "")),
+        ]
+    )
+    requirements_text = str(job.get("requirementsSummary", ""))
+    has_real_requirements = bool(requirements_text) and not requirements_text.startswith(("请打开", "历史日报", "页面未提供"))
+    has_role_detail = bool(job.get("responsibilitiesSummary") or has_real_requirements)
+    has_strong_design_signal = any(
+        keyword in detail_text
+        for keyword in ["工业设计", "产品设计", "ID", "CMF", "硬件产品设计", "消费电子", "智能硬件", "家电", "机器人", "清洁电器", "Industrial Designer", "Product Designer"]
+    )
+    if job["verificationStatus"] == "verified" and (job["sourceType"] != "official" or not has_role_detail or not has_strong_design_signal):
+        job["verificationStatus"] = "likely" if job["sourceType"] in {"official", "job_board"} and has_strong_design_signal else "unverified"
+        job["confidenceScore"] = min(job.get("confidenceScore", 78), 82 if job["verificationStatus"] == "likely" else 70)
     if job["verificationStatus"] == "fallback":
         job["sourceType"] = "fallback"
         job["confidenceScore"] = min(job.get("confidenceScore", 45), 50)
@@ -129,7 +160,6 @@ def ensure_job_fields(job: dict[str, Any]) -> dict[str, Any]:
         job["matchScore"] = min(job.get("matchScore", 80), 80)
     if job["sourceType"] == "search_result":
         job["matchScore"] = min(job.get("matchScore", 80), 80)
-    job.setdefault("requirementsSummary", "请打开原始链接核对岗位职责、经验要求和作品集要求。")
     job.setdefault("tags", job.get("keywords", []))
     job.setdefault("keywords", job.get("tags", []))
     return job
@@ -191,6 +221,13 @@ def has_removed_topic(item: dict[str, Any]) -> bool:
     return "小红书" in text or "社交媒体" in text or "运营建议" in text
 
 
+def has_generic_hotspot_title(item: dict[str, Any]) -> bool:
+    title = str(item.get("title", ""))
+    if any(term.lower() in title.lower() for term in GENERIC_HOTSPOT_TITLE_TERMS):
+        return True
+    return title.count("/") >= 2 or title.count("｜") >= 2
+
+
 def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     report.setdefault("dataMode", "Mock")
     report.setdefault("collectionStatus", "success")
@@ -208,7 +245,12 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
             *[legacy_news_to_hotspot(item) for item in report.get("topNews", [])],
             *[legacy_trend_to_hotspot(item) for item in report.get("trends", [])],
         ]
-    report["designHotspots"] = [hotspot for hotspot in report["designHotspots"] if not has_removed_topic(hotspot)]
+    before_hotspots_count = len(report["designHotspots"])
+    report["designHotspots"] = [
+        hotspot
+        for hotspot in report["designHotspots"]
+        if not has_removed_topic(hotspot) and not has_generic_hotspot_title(hotspot)
+    ]
     for hotspot in report["designHotspots"]:
         hotspot.setdefault("sourceQualityScore", 60)
         hotspot.setdefault("relevanceScore", hotspot.get("importanceScore", 70))
@@ -256,6 +298,16 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
         }
     )
     quality_report.setdefault("genericSearchResultsFiltered", 0)
+    quality_report.setdefault("verifiedJobDetailsChecked", 0)
+    quality_report.setdefault("verifiedJobsDowngraded", 0)
+    removed_generic_hotspots = max(0, before_hotspots_count - len(report["designHotspots"]))
+    quality_report["genericHotspotsFiltered"] = max(
+        int(quality_report.get("genericHotspotsFiltered", 0)),
+        removed_generic_hotspots,
+    )
+    quality_report["concreteHotspotsKept"] = len(report["designHotspots"])
+    quality_report.setdefault("jobDetailPagesFailed", 0)
+    quality_report.setdefault("jobDetailPagesPassed", 0)
     report["qualityReport"] = quality_report
     report["totalItems"] = sum(len(report.get(key, [])) for key in REPORT_KEYS)
     return report

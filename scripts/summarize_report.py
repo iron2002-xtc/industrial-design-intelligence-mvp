@@ -382,25 +382,37 @@ def build_job_from_company_page(item: dict[str, Any], date: str) -> dict[str, An
         "影像设备": "影像设备产品设计机会跟踪",
         "交通工具": "出行产品工业设计机会跟踪",
     }
+    real_title = clean_text(item.get("jobTitle") or item.get("detailTitle"), 90)
+    if real_title and ("职位详情" in real_title or real_title == "设计师"):
+        title_parts = [clean_text(part, 90) for part in re.split(r"[-|｜]", real_title)]
+        design_parts = [
+            part
+            for part in title_parts
+            if any(token in part for token in ["工业设计", "产品设计", "ID", "CMF", "硬件产品设计", "消费电子", "智能硬件", "家电", "机器人", "清洁电器"])
+            and part not in {"设计师", "职位详情"}
+        ]
+        real_title = max(design_parts, key=len) if design_parts else real_title.replace("职位详情", "").strip("- ")
     job = {
         "id": stable_id(date, "job", company),
         "company": company,
-        "title": title_map.get(direction, "工业设计 / 产品设计机会跟踪"),
+        "title": real_title or title_map.get(direction, "工业设计 / 产品设计机会跟踪"),
         "city": city,
         "direction": direction,
         "experience": experience,
         "jobType": job_type,
+        "jobCategory": clean_text(item.get("jobCategory"), 80),
         "matchScore": match_score,
         "sourceQualityScore": source_score,
         "relevanceScore": relevance_score,
         "reason": "",
-        "requirementsSummary": f"重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+        "responsibilitiesSummary": clean_text(item.get("responsibilitiesSummary"), 900),
+        "requirementsSummary": clean_text(item.get("requirementsSummary"), 320) or "页面未提供明确任职要求条目，投递前需再次核对。",
         "url": item.get("url"),
         "verificationStatus": verification_status,
         "sourceType": source_type,
         "applyUrl": item.get("url"),
         "originalUrl": item.get("url"),
-        "evidenceText": clean_text(item.get("evidenceText") or item.get("summary"), 220),
+        "evidenceText": clean_text(item.get("evidenceText") or item.get("summary"), 720),
         "lastCheckedAt": item.get("lastCheckedAt"),
         "confidenceScore": confidence_score,
         "date": date,
@@ -432,11 +444,13 @@ def build_job_from_search(item: dict[str, Any], date: str) -> dict[str, Any]:
         "direction": direction,
         "experience": experience,
         "jobType": job_type,
+        "jobCategory": clean_text(item.get("jobCategory"), 80),
         "matchScore": max(40, match_score - (8 if source_type == "search_result" else 0)),
         "sourceQualityScore": source_score,
         "relevanceScore": relevance_score,
         "reason": "",
-        "requirementsSummary": clean_text(item.get("summary"), 120) or "来自公开搜索结果，需点开原始链接核对岗位职责和经验要求。",
+        "responsibilitiesSummary": clean_text(item.get("responsibilitiesSummary"), 420),
+        "requirementsSummary": clean_text(item.get("requirementsSummary") or item.get("summary"), 220) or "来自公开搜索结果，需点开原始链接核对岗位职责和经验要求。",
         "url": item.get("url"),
         "verificationStatus": verification_status,
         "sourceType": source_type,
@@ -550,6 +564,150 @@ def has_real_hotspot_signal(item: dict[str, Any]) -> bool:
     return any(keyword.lower() in evidence.lower() or keyword in evidence for keyword in DESIGN_KEYWORDS)
 
 
+def is_generic_hotspot_title(title: str) -> bool:
+    generic_terms = [
+        "Bing Search",
+        "搜索结果",
+        "早报",
+        "合集",
+        "汇总",
+        "一文看懂",
+        "案例值得加入",
+        "热点：产品设计信号",
+        "百度百科",
+        "百科",
+        "下载",
+        "IntelliJ",
+        "官方網站",
+        "官方网站",
+        "網上商店",
+        "网上商店",
+        "Trip.com",
+        "旅客",
+        "搭机",
+        "搭機",
+        "3C认证",
+        "3C認證",
+        "尿袋",
+    ]
+    if any(term.lower() in title.lower() for term in generic_terms):
+        return True
+    if title.count("/") >= 2 or title.count("｜") >= 2:
+        return True
+    return False
+
+
+def is_concrete_hotspot(item: dict[str, Any], title: str, category: str, companies: list[str]) -> bool:
+    text = text_blob(item)
+    combined = f"{title} {text}"
+    title_lower = title.lower()
+    pure_ai_or_business_terms = [
+        "IPO",
+        "上市",
+        "融资",
+        "估值",
+        "Claude",
+        "Anthropic",
+        "OpenAI",
+        "大模型",
+        "Flash模型",
+        "世界模型",
+        "模型效率",
+        "AI 巨头",
+        "AI巨头",
+        "成本仅为",
+        "赛道",
+    ]
+    hardware_or_design_terms = [
+        "产品",
+        "硬件",
+        "设备",
+        "手机",
+        "电脑",
+        "相机",
+        "耳机",
+        "电源",
+        "屏",
+        "支架",
+        "机器人",
+        "家电",
+        "清洁",
+        "CMF",
+        "材质",
+        "结构",
+        "交互",
+        "设计语言",
+        "红点",
+        "iF",
+        "IDEA",
+        "Good Design",
+    ]
+    title_product_terms = [
+        "发布",
+        "新品",
+        "系列",
+        "手机",
+        "相机",
+        "电源",
+        "屏",
+        "支架",
+        "PC",
+        "电脑",
+        "机器人",
+        "家电",
+        "CMF",
+        "材质",
+        "结构",
+        "交互",
+        "设计语言",
+        "红点",
+        "iF",
+        "IDEA",
+        "Good Design",
+    ]
+    if any(term.lower() in title_lower for term in pure_ai_or_business_terms) and not any(
+        term.lower() in title_lower for term in hardware_or_design_terms
+    ):
+        return False
+    if not companies and not any(term.lower() in title_lower for term in title_product_terms):
+        return False
+    concrete_terms = [
+        "发布",
+        "新品",
+        "系列",
+        "产品",
+        "设计",
+        "CMF",
+        "材质",
+        "结构",
+        "交互",
+        "设计语言",
+        "红点",
+        "iF",
+        "IDEA",
+        "Good Design",
+        "手机",
+        "相机",
+        "机器人",
+        "家电",
+        "硬件",
+        "电源",
+        "屏",
+        "支架",
+    ]
+    return bool(companies or any(term.lower() in combined.lower() for term in concrete_terms)) and category in DESIGN_CATEGORIES
+
+
+def brand_from_title(title: str) -> str:
+    match = re.match(r"^([^：:，,｜|]{2,24}?)(?:发布|推出|官宣|亮相)", title)
+    if match:
+        return clean_text(match.group(1), 40)
+    match = re.match(r"^([^：:，,｜|]{2,24}?)[：:]", title)
+    if match:
+        return clean_text(match.group(1), 40)
+    return ""
+
+
 def chinese_title(source: str, category: str, raw_title: str) -> str:
     if raw_title and has_cjk(raw_title):
         return raw_title
@@ -577,6 +735,8 @@ def build_design_hotspots(items: list[dict[str, Any]], date: str) -> list[dict[s
         if is_search and not has_real_hotspot_signal(item):
             continue
         raw_title = clean_text(item.get("title"), 90)
+        if is_generic_hotspot_title(raw_title):
+            continue
         blob = text_blob(item)
         category = infer_hotspot_category(blob, item.get("category") or "工业设计趋势")
         relevance, source_score = hotspot_relevance(item, category)
@@ -589,6 +749,13 @@ def build_design_hotspots(items: list[dict[str, Any]], date: str) -> list[dict[s
         seen.add(key)
         source = item.get("source") or "Public Source"
         companies = related_companies(blob)
+        if not is_concrete_hotspot(item, raw_title, category, companies):
+            continue
+        display_brand = brand_from_title(raw_title) or ("、".join(companies) if companies else source)
+        reason = (
+            f"保留原因：涉及{display_brand}的{category}具体产品/设计动态，"
+            "可作为产品造型、CMF、结构或交互趋势参考。"
+        )
         hotspots.append(
             {
                 "id": stable_id(date, "hotspot", item.get("id") or raw_title),
@@ -603,18 +770,16 @@ def build_design_hotspots(items: list[dict[str, Any]], date: str) -> list[dict[s
                 "relevanceScore": relevance,
                 "confidenceScore": confidence_score,
                 "designInsight": f"建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-                "designRelevanceReason": f"来源内容命中{category}与产品设计关键词，具备可追溯原始链接。",
+                "designRelevanceReason": reason,
                 "productCategory": category,
-                "relatedBrand": "、".join(companies) if companies else source,
+                "relatedBrand": display_brand,
                 "isGenericSearchResult": False,
                 "evidenceText": clean_text(item.get("evidenceText") or item.get("summary"), 220),
                 "relatedCompanies": companies,
                 "tags": [category, source_label(source_score), "设计热点", *companies[:2]],
             }
         )
-    if not hotspots:
-        hotspots.extend(fallback_hotspots(date, 3))
-    return sorted(hotspots, key=lambda item: (item["relevanceScore"], item["sourceQualityScore"]), reverse=True)[:12]
+    return sorted(hotspots, key=lambda item: (item["relevanceScore"], item["sourceQualityScore"]), reverse=True)[:8]
 
 
 def fallback_hotspots(date: str, count: int) -> list[dict[str, Any]]:
@@ -692,7 +857,7 @@ def build_company_updates(jobs: list[dict[str, Any]], hotspots: list[dict[str, A
 
 def build_actions(report: dict[str, Any]) -> list[dict[str, Any]]:
     top_job = report["highMatchJobs"][0] if report["highMatchJobs"] else report["jobOpportunities"][0]
-    top_hotspot = report["designHotspots"][0]
+    top_hotspot = report["designHotspots"][0] if report["designHotspots"] else None
     top_company = report["companyUpdates"][0] if report["companyUpdates"] else None
     actions = [
         {
@@ -705,16 +870,16 @@ def build_actions(report: dict[str, Any]) -> list[dict[str, Any]]:
         {
             "id": stable_id(report["date"], "action", "hotspot"),
             "title": "今日建议收藏的设计热点",
-            "description": f"收藏“{top_hotspot['title']}”，把它拆成场景、形态、CMF、交互四个观察点。",
+            "description": f"收藏“{top_hotspot['title']}”，把它拆成场景、形态、CMF、交互四个观察点。" if top_hotspot else "今日未保留足够具体的设计热点，先把注意力放在已验证岗位和作品集打磨上。",
             "priority": "medium",
-            "keywords": ["设计热点", top_hotspot["category"], "作品集参考"],
+            "keywords": ["设计热点", top_hotspot["category"] if top_hotspot else "质量过滤", "作品集参考"],
         },
         {
             "id": stable_id(report["date"], "action", "portfolio"),
             "title": "今日适合补充到作品集调研的案例",
-            "description": f"围绕{top_hotspot['category']}补一页竞品矩阵，重点写清楚设计语言变化和你自己的判断。",
+            "description": f"围绕{top_hotspot['category']}补一页竞品矩阵，重点写清楚设计语言变化和你自己的判断。" if top_hotspot else "今天的热点质量不足，宁可不补泛泛素材；改为复核作品集项目首页和岗位匹配叙事。",
             "priority": "medium",
-            "keywords": ["作品集", "设计研究", top_hotspot["category"]],
+            "keywords": ["作品集", "设计研究", top_hotspot["category"] if top_hotspot else "质量过滤"],
         },
     ]
     if top_company:
@@ -799,6 +964,12 @@ def clone_previous_as_fallback(previous_report: dict[str, Any], date: str, gener
             "unverifiedSearchLeads": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "unverified"]),
             "highMatchJobsCount": len([job for job in report.get("jobOpportunities", []) if is_high_match_job(job)]),
             "genericSearchResultsFiltered": 0,
+            "verifiedJobDetailsChecked": 0,
+            "verifiedJobsDowngraded": 0,
+            "genericHotspotsFiltered": 0,
+            "concreteHotspotsKept": len(report.get("designHotspots", [])),
+            "jobDetailPagesFailed": 0,
+            "jobDetailPagesPassed": 0,
             "failedSources": [message],
             "companyCrawlStatus": [],
         },
@@ -826,6 +997,12 @@ def to_hotspot_from_legacy_news(item: dict[str, Any]) -> dict[str, Any]:
         "designInsight": item.get("designInsight", "可作为作品集调研素材继续核对。"),
         "relatedCompanies": [],
         "tags": item.get("keywords", []),
+        "designRelevanceReason": item.get("designInsight", "历史日报缺少保留原因。"),
+        "productCategory": item.get("category", "工业设计趋势"),
+        "relatedBrand": item.get("source", "历史数据"),
+        "isGenericSearchResult": False,
+        "evidenceText": item.get("summary", "历史数据缺少原始证据片段。"),
+        "confidenceScore": 60,
     }
 
 
@@ -874,6 +1051,7 @@ def build_quality_report(
     included_hotspot_urls = {item.get("url") for item in design_hotspots}
     included_job_urls = {item.get("originalUrl") or item.get("url") for item in job_opportunities}
     hotspot_search_results = [item for item in items if item.get("kind") == "hotspot_search_result"]
+    hotspot_candidates = [item for item in items if item.get("kind") in {"article", "hotspot_search_result"}]
     job_search_results = [item for item in items if item.get("kind") == "job_search_result"]
     generic_search_filtered = len(
         [
@@ -894,7 +1072,9 @@ def build_quality_report(
         if log.startswith("SKIP") or log.startswith("WARN")
     ]
     company_status = collected.get("companyCrawlStatus", [])
+    job_detail_checks = collected.get("jobDetailChecks", [])
     high_match_count = len([job for job in job_opportunities if is_high_match_job(job)])
+    generic_hotspots_filtered = max(0, len(hotspot_candidates) - len(design_hotspots))
     return {
         "totalCollected": len(items),
         "afterDedup": len(unique_urls),
@@ -916,6 +1096,12 @@ def build_quality_report(
         "likelyJobsFound": len([job for job in job_opportunities if job.get("verificationStatus") == "likely"]),
         "unverifiedSearchLeads": len([job for job in job_opportunities if job.get("verificationStatus") == "unverified"]),
         "highMatchJobsCount": high_match_count,
+        "verifiedJobDetailsChecked": len(job_detail_checks),
+        "verifiedJobsDowngraded": len([item for item in job_detail_checks if item.get("downgraded")]),
+        "genericHotspotsFiltered": generic_hotspots_filtered,
+        "concreteHotspotsKept": len(design_hotspots),
+        "jobDetailPagesFailed": len([item for item in job_detail_checks if item.get("status") == "failed"]),
+        "jobDetailPagesPassed": len([item for item in job_detail_checks if item.get("passed")]),
         "failedSources": failed_sources,
         "companyCrawlStatus": company_status,
     }
@@ -952,7 +1138,7 @@ def build_daily_report(
     report = {
         "date": date,
         "title": f"{date} 工业设计求职与设计热点日报",
-        "summary": f"今日优先看 {high_match_jobs[0]['company'] if high_match_jobs else job_opportunities[0]['company']} 岗位与 {design_hotspots[0]['category']} 设计热点。",
+        "summary": f"今日优先看 {high_match_jobs[0]['company'] if high_match_jobs else job_opportunities[0]['company']} 岗位与 {(design_hotspots[0]['category'] if design_hotspots else '高质量')} 设计热点。",
         "generatedAt": generated_at,
         "dataMode": data_mode,
         "collectionStatus": collection_status,

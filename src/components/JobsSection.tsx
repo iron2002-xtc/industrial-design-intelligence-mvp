@@ -52,6 +52,44 @@ function SelectField({
   );
 }
 
+function JobEvidenceDetails({ job }: { job: ReturnType<typeof normalizeJob> }) {
+  return (
+    <details className="mt-4 rounded-md border border-line bg-zinc-50 px-3 py-2 text-sm text-zinc-600">
+      <summary className="cursor-pointer select-none text-sm font-semibold text-zinc-700">
+        查看详情依据
+      </summary>
+      <div className="mt-3 space-y-2 text-xs leading-5 text-zinc-500">
+        {job.jobCategory && (
+          <p>
+            <span className="font-semibold text-zinc-700">职位类别：</span>
+            {job.jobCategory}
+          </p>
+        )}
+        <p>
+          <span className="font-semibold text-zinc-700">岗位职责摘要：</span>
+          {job.responsibilitiesSummary || "未提取到岗位职责。"}
+        </p>
+        <p>
+          <span className="font-semibold text-zinc-700">任职要求摘要：</span>
+          {job.requirementsSummary || "未提取到任职要求。"}
+        </p>
+        <p>
+          <span className="font-semibold text-zinc-700">证据片段：</span>
+          {job.evidenceText || "暂无证据片段。"}
+        </p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <span className="rounded-md bg-white px-2 py-1">
+            最后校验：{job.lastCheckedAt || job.date}
+          </span>
+          <span className="rounded-md bg-white px-2 py-1">
+            来源类型：{sourceTypeLabel[job.sourceType]}
+          </span>
+        </div>
+      </div>
+    </details>
+  );
+}
+
 export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
   const [city, setCity] = useState("全部");
   const [direction, setDirection] = useState("全部");
@@ -74,6 +112,8 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
             job.experience,
             job.reason,
             job.jobType ?? "",
+            job.jobCategory ?? "",
+            job.responsibilitiesSummary ?? "",
             job.requirementsSummary ?? "",
             job.evidenceText ?? "",
             job.verificationStatus ?? "",
@@ -177,12 +217,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
               )}
             </div>
             <p className="mt-4 text-sm leading-6 text-zinc-600">{job.reason}</p>
-            {job.requirementsSummary && (
-              <p className="mt-2 text-sm leading-6 text-zinc-500">要求概览：{job.requirementsSummary}</p>
-            )}
-            {job.evidenceText && (
-              <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">证据片段：{job.evidenceText}</p>
-            )}
+            <JobEvidenceDetails job={job} />
             {!!(job.tags ?? job.keywords)?.length && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {(job.tags ?? job.keywords ?? []).slice(0, 5).map((tag) => (
@@ -240,9 +275,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
                   </span>
                 </div>
                 <p className="mt-3 text-sm leading-6 text-zinc-500">{job.reason}</p>
-                {job.evidenceText && (
-                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">证据片段：{job.evidenceText}</p>
-                )}
+                <JobEvidenceDetails job={job} />
                 <a
                   href={getJobActionUrl(job)}
                   target="_blank"

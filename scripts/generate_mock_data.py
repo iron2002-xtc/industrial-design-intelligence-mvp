@@ -308,6 +308,7 @@ def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
     jobs_data = sorted(report["jobs"], key=lambda item: item["matchScore"], reverse=True)
     for job in jobs_data:
         job["jobType"] = "校招" if "校招" in job["experience"] else ("实习" if "实习" in job["experience"] else "1-3年")
+        job["jobCategory"] = "设计类"
         job["verificationStatus"] = "fallback"
         job["sourceType"] = "fallback"
         job["applyUrl"] = ""
@@ -318,6 +319,7 @@ def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
         job["matchScore"] = min(job["matchScore"], 65)
         job["sourceQualityScore"] = 50
         job["relevanceScore"] = job["matchScore"]
+        job["responsibilitiesSummary"] = "Mock 数据未连接真实岗位详情页，不保存岗位职责。"
         job["requirementsSummary"] = "请核对岗位职责、经验要求、作品集要求和是否接受应届硕士/初级经验。"
         job["tags"] = [job["direction"], job["city"], job["jobType"], "备用数据"]
     hotspots = [to_design_hotspot(item) for item in [*report["topNews"], *report["trends"]]]
@@ -361,6 +363,12 @@ def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
         "unverifiedSearchLeads": 0,
         "highMatchJobsCount": 0,
         "genericSearchResultsFiltered": 0,
+        "verifiedJobDetailsChecked": 0,
+        "verifiedJobsDowngraded": 0,
+        "genericHotspotsFiltered": 0,
+        "concreteHotspotsKept": len(hotspots),
+        "jobDetailPagesFailed": 0,
+        "jobDetailPagesPassed": 0,
         "failedSources": [],
         "companyCrawlStatus": [],
     }

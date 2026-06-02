@@ -85,7 +85,7 @@ def unwrap_bing_url(url: str) -> str:
         return unquote(value)
 
 
-def extract_page_evidence(html: str, max_length: int = 520) -> tuple[str, str]:
+def extract_page_evidence(html: str, max_length: int = 3200) -> tuple[str, str]:
     soup = BeautifulSoup(html, "html.parser")
     page_title = clean_text(soup.title.string if soup.title else "", 120)
     meta = soup.find("meta", attrs={"name": "description"})
@@ -93,6 +93,65 @@ def extract_page_evidence(html: str, max_length: int = 520) -> tuple[str, str]:
     body_text = clean_text(soup.get_text(" ", strip=True), max_length)
     evidence = " ".join(part for part in [page_title, meta_text, body_text] if part)
     return page_title, clean_text(evidence, max_length)
+
+
+def extract_between(text: str, start_labels: list[str], end_labels: list[str], max_length: int = 700) -> str:
+    for label in start_labels:
+        start = text.find(label)
+        if start == -1:
+            continue
+        start += len(label)
+        end_positions = [text.find(end_label, start) for end_label in end_labels]
+        end_positions = [position for position in end_positions if position != -1]
+        end = min(end_positions) if end_positions else min(len(text), start + max_length)
+        value = clean_text(text[start:end], max_length)
+        value = re.sub(r"^[：:\\s]+", "", value).strip()
+        if value and value not in {"无", "暂无", "申请职位"}:
+            return value
+    return ""
+
+
+def extract_job_detail_fields(title: str, evidence: str) -> dict[str, str]:
+    text = clean_text(f"{title} {evidence}", 4000)
+    job_title = extract_between(text, ["职位名称：", "职位名称:", "岗位名称：", "岗位名称:"], ["工作地点", "职位类别", "招聘渠道", "工作职责", "岗位职责"], 120)
+    if not job_title:
+        title_parts = [clean_text(part, 80) for part in re.split(r"[-|｜]", title)]
+        design_parts = [
+            part
+            for part in title_parts
+            if any(token in part for token in ["工业设计", "产品设计", "ID", "CMF", "硬件产品设计", "消费电子", "智能硬件", "家电", "机器人", "清洁电器"])
+            and part not in {"设计师", "职位详情", "小米"}
+        ]
+        if design_parts:
+            job_title = max(design_parts, key=len)
+        else:
+            match = re.search(r"(工业设计师|产品设计师|ID设计师|CMF设计师|硬件产品设计师|消费电子产品设计师|智能硬件工业设计师|家电工业设计师|机器人产品设计师|清洁电器工业设计师)", text)
+            job_title = clean_text(match.group(1), 80) if match else ""
+    work_city = extract_between(text, ["工作地点：", "工作地点:", "工作城市：", "工作城市:", "地点：", "地点:"], ["职位类别", "招聘渠道", "工作职责", "岗位职责", "任职要求", "工作要求"], 80)
+    job_category = extract_between(text, ["职位类别：", "职位类别:", "岗位类别：", "岗位类别:"], ["职位名称", "招聘渠道", "工作职责", "岗位职责", "职位描述", "任职要求", "工作要求"], 100)
+    if "设计师" in job_category:
+        job_category = "设计师"
+    responsibilities = extract_between(
+        text,
+        ["工作职责：", "工作职责:", "岗位职责：", "岗位职责:", "职位描述：", "职位描述:"],
+        ["工作要求", "任职要求", "职位要求", "申请职位", "投递", "预约维修服务", "帮助中心"],
+        900,
+    )
+    requirements = extract_between(
+        text,
+        ["工作要求：", "工作要求:", "任职要求：", "任职要求:", "职位要求：", "职位要求:"],
+        ["申请职位", "投递", "预约维修服务", "帮助中心", "相关下载", "关于"],
+        700,
+    )
+    if len(requirements) < 8 or requirements in {"申请职位", "投递"}:
+        requirements = ""
+    return {
+        "jobTitle": job_title,
+        "workCity": work_city,
+        "jobCategory": job_category,
+        "responsibilitiesSummary": responsibilities,
+        "requirementsSummary": requirements,
+    }
 
 
 def matching_terms(text: str, keywords: list[str]) -> list[str]:
@@ -221,7 +280,17 @@ def normalize_city(value: str, fallback: str) -> str:
         "Foshan": "佛山",
         "Qingdao": "青岛",
     }
-    return mapping.get(value, value or fallback)
+    if not value:
+        return fallback
+    if value in mapping:
+        return mapping[value]
+    for raw, normalized in mapping.items():
+        if raw in value:
+            return normalized
+    for city in ["北京", "上海", "深圳", "广州", "苏州", "杭州", "东莞", "南京", "佛山", "青岛"]:
+        if city in value:
+            return city
+    return value or fallback
 
 
 def source_type_from_url(ctx: CollectContext, url: str, fallback: str = "search_result") -> str:
@@ -258,15 +327,20 @@ def verify_job_detail_content(
     expected_company: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     text = " ".join([title, evidence])
+    fields = extract_job_detail_fields(title, evidence)
     company = expected_company or infer_company_from_config(ctx, text)
     source_type = source_type_from_url(ctx, url)
     aliases = company_aliases(company) if company else []
     expected_city = company.get("city", "全国") if company else "全国"
     company_ok = bool(company and any(alias and alias.lower() in text.lower() for alias in aliases))
     job_terms = matching_terms(text, configured_job_keywords(ctx))
-    city_terms = matching_terms(text, [*city_aliases(expected_city), *configured_city_keywords(ctx)])
-    city = normalize_city(city_terms[0], expected_city) if city_terms else expected_city
+    city_terms = matching_terms(" ".join([fields.get("workCity", ""), text]), [*city_aliases(expected_city), *configured_city_keywords(ctx)])
+    city = normalize_city(fields.get("workCity") or (city_terms[0] if city_terms else ""), expected_city)
     has_location = bool(city_terms)
+    has_detail_title = bool(fields.get("jobTitle")) and not any(token in fields["jobTitle"] for token in ["社会招聘", "校园招聘", "职位搜索"])
+    has_role_detail = bool(fields.get("responsibilitiesSummary") or fields.get("requirementsSummary"))
+    strong_role_text = " ".join([fields.get("jobTitle", ""), fields.get("responsibilitiesSummary", ""), fields.get("requirementsSummary", ""), evidence])
+    has_strong_design_signal = bool(matching_terms(strong_role_text, configured_job_keywords(ctx)))
     generic_listing = (
         any(token in title for token in ["社会招聘", "校园招聘", "职位列表", "岗位投递"])
         and any(token in evidence for token in ["职位名称", "关键字搜索", "职位筛选", "全部职位", "职位分类"])
@@ -275,13 +349,17 @@ def verify_job_detail_content(
     status = "unverified"
     confidence = 58
 
-    if company_ok and job_terms and has_location and not generic_listing:
+    if company_ok and job_terms and has_location and has_detail_title and not generic_listing:
         if source_type == "official":
-            status = "verified"
-            confidence = 95
+            if has_role_detail and has_strong_design_signal:
+                status = "verified"
+                confidence = 95
+            else:
+                status = "likely"
+                confidence = 78
         elif source_type == "job_board":
-            status = "likely"
-            confidence = 84
+            status = "likely" if has_role_detail and has_strong_design_signal else "unverified"
+            confidence = 84 if status == "likely" else 62
         else:
             status = "unverified"
             confidence = 65
@@ -296,6 +374,7 @@ def verify_job_detail_content(
         "sourceType": source_type,
         "company": company.get("company") if company else "",
         "city": city,
+        **fields,
         "matchedTerms": [*job_terms[:8], *city_terms[:4]],
     }
 
@@ -307,7 +386,7 @@ def verify_job_detail_page(
 ) -> dict[str, Any]:
     response = request_url(ctx, url)
     if response is None:
-        return {
+        detail = {
             "detailFetched": False,
             "detailTitle": "",
             "evidenceText": "",
@@ -319,8 +398,21 @@ def verify_job_detail_page(
             "city": expected_company.get("city", "全国") if expected_company else "全国",
             "matchedTerms": [],
         }
+        ctx.config.setdefault("_job_detail_checks", []).append(
+            {"url": url, "status": "failed", "passed": False, "downgraded": False}
+        )
+        return detail
     title, evidence = extract_page_evidence(response.text)
-    return verify_job_detail_content(ctx, url, title, evidence, expected_company)
+    detail = verify_job_detail_content(ctx, url, title, evidence, expected_company)
+    ctx.config.setdefault("_job_detail_checks", []).append(
+        {
+            "url": url,
+            "status": detail.get("verificationStatus"),
+            "passed": detail.get("verificationStatus") in {"verified", "likely"},
+            "downgraded": detail.get("sourceType") == "official" and detail.get("verificationStatus") != "verified",
+        }
+    )
+    return detail
 
 
 def discover_job_detail_links(base_url: str, html: str, limit: int) -> list[str]:
@@ -424,6 +516,10 @@ def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any
                         "url": detail_url,
                         "publishedDate": today,
                         "city": detail.get("city") or company["city"],
+                        "jobTitle": detail.get("jobTitle", ""),
+                        "jobCategory": detail.get("jobCategory", ""),
+                        "responsibilitiesSummary": detail.get("responsibilitiesSummary", ""),
+                        "requirementsSummary": detail.get("requirementsSummary", ""),
                         "direction": company["direction"],
                         "experience": company["experience"],
                         "score": relevance_score(" ".join([detail.get("detailTitle", ""), detail.get("evidenceText", "")]), job_keywords) + 45,
@@ -590,6 +686,7 @@ def collect_sources(config_path: Path = DEFAULT_CONFIG, today: str | None = None
         "items": items,
         "logs": ctx.logs,
         "companyCrawlStatus": config.get("_company_statuses", []),
+        "jobDetailChecks": config.get("_job_detail_checks", []),
     }
 
 

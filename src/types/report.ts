@@ -40,10 +40,12 @@ export type JobItem = {
   direction: string;
   experience: string;
   jobType?: string;
+  jobCategory?: string;
   matchScore: number;
   sourceQualityScore?: number;
   relevanceScore?: number;
   reason: string;
+  responsibilitiesSummary?: string;
   requirementsSummary?: string;
   url: string;
   verificationStatus?: VerificationStatus;
@@ -119,6 +121,12 @@ export type QualityReport = {
   likelyJobsFound: number;
   unverifiedSearchLeads: number;
   highMatchJobsCount: number;
+  verifiedJobDetailsChecked: number;
+  verifiedJobsDowngraded: number;
+  genericHotspotsFiltered: number;
+  concreteHotspotsKept: number;
+  jobDetailPagesFailed: number;
+  jobDetailPagesPassed: number;
   failedSources: string[];
   companyCrawlStatus: CompanyCrawlStatus[];
 };

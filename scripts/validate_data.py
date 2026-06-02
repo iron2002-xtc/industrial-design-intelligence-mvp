@@ -72,8 +72,39 @@ REQUIRED_QUALITY_KEYS = [
     "unverifiedSearchLeads",
     "highMatchJobsCount",
     "genericSearchResultsFiltered",
+    "verifiedJobDetailsChecked",
+    "verifiedJobsDowngraded",
+    "genericHotspotsFiltered",
+    "concreteHotspotsKept",
+    "jobDetailPagesFailed",
+    "jobDetailPagesPassed",
     "failedSources",
     "companyCrawlStatus",
+]
+
+GENERIC_HOTSPOT_TITLE_TERMS = [
+    "Bing Search",
+    "搜索结果",
+    "早报合集",
+    "多条新闻混合",
+    "案例值得加入观察",
+    "案例值得加入产品设计观察",
+    "热点：产品设计信号",
+]
+
+STRONG_DESIGN_JOB_TERMS = [
+    "工业设计",
+    "产品设计",
+    "ID",
+    "CMF",
+    "硬件产品设计",
+    "消费电子",
+    "智能硬件",
+    "家电",
+    "机器人",
+    "清洁电器",
+    "Industrial Designer",
+    "Product Designer",
 ]
 
 
@@ -170,6 +201,28 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
             errors.append(f"{report_name}.jobOpportunities[{item_index}] verified confidence must be >= 75")
         if status == "likely" and confidence < 75:
             errors.append(f"{report_name}.jobOpportunities[{item_index}] likely confidence must be >= 75")
+        if status == "verified":
+            detail_text = " ".join(
+                [
+                    str(job.get("title", "")),
+                    str(job.get("responsibilitiesSummary", "")),
+                    str(job.get("requirementsSummary", "")),
+                    str(job.get("evidenceText", "")),
+                ]
+            )
+            requirements = str(job.get("requirementsSummary", ""))
+            has_real_requirements = bool(requirements) and not requirements.startswith(("请打开", "历史日报", "页面未提供"))
+            has_role_detail = bool(job.get("responsibilitiesSummary") or has_real_requirements)
+            if source_type != "official":
+                errors.append(f"{report_name}.jobOpportunities[{item_index}] verified must use official source")
+            if not str(job.get("title", "")).strip():
+                errors.append(f"{report_name}.jobOpportunities[{item_index}] verified must have a concrete title")
+            if not str(job.get("city", "")).strip() or job.get("city") == "全国":
+                errors.append(f"{report_name}.jobOpportunities[{item_index}] verified must have a concrete city")
+            if not has_role_detail:
+                errors.append(f"{report_name}.jobOpportunities[{item_index}] verified must include responsibilities or requirements")
+            if not any(term.lower() in detail_text.lower() for term in STRONG_DESIGN_JOB_TERMS):
+                errors.append(f"{report_name}.jobOpportunities[{item_index}] verified lacks strong design relevance")
 
     for item_index, job in enumerate(report.get("highMatchJobs", [])):
         if job.get("matchScore", 0) < 85:
@@ -217,8 +270,9 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
         require_keys(f"{report_name}.designHotspots[{item_index}]", hotspot, REQUIRED_HOTSPOT_KEYS, errors)
         if hotspot.get("isGenericSearchResult") is True:
             errors.append(f"{report_name}.designHotspots[{item_index}] must not be a generic search result")
-        if str(hotspot.get("title", "")).startswith("Bing Search"):
-            errors.append(f"{report_name}.designHotspots[{item_index}] must not use Bing Search as title")
+        title = str(hotspot.get("title", ""))
+        if any(term.lower() in title.lower() for term in GENERIC_HOTSPOT_TITLE_TERMS):
+            errors.append(f"{report_name}.designHotspots[{item_index}] must not use a generic title: {title}")
         if strict_quality and hotspot.get("relevanceScore", 0) < 70 and hotspot.get("source") != "Fallback Rule":
             errors.append(f"{report_name}.designHotspots[{item_index}] relevanceScore must be >= 70")
         if strict_quality and hotspot.get("confidenceScore", 0) < 65 and hotspot.get("source") != "Fallback Rule":

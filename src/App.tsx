@@ -167,13 +167,13 @@ function App() {
     ];
   const companyUpdates: CompanyUpdateItem[] = report?.companyUpdates ?? [];
   const qualityReport = report ? getQualityReport(report, jobOpportunities, designHotspots) : undefined;
-  const highQualitySourceCount = new Set(
-    [
-      ...jobOpportunities.filter((item) => (item.confidenceScore ?? 0) >= 75).map((item) => item.company),
-      ...designHotspots.filter((item) => (item.confidenceScore ?? item.sourceQualityScore) >= 75).map((item) => item.source),
-      ...companyUpdates.filter((item) => item.relevanceScore >= 80).map((item) => item.company),
-    ],
-  ).size;
+  const trustedJobsCount = jobOpportunities.filter(
+    (item) => item.verificationStatus === "verified" || item.verificationStatus === "likely",
+  ).length;
+  const highQualityHotspotsCount = designHotspots.filter((item) => {
+    const confidence = item.confidenceScore ?? item.sourceQualityScore;
+    return confidence >= 65 && item.isGenericSearchResult !== true;
+  }).length;
   const topJobs = useMemo(
     () => [...highMatchJobs].sort((a, b) => b.matchScore - a.matchScore).slice(0, 5),
     [highMatchJobs],
@@ -198,9 +198,7 @@ function App() {
   const jobAlertMessage =
     priorityHighMatchJobs.length > 0
       ? `今天有 ${priorityHighMatchJobs.length} 个高可信高匹配岗位，建议优先查看。`
-      : unverifiedHighRelevantJobs.length > 0
-        ? `今天暂无高可信高匹配岗位，有 ${unverifiedHighRelevantJobs.length} 个待核实岗位可作为线索。`
-        : "今天暂无特别值得优先关注的岗位，建议只浏览设计热点。";
+      : "今天暂无高可信高匹配岗位，系统已过滤掉低可信岗位线索。";
   const alertTone =
     priorityHighMatchJobs.length > 0
       ? "border-signal/30 bg-signal/5"
@@ -300,12 +298,19 @@ function App() {
                     </div>
                   )}
                   {qualityReport && (
-                    <p className="mt-3 text-sm leading-6 text-zinc-500">
-                      今日收集 {qualityReport.totalCollected} 条，过滤{" "}
-                      {Math.max(0, qualityReport.totalCollected - qualityReport.afterQualityFilter)} 条，
-                      高可信岗位 {qualityReport.verifiedJobsCount + qualityReport.likelyJobsCount} 个，
-                      待核实岗位 {qualityReport.unverifiedJobsCount} 个。
-                    </p>
+                    <div className="mt-3 space-y-1 text-sm leading-6 text-zinc-500">
+                      <p>
+                        今日收集 {qualityReport.totalCollected} 条，过滤{" "}
+                        {Math.max(0, qualityReport.totalCollected - qualityReport.afterQualityFilter)} 条，
+                        高可信岗位 {qualityReport.verifiedJobsCount + qualityReport.likelyJobsCount} 个，
+                        待核实岗位 {qualityReport.unverifiedJobsCount} 个。
+                      </p>
+                      <p>
+                        详情页复核 {qualityReport.verifiedJobDetailsChecked} 页，通过 {qualityReport.jobDetailPagesPassed} 页，
+                        降级 {qualityReport.verifiedJobsDowngraded} 个；泛泛热点过滤 {qualityReport.genericHotspotsFiltered} 条，
+                        保留具体热点 {qualityReport.concreteHotspotsKept} 条。
+                      </p>
+                    </div>
                   )}
                 </div>
 
@@ -346,11 +351,11 @@ function App() {
               </div>
             </div>
 
-            <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 xl:grid-cols-5">
+            <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 xl:grid-cols-4">
               <MetricCard
-                label="今日岗位数"
-                value={jobOpportunities.length}
-                helper="覆盖官网招聘、公开招聘入口和高质量搜索线索"
+                label="可信岗位数"
+                value={trustedJobsCount}
+                helper="verified / likely；搜索结果和备用线索不计入"
                 icon={<BriefcaseBusiness size={20} />}
                 tone="ink"
               />
@@ -362,18 +367,11 @@ function App() {
                 tone="green"
               />
               <MetricCard
-                label="今日设计热点数"
-                value={designHotspots.length}
-                helper="低相关度内容已过滤，保留产品设计强相关信号"
+                label="高质量设计热点"
+                value={highQualityHotspotsCount}
+                helper="过滤泛泛标题后保留的具体产品/品牌/案例"
                 icon={<Activity size={20} />}
                 tone="copper"
-              />
-              <MetricCard
-                label="高可信来源数"
-                value={highQualitySourceCount}
-                helper={report.qualitySummary ?? "过滤低质量搜索结果后保留"}
-                icon={<Database size={20} />}
-                tone="plum"
               />
               <MetricCard
                 label="最近更新时间"
@@ -549,7 +547,9 @@ function App() {
                     <span className="rounded-md bg-zinc-50 px-2 py-1">相关度：{item.relevanceScore}</span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-zinc-500">
-                    设计相关性：{item.designRelevanceReason ?? item.designInsight}
+                    {(item.designRelevanceReason ?? "").startsWith("保留原因")
+                      ? item.designRelevanceReason
+                      : `保留原因：${item.designRelevanceReason ?? item.designInsight}`}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-zinc-500">设计启发：{item.designInsight}</p>
                   {item.evidenceText && (

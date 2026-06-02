@@ -18,6 +18,8 @@ export type NormalizedJobItem = JobItem & {
   evidenceText: string;
   lastCheckedAt: string;
   confidenceScore: number;
+  responsibilitiesSummary: string;
+  requirementsSummary: string;
 };
 
 export const verificationLabel: Record<VerificationStatus, string[]> = {
@@ -78,6 +80,8 @@ export function normalizeJob(job: JobItem): NormalizedJobItem {
     url: job.url || originalUrl,
     evidenceText: job.evidenceText || "历史日报缺少校验证据，请打开原始链接核对。",
     lastCheckedAt: job.lastCheckedAt || job.date,
+    responsibilitiesSummary: job.responsibilitiesSummary || "历史日报未保存岗位职责摘要。",
+    requirementsSummary: job.requirementsSummary || "历史日报未保存任职要求摘要。",
     confidenceScore,
     matchScore,
   } satisfies NormalizedJobItem;
@@ -148,6 +152,12 @@ export function getQualityReport(
     likelyJobsFound: current?.likelyJobsFound ?? likelyJobsCount,
     unverifiedSearchLeads: current?.unverifiedSearchLeads ?? unverifiedJobsCount,
     highMatchJobsCount: current?.highMatchJobsCount ?? highMatchVerifiedJobsCount,
+    verifiedJobDetailsChecked: current?.verifiedJobDetailsChecked ?? 0,
+    verifiedJobsDowngraded: current?.verifiedJobsDowngraded ?? 0,
+    genericHotspotsFiltered: current?.genericHotspotsFiltered ?? 0,
+    concreteHotspotsKept: current?.concreteHotspotsKept ?? hotspots.length,
+    jobDetailPagesFailed: current?.jobDetailPagesFailed ?? 0,
+    jobDetailPagesPassed: current?.jobDetailPagesPassed ?? highMatchVerifiedJobsCount,
     failedSources: current?.failedSources ?? [],
     companyCrawlStatus,
   };
