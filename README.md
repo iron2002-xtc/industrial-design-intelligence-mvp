@@ -95,6 +95,12 @@ npm run build
 
 构建产物在 `dist/`。
 
+GitHub Pages 构建会使用仓库子路径：
+
+```bash
+GITHUB_PAGES=true npm run build
+```
+
 ## 数据结构
 
 核心类型在 `src/types/report.ts`。
@@ -133,6 +139,40 @@ npm run build
 3. 生成同样结构的 `DailyReport` JSON。
 4. 保留 `validate_data.py` 作为 CI 质量门槛。
 5. 用 GitHub Actions 每天定时运行脚本，自动提交 `data/` 和 `public/data/`。
+
+## 部署到 GitHub Pages
+
+这是当前推荐的免费公网访问方案。仓库需要是 public，GitHub Actions 会在每次推送 `main` 后自动构建并发布。
+
+当前公网访问地址：
+
+```text
+https://iron2002-xtc.github.io/industrial-design-intelligence-mvp/
+```
+
+自动部署流程写在 `.github/workflows/deploy.yml`：
+
+1. `npm ci`
+2. `npm run validate:data`
+3. `GITHUB_PAGES=true npm run build`
+4. 上传 `dist/`
+5. 发布到 GitHub Pages
+
+`vite.config.ts` 会在 `GITHUB_PAGES=true` 时把资源路径切到：
+
+```text
+/industrial-design-intelligence-mvp/
+```
+
+前端读取数据时使用 `import.meta.env.BASE_URL`，因此 GitHub Pages 下会读取：
+
+```text
+/industrial-design-intelligence-mvp/data/latest.json
+/industrial-design-intelligence-mvp/data/reportsIndex.json
+/industrial-design-intelligence-mvp/data/reports/YYYY-MM-DD.json
+```
+
+如果部署后页面暂时打不开，通常是 GitHub Actions 还在构建，等 1-3 分钟后刷新即可。
 
 ## 部署到 Vercel
 
