@@ -1,494 +1,44 @@
 {
   "date": "2026-06-02",
-  "title": "2026-06-02 工业设计早报",
-  "summary": "Designboom：CMF相关公开案例值得跟进；AI硬件趋势值得跟进；小米 等岗位建议核对原始链接。",
-  "generatedAt": "2026-06-02T13:41:05+08:00",
-  "sourceCount": 10,
-  "totalItems": 35,
+  "title": "2026-06-02 工业设计求职与设计热点日报",
+  "summary": "今日优先看 DJI 大疆 岗位与 3C产品 设计热点。",
+  "generatedAt": "2026-06-02T14:40:25+08:00",
   "dataMode": "Real",
   "collectionStatus": "partial",
   "statusMessage": "今日部分数据抓取失败，已使用备用数据。",
-  "topNews": [
+  "sourceCount": 8,
+  "totalItems": 52,
+  "qualitySummary": "共整理 28 个求职机会、12 条设计热点、8 条公司动态。",
+  "jobOpportunities": [
     {
-      "id": "2026-06-02-news-40b57d3456",
-      "title": "Designboom：CMF相关公开案例值得跟进",
-      "summary": "公开来源提到“lima house carves open living spaces around a tropical garden in são paulo”。这条信息可作为 CMF 方向的案例或趋势素材。",
-      "source": "Designboom",
-      "category": "CMF",
-      "url": "https://www.designboom.com/architecture/lima-house-open-living-spaces-tropical-garden-sao-paulo-pietro-terlizzi-arquitetura/",
-      "date": "2026-06-02",
-      "importanceScore": 93,
-      "designInsight": "它能直接补充材质、色彩、工艺和触感策略页。",
-      "keywords": [
-        "CMF",
-        "Designboom",
-        "工业设计",
-        "material",
-        "作品集"
-      ]
-    },
-    {
-      "id": "2026-06-02-news-a52bc9f117",
-      "title": "Dezeen：工业设计作品集案例相关公开案例值得跟进",
-      "summary": "公开来源提到“Safdie Architects completes major Crystal Bridges Museum expansion in Arkansas”。这条信息可作为 工业设计作品集案例 方向的案例或趋势素材。",
-      "source": "Dezeen",
-      "category": "工业设计作品集案例",
-      "url": "https://www.dezeen.com/2026/06/01/safdie-architects-crystal-bridges-museum-of-art-arkansas-expansion/",
-      "date": "2026-06-02",
-      "importanceScore": 82,
-      "designInsight": "它能补充你的趋势判断和作品集研究素材。",
-      "keywords": [
-        "工业设计作品集案例",
-        "Dezeen",
-        "工业设计",
-        "作品集"
-      ]
-    },
-    {
-      "id": "2026-06-02-news-1172391db1",
-      "title": "Yanko Design：AI硬件相关公开案例值得跟进",
-      "summary": "公开来源提到“Ultrahuman Ring PRO’s 15-Day Battery Removes the Main Reason to Quit”。这条信息可作为 AI硬件 方向的案例或趋势素材。",
-      "source": "Yanko Design",
-      "category": "AI硬件",
-      "url": "https://www.yankodesign.com/2026/06/01/ultrahuman-ring-pros-15-day-battery-removes-the-main-reason-to-quit/?utm_source=rss&utm_medium=rss&utm_campaign=ultrahuman-ring-pros-15-day-battery-removes-the-main-reason-to-quit",
-      "date": "2026-06-02",
-      "importanceScore": 79,
-      "designInsight": "它会影响你做智能硬件项目时对交互入口、佩戴/携带理由和长期使用价值的判断。",
-      "keywords": [
-        "AI硬件",
-        "Yanko Design",
-        "工业设计",
-        "作品集"
-      ]
-    },
-    {
-      "id": "2026-06-02-news-8dd0322247",
-      "title": "Designboom：家电相关公开案例值得跟进",
-      "summary": "公开来源提到“for bad bunny’s tour, a stadium became a lush puerto rican landscape”。这条信息可作为 家电 方向的案例或趋势素材。",
-      "source": "Designboom",
-      "category": "家电",
-      "url": "https://www.designboom.com/design/bad-bunny-tour-stadium-lush-puerto-rican-landscape-sturdy-set-design/",
-      "date": "2026-06-02",
-      "importanceScore": 76,
-      "designInsight": "它能补充你的趋势判断和作品集研究素材。",
-      "keywords": [
-        "家电",
-        "Designboom",
-        "工业设计",
-        "作品集"
-      ]
-    },
-    {
-      "id": "2026-06-02-news-622ebcbb0b",
-      "title": "Designboom：工业设计作品集案例相关公开案例值得跟进",
-      "summary": "公开来源提到“camille henrot explores ecological grief through the intimate labor of raising children”。这条信息可作为 工业设计作品集案例 方向的案例或趋势素材。",
-      "source": "Designboom",
-      "category": "工业设计作品集案例",
-      "url": "https://www.designboom.com/art/camille-henrot-ecological-grief-intimate-labor-raising-children/",
-      "date": "2026-06-02",
-      "importanceScore": 73,
-      "designInsight": "它能补充你的趋势判断和作品集研究素材。",
-      "keywords": [
-        "工业设计作品集案例",
-        "Designboom",
-        "工业设计",
-        "作品集"
-      ]
-    }
-  ],
-  "trends": [
-    {
-      "id": "2026-06-02-trend-9f27fd89f5",
-      "title": "AI硬件观察：公司官网招聘页新案例",
-      "trendSummary": "公开来源提到“äºé²¸æºè½-å®æ¹ç½ç«”。可作为 AI硬件 的案例线索，后续适合补充图片、产品语境和设计判断。",
-      "relatedCases": [
-        "公司官网招聘页",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "AI硬件",
-      "url": "https://www.narwal.com/cn/careers",
-      "date": "2026-06-02",
-      "keywords": [
-        "AI硬件",
-        "ai hardware",
-        "ai硬件",
-        "wearable",
-        "智能眼镜",
-        "端侧ai"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-ea5d44a794",
-      "title": "3C产品观察：华为招聘-找工作-求职-最新招聘信息-华为招聘官方网站",
-      "trendSummary": "华为招聘官方网站，提供最新的华为职位招聘信息，了解华为岗位要求、薪资待遇等等，海量职位等你来选，在华为开启一段崭新的职业生涯。",
-      "relatedCases": [
-        "公司官网招聘页",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "3C产品",
-      "url": "https://career.huawei.com/reccampportal/portal5/index.html",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "3c",
-        "phone",
-        "手机",
-        "laptop",
-        "camera"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-0c5516172e",
-      "title": "清洁电器观察：公司官网招聘页新案例",
-      "trendSummary": "公开来源提到“äºé²¸æºè½-å®æ¹ç½ç«”。可作为 清洁电器 的案例线索，后续适合补充图片、产品语境和设计判断。",
-      "relatedCases": [
-        "公司官网招聘页",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "清洁电器",
-      "url": "https://www.narwal.com/cn/careers",
-      "date": "2026-06-02",
-      "keywords": [
-        "清洁电器",
-        "清洁",
-        "扫地",
-        "洗地",
-        "vacuum",
-        "基站"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-5f9f05852e",
-      "title": "机器人观察：公司官网招聘页新案例",
-      "trendSummary": "公开来源提到“äºé²¸æºè½-å®æ¹ç½ç«”。可作为 机器人 的案例线索，后续适合补充图片、产品语境和设计判断。",
-      "relatedCases": [
-        "公司官网招聘页",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "机器人",
-      "url": "https://www.narwal.com/cn/careers",
-      "date": "2026-06-02",
-      "keywords": [
-        "机器人",
-        "robot",
-        "机器人",
-        "robotics",
-        "具身智能"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-890adb1996",
-      "title": "家电观察：TCL招聘",
-      "trendSummary": "TCL官方招聘平台, 加入TCL, 敢为不凡！",
-      "relatedCases": [
-        "公司官网招聘页",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "家电",
-      "url": "https://campus.tcl.com/",
-      "date": "2026-06-02",
-      "keywords": [
-        "家电",
-        "家电",
-        "appliance",
-        "home",
-        "smart home",
-        "智慧家庭"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-e4047b474d",
-      "title": "CMF观察：公司官网招聘页新案例",
-      "trendSummary": "公开来源提到“OPPOæè - å å ¥æä»¬ join us”。可作为 CMF 的案例线索，后续适合补充图片、产品语境和设计判断。",
-      "relatedCases": [
-        "公司官网招聘页",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "CMF",
-      "url": "https://careers.oppo.com/",
-      "date": "2026-06-02",
-      "keywords": [
-        "CMF",
-        "cmf",
-        "material",
-        "color",
-        "finish",
-        "材质"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-9fcdbac1fd",
-      "title": "AI辅助设计工具观察：从插件到 AI 辅助：Obsidian 如何成为我的主力工具",
-      "trendSummary": "我觉得二十一世纪的知识管理工作者，不使用 Obsidian 真的是错过一个亿，真正怎么样还得上手体验了才知道。当我自己慢慢花时间沉浸式使用的时候，明显感觉现在的 Obsidian 真的好用了一倍不止。 查看全文",
-      "relatedCases": [
-        "少数派",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "AI辅助设计工具",
-      "url": "https://sspai.com/post/109850",
-      "date": "2026-06-02",
-      "keywords": [
-        "AI辅助设计工具",
-        "ai design",
-        "design tool",
-        "生成式",
-        "workflow",
-        "工具"
-      ]
-    },
-    {
-      "id": "2026-06-02-trend-d36ef7372e",
-      "title": "工业设计作品集案例观察：Designboom新案例",
-      "trendSummary": "公开来源提到“lima house carves open living spaces around a ”。可作为 工业设计作品集案例 的案例线索，后续适合补充图片、产品语境和设计判断。",
-      "relatedCases": [
-        "Designboom",
-        "DJI 大疆",
-        "小米"
-      ],
-      "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-      "category": "工业设计作品集案例",
-      "url": "https://www.designboom.com/architecture/lima-house-open-living-spaces-tropical-garden-sao-paulo-pietro-terlizzi-arquitetura/",
-      "date": "2026-06-02",
-      "keywords": [
-        "工业设计作品集案例",
-        "industrial design",
-        "product design",
-        "portfolio",
-        "dezeen",
-        "core77"
-      ]
-    }
-  ],
-  "aiTools": [
-    {
-      "id": "2026-06-02-tool-6c23210a13",
-      "title": "从插件到 AI 辅助：Obsidian 如何成为我的主力工具",
-      "summary": "我觉得二十一世纪的知识管理工作者，不使用 Obsidian 真的是错过一个亿，真正怎么样还得上手体验了才知道。当我自己慢慢花时间沉浸式使用的时候，明显感觉现在的 Obsidian 真的好用了一倍不止。 查看全文",
-      "source": "少数派",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/109850",
-      "date": "2026-06-02",
-      "importanceScore": 77,
-      "designInsight": "它适合转化为作品集里的形态语言、细节比例和品牌识别分析。",
-      "keywords": [
-        "3C产品",
-        "少数派",
-        "3C"
-      ]
-    },
-    {
-      "id": "2026-06-02-tool-216605f79c",
-      "title": "CMF moodboard 初筛",
-      "summary": "AI 可以帮助快速发散材质方向，但最终要由设计师判断工艺可行性和品牌气质。",
-      "source": "Fallback Rule",
-      "category": "AI辅助设计工具",
-      "url": "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
-      "date": "2026-06-02",
-      "importanceScore": 79,
-      "designInsight": "把工具放在流程里，而不是让工具替代你的设计判断。",
-      "keywords": [
-        "AI辅助设计工具",
-        "作品集",
-        "工业设计"
-      ]
-    },
-    {
-      "id": "2026-06-02-tool-5851abd33b",
-      "title": "作品集版式检查",
-      "summary": "用 AI 检查标题长度、信息层级和页面逻辑，避免项目页只有视觉没有判断。",
-      "source": "Fallback Rule",
-      "category": "AI辅助设计工具",
-      "url": "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
-      "date": "2026-06-02",
-      "importanceScore": 76,
-      "designInsight": "把工具放在流程里，而不是让工具替代你的设计判断。",
-      "keywords": [
-        "AI辅助设计工具",
-        "作品集",
-        "工业设计"
-      ]
-    }
-  ],
-  "hardwareObservation": [
-    {
-      "id": "2026-06-02-hardware-905826b55c",
-      "title": "DJI 大疆 招聘页",
-      "summary": "DJI 大疆 官方招聘入口，今日未能稳定解析岗位详情。",
-      "source": "公司官网招聘页",
-      "category": "招聘",
+      "id": "2026-06-02-job-c3ed1d58d6",
+      "company": "DJI 大疆",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "智能硬件",
+      "experience": "校招 / 实习 / 社招",
+      "jobType": "实习",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于智能硬件方向，一优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
       "url": "https://www.dji.com/cn/careers",
       "date": "2026-06-02",
-      "importanceScore": 98,
-      "designInsight": "它能补充你的趋势判断和作品集研究素材。",
-      "keywords": [
-        "招聘",
-        "公司官网招聘页",
-        "大疆",
-        "DJI",
-        "工业设计",
+      "tags": [
+        "可核对来源",
+        "实习",
         "智能硬件",
-        "深圳"
-      ]
-    },
-    {
-      "id": "2026-06-02-hardware-a46c899836",
-      "title": "公司官网招聘页：AI硬件相关公开案例值得跟进",
-      "summary": "公开来源提到“äºé²¸æºè½-å®æ¹ç½ç«”。这条信息可作为 AI硬件 方向的案例或趋势素材。",
-      "source": "公司官网招聘页",
-      "category": "AI硬件",
-      "url": "https://www.narwal.com/cn/careers",
-      "date": "2026-06-02",
-      "importanceScore": 98,
-      "designInsight": "它会影响你做智能硬件项目时对交互入口、佩戴/携带理由和长期使用价值的判断。",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
-        "AI硬件",
-        "公司官网招聘页",
-        "云鲸",
-        "清洁电器",
-        "机器人",
-        "工业设计",
-        "深圳"
-      ]
-    },
-    {
-      "id": "2026-06-02-hardware-a46c899836",
-      "title": "公司官网招聘页：AI硬件相关公开案例值得跟进",
-      "summary": "公开来源提到“äºé²¸æºè½-å®æ¹ç½ç«”。这条信息可作为 AI硬件 方向的案例或趋势素材。",
-      "source": "公司官网招聘页",
-      "category": "AI硬件",
-      "url": "https://www.narwal.com/cn/careers",
-      "date": "2026-06-02",
-      "importanceScore": 96,
-      "designInsight": "它会影响你做智能硬件项目时对交互入口、佩戴/携带理由和长期使用价值的判断。",
-      "keywords": [
-        "AI硬件",
-        "公司官网招聘页",
-        "云鲸",
-        "清洁电器",
-        "机器人",
-        "工业设计",
-        "深圳"
-      ]
-    }
-  ],
-  "jobs": [
-    {
-      "id": "2026-06-02-job-86335eea1c",
-      "company": "小米",
-      "title": "工业设计 / 产品设计机会跟踪",
-      "city": "上海",
-      "direction": "智能硬件",
-      "experience": "校招 / 社招",
-      "matchScore": 98,
-      "reason": "官网招聘入口已检查。该方向与你关注的 智能硬件、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://hr.xiaomi.com/",
-      "date": "2026-06-02",
-      "keywords": [
-        "小米",
-        "上海",
+        "DJI 大疆",
+        "深圳",
         "智能硬件",
+        "实习",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
-      ]
-    },
-    {
-      "id": "2026-06-02-job-9c1ccd19de",
-      "company": "vivo",
-      "title": "工业设计 / 产品设计机会跟踪",
-      "city": "深圳",
-      "direction": "3C",
-      "experience": "校招 / 社招",
-      "matchScore": 98,
-      "reason": "官网招聘入口已检查。该方向与你关注的 3C、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://hr.vivo.com/",
-      "date": "2026-06-02",
-      "keywords": [
-        "vivo",
-        "深圳",
-        "3C",
-        "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
-      ]
-    },
-    {
-      "id": "2026-06-02-job-b0654cdd39",
-      "company": "云鲸",
-      "title": "清洁电器工业设计机会跟踪",
-      "city": "深圳",
-      "direction": "清洁电器",
-      "experience": "校招 / 社招",
-      "matchScore": 98,
-      "reason": "官网招聘入口已检查。该方向与你关注的 清洁电器、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://www.narwal.com/cn/careers",
-      "date": "2026-06-02",
-      "keywords": [
-        "云鲸",
-        "深圳",
-        "清洁电器",
-        "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
-      ]
-    },
-    {
-      "id": "2026-06-02-job-7cbd4ee643",
-      "company": "石头科技",
-      "title": "机器人产品设计机会跟踪",
-      "city": "上海",
-      "direction": "机器人",
-      "experience": "校招 / 社招",
-      "matchScore": 98,
-      "reason": "官网招聘入口已检查。该方向与你关注的 机器人、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://cn.roborock.com/pages/join-us",
-      "date": "2026-06-02",
-      "keywords": [
-        "石头科技",
-        "上海",
-        "机器人",
-        "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
-      ]
-    },
-    {
-      "id": "2026-06-02-job-5384aeee20",
-      "company": "TCL",
-      "title": "家电产品设计机会跟踪",
-      "city": "广州",
-      "direction": "家电",
-      "experience": "校招 / 社招",
-      "matchScore": 98,
-      "reason": "官网招聘入口已检查。该方向与你关注的 家电、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://campus.tcl.com/",
-      "date": "2026-06-02",
-      "keywords": [
-        "TCL",
-        "广州",
-        "家电",
-        "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
       ]
     },
     {
@@ -498,18 +48,59 @@
       "city": "深圳",
       "direction": "3C",
       "experience": "校招 / 社招",
-      "matchScore": 97,
-      "reason": "官网招聘入口已检查。该方向与你关注的 3C、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
       "url": "https://career.huawei.com/reccampportal/portal5/index.html",
       "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
         "华为",
         "深圳",
         "3C",
+        "校招",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-86335eea1c",
+      "company": "小米",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "智能硬件",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于智能硬件方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.xiaomi.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "智能硬件",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "小米",
+        "北京",
+        "智能硬件",
+        "校招",
+        "工业设计",
+        "招聘"
       ]
     },
     {
@@ -519,39 +110,152 @@
       "city": "深圳",
       "direction": "CMF",
       "experience": "校招 / 实习 / 社招",
-      "matchScore": 95,
-      "reason": "官网招聘入口已检查。该方向与你关注的 CMF、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
+      "jobType": "实习",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于CMF方向，一优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
       "url": "https://careers.oppo.com/",
       "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "实习",
+        "CMF",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
         "OPPO",
         "深圳",
         "CMF",
+        "实习",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
       ]
     },
     {
-      "id": "2026-06-02-job-e081542e1e",
-      "company": "海尔",
-      "title": "CMF / 工业设计机会跟踪",
-      "city": "南京",
-      "direction": "CMF",
+      "id": "2026-06-02-job-9c1ccd19de",
+      "company": "vivo",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "东莞",
+      "direction": "3C",
       "experience": "校招 / 社招",
-      "matchScore": 94,
-      "reason": "官网岗位页今日解析不稳定，先保留官方入口。该方向与你关注的 CMF、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://maker.haier.net/client/join",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于东莞，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.vivo.com/",
       "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
-        "海尔",
-        "南京",
-        "CMF",
+        "vivo",
+        "东莞",
+        "3C",
+        "校招",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-3a3948b800",
+      "company": "荣耀",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://career.hihonor.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "荣耀",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-f45181f967",
+      "company": "Insta360 影石",
+      "title": "影像设备产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "影像设备",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于影像设备方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.insta360.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "影像设备",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "Insta360 影石",
+        "深圳",
+        "影像设备",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-b0654cdd39",
+      "company": "云鲸",
+      "title": "清洁电器工业设计机会跟踪",
+      "city": "深圳",
+      "direction": "清洁电器",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于清洁电器方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.narwal.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "清洁电器",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "云鲸",
+        "深圳",
+        "清洁电器",
+        "校招",
+        "工业设计",
+        "招聘"
       ]
     },
     {
@@ -561,39 +265,90 @@
       "city": "苏州",
       "direction": "清洁电器",
       "experience": "校招 / 社招",
-      "matchScore": 91,
-      "reason": "官网招聘入口已检查。该方向与你关注的 清洁电器、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于苏州，属于清洁电器方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
       "url": "https://www.dreame.tech/cn/careers",
       "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "清洁电器",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
         "追觅",
         "苏州",
         "清洁电器",
+        "校招",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
       ]
     },
     {
-      "id": "2026-06-02-job-d96e56791c",
-      "company": "美的",
+      "id": "2026-06-02-job-7cbd4ee643",
+      "company": "石头科技",
+      "title": "机器人产品设计机会跟踪",
+      "city": "北京",
+      "direction": "机器人",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于机器人方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://cn.roborock.com/pages/join-us",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "机器人",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "石头科技",
+        "北京",
+        "机器人",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-5384aeee20",
+      "company": "TCL",
       "title": "家电产品设计机会跟踪",
       "city": "广州",
       "direction": "家电",
       "experience": "校招 / 社招",
-      "matchScore": 91,
-      "reason": "官网招聘入口已检查。该方向与你关注的 家电、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://careers.midea.com/",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于广州，属于家电方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://campus.tcl.com/",
       "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "家电",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
-        "美的",
+        "TCL",
         "广州",
         "家电",
+        "校招",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
       ]
     },
     {
@@ -603,41 +358,512 @@
       "city": "苏州",
       "direction": "机器人",
       "experience": "校招 / 社招",
-      "matchScore": 90,
-      "reason": "官网岗位页今日解析不稳定，先保留官方入口。该方向与你关注的 机器人、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于苏州，属于机器人方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
       "url": "https://www.ecovacs.cn/careers",
       "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "机器人",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
         "科沃斯",
         "苏州",
         "机器人",
+        "校招",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
       ]
     },
     {
-      "id": "2026-06-02-job-f45181f967",
-      "company": "Insta360 影石",
+      "id": "2026-06-02-job-41fe310d9d",
+      "company": "联想",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://talent.lenovo.com.cn/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "联想",
+        "北京",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-0852908489",
+      "company": "安克 Anker",
       "title": "工业设计 / 产品设计机会跟踪",
       "city": "深圳",
       "direction": "3C",
       "experience": "校招 / 社招",
-      "matchScore": 89,
-      "reason": "官网岗位页今日解析不稳定，先保留官方入口。该方向与你关注的 3C、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-      "url": "https://www.insta360.com/cn/careers",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.anker.com/careers",
       "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
-        "Insta360 影石",
+        "安克 Anker",
         "深圳",
         "3C",
+        "校招",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
       ]
     },
+    {
+      "id": "2026-06-02-job-43424465e4",
+      "company": "绿联",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ugreen.com/pages/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "绿联",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-1cacf00cef",
+      "company": "倍思 Baseus",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.baseus.com/pages/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "倍思 Baseus",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-d96e56791c",
+      "company": "美的",
+      "title": "家电产品设计机会跟踪",
+      "city": "佛山",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "实习",
+      "matchScore": 96,
+      "sourceQualityScore": 95,
+      "relevanceScore": 45,
+      "reason": "该岗位位于佛山，属于家电方向，二优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://careers.midea.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "实习",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "美的",
+        "佛山",
+        "家电",
+        "实习",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-21aadfeb4b",
+      "company": "海信",
+      "title": "家电产品设计机会跟踪",
+      "city": "青岛",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 96,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于青岛，属于家电方向，二优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hisense.zhiye.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "海信",
+        "青岛",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-e081542e1e",
+      "company": "海尔",
+      "title": "家电产品设计机会跟踪",
+      "city": "青岛",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 94,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于青岛，属于家电方向，二优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://maker.haier.net/client/join",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "海尔",
+        "青岛",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-14012e755b",
+      "company": "九号",
+      "title": "出行产品工业设计机会跟踪",
+      "city": "北京",
+      "direction": "交通工具",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 94,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于交通工具方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ninebot.com/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "交通工具",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "九号",
+        "北京",
+        "交通工具",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-1f266b77d5",
+      "company": "公开招聘线索",
+      "title": "google.com https:// gemini .google.com",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "google.com https:// gemini .google.com Google Gemini Meet Gemini, Google’s AI assistant. Get help with writing, planning",
+      "url": "https://www.bing.com/ck/a?!&&p=b2f6878acb56ef91f75315aafa4841f15264f1c4f6ac4a7d93842b045bdf4cb5JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fc5fb30-34ca-651f-14b7-ec5c352d6465&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlLmNvbS8&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-565d47bd05",
+      "company": "公开招聘线索",
+      "title": "gemini.google https:// gemini .google › in › about",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "gemini.google https:// gemini .google › in › about Gemini – Your AI assistant from Google Building the world's most capa",
+      "url": "https://www.bing.com/ck/a?!&&p=a5564066b906ca5e7f2bf9b6d034b3b5683e6f9ed0c555147a18bad39fc2b7d9JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fc5fb30-34ca-651f-14b7-ec5c352d6465&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlL2luL2Fib3V0Lz9obD1lbi1JTg&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-b3863d5f9b",
+      "company": "公开招聘线索",
+      "title": "pinggu.org https://bbs.pinggu.org",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "pinggu.org https://bbs.pinggu.org 经管之 家 (原经济论坛)-国内活跃的经济、管理、金融、统计 ... 经管之家是一个活跃的经济、管理、金融和统计学论坛，提供丰富的资源和讨论机会。",
+      "url": "https://www.bing.com/ck/a?!&&p=3bef921e8901afad40ae3c2440599f27da7d3cdc6299b77156244387e16a8f0aJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=25de1a3a-4ea3-6fa9-08d7-0d564ff26ec5&u=a1aHR0cHM6Ly9iYnMucGluZ2d1Lm9yZy90aHJlYWQtMTEwMzYzMjYtMS0xLmh0bWw&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-64cfcfe627",
+      "company": "公开招聘线索",
+      "title": "zhihu.com https://zhuanlan.zhihu.com",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "zhihu.com https://zhuanlan.zhihu.com 知乎专栏 - 随心写作，自由表达 - 知乎 小潘是个工程师 以工程师的眼光，探索工程领域中所需要的数学、物理知识，力图用最简单、符合直觉的方式解释、探讨晦涩的概念。 ",
+      "url": "https://www.bing.com/ck/a?!&&p=5b12d9e1121efb46796099afd4625c9cf345b270736d15a695fc285753c98423JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=25de1a3a-4ea3-6fa9-08d7-0d564ff26ec5&u=a1aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20v&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-ebd777c50b",
+      "company": "公开招聘线索",
+      "title": "mercedes-benz.de https://www. mercedes -benz.de",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "mercedes-benz.de https://www. mercedes -benz.de Mercedes -Benz | Deutschland - Offizielle Webseite Maßgeschneiderte Prod",
+      "url": "https://www.bing.com/ck/a?!&&p=f30d81f00aed309a172f318c861ab553469f536b5072d5adf0492e22a70e89f6JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fee5f31-1d9c-61c4-04cd-485d1c7960e7&u=a1aHR0cHM6Ly93d3cubWVyY2VkZXMtYmVuei5kZS8&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-ddf20f8b17",
+      "company": "公开招聘线索",
+      "title": "mercedes-benz.com https://www. mercedes-benz .com › de › fahrzeuge",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "mercedes-benz.com https://www. mercedes-benz .com › de › fahrzeuge Mercedes‑Benz Fahrzeuge. Entdecken Sie die aktuellen ",
+      "url": "https://www.bing.com/ck/a?!&&p=92d967f301b1ea777d9387a5ccb4710706c0bc61c4df1c3220c41d65061ef763JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fee5f31-1d9c-61c4-04cd-485d1c7960e7&u=a1aHR0cHM6Ly93d3cubWVyY2VkZXMtYmVuei5jb20vZGUvZmFocnpldWdlLw&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-cfda86eb25",
+      "company": "公开招聘线索",
+      "title": "google.co.in https://www.google.co.in › intl › en_uk › chrome › safety",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "google.co.in https://www.google.co.in › intl › en_uk › chrome › safety Safe, secure, protected browsing | Chrome - Googl",
+      "url": "https://www.bing.com/ck/a?!&&p=b3149eae713a1677ddf4f1fa09dedefb3be2e00925473203eab0ce5865ae1da5JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=3bcb94eb-b87f-6a08-0c83-8387b9986b11&u=a1aHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluL2ludGwvZW5fdWsvY2hyb21lL3NhZmV0eS8&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-8695f05077",
+      "company": "公开招聘线索",
+      "title": "google.co.in https://www.google.co.in › intl › en_uk › chrome",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "google.co.in https://www.google.co.in › intl › en_uk › chrome Google Chrome – Download the fast, secure browser from Goo",
+      "url": "https://www.bing.com/ck/a?!&&p=81affece3bb03c8018d72a8b5ad9d0edffdd73a043e77b19f7a74c6f06001ea1JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=3bcb94eb-b87f-6a08-0c83-8387b9986b11&u=a1aHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluL2ludGwvZW5fdWsvY2hyb21lLw&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    }
+  ],
+  "highMatchJobs": [
     {
       "id": "2026-06-02-job-c3ed1d58d6",
       "company": "DJI 大疆",
@@ -645,54 +871,2245 @@
       "city": "深圳",
       "direction": "智能硬件",
       "experience": "校招 / 实习 / 社招",
-      "matchScore": 86,
-      "reason": "官网岗位页今日解析不稳定，先保留官方入口。该方向与你关注的 智能硬件、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
+      "jobType": "实习",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于智能硬件方向，一优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
       "url": "https://www.dji.com/cn/careers",
       "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "实习",
+        "智能硬件",
+        "一优城市",
+        "作品集参考"
+      ],
       "keywords": [
         "DJI 大疆",
         "深圳",
         "智能硬件",
+        "实习",
         "工业设计",
-        "招聘",
-        "作品集",
-        "秋招"
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-2341e9df34",
+      "company": "华为",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "华为",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-86335eea1c",
+      "company": "小米",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "智能硬件",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于智能硬件方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.xiaomi.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "智能硬件",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "小米",
+        "北京",
+        "智能硬件",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-8f2ef14413",
+      "company": "OPPO",
+      "title": "CMF / 工业设计机会跟踪",
+      "city": "深圳",
+      "direction": "CMF",
+      "experience": "校招 / 实习 / 社招",
+      "jobType": "实习",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于CMF方向，一优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://careers.oppo.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "实习",
+        "CMF",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "OPPO",
+        "深圳",
+        "CMF",
+        "实习",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-9c1ccd19de",
+      "company": "vivo",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "东莞",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于东莞，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.vivo.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "vivo",
+        "东莞",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-3a3948b800",
+      "company": "荣耀",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://career.hihonor.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "荣耀",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-f45181f967",
+      "company": "Insta360 影石",
+      "title": "影像设备产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "影像设备",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于影像设备方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.insta360.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "影像设备",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "Insta360 影石",
+        "深圳",
+        "影像设备",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-b0654cdd39",
+      "company": "云鲸",
+      "title": "清洁电器工业设计机会跟踪",
+      "city": "深圳",
+      "direction": "清洁电器",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于清洁电器方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.narwal.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "清洁电器",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "云鲸",
+        "深圳",
+        "清洁电器",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-88102ee30c",
+      "company": "追觅",
+      "title": "清洁电器工业设计机会跟踪",
+      "city": "苏州",
+      "direction": "清洁电器",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于苏州，属于清洁电器方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.dreame.tech/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "清洁电器",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "追觅",
+        "苏州",
+        "清洁电器",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-7cbd4ee643",
+      "company": "石头科技",
+      "title": "机器人产品设计机会跟踪",
+      "city": "北京",
+      "direction": "机器人",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于机器人方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://cn.roborock.com/pages/join-us",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "机器人",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "石头科技",
+        "北京",
+        "机器人",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-5384aeee20",
+      "company": "TCL",
+      "title": "家电产品设计机会跟踪",
+      "city": "广州",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于广州，属于家电方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://campus.tcl.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "家电",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "TCL",
+        "广州",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-f44be9a187",
+      "company": "科沃斯",
+      "title": "机器人产品设计机会跟踪",
+      "city": "苏州",
+      "direction": "机器人",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于苏州，属于机器人方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ecovacs.cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "机器人",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "科沃斯",
+        "苏州",
+        "机器人",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-41fe310d9d",
+      "company": "联想",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://talent.lenovo.com.cn/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "联想",
+        "北京",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-0852908489",
+      "company": "安克 Anker",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.anker.com/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "安克 Anker",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-43424465e4",
+      "company": "绿联",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ugreen.com/pages/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "绿联",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-1cacf00cef",
+      "company": "倍思 Baseus",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.baseus.com/pages/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "倍思 Baseus",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-d96e56791c",
+      "company": "美的",
+      "title": "家电产品设计机会跟踪",
+      "city": "佛山",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "实习",
+      "matchScore": 96,
+      "sourceQualityScore": 95,
+      "relevanceScore": 45,
+      "reason": "该岗位位于佛山，属于家电方向，二优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://careers.midea.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "实习",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "美的",
+        "佛山",
+        "家电",
+        "实习",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-21aadfeb4b",
+      "company": "海信",
+      "title": "家电产品设计机会跟踪",
+      "city": "青岛",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 96,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于青岛，属于家电方向，二优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hisense.zhiye.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "海信",
+        "青岛",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-e081542e1e",
+      "company": "海尔",
+      "title": "家电产品设计机会跟踪",
+      "city": "青岛",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 94,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于青岛，属于家电方向，二优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://maker.haier.net/client/join",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "海尔",
+        "青岛",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-14012e755b",
+      "company": "九号",
+      "title": "出行产品工业设计机会跟踪",
+      "city": "北京",
+      "direction": "交通工具",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 94,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于交通工具方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ninebot.com/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "交通工具",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "九号",
+        "北京",
+        "交通工具",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    }
+  ],
+  "designHotspots": [
+    {
+      "id": "2026-06-02-hotspot-c8db338260",
+      "title": "Bing Search：3C产品案例值得加入产品设计观察",
+      "summary": "trip.com https://hk.trip.com › guide › transport 3C 尿袋必讀指南 2025年6月新規！什麼是 3C 認證？香港旅客北上搭機注 … 2026年2月12日 · 什麼是 3C 認證？ 「3C 認證」全名為 China Compulsory Certification（中國強制性產品認證），是中",
+      "source": "Bing Search",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=330f8f371cee65bae589c7112798335265183f6c1cb34ba55e8a6b34105f25d8JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=114fe12b-8d8e-6846-0b81-f6478c1f6975&u=a1aHR0cHM6Ly9oay50cmlwLmNvbS9ndWlkZS90cmFuc3BvcnQvM0MlRTUlQjAlQkYlRTglQTIlOEIuaHRtbD9tc29ja2lkPTExNGZlMTJiOGQ4ZTY4NDYwYjgxZjY0NzhjMWY2OTc1&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 86,
+      "sourceQualityScore": 68,
+      "relevanceScore": 83,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-212177b904",
+      "title": "华为发布 nova 16 系列：2 亿主摄，红枫影像，还有十年的答案",
+      "summary": "nova 的变与不变 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667771?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "sourceQualityScore": 88,
+      "relevanceScore": 81,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [
+        "华为"
+      ],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "华为"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-32efe7064f",
+      "title": "制糖工厂发布 AI 小电拼 Mirror：全球首款智能体电源，支持 AI Agent 原生接入",
+      "summary": "新增 0.5 寸 ingBar 琥珀屏，160W 高能巡航 ，4×140W 盲插，支持小米 120W 澎湃秒充，CanOS 2.0 如意系统 + OTW 云桥让充电头持续进化，从桌面电站到差旅随行充，全新定义 AI 时代的万能充。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667606?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "sourceQualityScore": 88,
+      "relevanceScore": 81,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [
+        "小米"
+      ],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "小米"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-bf62cbc44e",
+      "title": "早报｜曝苹果眼镜明年底发布/英伟达首款自研芯片PC本周亮相/特斯拉推出Model Y原厂手动遮阳帘",
+      "summary": "· 曝三星与 OpenAI 定制 AI 芯片项目停滞 · Apple Music 出现全球性服务中断 · 北大数院「黄金二代」苏炜杰加入 OpenAI #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667599?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "sourceQualityScore": 88,
+      "relevanceScore": 81,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [
+        "Apple"
+      ],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "Apple"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-1028147f61",
+      "title": "The Verge：消费电子案例值得加入产品设计观察",
+      "summary": "公开来源提到“This could be Windows’ M1 moment — but expect it to cost a ton”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "source": "The Verge",
+      "category": "消费电子",
+      "url": "https://www.theverge.com/tech/941215/windows-laptops-nvidia-rtx-spark-apple-m1-arm-price-ram",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "sourceQualityScore": 88,
+      "relevanceScore": 81,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [
+        "Apple"
+      ],
+      "tags": [
+        "消费电子",
+        "高可信",
+        "设计热点",
+        "Apple"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-0d8f885ff2",
+      "title": "Bing Search：CMF案例值得加入产品设计观察",
+      "summary": "公开来源提到“nothing.tech https://hk.nothing.tech › collections › cmf”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "source": "Bing Search",
+      "category": "CMF",
+      "url": "https://www.bing.com/ck/a?!&&p=910ec4e4106f438b0b99248909699b7e88dde6f39a6cc27fede2343c4952b53dJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=3ddee8bd-b08b-6e4a-3bdf-ffd1b1da6fda&u=a1aHR0cHM6Ly9oay5ub3RoaW5nLnRlY2gvY29sbGVjdGlvbnMvY21m&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 82,
+      "sourceQualityScore": 68,
+      "relevanceScore": 79,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [
+        "Nothing"
+      ],
+      "tags": [
+        "CMF",
+        "搜索线索",
+        "设计热点",
+        "Nothing"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-258f253999",
+      "title": "Bing Search：3C产品案例值得加入产品设计观察",
+      "summary": "nothingcn.com https:// nothing cn.com › pages Nothing Phone (2) - Nothing China Nothing Phone (2) 让科技游戏再升级。 透过增强版相机规格捕捉令人惊艳的照片，透过尖端 Glyph Interface 实现流畅互动，并体验 Nothing OS ",
+      "source": "Bing Search",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=a3ccd99111f267566390925417def6a07188094004c467669912615d219cd735JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=2596bfcc-8ad7-63df-21a2-a8a08b326254&u=a1aHR0cHM6Ly9ub3RoaW5nY24uY29tL3BhZ2VzL3Bob25lLTI&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 82,
+      "sourceQualityScore": 68,
+      "relevanceScore": 79,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [
+        "Nothing"
+      ],
+      "tags": [
+        "3C产品",
+        "搜索线索",
+        "设计热点",
+        "Nothing"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-4d6c5a962e",
+      "title": "早报｜OpenAI官宣进军机器人领域/AI误把文物照片上架，闲鱼致歉/天涯社区重启首日被挤爆",
+      "summary": "· 曝豆包 6 月下旬上线付费版 · SK 海力士清州工厂发生火灾，官方称未影响生产 · 宇树科创板 IPO 过会，计划募资 42 亿元 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667792?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 81,
+      "sourceQualityScore": 88,
+      "relevanceScore": 78,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-02a92bd7df",
+      "title": "hk01.com https://www.hk01.com › 數碼生活",
+      "summary": "hk01.com https://www.hk01.com › 數碼生活 尿袋 3C 認證3.1起加追溯二維碼｜行動電源北上搭高鐵登機必睇貼士 - 香 … 尿袋3C認證／外置充電器／充電寶／航機／高鐵｜由 2026 年 3 月 1 日起，中國強制性產品認證（3C 認證）對外置充電器（俗稱「尿袋」）的規管將進一步升級。 國家認監委宣布，所有",
+      "source": "Bing Search",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=a7ee3f0549d150c3fbb5f684460f9b7cdb599f1e3e8eaa3ecf8b5cd0fc2dd34fJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=114fe12b-8d8e-6846-0b81-f6478c1f6975&u=a1aHR0cHM6Ly93d3cuaGswMS5jb20vJUU2JTk1JUI4JUU3JUEyJUJDJUU3JTk0JTlGJUU2JUI0JUJCLzYwMzI2NDE5LyVFNSVCMCVCRiVFOCVBMiU4QjNjJUU4JUFBJThEJUU4JUFEJTg5My0xJUU4JUI1JUI3JUU1JThBJUEwJUU4JUJGJUJEJUU2JUJBJUFGJUU0JUJBJThDJUU3JUI2JUFEJUU3JUEyJUJDLSVFOCVBMSU4QyVFNSU4QiU5NSVFOSU5QiVCQiVFNiVCQSU5MCVFNSU4QyU5NyVFNCVCOCU4QSVFNiU5MCVBRCVFOSVBQiU5OCVFOSU5MCVCNSVFNyU5OSVCQiVFNiVBOSU5RiVFNSVCRiU4NSVFNyU5RCU4NyVFOCVCMiVCQyVFNSVBMyVBQg&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "sourceQualityScore": 68,
+      "relevanceScore": 76,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-067817aa19",
+      "title": "Bing Search：AI硬件案例值得加入产品设计观察",
+      "summary": "google.com https://gemini.google.com ‎Google Gemini 認識 Google AI 助理 Gemini，輕鬆撰寫內容、擬訂計畫、腦力激盪等。體驗生成式 AI 的強大功能。",
+      "source": "Bing Search",
+      "category": "AI硬件",
+      "url": "https://www.bing.com/ck/a?!&&p=25253bee447e23c47e12f2d5716e7ac6cc762c4fe4c1691d502eb9b43ba70f3dJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3cd524-8b69-6cff-1289-c2488a8e6d1e&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlLmNvbS8_aGw9emgtVFc&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "sourceQualityScore": 68,
+      "relevanceScore": 76,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [],
+      "tags": [
+        "AI硬件",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-73bbfe01e9",
+      "title": "Bing Search：AI硬件案例值得加入产品设计观察",
+      "summary": "openai.com https://openai.com › zh-Hans-CN OpenAI | Research & Deployment 我们相信，我们的研究最终将带来通用人工智能，一种可以解决人类水平问题的系统。构建安全有益的 AGI 是我们的使命。",
+      "source": "Bing Search",
+      "category": "AI硬件",
+      "url": "https://www.bing.com/ck/a?!&&p=12d4a40cfcf14e973dce8e291b60e75fd770d5244ff1d99e287d6050134bfcabJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3cd524-8b69-6cff-1289-c2488a8e6d1e&u=a1aHR0cHM6Ly9vcGVuYWkuY29tL3poLUhhbnMtQ04v&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "sourceQualityScore": 68,
+      "relevanceScore": 76,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [],
+      "tags": [
+        "AI硬件",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-7a22690916",
+      "title": "baidu.com https://baike.baidu.com › item › 机",
+      "summary": "baidu.com https://baike.baidu.com › item › 机 机 _百度百科 机（拼音：jī）是汉语通用规范一级汉字（常用字）。 该字始见于战国文字，其简体与繁体“機”本为二字，后因同音假借。 简体“机”本义为桤木树，属榆科植物，古代文献中记载其可作稻田肥料，此义后 …",
+      "source": "Bing Search",
+      "category": "机器人",
+      "url": "https://www.bing.com/ck/a?!&&p=0147181b22211c4907ab459b258645e93329757c27b477a583b2c24179c4ced9JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=31e1d3ad-3e94-6b69-2757-c4c13fc56ab3&u=a1aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTYlOUMlQkEvMjYxOTE5MA&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "sourceQualityScore": 68,
+      "relevanceScore": 76,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "relatedCompanies": [],
+      "tags": [
+        "机器人",
+        "搜索线索",
+        "设计热点"
+      ]
+    }
+  ],
+  "companyUpdates": [
+    {
+      "id": "2026-06-02-company-180987cc8f",
+      "company": "DJI 大疆",
+      "title": "DJI 大疆：智能硬件岗位入口值得核对",
+      "summary": "深圳 / 实习 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://www.dji.com/cn/careers",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与智能硬件、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "智能硬件",
+        "实习",
+        "可核对来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-f05c4bc8e1",
+      "company": "华为",
+      "title": "华为：3C岗位入口值得核对",
+      "summary": "深圳 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与3C、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "3C",
+        "校招",
+        "官网来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-f77a872a71",
+      "company": "小米",
+      "title": "小米：智能硬件岗位入口值得核对",
+      "summary": "北京 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://hr.xiaomi.com/",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与智能硬件、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "智能硬件",
+        "校招",
+        "官网来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-c852f1fda6",
+      "company": "OPPO",
+      "title": "OPPO：CMF岗位入口值得核对",
+      "summary": "深圳 / 实习 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://careers.oppo.com/",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与CMF、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "CMF",
+        "实习",
+        "官网来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-d5370ed0d1",
+      "company": "vivo",
+      "title": "vivo：3C岗位入口值得核对",
+      "summary": "东莞 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://hr.vivo.com/",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与3C、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "3C",
+        "校招",
+        "官网来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-adeeb5f295",
+      "company": "荣耀",
+      "title": "荣耀：3C岗位入口值得核对",
+      "summary": "深圳 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://career.hihonor.com/",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与3C、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "3C",
+        "校招",
+        "可核对来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-5b24235ad3",
+      "company": "Insta360 影石",
+      "title": "Insta360 影石：影像设备岗位入口值得核对",
+      "summary": "深圳 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://www.insta360.com/cn/careers",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与影像设备、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "影像设备",
+        "校招",
+        "可核对来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-b8070f900f",
+      "company": "云鲸",
+      "title": "云鲸：清洁电器岗位入口值得核对",
+      "summary": "深圳 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://www.narwal.com/cn/careers",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与清洁电器、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "清洁电器",
+        "校招",
+        "官网来源"
       ]
     }
   ],
   "actions": [
     {
-      "id": "2026-06-02-action-3e14bd8c50",
-      "title": "作品集优先动作",
-      "description": "把今天的“AI硬件”趋势转成一页作品集研究卡：场景、竞品、设计判断、可落地方向。",
+      "id": "2026-06-02-action-7830f0f388",
+      "title": "今日建议重点关注的岗位",
+      "description": "优先打开 DJI 大疆 的原始链接，核对深圳 / 智能硬件 / 实习是否可投。",
       "priority": "high",
       "keywords": [
-        "作品集",
-        "AI硬件",
-        "设计研究"
-      ]
-    },
-    {
-      "id": "2026-06-02-action-3c9d3646cd",
-      "title": "秋招投递动作",
-      "description": "优先核对 小米 的原始招聘链接，并把岗位关键词补到作品集项目首页。",
-      "priority": "medium",
-      "keywords": [
-        "秋招",
-        "小米",
-        "上海",
+        "求职",
+        "DJI 大疆",
+        "深圳",
         "智能硬件"
       ]
     },
     {
-      "id": "2026-06-02-action-e3698898c7",
-      "title": "小红书内容动作",
-      "description": "把今日 1 条新闻和 1 条趋势拆成 6 图笔记：信号、案例、问题、设计启发、作品集用法、岗位关联。",
+      "id": "2026-06-02-action-0d9f46350d",
+      "title": "今日建议收藏的设计热点",
+      "description": "收藏“Bing Search：3C产品案例值得加入产品设计观察”，把它拆成场景、形态、CMF、交互四个观察点。",
+      "priority": "medium",
+      "keywords": [
+        "设计热点",
+        "3C产品",
+        "作品集参考"
+      ]
+    },
+    {
+      "id": "2026-06-02-action-3e14bd8c50",
+      "title": "今日适合补充到作品集调研的案例",
+      "description": "围绕3C产品补一页竞品矩阵，重点写清楚设计语言变化和你自己的判断。",
+      "priority": "medium",
+      "keywords": [
+        "作品集",
+        "设计研究",
+        "3C产品"
+      ]
+    },
+    {
+      "id": "2026-06-02-action-262371b33c",
+      "title": "今日建议跟进的公司动态",
+      "description": "跟进 DJI 大疆：与智能硬件、作品集项目选择和求职投递优先级直接相关。",
       "priority": "low",
       "keywords": [
-        "小红书",
-        "工业设计账号",
-        "内容运营"
+        "公司动态",
+        "DJI 大疆",
+        "招聘"
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "id": "2026-06-02-job-c3ed1d58d6",
+      "company": "DJI 大疆",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "智能硬件",
+      "experience": "校招 / 实习 / 社招",
+      "jobType": "实习",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于智能硬件方向，一优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.dji.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "实习",
+        "智能硬件",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "DJI 大疆",
+        "深圳",
+        "智能硬件",
+        "实习",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-2341e9df34",
+      "company": "华为",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "华为",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-86335eea1c",
+      "company": "小米",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "智能硬件",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于智能硬件方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.xiaomi.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "智能硬件",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "小米",
+        "北京",
+        "智能硬件",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-8f2ef14413",
+      "company": "OPPO",
+      "title": "CMF / 工业设计机会跟踪",
+      "city": "深圳",
+      "direction": "CMF",
+      "experience": "校招 / 实习 / 社招",
+      "jobType": "实习",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于CMF方向，一优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://careers.oppo.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "实习",
+        "CMF",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "OPPO",
+        "深圳",
+        "CMF",
+        "实习",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-9c1ccd19de",
+      "company": "vivo",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "东莞",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于东莞，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.vivo.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "vivo",
+        "东莞",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-3a3948b800",
+      "company": "荣耀",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://career.hihonor.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "荣耀",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-f45181f967",
+      "company": "Insta360 影石",
+      "title": "影像设备产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "影像设备",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于影像设备方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.insta360.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "影像设备",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "Insta360 影石",
+        "深圳",
+        "影像设备",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-b0654cdd39",
+      "company": "云鲸",
+      "title": "清洁电器工业设计机会跟踪",
+      "city": "深圳",
+      "direction": "清洁电器",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于清洁电器方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.narwal.com/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "清洁电器",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "云鲸",
+        "深圳",
+        "清洁电器",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-88102ee30c",
+      "company": "追觅",
+      "title": "清洁电器工业设计机会跟踪",
+      "city": "苏州",
+      "direction": "清洁电器",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于苏州，属于清洁电器方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.dreame.tech/cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "清洁电器",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "追觅",
+        "苏州",
+        "清洁电器",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-7cbd4ee643",
+      "company": "石头科技",
+      "title": "机器人产品设计机会跟踪",
+      "city": "北京",
+      "direction": "机器人",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于机器人方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://cn.roborock.com/pages/join-us",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "机器人",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "石头科技",
+        "北京",
+        "机器人",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-5384aeee20",
+      "company": "TCL",
+      "title": "家电产品设计机会跟踪",
+      "city": "广州",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于广州，属于家电方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://campus.tcl.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "家电",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "TCL",
+        "广州",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-f44be9a187",
+      "company": "科沃斯",
+      "title": "机器人产品设计机会跟踪",
+      "city": "苏州",
+      "direction": "机器人",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于苏州，属于机器人方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ecovacs.cn/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "机器人",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "科沃斯",
+        "苏州",
+        "机器人",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-41fe310d9d",
+      "company": "联想",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://talent.lenovo.com.cn/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "联想",
+        "北京",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-0852908489",
+      "company": "安克 Anker",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.anker.com/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "安克 Anker",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-43424465e4",
+      "company": "绿联",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ugreen.com/pages/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "绿联",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-1cacf00cef",
+      "company": "倍思 Baseus",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "深圳",
+      "direction": "3C",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于深圳，属于3C方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.baseus.com/pages/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "3C",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "倍思 Baseus",
+        "深圳",
+        "3C",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-d96e56791c",
+      "company": "美的",
+      "title": "家电产品设计机会跟踪",
+      "city": "佛山",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "实习",
+      "matchScore": 96,
+      "sourceQualityScore": 95,
+      "relevanceScore": 45,
+      "reason": "该岗位位于佛山，属于家电方向，二优城市和方向匹配；岗位类型为实习，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://careers.midea.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "实习",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "美的",
+        "佛山",
+        "家电",
+        "实习",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-21aadfeb4b",
+      "company": "海信",
+      "title": "家电产品设计机会跟踪",
+      "city": "青岛",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 96,
+      "sourceQualityScore": 95,
+      "relevanceScore": 53,
+      "reason": "该岗位位于青岛，属于家电方向，二优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为官网来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hisense.zhiye.com/",
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "校招",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "海信",
+        "青岛",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-e081542e1e",
+      "company": "海尔",
+      "title": "家电产品设计机会跟踪",
+      "city": "青岛",
+      "direction": "家电",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 94,
+      "sourceQualityScore": 82,
+      "relevanceScore": 45,
+      "reason": "该岗位位于青岛，属于家电方向，二优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://maker.haier.net/client/join",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "家电",
+        "二优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "海尔",
+        "青岛",
+        "家电",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-14012e755b",
+      "company": "九号",
+      "title": "出行产品工业设计机会跟踪",
+      "city": "北京",
+      "direction": "交通工具",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 94,
+      "sourceQualityScore": 82,
+      "relevanceScore": 53,
+      "reason": "该岗位位于北京，属于交通工具方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；来源为可核对来源，建议作为求职清单重点核对。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://www.ninebot.com/careers",
+      "date": "2026-06-02",
+      "tags": [
+        "可核对来源",
+        "校招",
+        "交通工具",
+        "一优城市",
+        "作品集参考"
+      ],
+      "keywords": [
+        "九号",
+        "北京",
+        "交通工具",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-1f266b77d5",
+      "company": "公开招聘线索",
+      "title": "google.com https:// gemini .google.com",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "google.com https:// gemini .google.com Google Gemini Meet Gemini, Google’s AI assistant. Get help with writing, planning",
+      "url": "https://www.bing.com/ck/a?!&&p=b2f6878acb56ef91f75315aafa4841f15264f1c4f6ac4a7d93842b045bdf4cb5JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fc5fb30-34ca-651f-14b7-ec5c352d6465&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlLmNvbS8&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-565d47bd05",
+      "company": "公开招聘线索",
+      "title": "gemini.google https:// gemini .google › in › about",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "gemini.google https:// gemini .google › in › about Gemini – Your AI assistant from Google Building the world's most capa",
+      "url": "https://www.bing.com/ck/a?!&&p=a5564066b906ca5e7f2bf9b6d034b3b5683e6f9ed0c555147a18bad39fc2b7d9JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fc5fb30-34ca-651f-14b7-ec5c352d6465&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlL2luL2Fib3V0Lz9obD1lbi1JTg&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-b3863d5f9b",
+      "company": "公开招聘线索",
+      "title": "pinggu.org https://bbs.pinggu.org",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "pinggu.org https://bbs.pinggu.org 经管之 家 (原经济论坛)-国内活跃的经济、管理、金融、统计 ... 经管之家是一个活跃的经济、管理、金融和统计学论坛，提供丰富的资源和讨论机会。",
+      "url": "https://www.bing.com/ck/a?!&&p=3bef921e8901afad40ae3c2440599f27da7d3cdc6299b77156244387e16a8f0aJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=25de1a3a-4ea3-6fa9-08d7-0d564ff26ec5&u=a1aHR0cHM6Ly9iYnMucGluZ2d1Lm9yZy90aHJlYWQtMTEwMzYzMjYtMS0xLmh0bWw&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-64cfcfe627",
+      "company": "公开招聘线索",
+      "title": "zhihu.com https://zhuanlan.zhihu.com",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "zhihu.com https://zhuanlan.zhihu.com 知乎专栏 - 随心写作，自由表达 - 知乎 小潘是个工程师 以工程师的眼光，探索工程领域中所需要的数学、物理知识，力图用最简单、符合直觉的方式解释、探讨晦涩的概念。 ",
+      "url": "https://www.bing.com/ck/a?!&&p=5b12d9e1121efb46796099afd4625c9cf345b270736d15a695fc285753c98423JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=25de1a3a-4ea3-6fa9-08d7-0d564ff26ec5&u=a1aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20v&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-ebd777c50b",
+      "company": "公开招聘线索",
+      "title": "mercedes-benz.de https://www. mercedes -benz.de",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "mercedes-benz.de https://www. mercedes -benz.de Mercedes -Benz | Deutschland - Offizielle Webseite Maßgeschneiderte Prod",
+      "url": "https://www.bing.com/ck/a?!&&p=f30d81f00aed309a172f318c861ab553469f536b5072d5adf0492e22a70e89f6JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fee5f31-1d9c-61c4-04cd-485d1c7960e7&u=a1aHR0cHM6Ly93d3cubWVyY2VkZXMtYmVuei5kZS8&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-ddf20f8b17",
+      "company": "公开招聘线索",
+      "title": "mercedes-benz.com https://www. mercedes-benz .com › de › fahrzeuge",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "mercedes-benz.com https://www. mercedes-benz .com › de › fahrzeuge Mercedes‑Benz Fahrzeuge. Entdecken Sie die aktuellen ",
+      "url": "https://www.bing.com/ck/a?!&&p=92d967f301b1ea777d9387a5ccb4710706c0bc61c4df1c3220c41d65061ef763JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=1fee5f31-1d9c-61c4-04cd-485d1c7960e7&u=a1aHR0cHM6Ly93d3cubWVyY2VkZXMtYmVuei5jb20vZGUvZmFocnpldWdlLw&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-cfda86eb25",
+      "company": "公开招聘线索",
+      "title": "google.co.in https://www.google.co.in › intl › en_uk › chrome › safety",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "google.co.in https://www.google.co.in › intl › en_uk › chrome › safety Safe, secure, protected browsing | Chrome - Googl",
+      "url": "https://www.bing.com/ck/a?!&&p=b3149eae713a1677ddf4f1fa09dedefb3be2e00925473203eab0ce5865ae1da5JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=3bcb94eb-b87f-6a08-0c83-8387b9986b11&u=a1aHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluL2ludGwvZW5fdWsvY2hyb21lL3NhZmV0eS8&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    },
+    {
+      "id": "2026-06-02-job-search-8695f05077",
+      "company": "公开招聘线索",
+      "title": "google.co.in https://www.google.co.in › intl › en_uk › chrome",
+      "city": "全国",
+      "direction": "工业设计",
+      "experience": "应届 / 实习 / 1-3年可核对",
+      "jobType": "实习",
+      "matchScore": 70,
+      "sourceQualityScore": 68,
+      "relevanceScore": 61,
+      "reason": "该岗位位于全国，属于工业设计方向，全国机会和方向匹配；岗位类型为实习，偏应届/初级经验；来源为搜索线索，建议作为求职清单重点核对。",
+      "requirementsSummary": "google.co.in https://www.google.co.in › intl › en_uk › chrome Google Chrome – Download the fast, secure browser from Goo",
+      "url": "https://www.bing.com/ck/a?!&&p=81affece3bb03c8018d72a8b5ad9d0edffdd73a043e77b19f7a74c6f06001ea1JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=3bcb94eb-b87f-6a08-0c83-8387b9986b11&u=a1aHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluL2ludGwvZW5fdWsvY2hyb21lLw&ntb=1",
+      "date": "2026-06-02",
+      "tags": [
+        "搜索线索",
+        "实习",
+        "工业设计",
+        "全国机会"
+      ],
+      "keywords": [
+        "公开招聘线索",
+        "全国",
+        "工业设计",
+        "实习",
+        "招聘"
+      ]
+    }
+  ],
+  "topNews": [
+    {
+      "id": "2026-06-02-hotspot-c8db338260",
+      "title": "Bing Search：3C产品案例值得加入产品设计观察",
+      "summary": "trip.com https://hk.trip.com › guide › transport 3C 尿袋必讀指南 2025年6月新規！什麼是 3C 認證？香港旅客北上搭機注 … 2026年2月12日 · 什麼是 3C 認證？ 「3C 認證」全名為 China Compulsory Certification（中國強制性產品認證），是中",
+      "source": "Bing Search",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=330f8f371cee65bae589c7112798335265183f6c1cb34ba55e8a6b34105f25d8JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=114fe12b-8d8e-6846-0b81-f6478c1f6975&u=a1aHR0cHM6Ly9oay50cmlwLmNvbS9ndWlkZS90cmFuc3BvcnQvM0MlRTUlQjAlQkYlRTglQTIlOEIuaHRtbD9tc29ja2lkPTExNGZlMTJiOGQ4ZTY4NDYwYjgxZjY0NzhjMWY2OTc1&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 86,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "3C产品",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-212177b904",
+      "title": "华为发布 nova 16 系列：2 亿主摄，红枫影像，还有十年的答案",
+      "summary": "nova 的变与不变 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667771?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "华为"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-32efe7064f",
+      "title": "制糖工厂发布 AI 小电拼 Mirror：全球首款智能体电源，支持 AI Agent 原生接入",
+      "summary": "新增 0.5 寸 ingBar 琥珀屏，160W 高能巡航 ，4×140W 盲插，支持小米 120W 澎湃秒充，CanOS 2.0 如意系统 + OTW 云桥让充电头持续进化，从桌面电站到差旅随行充，全新定义 AI 时代的万能充。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667606?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "小米"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-bf62cbc44e",
+      "title": "早报｜曝苹果眼镜明年底发布/英伟达首款自研芯片PC本周亮相/特斯拉推出Model Y原厂手动遮阳帘",
+      "summary": "· 曝三星与 OpenAI 定制 AI 芯片项目停滞 · Apple Music 出现全球性服务中断 · 北大数院「黄金二代」苏炜杰加入 OpenAI #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667599?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "Apple"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-1028147f61",
+      "title": "The Verge：消费电子案例值得加入产品设计观察",
+      "summary": "公开来源提到“This could be Windows’ M1 moment — but expect it to cost a ton”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "source": "The Verge",
+      "category": "消费电子",
+      "url": "https://www.theverge.com/tech/941215/windows-laptops-nvidia-rtx-spark-apple-m1-arm-price-ram",
+      "date": "2026-06-02",
+      "importanceScore": 84,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "消费电子",
+        "高可信",
+        "设计热点",
+        "Apple"
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "id": "2026-06-02-hotspot-c8db338260-trend",
+      "title": "Bing Search：3C产品案例值得加入产品设计观察",
+      "trendSummary": "trip.com https://hk.trip.com › guide › transport 3C 尿袋必讀指南 2025年6月新規！什麼是 3C 認證？香港旅客北上搭機注 … 2026年2月12日 · 什麼是 3C 認證？ 「3C 認證」全名為 China Compulsory Certification（中國強制性產品認證），是中",
+      "relatedCases": [
+        "Bing Search"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=330f8f371cee65bae589c7112798335265183f6c1cb34ba55e8a6b34105f25d8JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=114fe12b-8d8e-6846-0b81-f6478c1f6975&u=a1aHR0cHM6Ly9oay50cmlwLmNvbS9ndWlkZS90cmFuc3BvcnQvM0MlRTUlQjAlQkYlRTglQTIlOEIuaHRtbD9tc29ja2lkPTExNGZlMTJiOGQ4ZTY4NDYwYjgxZjY0NzhjMWY2OTc1&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-212177b904-trend",
+      "title": "华为发布 nova 16 系列：2 亿主摄，红枫影像，还有十年的答案",
+      "trendSummary": "nova 的变与不变 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "华为"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667771?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "华为"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-32efe7064f-trend",
+      "title": "制糖工厂发布 AI 小电拼 Mirror：全球首款智能体电源，支持 AI Agent 原生接入",
+      "trendSummary": "新增 0.5 寸 ingBar 琥珀屏，160W 高能巡航 ，4×140W 盲插，支持小米 120W 澎湃秒充，CanOS 2.0 如意系统 + OTW 云桥让充电头持续进化，从桌面电站到差旅随行充，全新定义 AI 时代的万能充。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "小米"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667606?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "小米"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-bf62cbc44e-trend",
+      "title": "早报｜曝苹果眼镜明年底发布/英伟达首款自研芯片PC本周亮相/特斯拉推出Model Y原厂手动遮阳帘",
+      "trendSummary": "· 曝三星与 OpenAI 定制 AI 芯片项目停滞 · Apple Music 出现全球性服务中断 · 北大数院「黄金二代」苏炜杰加入 OpenAI #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "Apple"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667599?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "Apple"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-1028147f61-trend",
+      "title": "The Verge：消费电子案例值得加入产品设计观察",
+      "trendSummary": "公开来源提到“This could be Windows’ M1 moment — but expect it to cost a ton”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "relatedCases": [
+        "Apple"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "消费电子",
+      "url": "https://www.theverge.com/tech/941215/windows-laptops-nvidia-rtx-spark-apple-m1-arm-price-ram",
+      "date": "2026-06-02",
+      "keywords": [
+        "消费电子",
+        "高可信",
+        "设计热点",
+        "Apple"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-0d8f885ff2-trend",
+      "title": "Bing Search：CMF案例值得加入产品设计观察",
+      "trendSummary": "公开来源提到“nothing.tech https://hk.nothing.tech › collections › cmf”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "relatedCases": [
+        "Nothing"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "CMF",
+      "url": "https://www.bing.com/ck/a?!&&p=910ec4e4106f438b0b99248909699b7e88dde6f39a6cc27fede2343c4952b53dJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=3ddee8bd-b08b-6e4a-3bdf-ffd1b1da6fda&u=a1aHR0cHM6Ly9oay5ub3RoaW5nLnRlY2gvY29sbGVjdGlvbnMvY21m&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "CMF",
+        "搜索线索",
+        "设计热点",
+        "Nothing"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-258f253999-trend",
+      "title": "Bing Search：3C产品案例值得加入产品设计观察",
+      "trendSummary": "nothingcn.com https:// nothing cn.com › pages Nothing Phone (2) - Nothing China Nothing Phone (2) 让科技游戏再升级。 透过增强版相机规格捕捉令人惊艳的照片，透过尖端 Glyph Interface 实现流畅互动，并体验 Nothing OS ",
+      "relatedCases": [
+        "Nothing"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=a3ccd99111f267566390925417def6a07188094004c467669912615d219cd735JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=2596bfcc-8ad7-63df-21a2-a8a08b326254&u=a1aHR0cHM6Ly9ub3RoaW5nY24uY29tL3BhZ2VzL3Bob25lLTI&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "搜索线索",
+        "设计热点",
+        "Nothing"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-4d6c5a962e-trend",
+      "title": "早报｜OpenAI官宣进军机器人领域/AI误把文物照片上架，闲鱼致歉/天涯社区重启首日被挤爆",
+      "trendSummary": "· 曝豆包 6 月下旬上线付费版 · SK 海力士清州工厂发生火灾，官方称未影响生产 · 宇树科创板 IPO 过会，计划募资 42 亿元 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "爱范儿"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667792?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-02a92bd7df-trend",
+      "title": "hk01.com https://www.hk01.com › 數碼生活",
+      "trendSummary": "hk01.com https://www.hk01.com › 數碼生活 尿袋 3C 認證3.1起加追溯二維碼｜行動電源北上搭高鐵登機必睇貼士 - 香 … 尿袋3C認證／外置充電器／充電寶／航機／高鐵｜由 2026 年 3 月 1 日起，中國強制性產品認證（3C 認證）對外置充電器（俗稱「尿袋」）的規管將進一步升級。 國家認監委宣布，所有",
+      "relatedCases": [
+        "Bing Search"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.bing.com/ck/a?!&&p=a7ee3f0549d150c3fbb5f684460f9b7cdb599f1e3e8eaa3ecf8b5cd0fc2dd34fJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=114fe12b-8d8e-6846-0b81-f6478c1f6975&u=a1aHR0cHM6Ly93d3cuaGswMS5jb20vJUU2JTk1JUI4JUU3JUEyJUJDJUU3JTk0JTlGJUU2JUI0JUJCLzYwMzI2NDE5LyVFNSVCMCVCRiVFOCVBMiU4QjNjJUU4JUFBJThEJUU4JUFEJTg5My0xJUU4JUI1JUI3JUU1JThBJUEwJUU4JUJGJUJEJUU2JUJBJUFGJUU0JUJBJThDJUU3JUI2JUFEJUU3JUEyJUJDLSVFOCVBMSU4QyVFNSU4QiU5NSVFOSU5QiVCQiVFNiVCQSU5MCVFNSU4QyU5NyVFNCVCOCU4QSVFNiU5MCVBRCVFOSVBQiU5OCVFOSU5MCVCNSVFNyU5OSVCQiVFNiVBOSU5RiVFNSVCRiU4NSVFNyU5RCU4NyVFOCVCMiVCQyVFNSVBMyVBQg&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-067817aa19-trend",
+      "title": "Bing Search：AI硬件案例值得加入产品设计观察",
+      "trendSummary": "google.com https://gemini.google.com ‎Google Gemini 認識 Google AI 助理 Gemini，輕鬆撰寫內容、擬訂計畫、腦力激盪等。體驗生成式 AI 的強大功能。",
+      "relatedCases": [
+        "Bing Search"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "AI硬件",
+      "url": "https://www.bing.com/ck/a?!&&p=25253bee447e23c47e12f2d5716e7ac6cc762c4fe4c1691d502eb9b43ba70f3dJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3cd524-8b69-6cff-1289-c2488a8e6d1e&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlLmNvbS8_aGw9emgtVFc&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "AI硬件",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-73bbfe01e9-trend",
+      "title": "Bing Search：AI硬件案例值得加入产品设计观察",
+      "trendSummary": "openai.com https://openai.com › zh-Hans-CN OpenAI | Research & Deployment 我们相信，我们的研究最终将带来通用人工智能，一种可以解决人类水平问题的系统。构建安全有益的 AGI 是我们的使命。",
+      "relatedCases": [
+        "Bing Search"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "AI硬件",
+      "url": "https://www.bing.com/ck/a?!&&p=12d4a40cfcf14e973dce8e291b60e75fd770d5244ff1d99e287d6050134bfcabJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3cd524-8b69-6cff-1289-c2488a8e6d1e&u=a1aHR0cHM6Ly9vcGVuYWkuY29tL3poLUhhbnMtQ04v&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "AI硬件",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-7a22690916-trend",
+      "title": "baidu.com https://baike.baidu.com › item › 机",
+      "trendSummary": "baidu.com https://baike.baidu.com › item › 机 机 _百度百科 机（拼音：jī）是汉语通用规范一级汉字（常用字）。 该字始见于战国文字，其简体与繁体“機”本为二字，后因同音假借。 简体“机”本义为桤木树，属榆科植物，古代文献中记载其可作稻田肥料，此义后 …",
+      "relatedCases": [
+        "Bing Search"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "机器人",
+      "url": "https://www.bing.com/ck/a?!&&p=0147181b22211c4907ab459b258645e93329757c27b477a583b2c24179c4ced9JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=31e1d3ad-3e94-6b69-2757-c4c13fc56ab3&u=a1aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTYlOUMlQkEvMjYxOTE5MA&ntb=1",
+      "date": "2026-06-02",
+      "keywords": [
+        "机器人",
+        "搜索线索",
+        "设计热点"
+      ]
+    }
+  ],
+  "aiTools": [],
+  "hardwareObservation": [
+    {
+      "id": "2026-06-02-hotspot-067817aa19",
+      "title": "Bing Search：AI硬件案例值得加入产品设计观察",
+      "summary": "google.com https://gemini.google.com ‎Google Gemini 認識 Google AI 助理 Gemini，輕鬆撰寫內容、擬訂計畫、腦力激盪等。體驗生成式 AI 的強大功能。",
+      "source": "Bing Search",
+      "category": "AI硬件",
+      "url": "https://www.bing.com/ck/a?!&&p=25253bee447e23c47e12f2d5716e7ac6cc762c4fe4c1691d502eb9b43ba70f3dJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3cd524-8b69-6cff-1289-c2488a8e6d1e&u=a1aHR0cHM6Ly9nZW1pbmkuZ29vZ2xlLmNvbS8_aGw9emgtVFc&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "AI硬件",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-73bbfe01e9",
+      "title": "Bing Search：AI硬件案例值得加入产品设计观察",
+      "summary": "openai.com https://openai.com › zh-Hans-CN OpenAI | Research & Deployment 我们相信，我们的研究最终将带来通用人工智能，一种可以解决人类水平问题的系统。构建安全有益的 AGI 是我们的使命。",
+      "source": "Bing Search",
+      "category": "AI硬件",
+      "url": "https://www.bing.com/ck/a?!&&p=12d4a40cfcf14e973dce8e291b60e75fd770d5244ff1d99e287d6050134bfcabJmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=0d3cd524-8b69-6cff-1289-c2488a8e6d1e&u=a1aHR0cHM6Ly9vcGVuYWkuY29tL3poLUhhbnMtQ04v&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "AI硬件",
+        "搜索线索",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-7a22690916",
+      "title": "baidu.com https://baike.baidu.com › item › 机",
+      "summary": "baidu.com https://baike.baidu.com › item › 机 机 _百度百科 机（拼音：jī）是汉语通用规范一级汉字（常用字）。 该字始见于战国文字，其简体与繁体“機”本为二字，后因同音假借。 简体“机”本义为桤木树，属榆科植物，古代文献中记载其可作稻田肥料，此义后 …",
+      "source": "Bing Search",
+      "category": "机器人",
+      "url": "https://www.bing.com/ck/a?!&&p=0147181b22211c4907ab459b258645e93329757c27b477a583b2c24179c4ced9JmltdHM9MTc4MDI3MjAwMA&ptn=3&ver=2&hsh=4&fclid=31e1d3ad-3e94-6b69-2757-c4c13fc56ab3&u=a1aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTYlOUMlQkEvMjYxOTE5MA&ntb=1",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "keywords": [
+        "机器人",
+        "搜索线索",
+        "设计热点"
       ]
     }
   ]

@@ -97,7 +97,7 @@ def request_url(ctx: CollectContext, url: str) -> requests.Response | None:
 
 def collect_rss(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
-    core_keywords = ctx.config.get("keywords", {}).get("core", [])
+    core_keywords = ctx.config.get("keywords", {}).get("hotspot_core", [])
     per_source_limit = int(ctx.config.get("request", {}).get("max_rss_items_per_source", 10))
 
     for source in ctx.config.get("rss_sources", []):
@@ -147,7 +147,10 @@ def collect_rss(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
 
 def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
-    job_keywords = ctx.config.get("keywords", {}).get("jobs", [])
+    job_keywords = [
+        *ctx.config.get("keywords", {}).get("job_core", []),
+        *ctx.config.get("keywords", {}).get("job_industries", []),
+    ]
 
     for company in ctx.config.get("company_careers", []):
         response = request_url(ctx, company["url"])
@@ -189,14 +192,24 @@ def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any
     return items
 
 
-def collect_bing_results(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
-    search_config = ctx.config.get("search_queries", {})
+def collect_bing_group(
+    ctx: CollectContext,
+    today: str,
+    config_key: str,
+    kind: str,
+    category: str,
+    keyword_key: str,
+) -> list[dict[str, Any]]:
+    search_config = ctx.config.get(config_key, {})
     if not search_config.get("enabled", False):
         return []
 
     items: list[dict[str, Any]] = []
     queries = search_config.get("queries", [])[: int(ctx.config.get("request", {}).get("max_search_queries_per_run", 6))]
-    job_keywords = ctx.config.get("keywords", {}).get("jobs", [])
+    keywords = [
+        *ctx.config.get("keywords", {}).get(keyword_key, []),
+        *ctx.config.get("keywords", {}).get("job_industries", []),
+    ]
 
     for query in queries:
         url = f"https://www.bing.com/search?q={quote_plus(query)}"
@@ -219,16 +232,16 @@ def collect_bing_results(ctx: CollectContext, today: str) -> list[dict[str, Any]
             items.append(
                 {
                     "id": stable_id(query, result_url, title),
-                    "kind": "search_result",
+                    "kind": kind,
                     "title": title or query,
                     "summary": snippet,
                     "source": "Bing Search",
-                    "category": "招聘搜索",
+                    "category": category,
                     "url": result_url,
                     "publishedDate": today,
                     "query": query,
-                    "score": relevance_score(text, job_keywords) + 16,
-                    "keywords": [query, *[keyword for keyword in job_keywords if keyword in text][:6]],
+                    "score": relevance_score(text, keywords) + 16,
+                    "keywords": [query, *[keyword for keyword in keywords if keyword in text][:8]],
                 }
             )
             accepted += 1
@@ -236,6 +249,13 @@ def collect_bing_results(ctx: CollectContext, today: str) -> list[dict[str, Any]
         ctx.logs.append(f"OK SEARCH {query}: {accepted} results accepted.")
 
     return items
+
+
+def collect_bing_results(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
+    return [
+        *collect_bing_group(ctx, today, "job_search_queries", "job_search_result", "招聘搜索", "job_core"),
+        *collect_bing_group(ctx, today, "hotspot_search_queries", "hotspot_search_result", "设计热点搜索", "hotspot_core"),
+    ]
 
 
 def collect_sources(config_path: Path = DEFAULT_CONFIG, today: str | None = None) -> dict[str, Any]:

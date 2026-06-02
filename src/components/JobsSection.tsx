@@ -64,7 +64,9 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
             job.direction,
             job.experience,
             job.reason,
-            job.keywords.join(" "),
+            job.jobType ?? "",
+            job.requirementsSummary ?? "",
+            (job.tags ?? job.keywords ?? []).join(" "),
           ],
           searchQuery,
         ),
@@ -79,7 +81,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
           <p className="label">Recruiting Radar</p>
           <h2 className="mt-2 text-xl font-semibold text-ink">今日高匹配工业设计岗位</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-500">
-            用城市、方向和匹配度先筛出值得认真准备作品集投递的岗位。
+            用城市、方向和匹配度先筛出值得认真准备作品集投递的岗位，优先看官网来源和应届/初级可投机会。
           </p>
         </div>
         <div className="inline-flex items-center gap-2 rounded-md bg-zinc-100 px-3 py-2 text-sm font-medium text-zinc-600">
@@ -137,8 +139,26 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
                 {job.direction}
               </span>
               <span className="rounded-md bg-copper/10 px-2 py-1 text-xs font-medium text-copper">{job.experience}</span>
+              {job.jobType && (
+                <span className="rounded-md bg-plum/10 px-2 py-1 text-xs font-medium text-plum">{job.jobType}</span>
+              )}
+              {typeof job.sourceQualityScore === "number" && job.sourceQualityScore >= 85 && (
+                <span className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">高可信</span>
+              )}
             </div>
             <p className="mt-4 text-sm leading-6 text-zinc-600">{job.reason}</p>
+            {job.requirementsSummary && (
+              <p className="mt-2 text-sm leading-6 text-zinc-500">要求概览：{job.requirementsSummary}</p>
+            )}
+            {!!(job.tags ?? job.keywords)?.length && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {(job.tags ?? job.keywords ?? []).slice(0, 5).map((tag) => (
+                  <span key={tag} className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
             <a
               href={job.url}
               target="_blank"

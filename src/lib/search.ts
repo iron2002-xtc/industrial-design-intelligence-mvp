@@ -1,8 +1,8 @@
-import type { DailyReport, JobItem, NewsItem, TrendItem } from "../types/report";
+import type { CompanyUpdateItem, DailyReport, DesignHotspotItem, JobItem, NewsItem, TrendItem } from "../types/report";
 
 export type SearchResult = {
   id: string;
-  type: "新闻" | "趋势" | "AI工具" | "硬件观察" | "岗位" | "行动";
+  type: "设计热点" | "公司动态" | "新闻" | "趋势" | "AI工具" | "硬件观察" | "岗位" | "行动";
   title: string;
   summary: string;
   meta: string;
@@ -33,7 +33,7 @@ const newsToResult = (item: NewsItem, type: SearchResult["type"]): SearchResult 
     item.category,
     item.designInsight,
     item.date,
-    ...item.keywords,
+    ...(item.keywords ?? []),
   ].join(" "),
 });
 
@@ -51,7 +51,7 @@ const trendToResult = (item: TrendItem): SearchResult => ({
     item.category,
     item.designInspiration,
     item.relatedCases.join(" "),
-    ...item.keywords,
+    ...(item.keywords ?? []),
   ].join(" "),
 });
 
@@ -72,19 +72,68 @@ const jobToResult = (item: JobItem): SearchResult => ({
     item.experience,
     item.reason,
     item.date,
-    ...item.keywords,
+    ...(item.keywords ?? []),
+  ].join(" "),
+});
+
+const hotspotToResult = (item: DesignHotspotItem): SearchResult => ({
+  id: item.id,
+  type: "设计热点",
+  title: item.title,
+  summary: item.summary,
+  meta: `${item.source} / ${item.category}`,
+  url: item.url,
+  date: item.date,
+  score: item.relevanceScore,
+  searchableText: [
+    item.title,
+    item.summary,
+    item.source,
+    item.category,
+    item.designInsight,
+    item.relatedCompanies.join(" "),
+    item.tags.join(" "),
+    item.date,
+  ].join(" "),
+});
+
+const companyUpdateToResult = (item: CompanyUpdateItem): SearchResult => ({
+  id: item.id,
+  type: "公司动态",
+  title: `${item.company} · ${item.title}`,
+  summary: item.summary,
+  meta: `${item.category} / ${item.designRelation}`,
+  url: item.url,
+  date: item.date,
+  score: item.relevanceScore,
+  searchableText: [
+    item.company,
+    item.title,
+    item.summary,
+    item.category,
+    item.designRelation,
+    item.tags.join(" "),
+    item.date,
   ].join(" "),
 });
 
 export function getSearchResults(report: DailyReport, query: string): SearchResult[] {
   if (!query.trim()) return [];
 
+  const jobs = report.jobOpportunities ?? report.jobs ?? [];
+  const topNews = report.topNews ?? [];
+  const aiTools = report.aiTools ?? [];
+  const hardwareObservation = report.hardwareObservation ?? [];
+  const trends = report.trends ?? [];
+
   const results: SearchResult[] = [
-    ...report.topNews.map((item) => newsToResult(item, "新闻")),
-    ...report.aiTools.map((item) => newsToResult(item, "AI工具")),
-    ...report.hardwareObservation.map((item) => newsToResult(item, "硬件观察")),
-    ...report.trends.map(trendToResult),
-    ...report.jobs.map(jobToResult),
+    ...(report.designHotspots ?? []).map(hotspotToResult),
+    ...(report.companyUpdates ?? []).map(companyUpdateToResult),
+    ...topNews.map((item) => newsToResult(item, "新闻")),
+    ...aiTools.map((item) => newsToResult(item, "AI工具")),
+    ...hardwareObservation.map((item) => newsToResult(item, "硬件观察")),
+    ...trends.map(trendToResult),
+    ...jobs.map(jobToResult),
     ...report.actions.map((action, index) => ({
       id: action.id || `${report.date}-action-${index + 1}`,
       type: "行动" as const,
@@ -101,7 +150,6 @@ export function getSearchResults(report: DailyReport, query: string): SearchResu
         "行动",
         "作品集",
         "秋招",
-        "小红书",
       ].join(" "),
     })),
   ];

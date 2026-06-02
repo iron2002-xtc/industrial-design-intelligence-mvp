@@ -19,7 +19,7 @@ TREND_CATEGORIES = [
     "工业设计作品集案例",
 ]
 
-SOURCE_POOL = ["36氪", "DesignWanted", "小红书趋势", "公司招聘站", "站酷", "机器之心"]
+SOURCE_POOL = ["设计媒体", "DesignWanted", "公司招聘站", "站酷", "机器之心", "设计奖项"]
 
 DAY_SEEDS = [
     {
@@ -28,7 +28,7 @@ DAY_SEEDS = [
         "tension": "轻量交互、佩戴舒适度与长期使用理由",
         "citySignal": "深圳、上海、杭州岗位密度最高",
         "portfolioAngle": "用一页讲清楚产品判断和设计取舍",
-        "platformSignal": "小红书工业设计内容更适合拆成趋势观察和作品集复盘",
+        "platformSignal": "设计热点更适合沉淀为作品集调研和竞品矩阵",
         "actions": [
             "把作品集首页改成 1 个清晰项目定位句 + 3 个设计判断标签。",
             "整理一组 AI 硬件佩戴/桌面场景竞品，补充交互入口和 CMF 对比。",
@@ -45,7 +45,7 @@ DAY_SEEDS = [
         "actions": [
             "补一张清洁机器人维护路径图，突出用户少弯腰、少接触污水。",
             "把云鲸、追觅、石头科技岗位加入投递清单，并记录岗位关键词。",
-            "更新小红书选题：一条讲基站形态，一条讲产品爆炸图表达。",
+            "补一页清洁电器基站形态和产品爆炸图表达。",
         ],
     },
     {
@@ -58,7 +58,7 @@ DAY_SEEDS = [
         "actions": [
             "重排作品集 CMF 页，把材质策略、色彩角色和触点体验分开讲。",
             "搜集 OPPO、vivo、小米近期产品图，做一页边角、分缝、按键语言对比。",
-            "给小红书准备 6 张图的 CMF 复盘模板。",
+            "给作品集准备一页 CMF 趋势复盘模板。",
         ],
     },
     {
@@ -97,7 +97,7 @@ DAY_SEEDS = [
         "actions": [
             "建立一个 AI 辅助设计流程页：调研、草图、CMF、版面，不写成炫技。",
             "把作品集里的 AI 生成图标注为辅助素材，保留自己选择理由。",
-            "准备一条小红书：3 个工具如何帮工业设计作品集提速。",
+            "整理 3 个 AI 工具如何帮工业设计作品集提速。",
         ],
     },
     {
@@ -110,7 +110,7 @@ DAY_SEEDS = [
         "actions": [
             "挑 2 个最强项目做一页式项目摘要，先服务秋招筛选。",
             "建立岗位关键词表：城市、方向、软件、经验、加分项。",
-            "小红书账号本周先发求职向内容，不急着做复杂教程。",
+            "本周先完善求职投递清单，不急着做复杂教程。",
         ],
     },
 ]
@@ -139,7 +139,7 @@ def news(seed: dict[str, Any], day_index: int) -> list[dict[str, Any]]:
         ("秋招", f"{seed['citySignal']}，工业设计岗位更偏复合型表达", "招聘描述里频繁出现结构理解、CMF、渲染表现、用户洞察和跨团队沟通。", "投递前把项目页的前 20 秒阅读体验做好，先让 HR 和设计面试官看懂方向。", ["秋招", "岗位", "城市", "作品集", "工业设计"]),
         ("清洁电器", "清洁电器从吸力参数转向维护体验和家居融合", "基站、耗材、污水路径和收纳体积成为用户评价里更具体的痛点。", "可以把维护流程画成信息图，比单纯展示外观更能体现工业设计价值。", ["清洁电器", "基站", "维护", "家居", "机器人"]),
         ("CMF", "CMF 语言继续向低饱和、细纹理和触感层次收敛", "高端产品不再只靠亮面金属，更多用微纹理、消光、亲肤和隐藏分缝建立品质感。", "把 CMF 写成策略：使用场景、耐脏要求、触点优先级和品牌气质。", ["CMF", "材料", "工艺", "触感", "高级灰"]),
-        ("小红书运营", seed["platformSignal"], "设计账号更容易被收藏的内容，通常是可复用模板、竞品拆解和求职路径图。", "把一条长内容拆成 6 张图：趋势信号、案例、设计判断、作品集启发、岗位关键词、行动清单。", ["小红书", "账号运营", "工业设计", "内容", "作品集"]),
+        ("作品集调研", seed["platformSignal"], "更有价值的内容通常是可复用模板、竞品拆解和求职路径图。", "把热点整理成趋势信号、案例、设计判断、作品集启发、岗位关键词、行动清单。", ["作品集", "工业设计", "求职", "设计热点"]),
     ]
 
     return [
@@ -274,10 +274,60 @@ def actions(seed: dict[str, Any]) -> list[dict[str, Any]]:
             "title": titles[index],
             "description": description,
             "priority": priorities[index],
-            "keywords": ["行动建议", "作品集", "秋招", "小红书", seed["portfolioAngle"]],
+            "keywords": ["行动建议", "作品集", "秋招", seed["portfolioAngle"]],
         }
         for index, description in enumerate(seed["actions"])
     ]
+
+
+def to_design_hotspot(item: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": item["id"],
+        "title": item["title"],
+        "summary": item.get("summary") or item.get("trendSummary", ""),
+        "source": item.get("source", "Mock Trend"),
+        "category": item["category"],
+        "url": item["url"],
+        "date": item["date"],
+        "importanceScore": item.get("importanceScore", 82),
+        "sourceQualityScore": 60,
+        "relevanceScore": item.get("importanceScore", 82),
+        "designInsight": item.get("designInsight") or item.get("designInspiration", "可作为作品集调研素材。"),
+        "relatedCompanies": item.get("relatedCases", []),
+        "tags": item.get("keywords", []),
+    }
+
+
+def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
+    jobs_data = sorted(report["jobs"], key=lambda item: item["matchScore"], reverse=True)
+    for job in jobs_data:
+        job["jobType"] = "校招" if "校招" in job["experience"] else ("实习" if "实习" in job["experience"] else "1-3年")
+        job["sourceQualityScore"] = 82
+        job["relevanceScore"] = job["matchScore"]
+        job["requirementsSummary"] = "请核对岗位职责、经验要求、作品集要求和是否接受应届硕士/初级经验。"
+        job["tags"] = [job["direction"], job["city"], job["jobType"], "作品集参考"]
+    hotspots = [to_design_hotspot(item) for item in [*report["topNews"], *report["trends"]]]
+    report["qualitySummary"] = "Mock 数据用于本地演示；真实更新会优先生成求职机会、设计热点和公司动态。"
+    report["jobOpportunities"] = jobs_data
+    report["highMatchJobs"] = [job for job in jobs_data if job["matchScore"] >= 90]
+    report["designHotspots"] = hotspots
+    report["companyUpdates"] = [
+        {
+            "id": f"{report['date']}-company-{index + 1}",
+            "company": job["company"],
+            "title": f"{job['company']}：{job['direction']}岗位入口值得核对",
+            "summary": f"{job['city']} / {job['jobType']} / 匹配度 {job['matchScore']}，建议查看原始招聘链接确认岗位是否开放。",
+            "category": "招聘",
+            "url": job["url"],
+            "date": report["date"],
+            "relevanceScore": job["matchScore"],
+            "designRelation": f"与{job['direction']}、作品集项目选择和求职投递优先级直接相关。",
+            "tags": [job["direction"], job["jobType"]],
+        }
+        for index, job in enumerate(jobs_data[:6])
+    ]
+    report["totalItems"] = sum(len(report[key]) for key in ["jobOpportunities", "designHotspots", "companyUpdates", "actions"])
+    return report
 
 
 def build_report(seed: dict[str, Any], day_index: int) -> dict[str, Any]:
@@ -304,11 +354,7 @@ def build_report(seed: dict[str, Any], day_index: int) -> dict[str, Any]:
     }
     source_names.update(["目标公司招聘页", "设计趋势观察", "作品集运营记录"])
     report["sourceCount"] = len(source_names)
-    report["totalItems"] = sum(
-        len(report[key])
-        for key in ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions"]
-    )
-    return report
+    return enrich_new_structure(report)
 
 
 def write_json(path: Path, data: Any) -> None:

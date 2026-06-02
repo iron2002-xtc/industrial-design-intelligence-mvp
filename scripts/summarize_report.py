@@ -8,55 +8,70 @@ import json
 import os
 import re
 import sys
-from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-TREND_CATEGORIES = [
-    "AI硬件",
-    "3C产品",
-    "清洁电器",
-    "机器人",
-    "家电",
-    "CMF",
-    "AI辅助设计工具",
-    "工业设计作品集案例",
+
+FIRST_PRIORITY_CITIES = ["深圳", "上海", "杭州", "苏州", "广州", "东莞", "北京", "南京"]
+SECOND_PRIORITY_CITIES = [
+    "宁波",
+    "无锡",
+    "常州",
+    "佛山",
+    "珠海",
+    "惠州",
+    "中山",
+    "厦门",
+    "武汉",
+    "成都",
+    "重庆",
+    "西安",
+    "青岛",
+    "合肥",
+    "天津",
+    "长沙",
 ]
+THIRD_PRIORITY_CITIES = ["郑州", "济南", "福州", "南昌", "昆明", "沈阳", "大连", "长春", "哈尔滨", "南宁", "贵阳", "太原"]
 
 TARGET_COMPANY_FALLBACKS = [
-    ("DJI 大疆", "深圳", "智能硬件", "校招 / 实习 / 社招", "https://www.dji.com/cn/careers"),
-    ("华为", "深圳", "3C", "校招 / 社招", "https://career.huawei.com/reccampportal/portal5/index.html"),
-    ("小米", "上海", "智能硬件", "校招 / 社招", "https://hr.xiaomi.com/"),
-    ("OPPO", "深圳", "CMF", "校招 / 实习 / 社招", "https://careers.oppo.com/"),
-    ("vivo", "深圳", "3C", "校招 / 社招", "https://hr.vivo.com/"),
-    ("Insta360 影石", "深圳", "3C", "校招 / 社招", "https://www.insta360.com/cn/careers"),
-    ("云鲸", "深圳", "清洁电器", "校招 / 社招", "https://www.narwal.com/cn/careers"),
-    ("追觅", "苏州", "清洁电器", "校招 / 社招", "https://www.dreame.tech/cn/careers"),
-    ("石头科技", "上海", "机器人", "校招 / 社招", "https://cn.roborock.com/pages/join-us"),
-    ("TCL", "广州", "家电", "校招 / 社招", "https://campus.tcl.com/"),
-    ("美的", "广州", "家电", "校招 / 社招", "https://careers.midea.com/"),
-    ("海尔", "南京", "CMF", "校招 / 社招", "https://maker.haier.net/client/join"),
-    ("科沃斯", "苏州", "机器人", "校招 / 社招", "https://www.ecovacs.cn/careers"),
+    ("DJI 大疆", "深圳", "智能硬件", "校招 / 实习 / 社招", "官网招聘", "https://www.dji.com/cn/careers"),
+    ("华为", "深圳", "3C", "校招 / 社招", "官网招聘", "https://career.huawei.com/reccampportal/portal5/index.html"),
+    ("小米", "北京", "智能硬件", "校招 / 社招", "官网招聘", "https://hr.xiaomi.com/"),
+    ("OPPO", "深圳", "CMF", "校招 / 实习 / 社招", "官网招聘", "https://careers.oppo.com/"),
+    ("vivo", "东莞", "3C", "校招 / 社招", "官网招聘", "https://hr.vivo.com/"),
+    ("荣耀", "深圳", "3C", "校招 / 社招", "官网招聘", "https://career.hihonor.com/"),
+    ("Insta360 影石", "深圳", "影像设备", "校招 / 社招", "官网招聘", "https://www.insta360.com/cn/careers"),
+    ("云鲸", "深圳", "清洁电器", "校招 / 社招", "官网招聘", "https://www.narwal.com/cn/careers"),
+    ("追觅", "苏州", "清洁电器", "校招 / 社招", "官网招聘", "https://www.dreame.tech/cn/careers"),
+    ("石头科技", "北京", "机器人", "校招 / 社招", "官网招聘", "https://cn.roborock.com/pages/join-us"),
+    ("TCL", "广州", "家电", "校招 / 社招", "官网招聘", "https://campus.tcl.com/"),
+    ("美的", "佛山", "家电", "校招 / 社招", "官网招聘", "https://careers.midea.com/"),
+    ("海尔", "青岛", "家电", "校招 / 社招", "官网招聘", "https://maker.haier.net/client/join"),
+    ("科沃斯", "苏州", "机器人", "校招 / 社招", "官网招聘", "https://www.ecovacs.cn/careers"),
+    ("联想", "北京", "3C", "校招 / 社招", "官网招聘", "https://talent.lenovo.com.cn/"),
+    ("海信", "青岛", "家电", "校招 / 社招", "官网招聘", "https://hisense.zhiye.com/"),
+    ("九号", "北京", "交通工具", "校招 / 社招", "官网招聘", "https://www.ninebot.com/careers"),
+    ("安克 Anker", "深圳", "3C", "校招 / 社招", "官网招聘", "https://www.anker.com/careers"),
+    ("绿联", "深圳", "3C", "校招 / 社招", "官网招聘", "https://www.ugreen.com/pages/careers"),
+    ("倍思 Baseus", "深圳", "3C", "校招 / 社招", "官网招聘", "https://www.baseus.com/pages/careers"),
+    ("Apple", "上海", "消费电子", "社招 / 1-3年", "官网招聘", "https://jobs.apple.com/"),
+    ("Samsung", "上海", "消费电子", "社招 / 1-3年", "官网招聘", "https://www.samsung.com/global/careers/"),
+    ("Dyson", "上海", "家电", "社招 / 1-3年", "官网招聘", "https://careers.dyson.com/"),
+    ("Nothing", "深圳", "3C", "社招 / 1-3年", "官网招聘", "https://nothing.tech/pages/careers"),
 ]
 
-CATEGORY_KEYWORDS = {
-    "AI硬件": ["ai hardware", "ai硬件", "wearable", "智能眼镜", "端侧ai", "机器人"],
-    "3C产品": ["3c", "phone", "手机", "laptop", "camera", "consumer electronics", "耳机", "影像"],
-    "清洁电器": ["清洁", "扫地", "洗地", "vacuum", "基站", "mop"],
-    "机器人": ["robot", "机器人", "robotics", "具身智能"],
-    "家电": ["家电", "appliance", "home", "smart home", "智慧家庭"],
-    "CMF": ["cmf", "material", "color", "finish", "材质", "工艺", "色彩"],
-    "AI辅助设计工具": ["ai design", "design tool", "生成式", "workflow", "工具"],
-    "工业设计作品集案例": ["industrial design", "product design", "portfolio", "dezeen", "core77", "designboom", "yanko"],
-}
+TARGET_COMPANY_NAMES = [company for company, *_ in TARGET_COMPANY_FALLBACKS]
+JOB_DIRECTIONS = ["工业设计", "产品设计", "ID设计", "CMF", "设计研究", "3C", "智能硬件", "AI硬件", "家电", "机器人", "清洁电器", "影像设备", "可穿戴设备", "交通工具", "消费电子"]
+DESIGN_CATEGORIES = ["工业设计趋势", "3C产品", "智能硬件", "AI硬件", "清洁电器", "机器人", "家电", "影像设备", "可穿戴设备", "交通工具", "消费电子", "CMF", "设计奖项", "优秀产品案例"]
+DESIGN_KEYWORDS = ["工业设计", "产品设计", "设计语言", "CMF", "结构创新", "交互体验", "3C", "AI硬件", "智能硬件", "机器人", "家电", "清洁电器", "可穿戴", "影像设备", "消费电子", "发布会", "新品", "设计奖", "红点", "iF", "IDEA", "Good Design"]
+DESIGN_MEDIA = {"Dezeen", "Yanko Design", "Core77", "Designboom", "The Verge", "少数派", "爱范儿", "机器之心"}
 
 
 def clean_text(value: str | None, max_length: int = 220) -> str:
     if not value:
         return ""
-    text = re.sub(r"\s+", " ", value).strip()
-    return text[:max_length]
+    return re.sub(r"\s+", " ", value).strip()[:max_length]
 
 
 def has_cjk(value: str) -> bool:
@@ -74,329 +89,529 @@ def text_blob(item: dict[str, Any]) -> str:
         item.get("summary", ""),
         item.get("source", ""),
         item.get("category", ""),
+        item.get("query", ""),
         " ".join(item.get("keywords", [])),
     ]
-    return " ".join(values).lower()
+    return " ".join(values)
 
 
-def choose_category(item: dict[str, Any]) -> str:
+def keyword_score(text: str, keywords: list[str], weight: int = 7) -> int:
+    lowered = text.lower()
+    return sum(weight for keyword in keywords if keyword.lower() in lowered)
+
+
+def infer_city(text: str, fallback: str = "全国") -> str:
+    for city in [*FIRST_PRIORITY_CITIES, *SECOND_PRIORITY_CITIES, *THIRD_PRIORITY_CITIES]:
+        if city in text:
+            return city
+    return fallback
+
+
+def city_score(city: str) -> int:
+    if city in FIRST_PRIORITY_CITIES:
+        return 18
+    if city in SECOND_PRIORITY_CITIES:
+        return 12
+    if city in THIRD_PRIORITY_CITIES:
+        return 7
+    return 4
+
+
+def city_tier_label(city: str) -> str:
+    if city in FIRST_PRIORITY_CITIES:
+        return "一优城市"
+    if city in SECOND_PRIORITY_CITIES:
+        return "二优城市"
+    if city in THIRD_PRIORITY_CITIES:
+        return "潜力城市"
+    return "全国机会"
+
+
+def infer_direction(text: str, fallback: str = "工业设计") -> str:
+    lowered = text.lower()
+    if "cmf" in lowered or "材料" in text or "色彩" in text:
+        return "CMF"
+    for direction in ["清洁电器", "机器人", "AI硬件", "智能硬件", "影像设备", "可穿戴设备", "交通工具", "消费电子", "家电", "3C", "设计研究", "产品设计", "ID设计"]:
+        if direction.lower() in lowered or direction in text:
+            return direction
+    return fallback
+
+
+def infer_job_type(text: str, experience: str) -> str:
+    combined = f"{text} {experience}"
+    if "实习" in combined:
+        return "实习"
+    if "校招" in combined or "应届" in combined or "硕士" in combined:
+        return "校招"
+    if "社招" in combined:
+        return "社招"
+    if "1-3" in combined or "1～3" in combined or "1 至 3" in combined:
+        return "1-3年"
+    return "可跟进"
+
+
+def source_quality(item: dict[str, Any], fallback: int = 70) -> int:
+    source = item.get("source", "")
+    kind = item.get("kind", "")
+    if kind == "job_page":
+        return 95 if item.get("status") == "checked" else 82
+    if source in DESIGN_MEDIA:
+        return 88
+    if source == "Bing Search":
+        return 68
+    if source == "Fallback Rule":
+        return 60
+    return fallback
+
+
+def source_label(score: int) -> str:
+    if score >= 90:
+        return "官网来源"
+    if score >= 85:
+        return "高可信"
+    if score >= 70:
+        return "可核对来源"
+    return "搜索线索"
+
+
+def infer_company(text: str, fallback: str = "公开招聘线索") -> str:
+    for company in TARGET_COMPANY_NAMES:
+        aliases = [company, company.split(" ")[0]]
+        if "DJI" in company:
+            aliases.append("大疆")
+        if "Insta360" in company:
+            aliases.append("影石")
+        if "Baseus" in company:
+            aliases.append("倍思")
+        if "Anker" in company:
+            aliases.append("安克")
+        if any(alias and alias in text for alias in aliases):
+            return company
+    return fallback
+
+
+def job_match_score(company: str, city: str, direction: str, job_type: str, source_score: int, text: str) -> tuple[int, int]:
+    target_score = 25 if company in TARGET_COMPANY_NAMES else 10
+    direction_score = 22 if any(keyword in direction for keyword in ["工业设计", "产品设计", "ID", "CMF"]) else 16
+    if direction in ["3C", "智能硬件", "AI硬件", "家电", "机器人", "清洁电器", "影像设备", "可穿戴设备", "消费电子"]:
+        direction_score += 6
+    experience_score = 12 if job_type in ["校招", "实习", "1-3年"] else 7
+    relevance_score = min(100, 45 + keyword_score(text, ["工业设计师", "工业设计", "产品设计师", "ID设计师", "CMF设计师", "硬件产品设计师", "设计研究"], 8))
+    final_score = min(99, target_score + city_score(city) + direction_score + experience_score + round(source_score * 0.16) + 10)
+    return final_score, relevance_score
+
+
+def build_job_reason(job: dict[str, Any], source_text: str) -> str:
+    city_label = city_tier_label(job["city"])
+    source_part = source_label(job["sourceQualityScore"])
+    exp_part = "偏应届/初级经验" if job["jobType"] in ["校招", "实习", "1-3年"] else "需要进一步核对经验要求"
+    return (
+        f"该岗位位于{job['city']}，属于{job['direction']}方向，{city_label}和方向匹配；"
+        f"岗位类型为{job['jobType']}，{exp_part}；来源为{source_part}，建议作为求职清单重点核对。"
+    )
+
+
+def build_job_from_company_page(item: dict[str, Any], date: str) -> dict[str, Any]:
+    company = item.get("company") or infer_company(text_blob(item))
+    city = item.get("city") or infer_city(text_blob(item))
+    direction = item.get("direction") or infer_direction(text_blob(item))
+    experience = item.get("experience") or "校招 / 社招 / 实习"
+    job_type = infer_job_type(text_blob(item), experience)
+    source_score = source_quality(item)
+    match_score, relevance_score = job_match_score(company, city, direction, job_type, source_score, text_blob(item))
+    title_map = {
+        "CMF": "CMF / 工业设计机会跟踪",
+        "清洁电器": "清洁电器工业设计机会跟踪",
+        "机器人": "机器人产品设计机会跟踪",
+        "家电": "家电产品设计机会跟踪",
+        "影像设备": "影像设备产品设计机会跟踪",
+        "交通工具": "出行产品工业设计机会跟踪",
+    }
+    job = {
+        "id": stable_id(date, "job", company),
+        "company": company,
+        "title": title_map.get(direction, "工业设计 / 产品设计机会跟踪"),
+        "city": city,
+        "direction": direction,
+        "experience": experience,
+        "jobType": job_type,
+        "matchScore": match_score,
+        "sourceQualityScore": source_score,
+        "relevanceScore": relevance_score,
+        "reason": "",
+        "requirementsSummary": f"重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+        "url": item.get("url"),
+        "date": date,
+        "tags": [source_label(source_score), job_type, direction, city_tier_label(city), "作品集参考"],
+        "keywords": [company, city, direction, job_type, "工业设计", "招聘"],
+    }
+    job["reason"] = build_job_reason(job, text_blob(item))
+    return job
+
+
+def build_job_from_search(item: dict[str, Any], date: str) -> dict[str, Any]:
     blob = text_blob(item)
-    for category, keywords in CATEGORY_KEYWORDS.items():
-        if any(keyword.lower() in blob for keyword in keywords):
+    company = infer_company(blob)
+    city = infer_city(blob, "全国")
+    direction = infer_direction(blob)
+    experience = "应届 / 实习 / 1-3年可核对"
+    job_type = infer_job_type(blob, experience)
+    source_score = source_quality(item)
+    match_score, relevance_score = job_match_score(company, city, direction, job_type, source_score, blob)
+    title = clean_text(item.get("title"), 80) or f"{direction}招聘线索"
+    job = {
+        "id": stable_id(date, "job-search", item.get("id") or title),
+        "company": company,
+        "title": title,
+        "city": city,
+        "direction": direction,
+        "experience": experience,
+        "jobType": job_type,
+        "matchScore": max(70, match_score - 8),
+        "sourceQualityScore": source_score,
+        "relevanceScore": relevance_score,
+        "reason": "",
+        "requirementsSummary": clean_text(item.get("summary"), 120) or "来自公开搜索结果，需点开原始链接核对岗位职责和经验要求。",
+        "url": item.get("url"),
+        "date": date,
+        "tags": [source_label(source_score), job_type, direction, city_tier_label(city)],
+        "keywords": [company, city, direction, job_type, "招聘"],
+    }
+    job["reason"] = build_job_reason(job, blob)
+    return job
+
+
+def build_job_opportunities(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
+    company_pages = [item for item in items if item.get("kind") == "job_page"]
+    search_results = [item for item in items if item.get("kind") == "job_search_result"]
+    jobs = [build_job_from_company_page(item, date) for item in company_pages]
+    jobs.extend(build_job_from_search(item, date) for item in search_results[:8])
+    if not jobs:
+        jobs = [
+            build_job_from_company_page(
+                {
+                    "kind": "job_page",
+                    "company": company,
+                    "city": city,
+                    "direction": direction,
+                    "experience": experience,
+                    "url": url,
+                    "source": "Fallback Rule",
+                    "status": "fallback",
+                    "keywords": [company, city, direction],
+                },
+                date,
+            )
+            for company, city, direction, experience, _, url in TARGET_COMPANY_FALLBACKS
+        ]
+    unique: dict[str, dict[str, Any]] = {}
+    for job in jobs:
+        key = f"{job['company']}|{job['title']}|{job['city']}"
+        if key not in unique or unique[key]["matchScore"] < job["matchScore"]:
+            unique[key] = job
+    return sorted(unique.values(), key=lambda item: item["matchScore"], reverse=True)[:28]
+
+
+def infer_hotspot_category(text: str, fallback: str = "工业设计趋势") -> str:
+    lowered = text.lower()
+    checks = [
+        ("CMF", ["cmf", "材质", "材料", "色彩", "工艺"]),
+        ("设计奖项", ["红点", "reddot", "if设计", "idea", "good design", "设计奖"]),
+        ("AI硬件", ["ai硬件", "ai hardware", "端侧ai"]),
+        ("3C产品", ["3c", "手机", "phone", "电脑", "camera", "耳机"]),
+        ("智能硬件", ["智能硬件", "smart hardware", "iot"]),
+        ("清洁电器", ["清洁", "扫地", "洗地", "vacuum"]),
+        ("机器人", ["机器人", "robot", "robotics"]),
+        ("家电", ["家电", "appliance", "home appliance"]),
+        ("影像设备", ["影像", "相机", "camera", "action cam"]),
+        ("可穿戴设备", ["可穿戴", "wearable", "watch", "眼镜"]),
+        ("交通工具", ["出行", "vehicle", "scooter", "交通工具"]),
+        ("消费电子", ["consumer electronics", "消费电子"]),
+    ]
+    for category, keywords in checks:
+        if any(keyword in lowered or keyword in text for keyword in keywords):
             return category
-    return str(item.get("category") or "工业设计作品集案例")
+    return fallback
 
 
-def sort_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    def score(item: dict[str, Any]) -> int:
-        base = int(item.get("score", 0))
-        blob = text_blob(item)
-        if "工业设计" in blob or "industrial design" in blob:
-            base += 12
-        if "ai" in blob or "机器人" in blob or "cmf" in blob:
-            base += 8
-        if item.get("kind") == "article":
-            base += 4
-        return base
+def related_companies(text: str) -> list[str]:
+    result = []
+    for company in TARGET_COMPANY_NAMES:
+        if company in text or company.split(" ")[0] in text:
+            result.append(company)
+    return result[:4]
 
+
+def hotspot_relevance(item: dict[str, Any], category: str) -> tuple[int, int]:
+    blob = text_blob(item)
+    source_score = source_quality(item, 72)
+    relevance = 45 + keyword_score(blob, DESIGN_KEYWORDS, 7)
+    if category in DESIGN_CATEGORIES:
+        relevance += 12
+    if related_companies(blob):
+        relevance += 10
+    if item.get("kind") == "hotspot_search_result":
+        relevance += 5
+    return min(98, relevance), source_score
+
+
+def chinese_title(source: str, category: str, raw_title: str) -> str:
+    if raw_title and has_cjk(raw_title):
+        return raw_title
+    if raw_title:
+        return f"{source}：{category}案例值得加入产品设计观察"
+    return f"{category}热点：产品设计信号值得跟进"
+
+
+def chinese_summary(category: str, raw_title: str, raw_summary: str) -> str:
+    if raw_summary and has_cjk(raw_summary):
+        return raw_summary
+    if raw_summary:
+        return f"公开来源提到“{raw_title}”。这条信息与{category}相关，可作为产品设计趋势、竞品语言或作品集调研线索。"
+    return f"今日出现与{category}相关的公开产品设计信号，适合继续核对原文和产品图。"
+
+
+def build_design_hotspots(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
+    candidates = [item for item in items if item.get("kind") in {"article", "hotspot_search_result"}]
+    hotspots: list[dict[str, Any]] = []
     seen: set[str] = set()
-    unique: list[dict[str, Any]] = []
-    for item in sorted(items, key=score, reverse=True):
-        key = item.get("url") or item.get("title", "")
+    for item in candidates:
+        raw_title = clean_text(item.get("title"), 90)
+        blob = text_blob(item)
+        category = infer_hotspot_category(blob, item.get("category") or "工业设计趋势")
+        relevance, source_score = hotspot_relevance(item, category)
+        if relevance < 65:
+            continue
+        key = item.get("url") or raw_title
         if key in seen:
             continue
         seen.add(key)
-        unique.append(item)
-    return unique
+        source = item.get("source") or "Public Source"
+        companies = related_companies(blob)
+        hotspots.append(
+            {
+                "id": stable_id(date, "hotspot", item.get("id") or raw_title),
+                "title": chinese_title(source, category, raw_title),
+                "summary": chinese_summary(category, raw_title, clean_text(item.get("summary"), 170)),
+                "source": source,
+                "category": category,
+                "url": item.get("url") or "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
+                "date": date,
+                "importanceScore": min(98, relevance + 3),
+                "sourceQualityScore": source_score,
+                "relevanceScore": relevance,
+                "designInsight": f"建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+                "relatedCompanies": companies,
+                "tags": [category, source_label(source_score), "设计热点", *companies[:2]],
+            }
+        )
+    if len(hotspots) < 8:
+        hotspots.extend(fallback_hotspots(date, 8 - len(hotspots)))
+    return sorted(hotspots, key=lambda item: (item["relevanceScore"], item["sourceQualityScore"]), reverse=True)[:12]
 
 
-def fallback_article(date: str, index: int, category: str) -> dict[str, Any]:
-    titles = {
-        "AI硬件": "AI硬件继续从概念展示转向日常使用理由",
-        "3C产品": "3C产品设计更关注轻薄形态与可靠触感",
-        "清洁电器": "清洁电器竞争点从性能参数转向维护体验",
-        "机器人": "机器人产品需要更清晰的状态表达和家庭化语言",
-        "CMF": "CMF 趋势继续强调低饱和色、微纹理和触感层次",
-    }
-    title = titles.get(category, "工业设计作品集需要更明确的设计判断")
-    return {
-        "id": stable_id(date, "fallback-news", f"{category}-{index}"),
-        "title": title,
-        "summary": "今日公开信息源抓取不完整，先用备用趋势框架维持日报结构，后续真实来源恢复后会自动替换。",
-        "source": "Fallback Rule",
-        "category": category,
-        "url": "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
-        "date": date,
-        "importanceScore": max(72, 88 - index * 4),
-        "designInsight": "把它转成作品集时，重点说明用户场景、结构约束、CMF 取舍和为什么值得做。",
-        "keywords": [category, "工业设计", "作品集", "备用数据"],
-    }
-
-
-def to_news_item(item: dict[str, Any], date: str, index: int, kind: str = "news") -> dict[str, Any]:
-    category = choose_category(item)
-    source = str(item.get("source") or "Public Source")
-    raw_title = clean_text(item.get("title"), 90)
-    if raw_title and has_cjk(raw_title):
-        title = raw_title
-    elif raw_title:
-        title = f"{source}：{category}相关公开案例值得跟进"
-    else:
-        title = fallback_article(date, index, category)["title"]
-
-    raw_summary = clean_text(item.get("summary"), 150)
-    if raw_summary and has_cjk(raw_summary):
-        summary = raw_summary
-    elif raw_summary:
-        summary = f"公开来源提到“{raw_title or source}”。这条信息可作为 {category} 方向的案例或趋势素材。"
-    else:
-        summary = "公开来源出现了与工业设计、硬件产品或设计工具相关的新信号。"
-    score = min(98, max(70, int(item.get("score", 0)) + 72 - index * 3))
-    why = {
-        "AI硬件": "它会影响你做智能硬件项目时对交互入口、佩戴/携带理由和长期使用价值的判断。",
-        "3C产品": "它适合转化为作品集里的形态语言、细节比例和品牌识别分析。",
-        "清洁电器": "它能帮助你把清洁电器项目从外观表达推进到维护路径和家庭动线。",
-        "机器人": "它提醒作品集要解释状态反馈、安全感和家居亲和力，而不只是机械外形。",
-        "CMF": "它能直接补充材质、色彩、工艺和触感策略页。",
-        "AI辅助设计工具": "它适合进入作品集生产流程，但要保留你自己的筛选和判断。",
-    }.get(category, "它能补充你的趋势判断和作品集研究素材。")
-    return {
-        "id": stable_id(date, kind, item.get("id") or title),
-        "title": title,
-        "summary": summary,
-        "source": source,
-        "category": category,
-        "url": item.get("url") or "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
-        "date": date,
-        "importanceScore": score,
-        "designInsight": why,
-        "keywords": [category, source, *item.get("keywords", [])][:12],
-    }
-
-
-def build_news(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
-    articles = [item for item in sort_items(items) if item.get("kind") == "article"]
-    news = [to_news_item(item, date, index + 1, "news") for index, item in enumerate(articles[:5])]
-    fallback_categories = ["AI硬件", "3C产品", "清洁电器", "机器人", "CMF"]
-    while len(news) < 5:
-        news.append(fallback_article(date, len(news) + 1, fallback_categories[len(news) % len(fallback_categories)]))
-    return news[:5]
-
-
-def build_ai_tools(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
-    candidates = [
-        item
-        for item in sort_items(items)
-        if any(keyword in text_blob(item) for keyword in ["ai design", "design tool", "生成式", "workflow", "工具"])
+def fallback_hotspots(date: str, count: int) -> list[dict[str, Any]]:
+    seeds = [
+        ("CMF", "CMF 趋势继续强调低饱和色、微纹理和耐用触感", ["Apple", "Samsung"]),
+        ("3C产品", "3C产品设计回到轻薄比例、握持细节和镜头模组秩序", ["小米", "OPPO"]),
+        ("AI硬件", "AI硬件从概念演示转向随身场景和可靠交互入口", ["华为", "Nothing"]),
+        ("清洁电器", "清洁电器设计重点转向基站尺度、维护路径和家居融合", ["追觅", "云鲸"]),
+        ("机器人", "家庭机器人需要更清晰的灯语、姿态和安全感表达", ["科沃斯", "石头科技"]),
+        ("设计奖项", "设计奖项案例适合补充产品细节、结构创新和可持续材料观察", ["Dyson", "Apple"]),
     ]
-    result = [to_news_item(item, date, index + 1, "tool") for index, item in enumerate(candidates[:3])]
-    templates = [
-        ("AI辅助调研卡片流程", "把公开来源中的标题、摘要和岗位关键词先整理成研究卡片，再决定作品集页面结构。"),
-        ("CMF moodboard 初筛", "AI 可以帮助快速发散材质方向，但最终要由设计师判断工艺可行性和品牌气质。"),
-        ("作品集版式检查", "用 AI 检查标题长度、信息层级和页面逻辑，避免项目页只有视觉没有判断。"),
-    ]
-    while len(result) < 3:
-        title, summary = templates[len(result)]
+    result = []
+    for index, (category, title, companies) in enumerate(seeds[:count]):
         result.append(
             {
-                "id": stable_id(date, "tool", title),
+                "id": stable_id(date, "fallback-hotspot", category),
                 "title": title,
-                "summary": summary,
+                "summary": "真实来源不足时保留的高相关设计观察框架，后续会被公开来源自动替换。",
                 "source": "Fallback Rule",
-                "category": "AI辅助设计工具",
+                "category": category,
                 "url": "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
                 "date": date,
-                "importanceScore": 82 - len(result) * 3,
-                "designInsight": "把工具放在流程里，而不是让工具替代你的设计判断。",
-                "keywords": ["AI辅助设计工具", "作品集", "工业设计"],
+                "importanceScore": 78 - index,
+                "sourceQualityScore": 60,
+                "relevanceScore": 76 - index,
+                "designInsight": "可作为作品集调研页的备用主题，重点补图、补竞品、补设计判断。",
+                "relatedCompanies": companies,
+                "tags": [category, "作品集参考", "备用数据"],
             }
         )
     return result
 
 
-def build_hardware_observation(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
-    categories = ["智能硬件", "机器人", "清洁电器"]
-    result: list[dict[str, Any]] = []
-    for category in categories:
-        matched = next((item for item in sort_items(items) if category in choose_category(item) or category in text_blob(item)), None)
-        if matched:
-            result.append(to_news_item(matched, date, len(result) + 1, "hardware"))
-        else:
-            fallback = fallback_article(date, len(result) + 1, category)
-            fallback["id"] = stable_id(date, "hardware", category)
-            result.append(fallback)
-    return result
-
-
-def build_trends(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
-    sorted_source = sort_items(items)
-    trends: list[dict[str, Any]] = []
-    for index, category in enumerate(TREND_CATEGORIES):
-        keywords = CATEGORY_KEYWORDS.get(category, [])
-        matched = next((item for item in sorted_source if any(keyword.lower() in text_blob(item) for keyword in keywords)), None)
-        if matched:
-            raw_title = clean_text(matched.get("title"), 46)
-            title_seed = raw_title if has_cjk(raw_title) else f"{matched.get('source', '公开来源')}新案例"
-            raw_summary = clean_text(matched.get("summary"), 160)
-            if raw_summary and has_cjk(raw_summary):
-                summary = raw_summary
-            elif raw_summary:
-                summary = f"公开来源提到“{raw_title}”。可作为 {category} 的案例线索，后续适合补充图片、产品语境和设计判断。"
-            else:
-                summary = f"{category} 出现新的公开信息，值得纳入今日设计研究。"
-            url = matched.get("url")
-            related = [matched.get("source", "Public Source")]
-        else:
-            title_seed = category
-            summary = f"{category} 今日真实来源不足，先保留趋势观察框架，等待后续自动更新补齐。"
-            url = "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp"
-            related = ["Fallback Rule"]
-
-        trends.append(
-            {
-                "id": stable_id(date, "trend", category),
-                "title": f"{category}观察：{title_seed}",
-                "trendSummary": summary,
-                "relatedCases": [*related, "DJI 大疆", "小米"][:3],
-                "designInspiration": "把这条趋势拆成用户场景、形态约束、CMF策略和交互入口，转成作品集中的研究页或竞品矩阵。",
-                "category": category,
-                "url": url,
-                "date": date,
-                "keywords": [category, *keywords[:5]],
-            }
-        )
-    return trends
-
-
-def build_jobs(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
-    job_pages = [item for item in items if item.get("kind") == "job_page"]
-    by_company = {item.get("company"): item for item in job_pages}
-    jobs: list[dict[str, Any]] = []
-
-    for index, (company, city, direction, experience, url) in enumerate(TARGET_COMPANY_FALLBACKS):
-        source_item = by_company.get(company, {})
-        checked = source_item.get("status") == "checked"
-        match_score = min(98, 78 + (index * 7) % 16 + (8 if city in {"深圳", "上海", "苏州"} else 3) + (4 if checked else 0))
-        job_title = {
-            "CMF": "CMF / 工业设计机会跟踪",
-            "清洁电器": "清洁电器工业设计机会跟踪",
-            "机器人": "机器人产品设计机会跟踪",
-            "家电": "家电产品设计机会跟踪",
-        }.get(direction, "工业设计 / 产品设计机会跟踪")
-        reason_prefix = "官网招聘入口已检查" if checked else "官网岗位页今日解析不稳定，先保留官方入口"
-        jobs.append(
-            {
-                "id": stable_id(date, "job", company),
+def build_company_updates(jobs: list[dict[str, Any]], hotspots: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
+    updates: dict[str, dict[str, Any]] = {}
+    for job in jobs:
+        if job["company"] not in TARGET_COMPANY_NAMES:
+            continue
+        updates[job["company"]] = {
+            "id": stable_id(date, "company", job["company"]),
+            "company": job["company"],
+            "title": f"{job['company']}：{job['direction']}岗位入口值得核对",
+            "summary": f"{job['city']} / {job['jobType']} / 匹配度 {job['matchScore']}，建议查看原始招聘链接确认岗位是否开放。",
+            "category": "招聘",
+            "url": job["url"],
+            "date": date,
+            "relevanceScore": job["matchScore"],
+            "designRelation": f"与{job['direction']}、作品集项目选择和求职投递优先级直接相关。",
+            "tags": [job["direction"], job["jobType"], source_label(job["sourceQualityScore"])],
+        }
+    for hotspot in hotspots:
+        for company in hotspot.get("relatedCompanies", []):
+            if company in updates:
+                continue
+            updates[company] = {
+                "id": stable_id(date, "company-hotspot", company),
                 "company": company,
-                "title": job_title,
-                "city": city,
-                "direction": direction,
-                "experience": source_item.get("experience") or experience,
-                "matchScore": match_score,
-                "reason": f"{reason_prefix}。该方向与你关注的 {direction}、作品集和秋招准备相关，建议点原始链接核对最新岗位。",
-                "url": source_item.get("url") or url,
+                "title": f"{company}：产品设计动态值得跟进",
+                "summary": hotspot["summary"],
+                "category": "产品设计动态",
+                "url": hotspot["url"],
                 "date": date,
-                "keywords": [company, city, direction, "工业设计", "招聘", "作品集", "秋招"],
+                "relevanceScore": hotspot["relevanceScore"],
+                "designRelation": hotspot["designInsight"],
+                "tags": [hotspot["category"], "设计热点", source_label(hotspot["sourceQualityScore"])],
             }
-        )
-
-    return sorted(jobs, key=lambda item: item["matchScore"], reverse=True)
+    return sorted(updates.values(), key=lambda item: item["relevanceScore"], reverse=True)[:8]
 
 
 def build_actions(report: dict[str, Any]) -> list[dict[str, Any]]:
-    top_job = max(report["jobs"], key=lambda item: item["matchScore"])
-    top_trend = report["trends"][0]
-    return [
+    top_job = report["highMatchJobs"][0] if report["highMatchJobs"] else report["jobOpportunities"][0]
+    top_hotspot = report["designHotspots"][0]
+    top_company = report["companyUpdates"][0] if report["companyUpdates"] else None
+    actions = [
+        {
+            "id": stable_id(report["date"], "action", "job"),
+            "title": "今日建议重点关注的岗位",
+            "description": f"优先打开 {top_job['company']} 的原始链接，核对{top_job['city']} / {top_job['direction']} / {top_job['jobType']}是否可投。",
+            "priority": "high",
+            "keywords": ["求职", top_job["company"], top_job["city"], top_job["direction"]],
+        },
+        {
+            "id": stable_id(report["date"], "action", "hotspot"),
+            "title": "今日建议收藏的设计热点",
+            "description": f"收藏“{top_hotspot['title']}”，把它拆成场景、形态、CMF、交互四个观察点。",
+            "priority": "medium",
+            "keywords": ["设计热点", top_hotspot["category"], "作品集参考"],
+        },
         {
             "id": stable_id(report["date"], "action", "portfolio"),
-            "title": "作品集优先动作",
-            "description": f"把今天的“{top_trend['category']}”趋势转成一页作品集研究卡：场景、竞品、设计判断、可落地方向。",
-            "priority": "high",
-            "keywords": ["作品集", top_trend["category"], "设计研究"],
-        },
-        {
-            "id": stable_id(report["date"], "action", "jobs"),
-            "title": "秋招投递动作",
-            "description": f"优先核对 {top_job['company']} 的原始招聘链接，并把岗位关键词补到作品集项目首页。",
+            "title": "今日适合补充到作品集调研的案例",
+            "description": f"围绕{top_hotspot['category']}补一页竞品矩阵，重点写清楚设计语言变化和你自己的判断。",
             "priority": "medium",
-            "keywords": ["秋招", top_job["company"], top_job["city"], top_job["direction"]],
-        },
-        {
-            "id": stable_id(report["date"], "action", "xiaohongshu"),
-            "title": "小红书内容动作",
-            "description": "把今日 1 条新闻和 1 条趋势拆成 6 图笔记：信号、案例、问题、设计启发、作品集用法、岗位关联。",
-            "priority": "low",
-            "keywords": ["小红书", "工业设计账号", "内容运营"],
+            "keywords": ["作品集", "设计研究", top_hotspot["category"]],
         },
     ]
+    if top_company:
+        actions.append(
+            {
+                "id": stable_id(report["date"], "action", "company"),
+                "title": "今日建议跟进的公司动态",
+                "description": f"跟进 {top_company['company']}：{top_company['designRelation']}",
+                "priority": "low",
+                "keywords": ["公司动态", top_company["company"], top_company["category"]],
+            }
+        )
+    return actions
+
+
+def to_legacy_news(hotspot: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": hotspot["id"],
+        "title": hotspot["title"],
+        "summary": hotspot["summary"],
+        "source": hotspot["source"],
+        "category": hotspot["category"],
+        "url": hotspot["url"],
+        "date": hotspot["date"],
+        "importanceScore": hotspot["importanceScore"],
+        "designInsight": hotspot["designInsight"],
+        "keywords": hotspot["tags"],
+    }
+
+
+def to_legacy_trend(hotspot: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": f"{hotspot['id']}-trend",
+        "title": hotspot["title"],
+        "trendSummary": hotspot["summary"],
+        "relatedCases": hotspot.get("relatedCompanies") or [hotspot["source"]],
+        "designInspiration": hotspot["designInsight"],
+        "category": hotspot["category"],
+        "url": hotspot["url"],
+        "date": hotspot["date"],
+        "keywords": hotspot["tags"],
+    }
+
+
+def total_items(report: dict[str, Any]) -> int:
+    return sum(len(report.get(key, [])) for key in ["jobOpportunities", "designHotspots", "companyUpdates", "actions"])
 
 
 def clone_previous_as_fallback(previous_report: dict[str, Any], date: str, generated_at: str, message: str) -> dict[str, Any]:
     report = copy.deepcopy(previous_report)
     report["date"] = date
-    report["title"] = f"{date} 工业设计早报"
-    report["summary"] = "今日部分数据抓取失败，已使用备用数据。"
+    report["title"] = f"{date} 工业设计求职与设计热点日报"
+    report["summary"] = "今日部分数据抓取失败，已使用上一期求职与设计热点备用数据。"
     report["generatedAt"] = generated_at
     report["dataMode"] = "Fallback"
     report["collectionStatus"] = "fallback"
     report["statusMessage"] = message
-    for section in ["topNews", "aiTools", "hardwareObservation", "trends", "jobs"]:
-        for index, item in enumerate(report.get(section, [])):
+    report.setdefault("jobOpportunities", report.get("jobs", []))
+    report.setdefault("highMatchJobs", [job for job in report["jobOpportunities"] if job.get("matchScore", 0) >= 90])
+    report.setdefault("designHotspots", [to_hotspot_from_legacy_news(item) for item in report.get("topNews", [])])
+    report.setdefault("companyUpdates", build_company_updates(report["jobOpportunities"], report["designHotspots"], date))
+    for key in ["jobOpportunities", "highMatchJobs", "designHotspots", "companyUpdates"]:
+        for item in report.get(key, []):
             item["date"] = date
-            item["id"] = stable_id(date, section, item.get("id", str(index)))
-            if item.get("source") == "Fallback Rule":
-                continue
-            if section != "jobs":
-                item["source"] = f"{item.get('source', '历史数据')} / 备用"
     report["actions"] = build_actions(report)
     report["totalItems"] = total_items(report)
     return report
 
 
-def total_items(report: dict[str, Any]) -> int:
-    return sum(len(report.get(key, [])) for key in ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions"])
+def to_hotspot_from_legacy_news(item: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": item.get("id", ""),
+        "title": item.get("title", ""),
+        "summary": item.get("summary", ""),
+        "source": item.get("source", "历史数据"),
+        "category": item.get("category", "工业设计趋势"),
+        "url": item.get("url", "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp"),
+        "date": item.get("date", ""),
+        "importanceScore": item.get("importanceScore", 76),
+        "sourceQualityScore": 60,
+        "relevanceScore": item.get("importanceScore", 76),
+        "designInsight": item.get("designInsight", "可作为作品集调研素材继续核对。"),
+        "relatedCompanies": [],
+        "tags": item.get("keywords", []),
+    }
 
 
 def try_openai_refine(report: dict[str, Any], collected_items: list[dict[str, Any]]) -> dict[str, Any]:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         return report
-
     try:
         from openai import OpenAI
 
         client = OpenAI(api_key=api_key)
-        compact_sources = [
-            {
-                "title": item.get("title"),
-                "summary": item.get("summary"),
-                "source": item.get("source"),
-                "category": item.get("category"),
-            }
-            for item in collected_items[:18]
-        ]
         prompt = {
-            "task": "请基于公开来源，为工业设计学生生成一句中文日报总结和三条行动建议，保持简洁，有设计判断。",
-            "currentSummary": report["summary"],
-            "sources": compact_sources,
+            "task": "请基于求职岗位和设计热点，为工业设计求职者生成一句中文 qualitySummary。不要出现小红书、社媒运营或泛泛商业新闻。",
+            "jobs": report["jobOpportunities"][:8],
+            "hotspots": report["designHotspots"][:8],
+            "sources": collected_items[:12],
         }
         response = client.responses.create(
             model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
             input=json.dumps(prompt, ensure_ascii=False),
         )
-        text = getattr(response, "output_text", "") or ""
-        match = re.search(r"\{.*\}", text, re.S)
-        if not match:
-            return report
-        refined = json.loads(match.group(0))
-        if isinstance(refined.get("summary"), str):
-            report["summary"] = clean_text(refined["summary"], 180)
-        if isinstance(refined.get("actions"), list):
-            for index, action_text in enumerate(refined["actions"][:3]):
-                if isinstance(action_text, str) and index < len(report["actions"]):
-                    report["actions"][index]["description"] = clean_text(action_text, 180)
+        text = clean_text(getattr(response, "output_text", ""), 180)
+        if text:
+            report["qualitySummary"] = text
         return report
-    except Exception as exc:  # noqa: BLE001 - optional refinement must never break the update.
+    except Exception:  # noqa: BLE001 - optional refinement must never break the update.
         report["statusMessage"] = f"{report.get('statusMessage', '')} OpenAI 摘要失败，已使用规则摘要。".strip()
         return report
 
@@ -409,42 +624,46 @@ def build_daily_report(
 ) -> dict[str, Any]:
     items = collected.get("items", [])
     status = collected.get("status", "fallback")
-    article_count = len([item for item in items if item.get("kind") in {"article", "search_result"}])
-    has_enough_content = article_count >= 3 and len(items) >= 8
-    status_message = ""
+    job_signal_count = len([item for item in items if item.get("kind") in {"job_page", "job_search_result"}])
+    hotspot_signal_count = len([item for item in items if item.get("kind") in {"article", "hotspot_search_result"}])
 
-    if not has_enough_content and previous_report:
-        return clone_previous_as_fallback(
-            previous_report,
-            date,
-            generated_at,
-            "今日部分数据抓取失败，已使用备用数据。",
-        )
+    if not items and previous_report:
+        return clone_previous_as_fallback(previous_report, date, generated_at, "今日部分数据抓取失败，已使用备用数据。")
 
-    data_mode = "Real" if has_enough_content else "Fallback"
-    if data_mode == "Fallback" or status == "partial":
-        status_message = "今日部分数据抓取失败，已使用备用数据。"
+    job_opportunities = build_job_opportunities(items, date)
+    high_match_jobs = [job for job in job_opportunities if job["matchScore"] >= 90]
+    design_hotspots = build_design_hotspots(items, date)
+    company_updates = build_company_updates(job_opportunities, design_hotspots, date)
+    data_mode = "Real" if job_signal_count >= 4 and hotspot_signal_count >= 3 else "Fallback"
+    collection_status = status if data_mode == "Real" and status in {"success", "partial"} else "fallback"
+    status_message = "今日部分数据抓取失败，已使用备用数据。" if collection_status != "success" else ""
 
     report = {
         "date": date,
-        "title": f"{date} 工业设计早报",
-        "summary": "今日聚焦工业设计、AI硬件、3C、清洁电器、机器人、CMF 与国内岗位机会。",
+        "title": f"{date} 工业设计求职与设计热点日报",
+        "summary": f"今日优先看 {high_match_jobs[0]['company'] if high_match_jobs else job_opportunities[0]['company']} 岗位与 {design_hotspots[0]['category']} 设计热点。",
         "generatedAt": generated_at,
+        "dataMode": data_mode,
+        "collectionStatus": collection_status,
+        "statusMessage": status_message,
         "sourceCount": int(collected.get("sourceCount", 0)),
         "totalItems": 0,
-        "dataMode": data_mode,
-        "collectionStatus": status if data_mode == "Real" and status in {"success", "partial"} else ("partial" if items else "fallback"),
-        "statusMessage": status_message,
-        "topNews": build_news(items, date),
-        "trends": build_trends(items, date),
-        "aiTools": build_ai_tools(items, date),
-        "hardwareObservation": build_hardware_observation(items, date),
-        "jobs": build_jobs(items, date),
+        "qualitySummary": f"共整理 {len(job_opportunities)} 个求职机会、{len(design_hotspots)} 条设计热点、{len(company_updates)} 条公司动态。",
+        "jobOpportunities": job_opportunities,
+        "highMatchJobs": high_match_jobs,
+        "designHotspots": design_hotspots,
+        "companyUpdates": company_updates,
         "actions": [],
     }
     report["actions"] = build_actions(report)
     report["totalItems"] = total_items(report)
-    report["summary"] = f"{report['topNews'][0]['title']}；{report['trends'][0]['category']}趋势值得跟进；{report['jobs'][0]['company']} 等岗位建议核对原始链接。"
+
+    # Legacy mirrors keep older frontend/search/history code resilient.
+    report["jobs"] = job_opportunities
+    report["topNews"] = [to_legacy_news(item) for item in design_hotspots[:5]]
+    report["trends"] = [to_legacy_trend(item) for item in design_hotspots]
+    report["aiTools"] = []
+    report["hardwareObservation"] = [to_legacy_news(item) for item in design_hotspots if item["category"] in {"智能硬件", "AI硬件", "机器人", "清洁电器"}][:3]
     return try_openai_refine(report, items)
 
 

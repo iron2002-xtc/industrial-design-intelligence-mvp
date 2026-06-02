@@ -11,12 +11,12 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from collect_sources import collect_sources
-from summarize_report import build_daily_report
+from summarize_report import build_daily_report, stable_id, to_legacy_news, to_legacy_trend
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 PUBLIC_DATA_DIR = ROOT / "public" / "data"
-REPORT_KEYS = ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions"]
+REPORT_KEYS = ["jobOpportunities", "designHotspots", "companyUpdates", "actions"]
 
 
 def read_json(path: Path) -> Any | None:
@@ -31,14 +31,17 @@ def write_json(path: Path, data: Any) -> None:
 
 
 def report_index_item(report: dict[str, Any]) -> dict[str, Any]:
+    jobs = report.get("jobOpportunities", report.get("jobs", []))
+    hotspots = report.get("designHotspots", report.get("trends", []))
+    high_match = report.get("highMatchJobs") or [job for job in jobs if job.get("matchScore", 0) >= 90]
     return {
         "date": report["date"],
         "title": report["title"],
         "summary": report["summary"],
-        "newsCount": len(report.get("topNews", [])),
-        "jobsCount": len(report.get("jobs", [])),
-        "trendsCount": len(report.get("trends", [])),
-        "highMatchJobsCount": len([job for job in report.get("jobs", []) if job.get("matchScore", 0) >= 90]),
+        "newsCount": len(hotspots),
+        "jobsCount": len(jobs),
+        "trendsCount": len(hotspots),
+        "highMatchJobsCount": len(high_match),
     }
 
 
@@ -67,10 +70,139 @@ def sync_to_public() -> None:
         shutil.copy2(path, reports_dir / path.name)
 
 
+def legacy_news_to_hotspot(item: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": item.get("id", ""),
+        "title": item.get("title", ""),
+        "summary": item.get("summary", ""),
+        "source": item.get("source", "历史数据"),
+        "category": item.get("category", "工业设计趋势"),
+        "url": item.get("url", "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp"),
+        "date": item.get("date", ""),
+        "importanceScore": item.get("importanceScore", 76),
+        "sourceQualityScore": 60,
+        "relevanceScore": item.get("importanceScore", 76),
+        "designInsight": item.get("designInsight", "可作为作品集调研素材继续核对。"),
+        "relatedCompanies": [],
+        "tags": item.get("keywords", []),
+    }
+
+
+def legacy_trend_to_hotspot(item: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": item.get("id", ""),
+        "title": item.get("title", ""),
+        "summary": item.get("trendSummary", ""),
+        "source": (item.get("relatedCases") or ["历史趋势"])[0],
+        "category": item.get("category", "工业设计趋势"),
+        "url": item.get("url", "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp"),
+        "date": item.get("date", ""),
+        "importanceScore": 76,
+        "sourceQualityScore": 60,
+        "relevanceScore": 76,
+        "designInsight": item.get("designInspiration", "可作为作品集调研素材继续核对。"),
+        "relatedCompanies": item.get("relatedCases", []),
+        "tags": item.get("keywords", []),
+    }
+
+
+def ensure_job_fields(job: dict[str, Any]) -> dict[str, Any]:
+    job.setdefault("jobType", "可跟进")
+    job.setdefault("sourceQualityScore", 70)
+    job.setdefault("relevanceScore", job.get("matchScore", 70))
+    job.setdefault("requirementsSummary", "请打开原始链接核对岗位职责、经验要求和作品集要求。")
+    job.setdefault("tags", job.get("keywords", []))
+    job.setdefault("keywords", job.get("tags", []))
+    return job
+
+
+def default_company_updates(report: dict[str, Any]) -> list[dict[str, Any]]:
+    updates = []
+    for job in report.get("highMatchJobs", [])[:6]:
+        updates.append(
+            {
+                "id": stable_id(report["date"], "company", job["company"]),
+                "company": job["company"],
+                "title": f"{job['company']}：{job['direction']}岗位入口值得核对",
+                "summary": f"{job['city']} / {job.get('jobType', '可跟进')} / 匹配度 {job['matchScore']}，建议查看原始招聘链接确认岗位是否开放。",
+                "category": "招聘",
+                "url": job["url"],
+                "date": report["date"],
+                "relevanceScore": job["matchScore"],
+                "designRelation": f"与{job['direction']}、作品集项目选择和求职投递优先级直接相关。",
+                "tags": [job["direction"], job.get("jobType", "可跟进")],
+            }
+        )
+    return updates
+
+
+def ensure_actions(report: dict[str, Any]) -> list[dict[str, Any]]:
+    actions = [
+        action
+        for action in report.get("actions", [])
+        if "小红书"
+        not in f"{action.get('title', '')} {action.get('description', '')} {' '.join(action.get('keywords', []))}"
+    ]
+    if actions:
+        return actions[:4]
+    jobs = report.get("highMatchJobs") or report.get("jobOpportunities", [])
+    hotspots = report.get("designHotspots", [])
+    if not jobs or not hotspots:
+        return []
+    return [
+        {
+            "id": stable_id(report["date"], "action", "job"),
+            "title": "今日建议重点关注的岗位",
+            "description": f"优先核对 {jobs[0]['company']} 的原始招聘链接，确认是否适合应届/初级投递。",
+            "priority": "high",
+            "keywords": ["求职", jobs[0]["company"], jobs[0]["direction"]],
+        },
+        {
+            "id": stable_id(report["date"], "action", "hotspot"),
+            "title": "今日建议收藏的设计热点",
+            "description": f"收藏“{hotspots[0]['title']}”，补充到作品集调研或竞品矩阵。",
+            "priority": "medium",
+            "keywords": ["设计热点", hotspots[0]["category"]],
+        },
+    ]
+
+
+def has_removed_topic(item: dict[str, Any]) -> bool:
+    text = json.dumps(item, ensure_ascii=False)
+    return "小红书" in text or "社交媒体" in text or "运营建议" in text
+
+
 def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     report.setdefault("dataMode", "Mock")
     report.setdefault("collectionStatus", "success")
     report.setdefault("statusMessage", "")
+    report.setdefault("qualitySummary", report.get("summary", ""))
+    jobs = [ensure_job_fields(job) for job in report.get("jobOpportunities", report.get("jobs", []))]
+    report["jobOpportunities"] = sorted(jobs, key=lambda item: item.get("matchScore", 0), reverse=True)
+    report["highMatchJobs"] = sorted(
+        report.get("highMatchJobs") or [job for job in report["jobOpportunities"] if job.get("matchScore", 0) >= 90],
+        key=lambda item: item.get("matchScore", 0),
+        reverse=True,
+    )
+    if "designHotspots" not in report:
+        report["designHotspots"] = [
+            *[legacy_news_to_hotspot(item) for item in report.get("topNews", [])],
+            *[legacy_trend_to_hotspot(item) for item in report.get("trends", [])],
+        ]
+    report["designHotspots"] = [hotspot for hotspot in report["designHotspots"] if not has_removed_topic(hotspot)]
+    for hotspot in report["designHotspots"]:
+        hotspot.setdefault("sourceQualityScore", 60)
+        hotspot.setdefault("relevanceScore", hotspot.get("importanceScore", 70))
+        hotspot.setdefault("relatedCompanies", [])
+        hotspot.setdefault("tags", hotspot.get("keywords", []))
+    report["companyUpdates"] = report.get("companyUpdates") or default_company_updates(report)
+    report["companyUpdates"] = [item for item in report["companyUpdates"] if not has_removed_topic(item)]
+    report["actions"] = ensure_actions(report)
+    report["jobs"] = report["jobOpportunities"]
+    report["topNews"] = [to_legacy_news(item) for item in report["designHotspots"][:5]]
+    report["trends"] = [to_legacy_trend(item) for item in report["designHotspots"]]
+    report.setdefault("aiTools", [])
+    report.setdefault("hardwareObservation", [to_legacy_news(item) for item in report["designHotspots"] if item["category"] in {"智能硬件", "AI硬件", "机器人", "清洁电器"}][:3])
     report["totalItems"] = sum(len(report.get(key, [])) for key in REPORT_KEYS)
     return report
 

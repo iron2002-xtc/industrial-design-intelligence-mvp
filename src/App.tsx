@@ -1,6 +1,5 @@
 import {
   Activity,
-  Bot,
   BriefcaseBusiness,
   CalendarDays,
   Clock3,
@@ -8,7 +7,6 @@ import {
   ExternalLink,
   FileStack,
   Lightbulb,
-  Newspaper,
   Radar,
   Search,
   Sparkles,
@@ -16,14 +14,12 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { HistoryRail } from "./components/HistoryRail";
-import { InsightCard } from "./components/InsightCard";
 import { JobsSection } from "./components/JobsSection";
 import { MetricCard } from "./components/MetricCard";
 import { SectionCard } from "./components/SectionCard";
-import { TrendsSection } from "./components/TrendsSection";
 import { getSearchResults } from "./lib/search";
 import { loadLatestReport, loadReportByDate, loadReportsIndex } from "./lib/reports";
-import type { DailyReport, ReportIndexItem } from "./types/report";
+import type { CompanyUpdateItem, DailyReport, DesignHotspotItem, NewsItem, ReportIndexItem, TrendItem } from "./types/report";
 
 const formatGeneratedAt = (value: string) => {
   const date = new Date(value);
@@ -44,6 +40,38 @@ const dataModeLabel: Record<NonNullable<DailyReport["dataMode"]>, string> = {
   Fallback: "Fallback",
   Mock: "Mock",
 };
+
+const legacyNewsToHotspot = (item: NewsItem): DesignHotspotItem => ({
+  id: item.id,
+  title: item.title,
+  summary: item.summary,
+  source: item.source,
+  category: item.category,
+  url: item.url,
+  date: item.date,
+  importanceScore: item.importanceScore,
+  sourceQualityScore: item.source === "Fallback Rule" ? 60 : 78,
+  relevanceScore: item.importanceScore,
+  designInsight: item.designInsight,
+  relatedCompanies: [],
+  tags: item.keywords ?? [],
+});
+
+const legacyTrendToHotspot = (item: TrendItem): DesignHotspotItem => ({
+  id: item.id,
+  title: item.title,
+  summary: item.trendSummary,
+  source: item.relatedCases[0] ?? "趋势观察",
+  category: item.category,
+  url: item.url,
+  date: item.date,
+  importanceScore: 82,
+  sourceQualityScore: 70,
+  relevanceScore: 82,
+  designInsight: item.designInspiration,
+  relatedCompanies: item.relatedCases,
+  tags: item.keywords ?? [],
+});
 
 function App() {
   const [activeDate, setActiveDate] = useState("");
@@ -115,10 +143,25 @@ function App() {
   }, [activeDate, reportsByDate]);
 
   const report = activeDate ? reportsByDate[activeDate] : undefined;
-  const highMatchJobs = report?.jobs.filter((job) => job.matchScore >= 90) ?? [];
+  const jobOpportunities = report?.jobOpportunities ?? report?.jobs ?? [];
+  const highMatchJobs = report?.highMatchJobs ?? jobOpportunities.filter((job) => job.matchScore >= 90);
+  const designHotspots =
+    report?.designHotspots ??
+    [
+      ...(report?.topNews ?? []).map(legacyNewsToHotspot),
+      ...(report?.trends ?? []).map(legacyTrendToHotspot),
+    ];
+  const companyUpdates: CompanyUpdateItem[] = report?.companyUpdates ?? [];
+  const highQualitySourceCount = new Set(
+    [
+      ...jobOpportunities.filter((item) => (item.sourceQualityScore ?? 0) >= 85).map((item) => item.company),
+      ...designHotspots.filter((item) => item.sourceQualityScore >= 85).map((item) => item.source),
+      ...companyUpdates.filter((item) => item.relevanceScore >= 80).map((item) => item.company),
+    ],
+  ).size;
   const topJobs = useMemo(
-    () => (report ? [...report.jobs].sort((a, b) => b.matchScore - a.matchScore).slice(0, 5) : []),
-    [report],
+    () => [...highMatchJobs].sort((a, b) => b.matchScore - a.matchScore).slice(0, 5),
+    [highMatchJobs],
   );
   const searchResults = useMemo(
     () => (report ? getSearchResults(report, searchQuery) : []),
@@ -180,10 +223,10 @@ function App() {
                     </span>
                   </div>
                   <h1 className="mt-4 text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
-                    工业设计情报站
+                    工业设计求职与设计热点日报
                   </h1>
                   <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-600 sm:text-base">
-                    面向 3C、智能硬件、清洁电器、机器人、AI硬件、家电、CMF 和作品集求职的个人情报中控台。
+                    聚焦工业设计求职机会、目标公司动态、产品设计热点、CMF、3C、智能硬件、机器人与家电趋势。
                   </p>
                   <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
                     <span className="inline-flex items-center gap-2 rounded-md border border-line bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-600">
@@ -235,7 +278,7 @@ function App() {
                   <label className="block">
                     <span className="mb-2 flex items-center gap-2 text-xs font-semibold text-zinc-500">
                       <Search size={14} />
-                      搜索标题、摘要、公司、城市、方向、关键词
+                      搜索岗位、设计热点、公司、城市、方向、关键词
                     </span>
                     <div className="relative">
                       <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
@@ -251,34 +294,41 @@ function App() {
               </div>
             </div>
 
-            <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 xl:grid-cols-4">
-              <MetricCard
-                label="今日新闻数"
-                value={report.topNews.length}
-                helper="优先展示与求职、趋势和作品集相关的信号"
-                icon={<Newspaper size={20} />}
-                tone="ink"
-              />
+            <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 xl:grid-cols-5">
               <MetricCard
                 label="今日岗位数"
-                value={report.jobs.length}
-                helper="目标公司和重点城市的 mock 岗位池"
+                value={jobOpportunities.length}
+                helper="覆盖官网招聘、公开招聘入口和高质量搜索线索"
                 icon={<BriefcaseBusiness size={20} />}
-                tone="green"
+                tone="ink"
               />
               <MetricCard
                 label="高匹配岗位数"
                 value={highMatchJobs.length}
-                helper="匹配度 90+，建议优先准备投递材料"
+                helper="匹配度 90+，建议优先核对原始链接"
                 icon={<Target size={20} />}
+                tone="green"
+              />
+              <MetricCard
+                label="今日设计热点数"
+                value={designHotspots.length}
+                helper="低相关度内容已过滤，保留产品设计强相关信号"
+                icon={<Activity size={20} />}
                 tone="copper"
               />
               <MetricCard
-                label="趋势观察数"
-                value={report.trends.length}
-                helper="覆盖 AI硬件、3C、清洁电器、CMF 等方向"
-                icon={<Activity size={20} />}
+                label="高可信来源数"
+                value={highQualitySourceCount}
+                helper="官网来源、设计媒体、目标公司动态优先"
+                icon={<Database size={20} />}
                 tone="plum"
+              />
+              <MetricCard
+                label="最近更新时间"
+                value={formatGeneratedAt(report.generatedAt)}
+                helper={report.qualitySummary ?? "每日北京时间 7:30 自动更新"}
+                icon={<Clock3 size={20} />}
+                tone="ink"
               />
             </div>
           </header>
@@ -293,7 +343,7 @@ function App() {
             <SectionCard
               eyebrow="Search"
               title={`搜索结果：${searchResults.length} 条`}
-              description={`当前日报内匹配“${searchQuery}”的新闻、趋势、岗位和行动建议。`}
+              description={`当前日报内匹配“${searchQuery}”的岗位、设计热点、公司动态和行动建议。`}
             >
               <div className="grid gap-3 lg:grid-cols-2">
                 {searchResults.map((result) => (
@@ -335,88 +385,10 @@ function App() {
             </SectionCard>
           )}
 
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(360px,0.8fr)]">
-            <SectionCard
-              eyebrow="Daily Briefing"
-              title="今日重点新闻"
-              description="先看最影响作品集、秋招和产品判断的 5 条信号。"
-            >
-              <div className="grid gap-3 lg:grid-cols-2">
-                {report.topNews.map((item, index) => (
-                  <InsightCard key={item.id} item={item} compact={index > 1} />
-                ))}
-              </div>
-            </SectionCard>
-
-            <div className="space-y-4">
-              <SectionCard
-                eyebrow="Design Trends"
-                title="今日设计趋势 3 条"
-                description="适合直接转化为作品集页面或小红书选题。"
-              >
-                <div className="space-y-3">
-                  {report.trends.slice(0, 3).map((trend) => (
-                    <article key={trend.id} className="rounded-lg border border-line bg-white p-4">
-                      <span className="rounded-md bg-plum/10 px-2 py-1 text-xs font-semibold text-plum">
-                        {trend.category}
-                      </span>
-                      <h3 className="mt-3 text-base font-semibold leading-snug text-ink">{trend.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-zinc-600">{trend.trendSummary}</p>
-                    </article>
-                  ))}
-                </div>
-              </SectionCard>
-
-              <SectionCard eyebrow="Next Actions" title="今天最值得做的 3 件事">
-                <div className="space-y-3">
-                  {report.actions.map((action, index) => (
-                    <div key={action.id} className="flex gap-3 rounded-lg border border-line bg-white p-4">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-ink text-sm font-semibold text-white">
-                        {index + 1}
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-ink">{action.title}</p>
-                        <p className="mt-1 text-sm leading-6 text-zinc-700">{action.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SectionCard>
-            </div>
-          </div>
-
-          <div className="grid gap-4 xl:grid-cols-2">
-            <SectionCard
-              eyebrow="AI Design"
-              title="AI设计与工具动态"
-              description="把工具看作作品集和情报整理的辅助流程，而不是最终答案。"
-              action={<Bot className="text-signal" size={24} />}
-            >
-              <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
-                {report.aiTools.map((item) => (
-                  <InsightCard key={item.id} item={item} compact />
-                ))}
-              </div>
-            </SectionCard>
-
-            <SectionCard
-              eyebrow="Hardware Watch"
-              title="智能硬件 / 机器人 / 清洁电器观察"
-              description="从产品系统、状态表达和维护路径里找作品集切入点。"
-              action={<Radar className="text-copper" size={24} />}
-            >
-              <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
-                {report.hardwareObservation.map((item) => (
-                  <InsightCard key={item.id} item={item} compact />
-                ))}
-              </div>
-            </SectionCard>
-          </div>
-
           <SectionCard
             eyebrow="Best Matched"
-            title="今日优先关注岗位"
-            description="首页先展示前 5 个高匹配机会，完整筛选在招聘区块里。"
+            title="高匹配岗位"
+            description="按目标公司、城市优先级、方向相关度、经验匹配和来源质量综合排序。"
             action={<Sparkles className="text-signal" size={24} />}
           >
             <div className="grid gap-3 lg:grid-cols-5">
@@ -442,14 +414,110 @@ function App() {
             </div>
           </SectionCard>
 
-          <JobsSection jobs={report.jobs} searchQuery={searchQuery} />
-          <TrendsSection trends={report.trends} />
+          <JobsSection jobs={jobOpportunities} searchQuery={searchQuery} />
+
+          <SectionCard
+            eyebrow="Design Hotspots"
+            title="设计热点"
+            description="只保留与产品设计强相关的趋势、案例、CMF、3C、AI硬件、机器人、家电和设计奖项信息。"
+            action={<Radar className="text-copper" size={24} />}
+          >
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {designHotspots.map((item) => (
+                <article key={item.id} className="rounded-lg border border-line bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-tight">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <span className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-semibold text-zinc-600">
+                        {item.category}
+                      </span>
+                      <h3 className="mt-3 text-base font-semibold leading-snug text-ink">{item.title}</h3>
+                    </div>
+                    <span className="shrink-0 rounded-md bg-signal/10 px-2 py-1 text-xs font-semibold text-signal">
+                      {item.relevanceScore}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-zinc-600">{item.summary}</p>
+                  <p className="mt-3 text-sm leading-6 text-zinc-500">设计启发：{item.designInsight}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {item.tags.slice(0, 5).map((tag) => (
+                      <span key={tag} className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500">
+                        {tag}
+                      </span>
+                    ))}
+                    {item.sourceQualityScore >= 85 && (
+                      <span className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">高可信</span>
+                    )}
+                  </div>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50"
+                  >
+                    原始链接
+                    <ExternalLink size={15} />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </SectionCard>
+
+          <SectionCard
+            eyebrow="Company Updates"
+            title="公司动态"
+            description="只保留目标公司中与产品设计、招聘、校招、新品发布、设计团队相关的动态。"
+          >
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              {companyUpdates.map((item) => (
+                <article key={item.id} className="rounded-lg border border-line bg-white p-4">
+                  <span className="rounded-md bg-signal/10 px-2 py-1 text-xs font-semibold text-signal">
+                    {item.company}
+                  </span>
+                  <h3 className="mt-3 text-base font-semibold leading-snug text-ink">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-zinc-600">{item.summary}</p>
+                  <p className="mt-3 text-sm leading-6 text-zinc-500">设计关联：{item.designRelation}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {item.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50"
+                  >
+                    原始链接
+                    <ExternalLink size={15} />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </SectionCard>
+
+          <SectionCard eyebrow="Next Actions" title="今日求职与作品集行动">
+            <div className="grid gap-3 md:grid-cols-3">
+              {report.actions.map((action, index) => (
+                <div key={action.id} className="flex gap-3 rounded-lg border border-line bg-white p-4">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-ink text-sm font-semibold text-white">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-ink">{action.title}</p>
+                    <p className="mt-1 text-sm leading-6 text-zinc-700">{action.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SectionCard>
 
           <footer className="rounded-lg border border-line bg-white/70 px-4 py-5 text-sm leading-6 text-zinc-500">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <span className="inline-flex items-center gap-2">
                 <Lightbulb size={16} />
-                当前为静态 JSON 数据结构版，后续可接入定时抓取、日报归档和真实原始链接。
+                当前日报聚焦工业设计求职机会与产品设计热点，每天北京时间 7:30 自动更新。
               </span>
               <span>{report.title}</span>
             </div>

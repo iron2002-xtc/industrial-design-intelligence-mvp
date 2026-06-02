@@ -17,11 +17,11 @@ REQUIRED_REPORT_KEYS = [
     "sourceCount",
     "totalItems",
     "dataMode",
-    "topNews",
-    "trends",
-    "aiTools",
-    "hardwareObservation",
-    "jobs",
+    "qualitySummary",
+    "jobOpportunities",
+    "highMatchJobs",
+    "designHotspots",
+    "companyUpdates",
     "actions",
 ]
 REQUIRED_INDEX_KEYS = [
@@ -55,7 +55,7 @@ def require_keys(name: str, data: dict[str, Any], keys: list[str], errors: list[
 
 def validate_report(report: dict[str, Any], report_name: str, errors: list[str]) -> None:
     require_keys(report_name, report, REQUIRED_REPORT_KEYS, errors)
-    for key in ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions"]:
+    for key in ["jobOpportunities", "highMatchJobs", "designHotspots", "companyUpdates", "actions"]:
         if key in report and not isinstance(report[key], list):
             errors.append(f"{report_name}.{key} must be a list")
 
@@ -71,15 +71,26 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
     if "collectionStatus" in report and report.get("collectionStatus") not in {"success", "partial", "fallback"}:
         errors.append(f"{report_name}.collectionStatus must be success, partial, or fallback")
 
-    if all(key in report for key in ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions", "totalItems"]):
+    if all(key in report for key in ["jobOpportunities", "designHotspots", "companyUpdates", "actions", "totalItems"]):
         expected_total = sum(
             len(report[key])
-            for key in ["topNews", "trends", "aiTools", "hardwareObservation", "jobs", "actions"]
+            for key in ["jobOpportunities", "designHotspots", "companyUpdates", "actions"]
         )
         if report["totalItems"] != expected_total:
             errors.append(
                 f"{report_name}.totalItems is {report['totalItems']}, expected {expected_total}"
             )
+
+    for action in report.get("actions", []):
+        action_text = f"{action.get('title', '')} {action.get('description', '')} {' '.join(action.get('keywords', []))}"
+        if "小红书" in action_text:
+            errors.append(f"{report_name}.actions must not contain 小红书 content")
+
+    for key in ["jobOpportunities", "highMatchJobs", "designHotspots", "companyUpdates"]:
+        for item_index, item in enumerate(report.get(key, [])):
+            item_text = json.dumps(item, ensure_ascii=False)
+            if "小红书" in item_text or "社交媒体" in item_text:
+                errors.append(f"{report_name}.{key}[{item_index}] contains removed social-media content")
 
 
 def validate_data_dir(data_dir: Path, errors: list[str], mirror_label: str = "") -> None:
@@ -125,13 +136,16 @@ def validate_data_dir(data_dir: Path, errors: list[str], mirror_label: str = "")
                 errors.append(
                     f"{mirror_label}reports/{item['date']}.json has date {report.get('date')}"
                 )
-            if len(report.get("topNews", [])) != item.get("newsCount"):
-                errors.append(f"{mirror_label}{item['date']} newsCount does not match topNews length")
-            if len(report.get("jobs", [])) != item.get("jobsCount"):
-                errors.append(f"{mirror_label}{item['date']} jobsCount does not match jobs length")
-            if len(report.get("trends", [])) != item.get("trendsCount"):
-                errors.append(f"{mirror_label}{item['date']} trendsCount does not match trends length")
-            high_match_count = len([job for job in report.get("jobs", []) if job.get("matchScore", 0) >= 90])
+            jobs = report.get("jobOpportunities", report.get("jobs", []))
+            hotspots = report.get("designHotspots", report.get("trends", []))
+            high_match_jobs = report.get("highMatchJobs") or [job for job in jobs if job.get("matchScore", 0) >= 90]
+            if len(hotspots) != item.get("newsCount"):
+                errors.append(f"{mirror_label}{item['date']} newsCount does not match designHotspots length")
+            if len(jobs) != item.get("jobsCount"):
+                errors.append(f"{mirror_label}{item['date']} jobsCount does not match jobOpportunities length")
+            if len(hotspots) != item.get("trendsCount"):
+                errors.append(f"{mirror_label}{item['date']} trendsCount does not match designHotspots length")
+            high_match_count = len(high_match_jobs)
             if high_match_count != item.get("highMatchJobsCount"):
                 errors.append(f"{mirror_label}{item['date']} highMatchJobsCount does not match jobs data")
 

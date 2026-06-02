@@ -30,11 +30,16 @@ export type JobItem = {
   city: string;
   direction: string;
   experience: string;
+  jobType?: string;
   matchScore: number;
+  sourceQualityScore?: number;
+  relevanceScore?: number;
   reason: string;
+  requirementsSummary?: string;
   url: string;
   date: string;
-  keywords: string[];
+  keywords?: string[];
+  tags?: string[];
 };
 
 export type ReportAction = {
@@ -43,6 +48,35 @@ export type ReportAction = {
   description: string;
   priority: "high" | "medium" | "low";
   keywords: string[];
+};
+
+export type DesignHotspotItem = {
+  id: string;
+  title: string;
+  summary: string;
+  source: string;
+  category: string;
+  url: string;
+  date: string;
+  importanceScore: number;
+  sourceQualityScore: number;
+  relevanceScore: number;
+  designInsight: string;
+  relatedCompanies: string[];
+  tags: string[];
+};
+
+export type CompanyUpdateItem = {
+  id: string;
+  company: string;
+  title: string;
+  summary: string;
+  category: string;
+  url: string;
+  date: string;
+  relevanceScore: number;
+  designRelation: string;
+  tags: string[];
 };
 
 export type DailyReport = {
@@ -55,12 +89,17 @@ export type DailyReport = {
   dataMode?: "Real" | "Fallback" | "Mock";
   collectionStatus?: "success" | "partial" | "fallback";
   statusMessage?: string;
-  topNews: NewsItem[];
-  trends: TrendItem[];
-  aiTools: NewsItem[];
-  hardwareObservation: NewsItem[];
-  jobs: JobItem[];
+  qualitySummary?: string;
+  jobOpportunities?: JobItem[];
+  highMatchJobs?: JobItem[];
+  designHotspots?: DesignHotspotItem[];
+  companyUpdates?: CompanyUpdateItem[];
   actions: ReportAction[];
+  topNews?: NewsItem[];
+  trends?: TrendItem[];
+  aiTools?: NewsItem[];
+  hardwareObservation?: NewsItem[];
+  jobs?: JobItem[];
 };
 
 export type ReportIndexItem = {

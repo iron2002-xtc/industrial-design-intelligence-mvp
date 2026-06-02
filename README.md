@@ -1,12 +1,12 @@
-# 工业设计情报站 MVP
+# 工业设计求职与设计热点日报
 
-这是一个面向工业设计学生/设计师的本地 Dashboard 原型，聚合工业设计新闻、设计趋势、AI 工具动态、智能硬件/机器人/清洁电器观察、招聘机会和每日行动建议。
+这是一个面向工业设计学生/设计师的日报 Dashboard，当前定位已经收敛为“工业设计求职 + 设计热点”。它每天自动整理工业设计相关岗位、目标公司动态、产品设计热点、CMF、3C、智能硬件、AI硬件、机器人、家电、清洁电器、影像设备、可穿戴和设计奖项案例。
 
-当前版本仍使用 mock 数据，但已经改造成适合后续自动更新和静态部署的数据结构：
+当前版本是半真实自动更新版本：
 
 - `data/`：项目根目录下的 canonical JSON 数据，适合 GitHub Actions 生成并提交。
-- `public/data/`：前端静态读取的数据镜像，Vite/Vercel 会以 `/data/...` 路径提供。
-- `scripts/`：生成 mock 数据和校验数据结构的 Python 脚本。
+- `public/data/`：前端静态读取的数据镜像，GitHub Pages 会以 `/data/...` 路径提供。
+- `scripts/`：公开来源采集、日报整理、数据校验和 fallback 逻辑。
 
 ## 本地运行
 
@@ -61,7 +61,7 @@ py -3 scripts/generate_mock_data.py
 
 ## 手动更新半真实数据
 
-当前版本会优先收集公开 RSS、公开网页、公司官网招聘页和少量公开搜索结果；如果某些来源失败，会记录日志并使用备用数据，保证页面不崩。
+当前版本会优先收集公开 RSS、公开网页、公司官网招聘页和少量公开搜索结果；如果某些来源失败，会记录日志并使用备用数据，保证页面不崩。生成内容只保留求职机会、设计热点、公司动态和作品集/求职行动建议。
 
 先安装 Python 依赖：
 
@@ -120,8 +120,9 @@ py -3 scripts/validate_data.py
 - `latest.json` 是否存在且 JSON 合法。
 - `reportsIndex.json` 是否存在且包含历史日报索引。
 - `latest.json` 是否与索引中最新日期一致。
-- 每个 report 是否包含 `topNews`、`trends`、`aiTools`、`hardwareObservation`、`jobs`、`actions`。
+- 每个 report 是否包含 `jobOpportunities`、`highMatchJobs`、`designHotspots`、`companyUpdates`、`actions`。
 - `newsCount`、`jobsCount`、`trendsCount`、`highMatchJobsCount` 是否与日报内容一致。
+- 日报展示字段中不包含已移除的社交媒体选题内容。
 
 ## Build
 
@@ -147,14 +148,56 @@ GITHUB_PAGES=true npm run build
 - `title`
 - `summary`
 - `generatedAt`
+- `dataMode`
 - `sourceCount`
 - `totalItems`
-- `topNews`
-- `trends`
-- `aiTools`
-- `hardwareObservation`
-- `jobs`
+- `qualitySummary`
+- `jobOpportunities`
+- `highMatchJobs`
+- `designHotspots`
+- `companyUpdates`
 - `actions`
+
+为了兼容历史页面和旧数据，JSON 中可能仍保留 `topNews`、`trends`、`jobs` 等镜像字段，但页面展示以新结构为主。
+
+### 配置位置
+
+城市优先级、目标公司、招聘关键词和设计热点关键词都在：
+
+```text
+scripts/sources.yaml
+```
+
+修改城市优先级：
+
+- `city_priority.first`
+- `city_priority.second`
+- `city_priority.third`
+
+修改目标公司：
+
+- `target_companies.domestic`
+- `target_companies.global`
+- `company_careers`
+
+修改招聘关键词：
+
+- `keywords.job_core`
+- `keywords.job_industries`
+- `job_search_queries.queries`
+
+修改设计热点关键词：
+
+- `keywords.hotspot_core`
+- `hotspot_search_queries.queries`
+
+改完后运行：
+
+```bash
+npm run update:data
+npm run validate:data
+npm run build
+```
 
 `ReportIndexItem` 包含：
 
@@ -170,7 +213,7 @@ GITHUB_PAGES=true npm run build
 
 下一步可以把 `scripts/generate_mock_data.py` 替换或扩展为真实数据管线：
 
-1. 新增数据源配置，例如设计媒体 RSS、目标公司招聘页、公开岗位聚合页、手动维护的小红书选题源。
+1. 新增数据源配置，例如设计媒体 RSS、目标公司招聘页、公开岗位聚合页和目标公司产品动态源。
 2. 抓取后做清洗、去重、分类、关键词提取和匹配度评分。
 3. 生成同样结构的 `DailyReport` JSON。
 4. 保留 `validate_data.py` 作为 CI 质量门槛。
