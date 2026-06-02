@@ -95,6 +95,82 @@ npm run update:data
 
 没有 `OPENAI_API_KEY` 也可以运行，会自动使用规则摘要和备用总结。
 
+## 数据质量与岗位真实性
+
+岗位会同时给出 `matchScore` 和 `confidenceScore`：
+
+- `matchScore`：岗位与目标公司、城市、方向、经验要求的匹配度。
+- `confidenceScore`：岗位真实性/来源可信度，越高越说明原始页面更可验证。
+
+岗位真实性字段：
+
+- `verified`：官网或详情页中能看到岗位名称、公司和城市，可作为优先投递对象。
+- `likely`：正规招聘平台或可打开详情页中能看到较明确岗位信息，建议重点核对。
+- `unverified`：搜索结果或官网入口线索，无法确认完整岗位详情，只放在待核实区。
+- `fallback`：备用数据或 mock 补充内容，不作为真实投递依据。
+
+来源类型：
+
+- `official`：公司官网招聘页或官方招聘入口。
+- `job_board`：正规招聘平台。
+- `search_result`：搜索结果线索。
+- `media`：媒体或公开内容。
+- `fallback`：备用数据。
+
+高匹配岗位必须同时满足：
+
+```text
+matchScore >= 85
+confidenceScore >= 75
+verificationStatus = verified 或 likely
+```
+
+搜索结果来源不能直接进入高匹配岗位。只有当脚本成功打开搜索结果指向的具体详情页，并提取到岗位、公司、城市等证据后，才可能被标记为 `likely`。
+
+匹配分会按真实性系数折算：
+
+- `verified`：乘以 `1.00`
+- `likely`：乘以 `0.85`
+- `unverified`：乘以 `0.60`
+- `fallback`：乘以 `0.45`
+
+并且：
+
+- `unverified` 最高不超过 80 分。
+- `fallback` 最高不超过 65 分。
+- `fallback` 的 `confidenceScore` 不高于 50。
+
+设计热点也会做质量过滤：
+
+- 不把 Bing/搜索结果页本身当热点。
+- 搜索结果必须能打开具体文章、产品或案例页才可能进入日报。
+- `relevanceScore < 70` 或 `confidenceScore < 65` 的真实热点会被过滤。
+- 宁可热点更少，也不塞泛泛内容。
+
+每日 JSON 中的 `qualityReport` 会记录：
+
+- 收集总数、去重后数量、质量过滤后数量。
+- verified / likely / unverified / fallback 岗位数量。
+- 官网来源岗位数量。
+- 被过滤的泛搜索结果数量。
+- 失败来源列表。
+- 每家公司官网抓取状态。
+
+新增公司官网招聘源：
+
+1. 打开 `scripts/sources.yaml`。
+2. 在 `company_careers` 下新增公司。
+3. 填写 `company`、`city`、`direction`、`experience`、`url`、`keywords`。
+4. 运行 `npm run update:data`。
+5. 运行 `npm run validate:data`。
+
+公司官网抓取状态含义：
+
+- `success`：官网页面可访问，并命中岗位关键词。
+- `no_matching_jobs`：官网页面可访问，但没有命中工业设计/产品设计/CMF 等岗位关键词。
+- `blocked_or_failed`：官网页面访问失败、超时或被拦截。
+- `not_configured`：目标公司暂未配置抓取入口。
+
 ## 校验数据
 
 Mac：

@@ -41,6 +41,11 @@ const dataModeLabel: Record<NonNullable<DailyReport["dataMode"]>, string> = {
   Mock: "Mock",
 };
 
+const isTrustedHighMatchJob = (job: { matchScore: number; confidenceScore?: number; verificationStatus?: string }) =>
+  job.matchScore >= 85 &&
+  (job.confidenceScore ?? 0) >= 75 &&
+  (job.verificationStatus === "verified" || job.verificationStatus === "likely");
+
 const legacyNewsToHotspot = (item: NewsItem): DesignHotspotItem => ({
   id: item.id,
   title: item.title,
@@ -144,7 +149,7 @@ function App() {
 
   const report = activeDate ? reportsByDate[activeDate] : undefined;
   const jobOpportunities = report?.jobOpportunities ?? report?.jobs ?? [];
-  const highMatchJobs = report?.highMatchJobs ?? jobOpportunities.filter((job) => job.matchScore >= 90);
+  const highMatchJobs = (report?.highMatchJobs ?? jobOpportunities.filter(isTrustedHighMatchJob)).filter(isTrustedHighMatchJob);
   const designHotspots =
     report?.designHotspots ??
     [
@@ -154,8 +159,8 @@ function App() {
   const companyUpdates: CompanyUpdateItem[] = report?.companyUpdates ?? [];
   const highQualitySourceCount = new Set(
     [
-      ...jobOpportunities.filter((item) => (item.sourceQualityScore ?? 0) >= 85).map((item) => item.company),
-      ...designHotspots.filter((item) => item.sourceQualityScore >= 85).map((item) => item.source),
+      ...jobOpportunities.filter((item) => (item.confidenceScore ?? 0) >= 75).map((item) => item.company),
+      ...designHotspots.filter((item) => (item.confidenceScore ?? item.sourceQualityScore) >= 75).map((item) => item.source),
       ...companyUpdates.filter((item) => item.relevanceScore >= 80).map((item) => item.company),
     ],
   ).size;
@@ -255,6 +260,14 @@ function App() {
                       {report.statusMessage || "今日部分数据抓取失败，已使用备用数据。"}
                     </div>
                   )}
+                  {report.qualityReport && (
+                    <p className="mt-3 text-sm leading-6 text-zinc-500">
+                      今日收集 {report.qualityReport.totalCollected} 条，过滤{" "}
+                      {Math.max(0, report.qualityReport.totalCollected - report.qualityReport.afterQualityFilter)} 条，
+                      官网/高可信岗位 {report.qualityReport.verifiedJobsCount + report.qualityReport.likelyJobsCount} 个，
+                      待核实岗位 {report.qualityReport.unverifiedJobsCount} 个。
+                    </p>
+                  )}
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-[180px_minmax(260px,420px)]">
@@ -305,7 +318,7 @@ function App() {
               <MetricCard
                 label="高匹配岗位数"
                 value={highMatchJobs.length}
-                helper="匹配度 90+，建议优先核对原始链接"
+                helper="必须满足 match 85+、confidence 75+、verified/likely"
                 icon={<Target size={20} />}
                 tone="green"
               />
@@ -319,7 +332,7 @@ function App() {
               <MetricCard
                 label="高可信来源数"
                 value={highQualitySourceCount}
-                helper="官网来源、设计媒体、目标公司动态优先"
+                helper={report.qualitySummary ?? "过滤低质量搜索结果后保留"}
                 icon={<Database size={20} />}
                 tone="plum"
               />
@@ -412,6 +425,11 @@ function App() {
                 </a>
               ))}
             </div>
+            {topJobs.length === 0 && (
+              <div className="rounded-lg border border-dashed border-line bg-zinc-50 px-4 py-8 text-center text-sm text-zinc-500">
+                今天没有通过真实性校验的高匹配岗位。可以先查看下方“待核实岗位”，但不要直接按高匹配优先级投递。
+              </div>
+            )}
           </SectionCard>
 
           <JobsSection jobs={jobOpportunities} searchQuery={searchQuery} />
@@ -437,7 +455,19 @@ function App() {
                     </span>
                   </div>
                   <p className="mt-3 text-sm leading-6 text-zinc-600">{item.summary}</p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-500">设计启发：{item.designInsight}</p>
+                  <div className="mt-3 grid gap-2 text-xs font-medium text-zinc-500 sm:grid-cols-2">
+                    <span className="rounded-md bg-zinc-50 px-2 py-1">产品类别：{item.productCategory ?? item.category}</span>
+                    <span className="rounded-md bg-zinc-50 px-2 py-1">相关品牌：{item.relatedBrand || item.relatedCompanies.join("、") || item.source}</span>
+                    <span className="rounded-md bg-zinc-50 px-2 py-1">来源可信度：{item.confidenceScore ?? item.sourceQualityScore}</span>
+                    <span className="rounded-md bg-zinc-50 px-2 py-1">相关度：{item.relevanceScore}</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-zinc-500">
+                    设计相关性：{item.designRelevanceReason ?? item.designInsight}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-zinc-500">设计启发：{item.designInsight}</p>
+                  {item.evidenceText && (
+                    <p className="mt-2 text-xs leading-5 text-zinc-400">证据片段：{item.evidenceText}</p>
+                  )}
                   <div className="mt-3 flex flex-wrap gap-2">
                     {item.tags.slice(0, 5).map((tag) => (
                       <span key={tag} className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500">

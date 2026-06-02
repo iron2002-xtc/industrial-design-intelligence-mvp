@@ -487,7 +487,7 @@
       "city": "苏州",
       "direction": "机器人",
       "experience": "校招 / 1-3 年",
-      "matchScore": 95,
+      "matchScore": 80,
       "reason": "机器人方向明确，适合用服务场景、灯语、结构维护和产品家居化表达。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.ecovacs.cn/careers",
       "date": "2026-05-28",
@@ -508,7 +508,14 @@
         "机器人",
         "服务机器人",
         "清洁"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.ecovacs.cn/careers",
+      "originalUrl": "https://www.ecovacs.cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-9",
@@ -517,7 +524,7 @@
       "city": "上海",
       "direction": "机器人",
       "experience": "1-3 年",
-      "matchScore": 92,
+      "matchScore": 80,
       "reason": "清洁机器人与家庭服务机器人经验可迁移，适合强调落地和可靠性。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://cn.roborock.com/pages/join-us",
       "date": "2026-05-28",
@@ -538,7 +545,14 @@
         "机器人",
         "清洁电器",
         "工业设计"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://cn.roborock.com/pages/join-us",
+      "originalUrl": "https://cn.roborock.com/pages/join-us",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-4",
@@ -547,7 +561,7 @@
       "city": "深圳",
       "direction": "CMF",
       "experience": "实习",
-      "matchScore": 89,
+      "matchScore": 80,
       "reason": "适合用材质趋势、色彩策略、工艺边界和触感样本提升作品集辨识度。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://careers.oppo.com/",
       "date": "2026-05-28",
@@ -570,7 +584,14 @@
         "色彩",
         "材料",
         "工艺"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://careers.oppo.com/",
+      "originalUrl": "https://careers.oppo.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-3",
@@ -579,7 +600,7 @@
       "city": "上海",
       "direction": "智能硬件",
       "experience": "校招 / 1-3 年",
-      "matchScore": 88,
+      "matchScore": 80,
       "reason": "产品覆盖 IoT 与生活方式硬件，适合用系统化项目叙事打动筛选者。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://hr.xiaomi.com/",
       "date": "2026-05-28",
@@ -600,7 +621,14 @@
         "IoT",
         "智能硬件",
         "生态链"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://hr.xiaomi.com/",
+      "originalUrl": "https://hr.xiaomi.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-11",
@@ -609,7 +637,7 @@
       "city": "广州",
       "direction": "家电",
       "experience": "校招 / 1-3 年",
-      "matchScore": 87,
+      "matchScore": 80,
       "reason": "家电品类丰富，作品集可突出人机交互、状态反馈和家庭场景洞察。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://careers.midea.com/",
       "date": "2026-05-28",
@@ -630,7 +658,14 @@
         "家电",
         "生活电器",
         "交互"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://careers.midea.com/",
+      "originalUrl": "https://careers.midea.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-14",
@@ -639,7 +674,7 @@
       "city": "杭州",
       "direction": "机器人",
       "experience": "校招 / 1-3 年",
-      "matchScore": 87,
+      "matchScore": 80,
       "reason": "机器人硬件辨识度强，适合展示机械结构理解和未来感形态控制。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.unitree.com/cn/about/careers",
       "date": "2026-05-28",
@@ -660,7 +695,14 @@
         "机器人",
         "外观设计",
         "智能硬件"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.unitree.com/cn/about/careers",
+      "originalUrl": "https://www.unitree.com/cn/about/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-8",
@@ -669,7 +711,7 @@
       "city": "苏州",
       "direction": "清洁电器",
       "experience": "校招 / 1-3 年",
-      "matchScore": 83,
+      "matchScore": 80,
       "reason": "品类与作品集方向匹配，重点准备结构爆炸、维护动线和 CMF 说明。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.dreame.tech/cn/careers",
       "date": "2026-05-28",
@@ -690,7 +732,14 @@
         "清洁电器",
         "扫地机",
         "洗地机"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.dreame.tech/cn/careers",
+      "originalUrl": "https://www.dreame.tech/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-1",
@@ -699,7 +748,7 @@
       "city": "深圳",
       "direction": "智能硬件",
       "experience": "实习 / 校招",
-      "matchScore": 82,
+      "matchScore": 80,
       "reason": "硬件产品线完整，适合展示结构理解、CMF 判断和高质量建模表达。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.dji.com/cn/careers",
       "date": "2026-05-28",
@@ -722,7 +771,14 @@
         "智能硬件",
         "工业设计",
         "作品集"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.dji.com/cn/careers",
+      "originalUrl": "https://www.dji.com/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-10",
@@ -731,7 +787,7 @@
       "city": "广州",
       "direction": "家电",
       "experience": "校招",
-      "matchScore": 82,
+      "matchScore": 80,
       "reason": "适合展示家电控制界面、CMF 家居化和多产品系列语言。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://campus.tcl.com/",
       "date": "2026-05-28",
@@ -752,7 +808,14 @@
         "家电",
         "工业设计",
         "CMF"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://campus.tcl.com/",
+      "originalUrl": "https://campus.tcl.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-13",
@@ -761,7 +824,7 @@
       "city": "南京",
       "direction": "CMF",
       "experience": "校招",
-      "matchScore": 82,
+      "matchScore": 80,
       "reason": "适合把材质、色彩与家居环境结合，补足作品集的趋势判断层。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://maker.haier.net/client/join",
       "date": "2026-05-28",
@@ -782,7 +845,14 @@
         "家电",
         "CMF",
         "智慧家庭"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://maker.haier.net/client/join",
+      "originalUrl": "https://maker.haier.net/client/join",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-6",
@@ -791,7 +861,7 @@
       "city": "深圳",
       "direction": "3C",
       "experience": "1-3 年",
-      "matchScore": 81,
+      "matchScore": 80,
       "reason": "影像设备强调便携、模块化和户外可靠性，适合展示细节推敲能力。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.insta360.com/cn/careers",
       "date": "2026-05-28",
@@ -814,7 +884,14 @@
         "相机",
         "3C",
         "运动影像"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.insta360.com/cn/careers",
+      "originalUrl": "https://www.insta360.com/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-2",
@@ -846,7 +923,14 @@
         "终端",
         "穿戴",
         "CMF"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "originalUrl": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-7",
@@ -876,7 +960,14 @@
         "清洁电器",
         "机器人",
         "基站"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.narwal.com/cn/careers",
+      "originalUrl": "https://www.narwal.com/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-5",
@@ -906,7 +997,14 @@
         "3C",
         "手机",
         "工业设计"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://hr.vivo.com/",
+      "originalUrl": "https://hr.vivo.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     }
   ],
   "actions": [
@@ -944,7 +1042,7 @@
       "city": "苏州",
       "direction": "机器人",
       "experience": "校招 / 1-3 年",
-      "matchScore": 95,
+      "matchScore": 80,
       "reason": "机器人方向明确，适合用服务场景、灯语、结构维护和产品家居化表达。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.ecovacs.cn/careers",
       "date": "2026-05-28",
@@ -965,7 +1063,14 @@
         "机器人",
         "服务机器人",
         "清洁"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.ecovacs.cn/careers",
+      "originalUrl": "https://www.ecovacs.cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-9",
@@ -974,7 +1079,7 @@
       "city": "上海",
       "direction": "机器人",
       "experience": "1-3 年",
-      "matchScore": 92,
+      "matchScore": 80,
       "reason": "清洁机器人与家庭服务机器人经验可迁移，适合强调落地和可靠性。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://cn.roborock.com/pages/join-us",
       "date": "2026-05-28",
@@ -995,7 +1100,14 @@
         "机器人",
         "清洁电器",
         "工业设计"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://cn.roborock.com/pages/join-us",
+      "originalUrl": "https://cn.roborock.com/pages/join-us",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-4",
@@ -1004,7 +1116,7 @@
       "city": "深圳",
       "direction": "CMF",
       "experience": "实习",
-      "matchScore": 89,
+      "matchScore": 80,
       "reason": "适合用材质趋势、色彩策略、工艺边界和触感样本提升作品集辨识度。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://careers.oppo.com/",
       "date": "2026-05-28",
@@ -1027,7 +1139,14 @@
         "色彩",
         "材料",
         "工艺"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://careers.oppo.com/",
+      "originalUrl": "https://careers.oppo.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-3",
@@ -1036,7 +1155,7 @@
       "city": "上海",
       "direction": "智能硬件",
       "experience": "校招 / 1-3 年",
-      "matchScore": 88,
+      "matchScore": 80,
       "reason": "产品覆盖 IoT 与生活方式硬件，适合用系统化项目叙事打动筛选者。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://hr.xiaomi.com/",
       "date": "2026-05-28",
@@ -1057,7 +1176,14 @@
         "IoT",
         "智能硬件",
         "生态链"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://hr.xiaomi.com/",
+      "originalUrl": "https://hr.xiaomi.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-11",
@@ -1066,7 +1192,7 @@
       "city": "广州",
       "direction": "家电",
       "experience": "校招 / 1-3 年",
-      "matchScore": 87,
+      "matchScore": 80,
       "reason": "家电品类丰富，作品集可突出人机交互、状态反馈和家庭场景洞察。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://careers.midea.com/",
       "date": "2026-05-28",
@@ -1087,7 +1213,14 @@
         "家电",
         "生活电器",
         "交互"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://careers.midea.com/",
+      "originalUrl": "https://careers.midea.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-14",
@@ -1096,7 +1229,7 @@
       "city": "杭州",
       "direction": "机器人",
       "experience": "校招 / 1-3 年",
-      "matchScore": 87,
+      "matchScore": 80,
       "reason": "机器人硬件辨识度强，适合展示机械结构理解和未来感形态控制。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.unitree.com/cn/about/careers",
       "date": "2026-05-28",
@@ -1117,7 +1250,14 @@
         "机器人",
         "外观设计",
         "智能硬件"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.unitree.com/cn/about/careers",
+      "originalUrl": "https://www.unitree.com/cn/about/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-8",
@@ -1126,7 +1266,7 @@
       "city": "苏州",
       "direction": "清洁电器",
       "experience": "校招 / 1-3 年",
-      "matchScore": 83,
+      "matchScore": 80,
       "reason": "品类与作品集方向匹配，重点准备结构爆炸、维护动线和 CMF 说明。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.dreame.tech/cn/careers",
       "date": "2026-05-28",
@@ -1147,7 +1287,14 @@
         "清洁电器",
         "扫地机",
         "洗地机"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.dreame.tech/cn/careers",
+      "originalUrl": "https://www.dreame.tech/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-1",
@@ -1156,7 +1303,7 @@
       "city": "深圳",
       "direction": "智能硬件",
       "experience": "实习 / 校招",
-      "matchScore": 82,
+      "matchScore": 80,
       "reason": "硬件产品线完整，适合展示结构理解、CMF 判断和高质量建模表达。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.dji.com/cn/careers",
       "date": "2026-05-28",
@@ -1179,7 +1326,14 @@
         "智能硬件",
         "工业设计",
         "作品集"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.dji.com/cn/careers",
+      "originalUrl": "https://www.dji.com/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-10",
@@ -1188,7 +1342,7 @@
       "city": "广州",
       "direction": "家电",
       "experience": "校招",
-      "matchScore": 82,
+      "matchScore": 80,
       "reason": "适合展示家电控制界面、CMF 家居化和多产品系列语言。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://campus.tcl.com/",
       "date": "2026-05-28",
@@ -1209,7 +1363,14 @@
         "家电",
         "工业设计",
         "CMF"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://campus.tcl.com/",
+      "originalUrl": "https://campus.tcl.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-13",
@@ -1218,7 +1379,7 @@
       "city": "南京",
       "direction": "CMF",
       "experience": "校招",
-      "matchScore": 82,
+      "matchScore": 80,
       "reason": "适合把材质、色彩与家居环境结合，补足作品集的趋势判断层。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://maker.haier.net/client/join",
       "date": "2026-05-28",
@@ -1239,7 +1400,14 @@
         "家电",
         "CMF",
         "智慧家庭"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://maker.haier.net/client/join",
+      "originalUrl": "https://maker.haier.net/client/join",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-6",
@@ -1248,7 +1416,7 @@
       "city": "深圳",
       "direction": "3C",
       "experience": "1-3 年",
-      "matchScore": 81,
+      "matchScore": 80,
       "reason": "影像设备强调便携、模块化和户外可靠性，适合展示细节推敲能力。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
       "url": "https://www.insta360.com/cn/careers",
       "date": "2026-05-28",
@@ -1271,7 +1439,14 @@
         "相机",
         "3C",
         "运动影像"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.insta360.com/cn/careers",
+      "originalUrl": "https://www.insta360.com/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-2",
@@ -1303,7 +1478,14 @@
         "终端",
         "穿戴",
         "CMF"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "originalUrl": "https://career.huawei.com/reccampportal/portal5/index.html",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-7",
@@ -1333,7 +1515,14 @@
         "清洁电器",
         "机器人",
         "基站"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://www.narwal.com/cn/careers",
+      "originalUrl": "https://www.narwal.com/cn/careers",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     },
     {
       "id": "2026-05-28-job-5",
@@ -1363,71 +1552,17 @@
         "3C",
         "手机",
         "工业设计"
-      ]
+      ],
+      "verificationStatus": "unverified",
+      "sourceType": "search_result",
+      "applyUrl": "https://hr.vivo.com/",
+      "originalUrl": "https://hr.vivo.com/",
+      "evidenceText": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
+      "lastCheckedAt": "2026-05-28",
+      "confidenceScore": 70
     }
   ],
-  "highMatchJobs": [
-    {
-      "id": "2026-05-28-job-12",
-      "company": "科沃斯",
-      "title": "服务机器人设计师",
-      "city": "苏州",
-      "direction": "机器人",
-      "experience": "校招 / 1-3 年",
-      "matchScore": 95,
-      "reason": "机器人方向明确，适合用服务场景、灯语、结构维护和产品家居化表达。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
-      "url": "https://www.ecovacs.cn/careers",
-      "date": "2026-05-28",
-      "keywords": [
-        "科沃斯",
-        "苏州",
-        "机器人",
-        "服务机器人",
-        "清洁"
-      ],
-      "jobType": "可跟进",
-      "sourceQualityScore": 70,
-      "relevanceScore": 95,
-      "requirementsSummary": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
-      "tags": [
-        "科沃斯",
-        "苏州",
-        "机器人",
-        "服务机器人",
-        "清洁"
-      ]
-    },
-    {
-      "id": "2026-05-28-job-9",
-      "company": "石头科技",
-      "title": "机器人产品工业设计",
-      "city": "上海",
-      "direction": "机器人",
-      "experience": "1-3 年",
-      "matchScore": 92,
-      "reason": "清洁机器人与家庭服务机器人经验可迁移，适合强调落地和可靠性。 今日信号：广州、上海家电与 CMF 岗位稳定；建议作品集重点回应“把交互层级画成可读的状态系统”。",
-      "url": "https://cn.roborock.com/pages/join-us",
-      "date": "2026-05-28",
-      "keywords": [
-        "石头科技",
-        "上海",
-        "机器人",
-        "清洁电器",
-        "工业设计"
-      ],
-      "jobType": "可跟进",
-      "sourceQualityScore": 70,
-      "relevanceScore": 92,
-      "requirementsSummary": "请打开原始链接核对岗位职责、经验要求和作品集要求。",
-      "tags": [
-        "石头科技",
-        "上海",
-        "机器人",
-        "清洁电器",
-        "工业设计"
-      ]
-    }
-  ],
+  "highMatchJobs": [],
   "designHotspots": [
     {
       "id": "2026-05-28-news-1",
@@ -1450,7 +1585,13 @@
         "智能硬件",
         "使用理由",
         "交互入口"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "作品集不只放效果图，要说明为什么用户会持续佩戴、拿起或复用这个产品。",
+      "productCategory": "AI硬件",
+      "relatedBrand": "",
+      "isGenericSearchResult": false,
+      "evidenceText": "从概念展示转向日常入口，核心矛盾集中在 屏幕、旋钮、灯效和物理反馈的取舍。"
     },
     {
       "id": "2026-05-28-news-2",
@@ -1474,7 +1615,13 @@
         "城市",
         "作品集",
         "工业设计"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "投递前把项目页的前 20 秒阅读体验做好，先让 HR 和设计面试官看懂方向。",
+      "productCategory": "秋招",
+      "relatedBrand": "",
+      "isGenericSearchResult": false,
+      "evidenceText": "招聘描述里频繁出现结构理解、CMF、渲染表现、用户洞察和跨团队沟通。"
     },
     {
       "id": "2026-05-28-news-3",
@@ -1498,7 +1645,13 @@
         "维护",
         "家居",
         "机器人"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "可以把维护流程画成信息图，比单纯展示外观更能体现工业设计价值。",
+      "productCategory": "清洁电器",
+      "relatedBrand": "",
+      "isGenericSearchResult": false,
+      "evidenceText": "基站、耗材、污水路径和收纳体积成为用户评价里更具体的痛点。"
     },
     {
       "id": "2026-05-28-news-4",
@@ -1522,7 +1675,13 @@
         "工艺",
         "触感",
         "高级灰"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "把 CMF 写成策略：使用场景、耐脏要求、触点优先级和品牌气质。",
+      "productCategory": "CMF",
+      "relatedBrand": "",
+      "isGenericSearchResult": false,
+      "evidenceText": "高端产品不再只靠亮面金属，更多用微纹理、消光、亲肤和隐藏分缝建立品质感。"
     },
     {
       "id": "2026-05-28-trend-1",
@@ -1547,7 +1706,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "把趋势拆成用户场景、形态约束、CMF策略和交互入口，形成作品集可展示的一页。",
+      "productCategory": "AI硬件",
+      "relatedBrand": "大疆、云鲸、Insta360",
+      "isGenericSearchResult": false,
+      "evidenceText": "AI硬件的重点从“能不能做”转向“用户为什么每天愿意用”，屏幕、旋钮、灯效和物理反馈的取舍 是筛选好概念的关键。"
     },
     {
       "id": "2026-05-28-trend-2",
@@ -1572,7 +1737,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "用竞品矩阵记录品牌语言差异，避免只做审美描述。",
+      "productCategory": "3C产品",
+      "relatedBrand": "华为、追觅、TCL",
+      "isGenericSearchResult": false,
+      "evidenceText": "3C产品继续收紧视觉噪音，镜头模组、边框、按键和握持区域成为品牌识别重点。"
     },
     {
       "id": "2026-05-28-trend-3",
@@ -1597,7 +1768,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "把趋势拆成用户场景、形态约束、CMF策略和交互入口，形成作品集可展示的一页。",
+      "productCategory": "清洁电器",
+      "relatedBrand": "小米、石头科技、美的",
+      "isGenericSearchResult": false,
+      "evidenceText": "清洁电器的竞争点转向维护路径、基站尺度和家庭空间协调，而不是单一性能数字。"
     },
     {
       "id": "2026-05-28-trend-4",
@@ -1622,7 +1799,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "用竞品矩阵记录品牌语言差异，避免只做审美描述。",
+      "productCategory": "机器人",
+      "relatedBrand": "OPPO、科沃斯、海尔",
+      "isGenericSearchResult": false,
+      "evidenceText": "家庭机器人需要降低机械压迫感，用灯语、姿态和材质让用户快速理解状态。"
     },
     {
       "id": "2026-05-28-trend-5",
@@ -1647,7 +1830,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "把趋势拆成用户场景、形态约束、CMF策略和交互入口，形成作品集可展示的一页。",
+      "productCategory": "家电",
+      "relatedBrand": "大疆、云鲸、Insta360",
+      "isGenericSearchResult": false,
+      "evidenceText": "家电界面从大屏炫技回到安静反馈，旋钮、灯带和小面积屏幕形成更稳的状态系统。"
     },
     {
       "id": "2026-05-28-trend-6",
@@ -1672,7 +1861,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "用竞品矩阵记录品牌语言差异，避免只做审美描述。",
+      "productCategory": "CMF",
+      "relatedBrand": "华为、追觅、TCL",
+      "isGenericSearchResult": false,
+      "evidenceText": "低饱和色、微纹理、亲肤涂层和可持续材料会继续出现在高端硬件语言里。"
     },
     {
       "id": "2026-05-28-trend-7",
@@ -1697,7 +1892,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "把趋势拆成用户场景、形态约束、CMF策略和交互入口，形成作品集可展示的一页。",
+      "productCategory": "AI辅助设计工具",
+      "relatedBrand": "小米、石头科技、美的",
+      "isGenericSearchResult": false,
+      "evidenceText": "AI工具适合作为调研、草图、版式和 CMF moodboard 的辅助链路，但需要保留设计师判断。"
     },
     {
       "id": "2026-05-28-trend-8",
@@ -1722,7 +1923,13 @@
         "屏幕、旋钮、灯效和物理反馈的取舍",
         "把交互层级画成可读的状态系统",
         "广州、上海家电与 CMF 岗位稳定"
-      ]
+      ],
+      "confidenceScore": 60,
+      "designRelevanceReason": "用竞品矩阵记录品牌语言差异，避免只做审美描述。",
+      "productCategory": "工业设计作品集案例",
+      "relatedBrand": "OPPO、科沃斯、海尔",
+      "isGenericSearchResult": false,
+      "evidenceText": "把交互层级画成可读的状态系统，让项目第一页承担“问题、机会、方案价值”的快速筛选。"
     }
   ],
   "companyUpdates": [
@@ -1756,5 +1963,18 @@
         "可跟进"
       ]
     }
-  ]
+  ],
+  "qualityReport": {
+    "totalCollected": 0,
+    "afterDedup": 0,
+    "afterQualityFilter": 26,
+    "verifiedJobsCount": 0,
+    "likelyJobsCount": 0,
+    "unverifiedJobsCount": 14,
+    "fallbackJobsCount": 0,
+    "officialSourceJobsCount": 0,
+    "genericSearchResultsFiltered": 0,
+    "failedSources": [],
+    "companyCrawlStatus": []
+  }
 }

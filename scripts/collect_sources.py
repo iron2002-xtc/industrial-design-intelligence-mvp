@@ -7,11 +7,12 @@ import json
 import re
 import sys
 import time
+import base64
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote_plus
+from urllib.parse import parse_qs, quote_plus, unquote, urlparse
 
 import feedparser
 import requests
@@ -58,6 +59,45 @@ def clean_text(value: str | None, max_length: int = 320) -> str:
 def stable_id(*parts: str) -> str:
     raw = "|".join(parts)
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:12]
+
+
+def domain_name(url: str) -> str:
+    try:
+        host = urlparse(url).netloc.lower()
+        return host[4:] if host.startswith("www.") else host
+    except ValueError:
+        return ""
+
+
+def unwrap_bing_url(url: str) -> str:
+    parsed = urlparse(url)
+    if "bing.com" not in parsed.netloc:
+        return url
+    value = parse_qs(parsed.query).get("u", [""])[0]
+    if not value:
+        return url
+    if value.startswith("a1"):
+        value = value[2:]
+    try:
+        padding = "=" * (-len(value) % 4)
+        return base64.urlsafe_b64decode((value + padding).encode("utf-8")).decode("utf-8")
+    except (ValueError, UnicodeDecodeError):
+        return unquote(value)
+
+
+def extract_page_evidence(html: str, max_length: int = 520) -> tuple[str, str]:
+    soup = BeautifulSoup(html, "html.parser")
+    page_title = clean_text(soup.title.string if soup.title else "", 120)
+    meta = soup.find("meta", attrs={"name": "description"})
+    meta_text = clean_text(meta.get("content") if meta else "", 220)
+    body_text = clean_text(soup.get_text(" ", strip=True), max_length)
+    evidence = " ".join(part for part in [page_title, meta_text, body_text] if part)
+    return page_title, clean_text(evidence, max_length)
+
+
+def matching_terms(text: str, keywords: list[str]) -> list[str]:
+    lowered = text.lower()
+    return [keyword for keyword in keywords if keyword.lower() in lowered or keyword in text]
 
 
 def parse_date(value: str | None, fallback: str) -> str:
@@ -147,28 +187,48 @@ def collect_rss(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
 
 def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
+    company_statuses: list[dict[str, Any]] = ctx.config.setdefault("_company_statuses", [])
     job_keywords = [
         *ctx.config.get("keywords", {}).get("job_core", []),
         *ctx.config.get("keywords", {}).get("job_industries", []),
     ]
+    checked_at = datetime.now().astimezone().isoformat(timespec="seconds")
 
     for company in ctx.config.get("company_careers", []):
         response = request_url(ctx, company["url"])
         page_title = ""
         snippet = ""
-        status = "fallback"
+        status = "blocked_or_failed"
+        matched: list[str] = []
+        message = ""
 
         if response is not None:
-            soup = BeautifulSoup(response.text, "html.parser")
-            page_title = clean_text(soup.title.string if soup.title else "")
-            meta = soup.find("meta", attrs={"name": "description"})
-            snippet = clean_text(meta.get("content") if meta else soup.get_text(" ", strip=True), 420)
-            status = "checked"
-            ctx.logs.append(f"OK JOB {company['company']}: career page checked.")
+            page_title, snippet = extract_page_evidence(response.text)
+            actual_text = " ".join([page_title, snippet])
+            text = " ".join([actual_text, " ".join(company.get("keywords", []))])
+            matched = matching_terms(actual_text, job_keywords)
+            status = "success" if matched else "no_matching_jobs"
+            message = "matched job keywords" if matched else "career page reachable, no matching job keywords"
+            ctx.logs.append(f"OK COMPANY {company['company']}: {status}, matched {len(matched)} terms.")
         else:
-            ctx.logs.append(f"WARN JOB {company['company']}: using configured career URL only.")
+            message = "career page blocked, failed, or timed out"
+            ctx.logs.append(f"WARN COMPANY {company['company']}: blocked_or_failed.")
+
+        company_statuses.append(
+            {
+                "company": company["company"],
+                "status": status,
+                "sourceUrl": company["url"],
+                "checkedAt": checked_at,
+                "matchedCount": len(matched),
+                "evidenceText": snippet,
+                "message": message,
+            }
+        )
 
         text = " ".join([page_title, snippet, " ".join(company.get("keywords", []))])
+        if status == "blocked_or_failed":
+            continue
         items.append(
             {
                 "id": stable_id(company["company"], company["url"], today),
@@ -185,11 +245,34 @@ def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any
                 "experience": company["experience"],
                 "score": relevance_score(text, job_keywords) + 30,
                 "keywords": company.get("keywords", []),
+                "matchedTerms": matched,
+                "sourceType": "official",
                 "status": status,
+                "crawlStatus": status,
+                "evidenceText": snippet,
+                "lastCheckedAt": checked_at,
             }
         )
 
     return items
+
+
+def fetch_search_detail(ctx: CollectContext, url: str) -> dict[str, Any]:
+    response = request_url(ctx, url)
+    if response is None:
+        return {
+            "detailFetched": False,
+            "detailTitle": "",
+            "evidenceText": "",
+            "detailDomain": domain_name(url),
+        }
+    title, evidence = extract_page_evidence(response.text)
+    return {
+        "detailFetched": True,
+        "detailTitle": title,
+        "evidenceText": evidence,
+        "detailDomain": domain_name(url),
+    }
 
 
 def collect_bing_group(
@@ -218,7 +301,7 @@ def collect_bing_group(
             continue
 
         soup = BeautifulSoup(response.text, "html.parser")
-        result_nodes = soup.select("li.b_algo")[:2]
+        result_nodes = soup.select("li.b_algo")[:1]
         accepted = 0
 
         for node in result_nodes:
@@ -227,21 +310,27 @@ def collect_bing_group(
                 continue
             title = clean_text(link.get_text(" ", strip=True))
             snippet = clean_text(node.get_text(" ", strip=True), 300)
-            result_url = link["href"]
+            result_url = unwrap_bing_url(link["href"])
+            if "bing.com" in domain_name(result_url):
+                continue
             text = f"{query} {title} {snippet}"
+            detail = fetch_search_detail(ctx, result_url)
+            detail_text = f"{text} {detail.get('detailTitle', '')} {detail.get('evidenceText', '')}"
             items.append(
                 {
                     "id": stable_id(query, result_url, title),
                     "kind": kind,
-                    "title": title or query,
-                    "summary": snippet,
-                    "source": "Bing Search",
+                    "title": detail.get("detailTitle") or title or query,
+                    "summary": detail.get("evidenceText") or snippet,
+                    "source": detail.get("detailDomain") or "Bing Search",
                     "category": category,
                     "url": result_url,
                     "publishedDate": today,
                     "query": query,
-                    "score": relevance_score(text, keywords) + 16,
-                    "keywords": [query, *[keyword for keyword in keywords if keyword in text][:8]],
+                    "score": relevance_score(detail_text, keywords) + 16,
+                    "keywords": [query, *[keyword for keyword in keywords if keyword in detail_text][:8]],
+                    "sourceType": "search_result",
+                    **detail,
                 }
             )
             accepted += 1
@@ -283,6 +372,7 @@ def collect_sources(config_path: Path = DEFAULT_CONFIG, today: str | None = None
         "sourceCount": len(source_names),
         "items": items,
         "logs": ctx.logs,
+        "companyCrawlStatus": config.get("_company_statuses", []),
     }
 
 

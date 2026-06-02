@@ -16,6 +16,26 @@ const scoreOptions = [
   { label: "70+", value: 70 },
 ];
 
+const verificationLabel: Record<string, string> = {
+  verified: "官网可验证",
+  likely: "招聘平台",
+  unverified: "搜索待验证",
+  fallback: "备用数据",
+};
+
+const sourceTypeLabel: Record<string, string> = {
+  official: "官网来源",
+  job_board: "招聘平台",
+  search_result: "搜索来源",
+  media: "媒体来源",
+  fallback: "备用数据",
+};
+
+const isTrustedJob = (job: JobItem) =>
+  job.matchScore >= 85 &&
+  (job.confidenceScore ?? 0) >= 75 &&
+  (job.verificationStatus === "verified" || job.verificationStatus === "likely");
+
 function SelectField({
   label,
   value,
@@ -66,6 +86,9 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
             job.reason,
             job.jobType ?? "",
             job.requirementsSummary ?? "",
+            job.evidenceText ?? "",
+            job.verificationStatus ?? "",
+            job.sourceType ?? "",
             (job.tags ?? job.keywords ?? []).join(" "),
           ],
           searchQuery,
@@ -73,6 +96,8 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
       )
       .sort((a, b) => b.matchScore - a.matchScore);
   }, [city, direction, jobs, score, searchQuery]);
+  const trustedJobs = filteredJobs.filter((job) => job.verificationStatus === "verified" || job.verificationStatus === "likely");
+  const pendingJobs = filteredJobs.filter((job) => job.verificationStatus !== "verified" && job.verificationStatus !== "likely");
 
   return (
     <section className="card p-4 sm:p-5" id="jobs">
@@ -117,7 +142,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
       </div>
 
       <div className="mt-5 grid gap-3 lg:grid-cols-2">
-        {filteredJobs.map((job) => (
+        {trustedJobs.map((job) => (
           <article key={job.id} className="rounded-lg border border-line bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-tight">
             <div className="flex items-start justify-between gap-3">
               <div>
@@ -145,10 +170,27 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
               {typeof job.sourceQualityScore === "number" && job.sourceQualityScore >= 85 && (
                 <span className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">高可信</span>
               )}
+              <span className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">
+                {verificationLabel[job.verificationStatus ?? "unverified"]}
+              </span>
+              <span className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-600">
+                {sourceTypeLabel[job.sourceType ?? "search_result"]}
+              </span>
+              {isTrustedJob(job) && (
+                <span className="rounded-md bg-signal/10 px-2 py-1 text-xs font-medium text-signal">高匹配</span>
+              )}
+              {(job.confidenceScore ?? 0) >= 75 && (
+                <span className="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700">
+                  高可信 {job.confidenceScore}
+                </span>
+              )}
             </div>
             <p className="mt-4 text-sm leading-6 text-zinc-600">{job.reason}</p>
             {job.requirementsSummary && (
               <p className="mt-2 text-sm leading-6 text-zinc-500">要求概览：{job.requirementsSummary}</p>
+            )}
+            {job.evidenceText && (
+              <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">证据片段：{job.evidenceText}</p>
             )}
             {!!(job.tags ?? job.keywords)?.length && (
               <div className="mt-3 flex flex-wrap gap-2">
@@ -165,12 +207,65 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
               rel="noreferrer"
               className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50"
             >
-              原始链接
+              {job.sourceType === "official" ? "前往投递" : "查看岗位"}
               <ExternalLink size={15} />
             </a>
           </article>
         ))}
       </div>
+
+      {pendingJobs.length > 0 && (
+        <div className="mt-6">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <div>
+              <p className="label">To Verify</p>
+              <h3 className="mt-1 text-base font-semibold text-ink">待核实岗位</h3>
+            </div>
+            <span className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500">
+              {pendingJobs.length} 个
+            </span>
+          </div>
+          <div className="grid gap-3 lg:grid-cols-2">
+            {pendingJobs.map((job) => (
+              <article key={job.id} className="rounded-lg border border-dashed border-line bg-zinc-50 p-4 opacity-90">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold text-zinc-500">{job.company}</p>
+                    <h3 className="mt-1 text-base font-semibold leading-snug text-zinc-700">{job.title}</h3>
+                  </div>
+                  <div className="rounded-md bg-zinc-200 px-2.5 py-2 text-center text-zinc-700">
+                    <span className="block text-base font-semibold leading-none">{job.matchScore}</span>
+                    <span className="mt-1 block text-[10px] uppercase text-zinc-500">match</span>
+                  </div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">{job.city}</span>
+                  <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">{job.direction}</span>
+                  <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">
+                    {verificationLabel[job.verificationStatus ?? "unverified"]}
+                  </span>
+                  <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">
+                    可信度 {job.confidenceScore ?? 0}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-zinc-500">{job.reason}</p>
+                {job.evidenceText && (
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">证据片段：{job.evidenceText}</p>
+                )}
+                <a
+                  href={job.originalUrl || job.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line bg-white px-3 py-2 text-sm font-medium text-zinc-600 transition hover:border-zinc-300 hover:bg-zinc-50"
+                >
+                  查看来源
+                  <ExternalLink size={15} />
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
 
       {filteredJobs.length === 0 && (
         <div className="mt-5 rounded-lg border border-dashed border-line bg-zinc-50 px-4 py-8 text-center text-sm text-zinc-500">

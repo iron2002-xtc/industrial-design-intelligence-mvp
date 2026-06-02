@@ -18,6 +18,7 @@ REQUIRED_REPORT_KEYS = [
     "totalItems",
     "dataMode",
     "qualitySummary",
+    "qualityReport",
     "jobOpportunities",
     "highMatchJobs",
     "designHotspots",
@@ -32,6 +33,23 @@ REQUIRED_INDEX_KEYS = [
     "jobsCount",
     "trendsCount",
     "highMatchJobsCount",
+]
+REQUIRED_JOB_KEYS = [
+    "verificationStatus",
+    "sourceType",
+    "applyUrl",
+    "originalUrl",
+    "evidenceText",
+    "lastCheckedAt",
+    "confidenceScore",
+]
+REQUIRED_HOTSPOT_KEYS = [
+    "designRelevanceReason",
+    "productCategory",
+    "relatedBrand",
+    "isGenericSearchResult",
+    "evidenceText",
+    "confidenceScore",
 ]
 
 
@@ -81,6 +99,16 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
                 f"{report_name}.totalItems is {report['totalItems']}, expected {expected_total}"
             )
 
+    quality_report = report.get("qualityReport")
+    if not isinstance(quality_report, dict):
+        errors.append(f"{report_name}.qualityReport must be an object")
+        strict_quality = False
+    elif not isinstance(quality_report.get("companyCrawlStatus"), list):
+        errors.append(f"{report_name}.qualityReport.companyCrawlStatus must be a list")
+        strict_quality = quality_report.get("totalCollected", 0) > 0
+    else:
+        strict_quality = quality_report.get("totalCollected", 0) > 0
+
     for action in report.get("actions", []):
         action_text = f"{action.get('title', '')} {action.get('description', '')} {' '.join(action.get('keywords', []))}"
         if "小红书" in action_text:
@@ -91,6 +119,44 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
             item_text = json.dumps(item, ensure_ascii=False)
             if "小红书" in item_text or "社交媒体" in item_text:
                 errors.append(f"{report_name}.{key}[{item_index}] contains removed social-media content")
+
+    for item_index, job in enumerate(report.get("jobOpportunities", [])):
+        if not isinstance(job, dict):
+            continue
+        require_keys(f"{report_name}.jobOpportunities[{item_index}]", job, REQUIRED_JOB_KEYS, errors)
+        status = job.get("verificationStatus")
+        source_type = job.get("sourceType")
+        confidence = job.get("confidenceScore", 0)
+        match_score = job.get("matchScore", 0)
+        if status not in {"verified", "likely", "unverified", "fallback"}:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}].verificationStatus is invalid")
+        if source_type not in {"official", "job_board", "search_result", "media", "fallback"}:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}].sourceType is invalid")
+        if status in {"unverified", "fallback"} and match_score >= 90:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}] unverified/fallback cannot be 90+")
+        if status == "fallback" and confidence > 50:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}] fallback confidence must be <= 50")
+
+    for item_index, job in enumerate(report.get("highMatchJobs", [])):
+        if job.get("matchScore", 0) < 85:
+            errors.append(f"{report_name}.highMatchJobs[{item_index}] matchScore must be >= 85")
+        if job.get("confidenceScore", 0) < 75:
+            errors.append(f"{report_name}.highMatchJobs[{item_index}] confidenceScore must be >= 75")
+        if job.get("verificationStatus") not in {"verified", "likely"}:
+            errors.append(f"{report_name}.highMatchJobs[{item_index}] must be verified or likely")
+
+    for item_index, hotspot in enumerate(report.get("designHotspots", [])):
+        if not isinstance(hotspot, dict):
+            continue
+        require_keys(f"{report_name}.designHotspots[{item_index}]", hotspot, REQUIRED_HOTSPOT_KEYS, errors)
+        if hotspot.get("isGenericSearchResult") is True:
+            errors.append(f"{report_name}.designHotspots[{item_index}] must not be a generic search result")
+        if str(hotspot.get("title", "")).startswith("Bing Search"):
+            errors.append(f"{report_name}.designHotspots[{item_index}] must not use Bing Search as title")
+        if strict_quality and hotspot.get("relevanceScore", 0) < 70 and hotspot.get("source") != "Fallback Rule":
+            errors.append(f"{report_name}.designHotspots[{item_index}] relevanceScore must be >= 70")
+        if strict_quality and hotspot.get("confidenceScore", 0) < 65 and hotspot.get("source") != "Fallback Rule":
+            errors.append(f"{report_name}.designHotspots[{item_index}] confidenceScore must be >= 65")
 
 
 def validate_data_dir(data_dir: Path, errors: list[str], mirror_label: str = "") -> None:

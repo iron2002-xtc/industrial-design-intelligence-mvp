@@ -292,7 +292,13 @@ def to_design_hotspot(item: dict[str, Any]) -> dict[str, Any]:
         "importanceScore": item.get("importanceScore", 82),
         "sourceQualityScore": 60,
         "relevanceScore": item.get("importanceScore", 82),
+        "confidenceScore": 50,
         "designInsight": item.get("designInsight") or item.get("designInspiration", "可作为作品集调研素材。"),
+        "designRelevanceReason": "Mock 热点用于本地演示，不代表真实来源。",
+        "productCategory": item["category"],
+        "relatedBrand": "、".join(item.get("relatedCases", [])),
+        "isGenericSearchResult": False,
+        "evidenceText": item.get("summary") or item.get("trendSummary", ""),
         "relatedCompanies": item.get("relatedCases", []),
         "tags": item.get("keywords", []),
     }
@@ -302,14 +308,22 @@ def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
     jobs_data = sorted(report["jobs"], key=lambda item: item["matchScore"], reverse=True)
     for job in jobs_data:
         job["jobType"] = "校招" if "校招" in job["experience"] else ("实习" if "实习" in job["experience"] else "1-3年")
-        job["sourceQualityScore"] = 82
+        job["verificationStatus"] = "fallback"
+        job["sourceType"] = "fallback"
+        job["applyUrl"] = ""
+        job["originalUrl"] = job["url"]
+        job["evidenceText"] = "Mock 岗位用于本地演示，不代表真实可投岗位。"
+        job["lastCheckedAt"] = report["generatedAt"]
+        job["confidenceScore"] = 50
+        job["matchScore"] = min(job["matchScore"], 65)
+        job["sourceQualityScore"] = 50
         job["relevanceScore"] = job["matchScore"]
         job["requirementsSummary"] = "请核对岗位职责、经验要求、作品集要求和是否接受应届硕士/初级经验。"
-        job["tags"] = [job["direction"], job["city"], job["jobType"], "作品集参考"]
+        job["tags"] = [job["direction"], job["city"], job["jobType"], "备用数据"]
     hotspots = [to_design_hotspot(item) for item in [*report["topNews"], *report["trends"]]]
     report["qualitySummary"] = "Mock 数据用于本地演示；真实更新会优先生成求职机会、设计热点和公司动态。"
     report["jobOpportunities"] = jobs_data
-    report["highMatchJobs"] = [job for job in jobs_data if job["matchScore"] >= 90]
+    report["highMatchJobs"] = []
     report["designHotspots"] = hotspots
     report["companyUpdates"] = [
         {
@@ -326,6 +340,19 @@ def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
         }
         for index, job in enumerate(jobs_data[:6])
     ]
+    report["qualityReport"] = {
+        "totalCollected": 0,
+        "afterDedup": 0,
+        "afterQualityFilter": len(jobs_data) + len(hotspots),
+        "verifiedJobsCount": 0,
+        "likelyJobsCount": 0,
+        "unverifiedJobsCount": 0,
+        "fallbackJobsCount": len(jobs_data),
+        "officialSourceJobsCount": 0,
+        "genericSearchResultsFiltered": 0,
+        "failedSources": [],
+        "companyCrawlStatus": [],
+    }
     report["totalItems"] = sum(len(report[key]) for key in ["jobOpportunities", "designHotspots", "companyUpdates", "actions"])
     return report
 

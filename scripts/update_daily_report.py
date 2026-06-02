@@ -11,7 +11,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from collect_sources import collect_sources
-from summarize_report import build_daily_report, stable_id, to_legacy_news, to_legacy_trend
+from summarize_report import build_daily_report, is_high_match_job, stable_id, to_legacy_news, to_legacy_trend
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -110,6 +110,15 @@ def ensure_job_fields(job: dict[str, Any]) -> dict[str, Any]:
     job.setdefault("jobType", "可跟进")
     job.setdefault("sourceQualityScore", 70)
     job.setdefault("relevanceScore", job.get("matchScore", 70))
+    job.setdefault("verificationStatus", "unverified")
+    job.setdefault("sourceType", "search_result")
+    job.setdefault("applyUrl", job.get("url", ""))
+    job.setdefault("originalUrl", job.get("url", ""))
+    job.setdefault("evidenceText", job.get("requirementsSummary", "历史数据缺少校验片段，请打开原始链接核对。"))
+    job.setdefault("lastCheckedAt", job.get("date", ""))
+    job.setdefault("confidenceScore", job.get("sourceQualityScore", 60))
+    if job["verificationStatus"] in {"unverified", "fallback"} and job.get("matchScore", 0) > 80:
+        job["matchScore"] = 80 if job["verificationStatus"] == "unverified" else 65
     job.setdefault("requirementsSummary", "请打开原始链接核对岗位职责、经验要求和作品集要求。")
     job.setdefault("tags", job.get("keywords", []))
     job.setdefault("keywords", job.get("tags", []))
@@ -180,7 +189,7 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     jobs = [ensure_job_fields(job) for job in report.get("jobOpportunities", report.get("jobs", []))]
     report["jobOpportunities"] = sorted(jobs, key=lambda item: item.get("matchScore", 0), reverse=True)
     report["highMatchJobs"] = sorted(
-        report.get("highMatchJobs") or [job for job in report["jobOpportunities"] if job.get("matchScore", 0) >= 90],
+        [job for job in report["jobOpportunities"] if is_high_match_job(job)],
         key=lambda item: item.get("matchScore", 0),
         reverse=True,
     )
@@ -193,6 +202,12 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     for hotspot in report["designHotspots"]:
         hotspot.setdefault("sourceQualityScore", 60)
         hotspot.setdefault("relevanceScore", hotspot.get("importanceScore", 70))
+        hotspot.setdefault("confidenceScore", hotspot.get("sourceQualityScore", 60))
+        hotspot.setdefault("designRelevanceReason", hotspot.get("designInsight", "历史数据缺少设计相关性说明。"))
+        hotspot.setdefault("productCategory", hotspot.get("category", "工业设计趋势"))
+        hotspot.setdefault("relatedBrand", "、".join(hotspot.get("relatedCompanies", [])))
+        hotspot.setdefault("isGenericSearchResult", False)
+        hotspot.setdefault("evidenceText", hotspot.get("summary", "历史数据缺少原始证据片段。"))
         hotspot.setdefault("relatedCompanies", [])
         hotspot.setdefault("tags", hotspot.get("keywords", []))
     report["companyUpdates"] = report.get("companyUpdates") or default_company_updates(report)
@@ -203,6 +218,23 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     report["trends"] = [to_legacy_trend(item) for item in report["designHotspots"]]
     report.setdefault("aiTools", [])
     report.setdefault("hardwareObservation", [to_legacy_news(item) for item in report["designHotspots"] if item["category"] in {"智能硬件", "AI硬件", "机器人", "清洁电器"}][:3])
+    quality_report = report.get("qualityReport") if isinstance(report.get("qualityReport"), dict) else {}
+    quality_defaults = {
+        "totalCollected": 0,
+        "afterDedup": 0,
+        "afterQualityFilter": len(report["jobOpportunities"]) + len(report["designHotspots"]),
+        "verifiedJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "verified"]),
+        "likelyJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "likely"]),
+        "unverifiedJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "unverified"]),
+        "fallbackJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "fallback"]),
+        "officialSourceJobsCount": len([job for job in report["jobOpportunities"] if job.get("sourceType") == "official"]),
+        "genericSearchResultsFiltered": 0,
+        "failedSources": [],
+        "companyCrawlStatus": [],
+    }
+    for key, value in quality_defaults.items():
+        quality_report.setdefault(key, value)
+    report["qualityReport"] = quality_report
     report["totalItems"] = sum(len(report.get(key, [])) for key in REPORT_KEYS)
     return report
 
@@ -255,6 +287,25 @@ def update_daily_report(date: str | None = None) -> dict[str, Any]:
     print(f"Collection status: {latest.get('collectionStatus', 'success')}")
     print(f"Source count: {latest.get('sourceCount', 0)}")
     print(f"Total items: {latest.get('totalItems', 0)}")
+    quality = latest.get("qualityReport", {})
+    if quality:
+        print("Quality report:")
+        print(f"- total collected: {quality.get('totalCollected', 0)}")
+        print(f"- after dedup: {quality.get('afterDedup', 0)}")
+        print(f"- after quality filter: {quality.get('afterQualityFilter', 0)}")
+        print(f"- verified jobs: {quality.get('verifiedJobsCount', 0)}")
+        print(f"- likely jobs: {quality.get('likelyJobsCount', 0)}")
+        print(f"- unverified jobs: {quality.get('unverifiedJobsCount', 0)}")
+        print(f"- fallback jobs: {quality.get('fallbackJobsCount', 0)}")
+        print(f"- official source jobs: {quality.get('officialSourceJobsCount', 0)}")
+        print(f"- generic search results filtered: {quality.get('genericSearchResultsFiltered', 0)}")
+        failed_sources = quality.get("failedSources", [])
+        print(f"- failed sources: {len(failed_sources)}")
+        for failed_source in failed_sources[:12]:
+            print(f"  - {failed_source}")
+        print("- company crawl status:")
+        for item in quality.get("companyCrawlStatus", []):
+            print(f"  - {item.get('company')}: {item.get('status')} ({item.get('matchedCount', 0)} matches)")
     if latest.get("statusMessage"):
         print(latest["statusMessage"])
     return latest

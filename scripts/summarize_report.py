@@ -10,6 +10,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,6 +67,45 @@ JOB_DIRECTIONS = ["工业设计", "产品设计", "ID设计", "CMF", "设计研�
 DESIGN_CATEGORIES = ["工业设计趋势", "3C产品", "智能硬件", "AI硬件", "清洁电器", "机器人", "家电", "影像设备", "可穿戴设备", "交通工具", "消费电子", "CMF", "设计奖项", "优秀产品案例"]
 DESIGN_KEYWORDS = ["工业设计", "产品设计", "设计语言", "CMF", "结构创新", "交互体验", "3C", "AI硬件", "智能硬件", "机器人", "家电", "清洁电器", "可穿戴", "影像设备", "消费电子", "发布会", "新品", "设计奖", "红点", "iF", "IDEA", "Good Design"]
 DESIGN_MEDIA = {"Dezeen", "Yanko Design", "Core77", "Designboom", "The Verge", "少数派", "爱范儿", "机器之心"}
+REALNESS_FACTOR = {
+    "verified": 1.0,
+    "likely": 0.85,
+    "unverified": 0.6,
+    "fallback": 0.45,
+}
+JOB_BOARD_DOMAINS = [
+    "zhipin.com",
+    "liepin.com",
+    "lagou.com",
+    "shixiseng.com",
+    "nowcoder.com",
+    "kanzhun.com",
+    "51job.com",
+    "zhaopin.com",
+    "linkedin.com",
+]
+OFFICIAL_DOMAIN_HINTS = [
+    "dji.com",
+    "huawei.com",
+    "xiaomi.com",
+    "oppo.com",
+    "vivo.com",
+    "hihonor.com",
+    "insta360.com",
+    "narwal.com",
+    "dreame",
+    "roborock.com",
+    "tcl.com",
+    "midea.com",
+    "haier",
+    "ecovacs",
+    "lenovo.com",
+    "hisense",
+    "ninebot.com",
+    "anker.com",
+    "ugreen.com",
+    "baseus.com",
+]
 
 
 def clean_text(value: str | None, max_length: int = 220) -> str:
@@ -81,6 +121,16 @@ def has_cjk(value: str) -> bool:
 def stable_id(date: str, kind: str, seed: str) -> str:
     digest = hashlib.sha1(f"{date}|{kind}|{seed}".encode("utf-8")).hexdigest()[:10]
     return f"{date}-{kind}-{digest}"
+
+
+def domain_name(url: str | None) -> str:
+    if not url:
+        return ""
+    try:
+        host = urlparse(url).netloc.lower()
+        return host[4:] if host.startswith("www.") else host
+    except ValueError:
+        return ""
 
 
 def text_blob(item: dict[str, Any]) -> str:
@@ -154,13 +204,13 @@ def source_quality(item: dict[str, Any], fallback: int = 70) -> int:
     source = item.get("source", "")
     kind = item.get("kind", "")
     if kind == "job_page":
-        return 95 if item.get("status") == "checked" else 82
+        return 92 if item.get("crawlStatus") == "success" else 62
     if source in DESIGN_MEDIA:
         return 88
-    if source == "Bing Search":
-        return 68
+    if kind in {"job_search_result", "hotspot_search_result"}:
+        return 76 if item.get("detailFetched") else 58
     if source == "Fallback Rule":
-        return 60
+        return 50
     return fallback
 
 
@@ -172,6 +222,57 @@ def source_label(score: int) -> str:
     if score >= 70:
         return "可核对来源"
     return "搜索线索"
+
+
+def detect_source_type(item: dict[str, Any]) -> str:
+    if item.get("source") == "Fallback Rule" or item.get("status") == "fallback":
+        return "fallback"
+    if item.get("kind") == "job_page" or item.get("sourceType") == "official":
+        return "official"
+    domain = domain_name(item.get("url"))
+    if any(hint in domain for hint in OFFICIAL_DOMAIN_HINTS):
+        return "official"
+    if any(hint in domain for hint in JOB_BOARD_DOMAINS):
+        return "job_board"
+    if item.get("kind") in {"job_search_result", "hotspot_search_result"}:
+        return "search_result"
+    if item.get("kind") == "article":
+        return "media"
+    return "search_result"
+
+
+def verification_from_evidence(item: dict[str, Any], company: str, city: str, direction: str) -> tuple[str, int]:
+    source_type = detect_source_type(item)
+    if source_type == "fallback":
+        return "fallback", 45
+
+    evidence = f"{item.get('title', '')} {item.get('summary', '')} {item.get('evidenceText', '')} {item.get('detailTitle', '')}"
+    has_company = company != "公开招聘线索" and (company in evidence or company.split(" ")[0] in evidence)
+    has_city = city != "全国" and city in evidence
+    has_job_signal = any(keyword in evidence for keyword in ["工业设计", "产品设计", "ID设计", "CMF", "外观设计", "设计师"])
+
+    if source_type == "official" and has_company and has_city and has_job_signal:
+        return "verified", 95
+    if source_type == "job_board" and item.get("detailFetched") and has_company and has_city and has_job_signal:
+        return "likely", 84
+    if item.get("detailFetched") and has_job_signal and (has_company or has_city):
+        return "likely", 76
+    if source_type == "official" and item.get("crawlStatus") == "success" and has_job_signal:
+        return "unverified", 68
+    if item.get("kind") == "job_search_result":
+        return "unverified", 58
+    return "unverified", 55
+
+
+def apply_realness_score(position_score: int, verification_status: str, source_type: str) -> int:
+    score = round(position_score * REALNESS_FACTOR.get(verification_status, 0.6))
+    if verification_status == "fallback":
+        return min(score, 65)
+    if verification_status == "unverified":
+        return min(score, 80)
+    if source_type == "search_result":
+        return min(score, 80)
+    return min(score, 99)
 
 
 def infer_company(text: str, fallback: str = "公开招聘线索") -> str:
@@ -203,11 +304,17 @@ def job_match_score(company: str, city: str, direction: str, job_type: str, sour
 
 def build_job_reason(job: dict[str, Any], source_text: str) -> str:
     city_label = city_tier_label(job["city"])
-    source_part = source_label(job["sourceQualityScore"])
+    source_part = {
+        "verified": "官网可验证，页面能看到岗位/公司/城市证据",
+        "likely": "来源较可信，已打开详情页提取到岗位线索",
+        "unverified": "搜索或官网入口待核实，尚未验证完整岗位详情",
+        "fallback": "备用数据，不作为优先投递依据",
+    }.get(job.get("verificationStatus", "unverified"), "来源待核实")
     exp_part = "偏应届/初级经验" if job["jobType"] in ["校招", "实习", "1-3年"] else "需要进一步核对经验要求"
     return (
         f"该岗位位于{job['city']}，属于{job['direction']}方向，{city_label}和方向匹配；"
-        f"岗位类型为{job['jobType']}，{exp_part}；来源为{source_part}，建议作为求职清单重点核对。"
+        f"岗位类型为{job['jobType']}，{exp_part}；{source_part}。"
+        f"匹配分已按真实性系数折算，建议先打开原始链接核对是否可投。"
     )
 
 
@@ -218,7 +325,10 @@ def build_job_from_company_page(item: dict[str, Any], date: str) -> dict[str, An
     experience = item.get("experience") or "校招 / 社招 / 实习"
     job_type = infer_job_type(text_blob(item), experience)
     source_score = source_quality(item)
-    match_score, relevance_score = job_match_score(company, city, direction, job_type, source_score, text_blob(item))
+    position_score, relevance_score = job_match_score(company, city, direction, job_type, source_score, text_blob(item))
+    verification_status, confidence_score = verification_from_evidence(item, company, city, direction)
+    source_type = detect_source_type(item)
+    match_score = apply_realness_score(position_score, verification_status, source_type)
     title_map = {
         "CMF": "CMF / 工业设计机会跟踪",
         "清洁电器": "清洁电器工业设计机会跟踪",
@@ -241,8 +351,15 @@ def build_job_from_company_page(item: dict[str, Any], date: str) -> dict[str, An
         "reason": "",
         "requirementsSummary": f"重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
         "url": item.get("url"),
+        "verificationStatus": verification_status,
+        "sourceType": source_type,
+        "applyUrl": item.get("url"),
+        "originalUrl": item.get("url"),
+        "evidenceText": clean_text(item.get("evidenceText") or item.get("summary"), 220),
+        "lastCheckedAt": item.get("lastCheckedAt"),
+        "confidenceScore": confidence_score,
         "date": date,
-        "tags": [source_label(source_score), job_type, direction, city_tier_label(city), "作品集参考"],
+        "tags": [source_label(source_score), verification_status, source_type, job_type, direction, city_tier_label(city)],
         "keywords": [company, city, direction, job_type, "工业设计", "招聘"],
     }
     job["reason"] = build_job_reason(job, text_blob(item))
@@ -257,7 +374,10 @@ def build_job_from_search(item: dict[str, Any], date: str) -> dict[str, Any]:
     experience = "应届 / 实习 / 1-3年可核对"
     job_type = infer_job_type(blob, experience)
     source_score = source_quality(item)
-    match_score, relevance_score = job_match_score(company, city, direction, job_type, source_score, blob)
+    position_score, relevance_score = job_match_score(company, city, direction, job_type, source_score, blob)
+    verification_status, confidence_score = verification_from_evidence(item, company, city, direction)
+    source_type = detect_source_type(item)
+    match_score = apply_realness_score(position_score, verification_status, source_type)
     title = clean_text(item.get("title"), 80) or f"{direction}招聘线索"
     job = {
         "id": stable_id(date, "job-search", item.get("id") or title),
@@ -267,23 +387,45 @@ def build_job_from_search(item: dict[str, Any], date: str) -> dict[str, Any]:
         "direction": direction,
         "experience": experience,
         "jobType": job_type,
-        "matchScore": max(70, match_score - 8),
+        "matchScore": max(40, match_score - 8),
         "sourceQualityScore": source_score,
         "relevanceScore": relevance_score,
         "reason": "",
         "requirementsSummary": clean_text(item.get("summary"), 120) or "来自公开搜索结果，需点开原始链接核对岗位职责和经验要求。",
         "url": item.get("url"),
+        "verificationStatus": verification_status,
+        "sourceType": source_type,
+        "applyUrl": item.get("url") if verification_status in {"verified", "likely"} else "",
+        "originalUrl": item.get("url"),
+        "evidenceText": clean_text(item.get("evidenceText") or item.get("summary"), 220),
+        "lastCheckedAt": item.get("lastCheckedAt") or item.get("publishedDate"),
+        "confidenceScore": confidence_score,
         "date": date,
-        "tags": [source_label(source_score), job_type, direction, city_tier_label(city)],
+        "tags": [source_label(source_score), verification_status, source_type, job_type, direction, city_tier_label(city)],
         "keywords": [company, city, direction, job_type, "招聘"],
     }
     job["reason"] = build_job_reason(job, blob)
     return job
 
 
+def has_real_job_signal(item: dict[str, Any]) -> bool:
+    evidence = " ".join(
+        [
+            item.get("title", ""),
+            item.get("summary", ""),
+            item.get("detailTitle", ""),
+            item.get("evidenceText", ""),
+        ]
+    )
+    return item.get("detailFetched") and any(
+        keyword in evidence
+        for keyword in ["工业设计", "产品设计", "ID设计", "CMF", "外观设计", "设计师", "Industrial Designer", "Product Designer"]
+    )
+
+
 def build_job_opportunities(items: list[dict[str, Any]], date: str) -> list[dict[str, Any]]:
-    company_pages = [item for item in items if item.get("kind") == "job_page"]
-    search_results = [item for item in items if item.get("kind") == "job_search_result"]
+    company_pages = [item for item in items if item.get("kind") == "job_page" and item.get("crawlStatus") == "success"]
+    search_results = [item for item in items if item.get("kind") == "job_search_result" and has_real_job_signal(item)]
     jobs = [build_job_from_company_page(item, date) for item in company_pages]
     jobs.extend(build_job_from_search(item, date) for item in search_results[:8])
     if not jobs:
@@ -307,7 +449,7 @@ def build_job_opportunities(items: list[dict[str, Any]], date: str) -> list[dict
     unique: dict[str, dict[str, Any]] = {}
     for job in jobs:
         key = f"{job['company']}|{job['title']}|{job['city']}"
-        if key not in unique or unique[key]["matchScore"] < job["matchScore"]:
+        if key not in unique or unique[key].get("confidenceScore", 0) < job.get("confidenceScore", 0):
             unique[key] = job
     return sorted(unique.values(), key=lambda item: item["matchScore"], reverse=True)[:28]
 
@@ -351,8 +493,21 @@ def hotspot_relevance(item: dict[str, Any], category: str) -> tuple[int, int]:
     if related_companies(blob):
         relevance += 10
     if item.get("kind") == "hotspot_search_result":
-        relevance += 5
+        relevance += 5 if item.get("detailFetched") else -25
     return min(98, relevance), source_score
+
+
+def has_real_hotspot_signal(item: dict[str, Any]) -> bool:
+    evidence = " ".join(
+        [
+            item.get("title", ""),
+            item.get("summary", ""),
+            item.get("detailTitle", ""),
+            item.get("evidenceText", ""),
+            item.get("source", ""),
+        ]
+    )
+    return any(keyword.lower() in evidence.lower() or keyword in evidence for keyword in DESIGN_KEYWORDS)
 
 
 def chinese_title(source: str, category: str, raw_title: str) -> str:
@@ -376,11 +531,17 @@ def build_design_hotspots(items: list[dict[str, Any]], date: str) -> list[dict[s
     hotspots: list[dict[str, Any]] = []
     seen: set[str] = set()
     for item in candidates:
+        is_search = item.get("kind") == "hotspot_search_result"
+        if is_search and not item.get("detailFetched"):
+            continue
+        if is_search and not has_real_hotspot_signal(item):
+            continue
         raw_title = clean_text(item.get("title"), 90)
         blob = text_blob(item)
         category = infer_hotspot_category(blob, item.get("category") or "工业设计趋势")
         relevance, source_score = hotspot_relevance(item, category)
-        if relevance < 65:
+        confidence_score = source_score
+        if relevance < 70 or confidence_score < 65:
             continue
         key = item.get("url") or raw_title
         if key in seen:
@@ -400,13 +561,19 @@ def build_design_hotspots(items: list[dict[str, Any]], date: str) -> list[dict[s
                 "importanceScore": min(98, relevance + 3),
                 "sourceQualityScore": source_score,
                 "relevanceScore": relevance,
+                "confidenceScore": confidence_score,
                 "designInsight": f"建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+                "designRelevanceReason": f"来源内容命中{category}与产品设计关键词，具备可追溯原始链接。",
+                "productCategory": category,
+                "relatedBrand": "、".join(companies) if companies else source,
+                "isGenericSearchResult": False,
+                "evidenceText": clean_text(item.get("evidenceText") or item.get("summary"), 220),
                 "relatedCompanies": companies,
                 "tags": [category, source_label(source_score), "设计热点", *companies[:2]],
             }
         )
-    if len(hotspots) < 8:
-        hotspots.extend(fallback_hotspots(date, 8 - len(hotspots)))
+    if not hotspots:
+        hotspots.extend(fallback_hotspots(date, 3))
     return sorted(hotspots, key=lambda item: (item["relevanceScore"], item["sourceQualityScore"]), reverse=True)[:12]
 
 
@@ -431,9 +598,15 @@ def fallback_hotspots(date: str, count: int) -> list[dict[str, Any]]:
                 "url": "https://github.com/iron2002-xtc/industrial-design-intelligence-mvp",
                 "date": date,
                 "importanceScore": 78 - index,
-                "sourceQualityScore": 60,
+                "sourceQualityScore": 50,
                 "relevanceScore": 76 - index,
+                "confidenceScore": 50,
                 "designInsight": "可作为作品集调研页的备用主题，重点补图、补竞品、补设计判断。",
+                "designRelevanceReason": "备用趋势框架，不代表今日真实来源。",
+                "productCategory": category,
+                "relatedBrand": "、".join(companies),
+                "isGenericSearchResult": False,
+                "evidenceText": "真实来源不足时使用的备用趋势框架。",
                 "relatedCompanies": companies,
                 "tags": [category, "作品集参考", "备用数据"],
             }
@@ -560,9 +733,25 @@ def clone_previous_as_fallback(previous_report: dict[str, Any], date: str, gener
     report["collectionStatus"] = "fallback"
     report["statusMessage"] = message
     report.setdefault("jobOpportunities", report.get("jobs", []))
-    report.setdefault("highMatchJobs", [job for job in report["jobOpportunities"] if job.get("matchScore", 0) >= 90])
+    report.setdefault("highMatchJobs", [job for job in report["jobOpportunities"] if is_high_match_job(job)])
     report.setdefault("designHotspots", [to_hotspot_from_legacy_news(item) for item in report.get("topNews", [])])
     report.setdefault("companyUpdates", build_company_updates(report["jobOpportunities"], report["designHotspots"], date))
+    report.setdefault(
+        "qualityReport",
+        {
+            "totalCollected": 0,
+            "afterDedup": 0,
+            "afterQualityFilter": len(report.get("jobOpportunities", [])) + len(report.get("designHotspots", [])),
+            "verifiedJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "verified"]),
+            "likelyJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "likely"]),
+            "unverifiedJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus", "unverified") == "unverified"]),
+            "fallbackJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "fallback"]),
+            "officialSourceJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("sourceType") == "official"]),
+            "genericSearchResultsFiltered": 0,
+            "failedSources": [message],
+            "companyCrawlStatus": [],
+        },
+    )
     for key in ["jobOpportunities", "highMatchJobs", "designHotspots", "companyUpdates"]:
         for item in report.get(key, []):
             item["date"] = date
@@ -616,6 +805,50 @@ def try_openai_refine(report: dict[str, Any], collected_items: list[dict[str, An
         return report
 
 
+def is_high_match_job(job: dict[str, Any]) -> bool:
+    return (
+        job.get("matchScore", 0) >= 85
+        and job.get("confidenceScore", 0) >= 75
+        and job.get("verificationStatus") in {"verified", "likely"}
+    )
+
+
+def build_quality_report(
+    collected: dict[str, Any],
+    job_opportunities: list[dict[str, Any]],
+    design_hotspots: list[dict[str, Any]],
+) -> dict[str, Any]:
+    items = collected.get("items", [])
+    unique_urls = {item.get("url") or item.get("id") for item in items}
+    included_hotspot_urls = {item.get("url") for item in design_hotspots}
+    hotspot_search_results = [item for item in items if item.get("kind") == "hotspot_search_result"]
+    generic_search_filtered = len(
+        [
+            item
+            for item in hotspot_search_results
+            if not item.get("detailFetched") or item.get("url") not in included_hotspot_urls
+        ]
+    )
+    failed_sources = [
+        log
+        for log in collected.get("logs", [])
+        if log.startswith("SKIP") or log.startswith("WARN")
+    ]
+    return {
+        "totalCollected": len(items),
+        "afterDedup": len(unique_urls),
+        "afterQualityFilter": len(job_opportunities) + len(design_hotspots),
+        "verifiedJobsCount": len([job for job in job_opportunities if job.get("verificationStatus") == "verified"]),
+        "likelyJobsCount": len([job for job in job_opportunities if job.get("verificationStatus") == "likely"]),
+        "unverifiedJobsCount": len([job for job in job_opportunities if job.get("verificationStatus") == "unverified"]),
+        "fallbackJobsCount": len([job for job in job_opportunities if job.get("verificationStatus") == "fallback"]),
+        "officialSourceJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "official"]),
+        "genericSearchResultsFiltered": generic_search_filtered,
+        "failedSources": failed_sources,
+        "companyCrawlStatus": collected.get("companyCrawlStatus", []),
+    }
+
+
 def build_daily_report(
     collected: dict[str, Any],
     date: str,
@@ -631,9 +864,10 @@ def build_daily_report(
         return clone_previous_as_fallback(previous_report, date, generated_at, "今日部分数据抓取失败，已使用备用数据。")
 
     job_opportunities = build_job_opportunities(items, date)
-    high_match_jobs = [job for job in job_opportunities if job["matchScore"] >= 90]
+    high_match_jobs = [job for job in job_opportunities if is_high_match_job(job)]
     design_hotspots = build_design_hotspots(items, date)
     company_updates = build_company_updates(job_opportunities, design_hotspots, date)
+    quality_report = build_quality_report(collected, job_opportunities, design_hotspots)
     data_mode = "Real" if job_signal_count >= 4 and hotspot_signal_count >= 3 else "Fallback"
     collection_status = status if data_mode == "Real" and status in {"success", "partial"} else "fallback"
     status_message = "今日部分数据抓取失败，已使用备用数据。" if collection_status != "success" else ""
@@ -648,7 +882,12 @@ def build_daily_report(
         "statusMessage": status_message,
         "sourceCount": int(collected.get("sourceCount", 0)),
         "totalItems": 0,
-        "qualitySummary": f"共整理 {len(job_opportunities)} 个求职机会、{len(design_hotspots)} 条设计热点、{len(company_updates)} 条公司动态。",
+        "qualitySummary": (
+            f"今日收集 {quality_report['totalCollected']} 条，过滤 {quality_report['totalCollected'] - quality_report['afterQualityFilter']} 条，"
+            f"官网/高可信岗位 {quality_report['verifiedJobsCount'] + quality_report['likelyJobsCount']} 个，"
+            f"待核实岗位 {quality_report['unverifiedJobsCount']} 个。"
+        ),
+        "qualityReport": quality_report,
         "jobOpportunities": job_opportunities,
         "highMatchJobs": high_match_jobs,
         "designHotspots": design_hotspots,

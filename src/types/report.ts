@@ -21,7 +21,16 @@ export type TrendItem = {
   url: string;
   date: string;
   keywords: string[];
+  designRelevanceReason?: string;
+  productCategory?: string;
+  relatedBrand?: string;
+  isGenericSearchResult?: boolean;
+  evidenceText?: string;
+  confidenceScore?: number;
 };
+
+export type VerificationStatus = "verified" | "likely" | "unverified" | "fallback";
+export type SourceType = "official" | "job_board" | "search_result" | "media" | "fallback";
 
 export type JobItem = {
   id: string;
@@ -37,6 +46,13 @@ export type JobItem = {
   reason: string;
   requirementsSummary?: string;
   url: string;
+  verificationStatus?: VerificationStatus;
+  sourceType?: SourceType;
+  applyUrl?: string;
+  originalUrl?: string;
+  evidenceText?: string;
+  lastCheckedAt?: string;
+  confidenceScore?: number;
   date: string;
   keywords?: string[];
   tags?: string[];
@@ -64,6 +80,36 @@ export type DesignHotspotItem = {
   designInsight: string;
   relatedCompanies: string[];
   tags: string[];
+  designRelevanceReason?: string;
+  productCategory?: string;
+  relatedBrand?: string;
+  isGenericSearchResult?: boolean;
+  evidenceText?: string;
+  confidenceScore?: number;
+};
+
+export type CompanyCrawlStatus = {
+  company: string;
+  status: "success" | "no_matching_jobs" | "blocked_or_failed" | "not_configured";
+  sourceUrl: string;
+  checkedAt: string;
+  matchedCount: number;
+  evidenceText?: string;
+  message?: string;
+};
+
+export type QualityReport = {
+  totalCollected: number;
+  afterDedup: number;
+  afterQualityFilter: number;
+  verifiedJobsCount: number;
+  likelyJobsCount: number;
+  unverifiedJobsCount: number;
+  fallbackJobsCount: number;
+  officialSourceJobsCount: number;
+  genericSearchResultsFiltered: number;
+  failedSources: string[];
+  companyCrawlStatus: CompanyCrawlStatus[];
 };
 
 export type CompanyUpdateItem = {
@@ -90,6 +136,7 @@ export type DailyReport = {
   collectionStatus?: "success" | "partial" | "fallback";
   statusMessage?: string;
   qualitySummary?: string;
+  qualityReport?: QualityReport;
   jobOpportunities?: JobItem[];
   highMatchJobs?: JobItem[];
   designHotspots?: DesignHotspotItem[];
