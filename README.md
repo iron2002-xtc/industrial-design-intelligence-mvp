@@ -243,3 +243,29 @@ https://industrial-design-intelligence-mvp.vercel.app
 3. 数据文件是否仍在 `public/data/` 下，能通过 `/data/latest.json` 访问。
 
 以后接入 GitHub Actions 后，让 Actions 在 build 前更新 `data/` 和 `public/data/` 即可。
+
+## 部署到腾讯云 CloudBase
+
+当前项目已部署到腾讯云 CloudBase 环境：
+
+```text
+Environment ID: industrial-design-intell-db80779
+Service Name: industrial-design-intelligence-mvp
+Public URL: https://industrial-design-int-6b7cf321-industrial-design-intell-db80779.webapps.tcloudbase.com/
+```
+
+CloudBase 配置写在 `cloudbaserc.json`。如果以后本地改完代码，要重新部署：
+
+```bash
+npm run build
+tcb app deploy industrial-design-intelligence-mvp --env-id industrial-design-intell-db80779 --framework static --install-command "" --build-command "" --output-dir dist --deploy-path / --force
+```
+
+如果 `tcb` 不存在，先安装 CloudBase CLI：
+
+```bash
+npm install -g @cloudbase/cli
+tcb login
+```
+
+当前使用的是 CloudBase 测试域名，第一次访问可能出现腾讯云“风险提醒”中间页，点击“确定访问”即可进入。若要去掉中间页，需要在 CloudBase 控制台绑定自定义域名或配置正式访问域名。
