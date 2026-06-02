@@ -17,6 +17,15 @@ import { HistoryRail } from "./components/HistoryRail";
 import { JobsSection } from "./components/JobsSection";
 import { MetricCard } from "./components/MetricCard";
 import { SectionCard } from "./components/SectionCard";
+import {
+  getJobActionLabel,
+  getJobActionUrl,
+  getQualityReport,
+  isPriorityHighMatchJob,
+  isTrustedHighMatchJob,
+  normalizeJob,
+  sourceTypeLabel,
+} from "./lib/jobVerification";
 import { getSearchResults } from "./lib/search";
 import { loadLatestReport, loadReportByDate, loadReportsIndex } from "./lib/reports";
 import type { CompanyUpdateItem, DailyReport, DesignHotspotItem, NewsItem, ReportIndexItem, TrendItem } from "./types/report";
@@ -40,11 +49,6 @@ const dataModeLabel: Record<NonNullable<DailyReport["dataMode"]>, string> = {
   Fallback: "Fallback",
   Mock: "Mock",
 };
-
-const isTrustedHighMatchJob = (job: { matchScore: number; confidenceScore?: number; verificationStatus?: string }) =>
-  job.matchScore >= 85 &&
-  (job.confidenceScore ?? 0) >= 75 &&
-  (job.verificationStatus === "verified" || job.verificationStatus === "likely");
 
 const legacyNewsToHotspot = (item: NewsItem): DesignHotspotItem => ({
   id: item.id,
@@ -148,8 +152,13 @@ function App() {
   }, [activeDate, reportsByDate]);
 
   const report = activeDate ? reportsByDate[activeDate] : undefined;
-  const jobOpportunities = report?.jobOpportunities ?? report?.jobs ?? [];
-  const highMatchJobs = (report?.highMatchJobs ?? jobOpportunities.filter(isTrustedHighMatchJob)).filter(isTrustedHighMatchJob);
+  const jobOpportunities = useMemo(
+    () => (report?.jobOpportunities ?? report?.jobs ?? []).map(normalizeJob),
+    [report],
+  );
+  const highMatchJobs = (
+    report?.highMatchJobs ? report.highMatchJobs.map(normalizeJob) : jobOpportunities.filter(isTrustedHighMatchJob)
+  ).filter(isTrustedHighMatchJob);
   const designHotspots =
     report?.designHotspots ??
     [
@@ -157,6 +166,7 @@ function App() {
       ...(report?.trends ?? []).map(legacyTrendToHotspot),
     ];
   const companyUpdates: CompanyUpdateItem[] = report?.companyUpdates ?? [];
+  const qualityReport = report ? getQualityReport(report, jobOpportunities, designHotspots) : undefined;
   const highQualitySourceCount = new Set(
     [
       ...jobOpportunities.filter((item) => (item.confidenceScore ?? 0) >= 75).map((item) => item.company),
@@ -168,9 +178,38 @@ function App() {
     () => [...highMatchJobs].sort((a, b) => b.matchScore - a.matchScore).slice(0, 5),
     [highMatchJobs],
   );
+  const priorityHighMatchJobs = useMemo(
+    () => [...jobOpportunities].filter(isPriorityHighMatchJob).sort((a, b) => b.matchScore - a.matchScore),
+    [jobOpportunities],
+  );
+  const unverifiedHighRelevantJobs = useMemo(
+    () =>
+      [...jobOpportunities]
+        .filter((job) => job.verificationStatus === "unverified")
+        .filter((job) => job.matchScore >= 75 || (job.relevanceScore ?? 0) >= 80)
+        .sort((a, b) => b.matchScore - a.matchScore),
+    [jobOpportunities],
+  );
+  const alertJobs = useMemo(() => {
+    if (priorityHighMatchJobs.length > 0) return priorityHighMatchJobs.slice(0, 3);
+    if (unverifiedHighRelevantJobs.length > 0) return unverifiedHighRelevantJobs.slice(0, 3);
+    return [...jobOpportunities].sort((a, b) => b.matchScore - a.matchScore).slice(0, 3);
+  }, [jobOpportunities, priorityHighMatchJobs, unverifiedHighRelevantJobs]);
+  const jobAlertMessage =
+    priorityHighMatchJobs.length > 0
+      ? `今天有 ${priorityHighMatchJobs.length} 个高可信高匹配岗位，建议优先查看。`
+      : unverifiedHighRelevantJobs.length > 0
+        ? `今天暂无高可信高匹配岗位，有 ${unverifiedHighRelevantJobs.length} 个待核实岗位可作为线索。`
+        : "今天暂无特别值得优先关注的岗位，建议只浏览设计热点。";
+  const alertTone =
+    priorityHighMatchJobs.length > 0
+      ? "border-signal/30 bg-signal/5"
+      : unverifiedHighRelevantJobs.length > 0
+        ? "border-copper/30 bg-copper/10"
+        : "border-line bg-white";
   const searchResults = useMemo(
-    () => (report ? getSearchResults(report, searchQuery) : []),
-    [report, searchQuery],
+    () => (report ? getSearchResults({ ...report, jobOpportunities, jobs: jobOpportunities }, searchQuery) : []),
+    [jobOpportunities, report, searchQuery],
   );
   const dataMode = report?.dataMode ?? "Mock";
   const shouldShowStatusWarning =
@@ -260,12 +299,12 @@ function App() {
                       {report.statusMessage || "今日部分数据抓取失败，已使用备用数据。"}
                     </div>
                   )}
-                  {report.qualityReport && (
+                  {qualityReport && (
                     <p className="mt-3 text-sm leading-6 text-zinc-500">
-                      今日收集 {report.qualityReport.totalCollected} 条，过滤{" "}
-                      {Math.max(0, report.qualityReport.totalCollected - report.qualityReport.afterQualityFilter)} 条，
-                      官网/高可信岗位 {report.qualityReport.verifiedJobsCount + report.qualityReport.likelyJobsCount} 个，
-                      待核实岗位 {report.qualityReport.unverifiedJobsCount} 个。
+                      今日收集 {qualityReport.totalCollected} 条，过滤{" "}
+                      {Math.max(0, qualityReport.totalCollected - qualityReport.afterQualityFilter)} 条，
+                      高可信岗位 {qualityReport.verifiedJobsCount + qualityReport.likelyJobsCount} 个，
+                      待核实岗位 {qualityReport.unverifiedJobsCount} 个。
                     </p>
                   )}
                 </div>
@@ -351,6 +390,54 @@ function App() {
               正在切换日报数据...
             </div>
           )}
+
+          <section className={`rounded-lg border p-4 shadow-tight sm:p-5 ${alertTone}`}>
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <p className="label">Job Alert</p>
+                <h2 className="mt-2 text-xl font-semibold text-ink">今日重点岗位提醒</h2>
+                <p className="mt-2 text-sm leading-6 text-zinc-600">{jobAlertMessage}</p>
+              </div>
+              <span className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-3 py-2 text-xs font-semibold text-zinc-600 shadow-tight">
+                <Target size={15} />
+                高可信 {qualityReport?.verifiedJobsCount ?? 0} / 较可信 {qualityReport?.likelyJobsCount ?? 0}
+              </span>
+            </div>
+
+            {alertJobs.length > 0 && (
+              <div className="mt-4 grid gap-3 lg:grid-cols-3">
+                {alertJobs.map((job) => (
+                  <article key={job.id} className="rounded-lg border border-line bg-white p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-sm font-semibold text-zinc-500">{job.company}</p>
+                        <h3 className="mt-1 text-base font-semibold leading-snug text-ink">{job.title}</h3>
+                      </div>
+                      <span className="shrink-0 rounded-md bg-ink px-2 py-1 text-sm font-semibold text-white">
+                        {job.matchScore}
+                      </span>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2 text-xs font-medium">
+                      <span className="rounded-md bg-zinc-100 px-2 py-1 text-zinc-600">{job.city}</span>
+                      <span className="rounded-md bg-zinc-100 px-2 py-1 text-zinc-600">可信度 {job.confidenceScore}</span>
+                      <span className="rounded-md bg-zinc-100 px-2 py-1 text-zinc-600">
+                        {sourceTypeLabel[job.sourceType]}
+                      </span>
+                    </div>
+                    <a
+                      href={getJobActionUrl(job)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50"
+                    >
+                      {getJobActionLabel(job)}
+                      <ExternalLink size={15} />
+                    </a>
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
 
           {searchQuery.trim() && (
             <SectionCard

@@ -1935,6 +1935,9 @@
     "officialSourceJobsCount": 0,
     "genericSearchResultsFiltered": 0,
     "failedSources": [],
-    "companyCrawlStatus": []
+    "companyCrawlStatus": [],
+    "jobBoardJobsCount": 0,
+    "searchResultJobsCount": 14,
+    "highMatchVerifiedJobsCount": 0
   }
 }

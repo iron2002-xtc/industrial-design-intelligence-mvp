@@ -11,7 +11,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from collect_sources import collect_sources
-from summarize_report import build_daily_report, is_high_match_job, stable_id, to_legacy_news, to_legacy_trend
+from summarize_report import build_daily_report, dedupe_jobs, is_high_match_job, stable_id, to_legacy_news, to_legacy_trend
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -33,7 +33,7 @@ def write_json(path: Path, data: Any) -> None:
 def report_index_item(report: dict[str, Any]) -> dict[str, Any]:
     jobs = report.get("jobOpportunities", report.get("jobs", []))
     hotspots = report.get("designHotspots", report.get("trends", []))
-    high_match = report.get("highMatchJobs") or [job for job in jobs if job.get("matchScore", 0) >= 90]
+    high_match = [job for job in report.get("highMatchJobs", jobs) if is_high_match_job(job)]
     return {
         "date": report["date"],
         "title": report["title"],
@@ -110,15 +110,25 @@ def ensure_job_fields(job: dict[str, Any]) -> dict[str, Any]:
     job.setdefault("jobType", "可跟进")
     job.setdefault("sourceQualityScore", 70)
     job.setdefault("relevanceScore", job.get("matchScore", 70))
-    job.setdefault("verificationStatus", "unverified")
-    job.setdefault("sourceType", "search_result")
-    job.setdefault("applyUrl", job.get("url", ""))
+    if job.get("verificationStatus") not in {"verified", "likely", "unverified", "fallback"}:
+        job["verificationStatus"] = "fallback" if job.get("sourceType") == "fallback" else "unverified"
+    if job.get("sourceType") not in {"official", "job_board", "search_result", "media", "fallback"}:
+        job["sourceType"] = "fallback" if job["verificationStatus"] == "fallback" else "search_result"
+    job.setdefault("applyUrl", job.get("url", "") if job["verificationStatus"] in {"verified", "likely"} else "")
     job.setdefault("originalUrl", job.get("url", ""))
     job.setdefault("evidenceText", job.get("requirementsSummary", "历史数据缺少校验片段，请打开原始链接核对。"))
     job.setdefault("lastCheckedAt", job.get("date", ""))
-    job.setdefault("confidenceScore", job.get("sourceQualityScore", 60))
-    if job["verificationStatus"] in {"unverified", "fallback"} and job.get("matchScore", 0) > 80:
-        job["matchScore"] = 80 if job["verificationStatus"] == "unverified" else 65
+    if "confidenceScore" not in job:
+        job["confidenceScore"] = {"verified": 92, "likely": 82, "unverified": 55, "fallback": 45}[job["verificationStatus"]]
+    if job["verificationStatus"] == "fallback":
+        job["sourceType"] = "fallback"
+        job["confidenceScore"] = min(job.get("confidenceScore", 45), 50)
+        job["matchScore"] = min(job.get("matchScore", 65), 65)
+    if job["verificationStatus"] == "unverified":
+        job["confidenceScore"] = min(job.get("confidenceScore", 55), 70)
+        job["matchScore"] = min(job.get("matchScore", 80), 80)
+    if job["sourceType"] == "search_result":
+        job["matchScore"] = min(job.get("matchScore", 80), 80)
     job.setdefault("requirementsSummary", "请打开原始链接核对岗位职责、经验要求和作品集要求。")
     job.setdefault("tags", job.get("keywords", []))
     job.setdefault("keywords", job.get("tags", []))
@@ -186,7 +196,7 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     report.setdefault("collectionStatus", "success")
     report.setdefault("statusMessage", "")
     report.setdefault("qualitySummary", report.get("summary", ""))
-    jobs = [ensure_job_fields(job) for job in report.get("jobOpportunities", report.get("jobs", []))]
+    jobs = dedupe_jobs([ensure_job_fields(job) for job in report.get("jobOpportunities", report.get("jobs", []))])
     report["jobOpportunities"] = sorted(jobs, key=lambda item: item.get("matchScore", 0), reverse=True)
     report["highMatchJobs"] = sorted(
         [job for job in report["jobOpportunities"] if is_high_match_job(job)],
@@ -219,21 +229,24 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     report.setdefault("aiTools", [])
     report.setdefault("hardwareObservation", [to_legacy_news(item) for item in report["designHotspots"] if item["category"] in {"智能硬件", "AI硬件", "机器人", "清洁电器"}][:3])
     quality_report = report.get("qualityReport") if isinstance(report.get("qualityReport"), dict) else {}
-    quality_defaults = {
-        "totalCollected": 0,
-        "afterDedup": 0,
-        "afterQualityFilter": len(report["jobOpportunities"]) + len(report["designHotspots"]),
+    quality_report.setdefault("totalCollected", 0)
+    quality_report.setdefault("afterDedup", 0)
+    quality_report.setdefault("afterQualityFilter", len(report["jobOpportunities"]) + len(report["designHotspots"]))
+    quality_report.update(
+        {
         "verifiedJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "verified"]),
         "likelyJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "likely"]),
         "unverifiedJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "unverified"]),
         "fallbackJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "fallback"]),
         "officialSourceJobsCount": len([job for job in report["jobOpportunities"] if job.get("sourceType") == "official"]),
-        "genericSearchResultsFiltered": 0,
-        "failedSources": [],
-        "companyCrawlStatus": [],
-    }
-    for key, value in quality_defaults.items():
-        quality_report.setdefault(key, value)
+        "jobBoardJobsCount": len([job for job in report["jobOpportunities"] if job.get("sourceType") == "job_board"]),
+        "searchResultJobsCount": len([job for job in report["jobOpportunities"] if job.get("sourceType") == "search_result"]),
+        "highMatchVerifiedJobsCount": len([job for job in report["jobOpportunities"] if is_high_match_job(job)]),
+        }
+    )
+    quality_report.setdefault("genericSearchResultsFiltered", 0)
+    quality_report.setdefault("failedSources", [])
+    quality_report.setdefault("companyCrawlStatus", [])
     report["qualityReport"] = quality_report
     report["totalItems"] = sum(len(report.get(key, [])) for key in REPORT_KEYS)
     return report
@@ -298,6 +311,9 @@ def update_daily_report(date: str | None = None) -> dict[str, Any]:
         print(f"- unverified jobs: {quality.get('unverifiedJobsCount', 0)}")
         print(f"- fallback jobs: {quality.get('fallbackJobsCount', 0)}")
         print(f"- official source jobs: {quality.get('officialSourceJobsCount', 0)}")
+        print(f"- job board jobs: {quality.get('jobBoardJobsCount', 0)}")
+        print(f"- search result jobs: {quality.get('searchResultJobsCount', 0)}")
+        print(f"- high match verified jobs: {quality.get('highMatchVerifiedJobsCount', 0)}")
         print(f"- generic search results filtered: {quality.get('genericSearchResultsFiltered', 0)}")
         failed_sources = quality.get("failedSources", [])
         print(f"- failed sources: {len(failed_sources)}")

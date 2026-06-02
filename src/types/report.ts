@@ -107,6 +107,9 @@ export type QualityReport = {
   unverifiedJobsCount: number;
   fallbackJobsCount: number;
   officialSourceJobsCount: number;
+  jobBoardJobsCount: number;
+  searchResultJobsCount: number;
+  highMatchVerifiedJobsCount: number;
   genericSearchResultsFiltered: number;
   failedSources: string[];
   companyCrawlStatus: CompanyCrawlStatus[];

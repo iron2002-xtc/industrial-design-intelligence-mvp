@@ -2,24 +2,28 @@
   "date": "2026-06-02",
   "title": "2026-06-02 工业设计求职与设计热点日报",
   "summary": "今日优先看 美的 岗位与 3C产品 设计热点。",
-  "generatedAt": "2026-06-02T17:19:46+08:00",
+  "generatedAt": "2026-06-02T21:38:55+08:00",
   "dataMode": "Real",
   "collectionStatus": "partial",
   "statusMessage": "今日部分数据抓取失败，已使用备用数据。",
-  "sourceCount": 16,
-  "totalItems": 23,
-  "qualitySummary": "今日收集 87 条，过滤 74 条，官网/高可信岗位 0 个，待核实岗位 1 个。",
+  "sourceCount": 15,
+  "totalItems": 21,
+  "qualitySummary": "今日收集 77 条，过滤 64 条，官网/高可信岗位 0 个，待核实岗位 1 个。",
   "qualityReport": {
-    "totalCollected": 87,
-    "afterDedup": 86,
+    "totalCollected": 77,
+    "afterDedup": 76,
     "afterQualityFilter": 13,
     "verifiedJobsCount": 0,
     "likelyJobsCount": 0,
     "unverifiedJobsCount": 1,
     "fallbackJobsCount": 0,
     "officialSourceJobsCount": 1,
-    "genericSearchResultsFiltered": 3,
+    "jobBoardJobsCount": 0,
+    "searchResultJobsCount": 0,
+    "highMatchVerifiedJobsCount": 0,
+    "genericSearchResultsFiltered": 8,
     "failedSources": [
+      "SKIP https://sspai.com/feed: HTTPSConnectionPool(host='sspai.com', port=443): Read timed out. (read timeout=8)",
       "SKIP https://www.huxiu.com/rss/0.xml: HTTPSConnectionPool(host='www.huxiu.com', port=443): Read timed out. (read timeout=8)",
       "WARN 机器之心: RSS parse warning, trying available entries.",
       "SKIP 机器之心: no RSS entries.",
@@ -37,25 +41,26 @@
       "WARN COMPANY 科沃斯: blocked_or_failed.",
       "SKIP https://www.ninebot.com/careers: 404 Client Error: Not Found for url: https://www.ninebot.com/careers.html",
       "WARN COMPANY 九号: blocked_or_failed.",
-      "SKIP https://www.anker.com/careers: HTTPSConnectionPool(host='www.anker.com', port=443): Max retries exceeded with url: /careers (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
+      "SKIP https://www.anker.com/careers: 404 Client Error: Not Found for url: https://www.anker.com/careers",
       "WARN COMPANY 安克 Anker: blocked_or_failed.",
-      "SKIP https://www.ugreen.com/pages/careers: 404 Client Error: Not Found for url: https://www.ugreen.com/pages/careers",
+      "SKIP https://www.ugreen.com/pages/careers: HTTPSConnectionPool(host='www.ugreen.com', port=443): Read timed out. (read timeout=8)",
       "WARN COMPANY 绿联: blocked_or_failed.",
       "SKIP https://www.baseus.com/pages/careers: 404 Client Error: Not Found for url: https://www.baseus.com/pages/careers",
       "WARN COMPANY 倍思 Baseus: blocked_or_failed.",
-      "SKIP https://wordsanswers.info/puzzle/worddle-answers: 403 Client Error: Forbidden for url: https://wordsanswers.info/puzzle/worddle-answers",
+      "SKIP https://sso.doshisha.ac.jp/cgi-bin/portal.cgi: 403 Client Error: Forbidden for url: https://sso.doshisha.ac.jp/cgi-bin/portal.cgi",
+      "SKIP https://askubuntu.com/questions/1259632/convert-pdf-to-word-using-libreoffice-in-terminal: 403 Client Error: Forbidden for url: https://askubuntu.com/questions/1259632/convert-pdf-to-word-using-libreoffice-in-terminal",
       "SKIP https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875",
-      "SKIP https://www.bing.com/search?q=%E5%B7%A5%E4%B8%9A%E8%AE%BE%E8%AE%A1+%E8%B6%8B%E5%8A%BF: HTTPSConnectionPool(host='www.bing.com', port=443): Read timed out. (read timeout=8)",
       "SKIP https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875",
-      "SKIP https://www.bing.com/search?q=3C+%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=3C+%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
-      "SKIP https://gemini.google.com/?hl=zh-TW: HTTPSConnectionPool(host='gemini.google.com', port=443): Max retries exceeded with url: /?hl=zh-TW (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
+      "SKIP https://beebom.com/best-chrome-extensions/: HTTPSConnectionPool(host='beebom.com', port=443): Read timed out. (read timeout=8)",
+      "SKIP https://www.bing.com/search?q=AI%E7%A1%AC%E4%BB%B6+%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=AI%E7%A1%AC%E4%BB%B6+%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
+      "SKIP https://www.bing.com/search?q=%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6+%E8%AE%BE%E8%AE%A1: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6+%E8%AE%BE%E8%AE%A1 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
     ],
     "companyCrawlStatus": [
       {
         "company": "DJI 大疆",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.dji.com/cn/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -64,7 +69,7 @@
         "company": "华为",
         "status": "no_matching_jobs",
         "sourceUrl": "https://career.huawei.com/reccampportal/portal5/index.html",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "华为招聘-找工作-求职-最新招聘信息-华为招聘官方网站 华为招聘官方网站，提供最新的华为职位招聘信息，了解华为岗位要求、薪资待遇等等，海量职位等你来选，在华为开启一段崭新的职业生涯。 华为招聘-找工作-求职-最新招聘信息-华为招聘官方网站 校园招聘 社会招聘 新闻公告 成长与发展 华为生活 登录 Worldwide 联系HR Huawei Worldwide Careers - 中文 Huawei Worldwide Careers - English Choose your local Huawei Careers website here: Northeast Europe - English Western Europe - English 登录 登录 校园招聘 社会招聘 新闻公告 成长与发展 华为生活 Huawei Worldwide Careers - English Huawei Worldwide Careers - 中文 Choose your local Huawei website here: Northeast Europe - English Western Europe - English 联系HR",
         "message": "career page reachable, no matching job keywords"
@@ -73,7 +78,7 @@
         "company": "小米",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hr.xiaomi.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "小米招聘 小米招聘 You need to enable JavaScript to run this app.",
         "message": "career page reachable, no matching job keywords"
@@ -82,7 +87,7 @@
         "company": "OPPO",
         "status": "no_matching_jobs",
         "sourceUrl": "https://careers.oppo.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "OPPOæè - å å ¥æä»¬ join us OPPOè´åæä¸ºä»¥æé ä¼å¤§äº§åä¸ºåºç³ççæåç§æå ¬å¸ï¼ä¸ºå ¨çç¨æ·æä¾æ´å¥½çæºæ §çæ´»ï¼ä¸æ¶ä»£åé¢åå±ï¼æä»¬ç§ææ¬ååºå ï¼åæäºå©å ±èµ¢ï¼å©åä½ ç»ä¸ä»·å¼åæ¥ç OPPOæè - å å ¥æä»¬ join us",
         "message": "career page reachable, no matching job keywords"
@@ -91,7 +96,7 @@
         "company": "vivo",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hr.vivo.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "vivoæèå®æ¹ç½ç« vivoå®æ¹æèå¹³å°ï¼è¯éç²¾è±å vivoæèå®æ¹ç½ç«",
         "message": "career page reachable, no matching job keywords"
@@ -100,7 +105,7 @@
         "company": "荣耀",
         "status": "blocked_or_failed",
         "sourceUrl": "https://career.hihonor.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -109,7 +114,7 @@
         "company": "Insta360 影石",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.insta360.com/cn/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -118,7 +123,7 @@
         "company": "云鲸",
         "status": "no_matching_jobs",
         "sourceUrl": "https://www.narwal.com/cn/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "äºé²¸æºè½-å®æ¹ç½ç« äºé²¸NARWAL,ç«è¶³å®¶ç¨æºè½æ¸ æ´çµå¨é¢å,è´åäºç åé©å½æ§ç§æäº§å,åæ¶ä¹æ¯ä¸ä¸ªå¡å¯¼\"èªç±èªå¨,ææç­ç±\"ççæ´»æ¹å¼åçãæä»¬å¸æç¨æ°ç§æå°äººè§£æ¾åºæ¥,è®©ç¨æ·è¿ä¸ äºé²¸æºè½-å®æ¹ç½ç«",
         "message": "career page reachable, no matching job keywords"
@@ -127,7 +132,7 @@
         "company": "追觅",
         "status": "no_matching_jobs",
         "sourceUrl": "https://www.dreame.tech/cn/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "追觅商城-首页 追觅商城 追觅商城-首页 商城 查看购物车 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 全系产品站 创新尖端科技，普惠智能生活/家庭智能清洁全场景解决方案 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 智能清洁 智能洗地 无线吸尘 时尚个护 智能家用 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 品牌故事 全方位了解追觅/一家不断求索和成长的全球化科技公司 了解更多 了解更多 了解更多 会员臻享服务 最高返2倍积分 购物返积分 会员购物后将返还积分奖励，最高返还实付金额 2 倍积分。 一对一辅导 专属客服 提供一对一专属客户服务，帮您解答各类疑问，并提供专业技术支持。 最高享12期免息 分期免息 多款追觅主机商品享专属免息福利，最高可享12 期分期免息。 最高可抵 50% 积分抵现 会员购物时可使用积分抵扣现金，每 100 积分可抵扣 1 元，最高可抵扣订单金额 50%。 最高14天退换",
         "message": "career page reachable, no matching job keywords"
@@ -136,7 +141,7 @@
         "company": "石头科技",
         "status": "no_matching_jobs",
         "sourceUrl": "https://cn.roborock.com/pages/join-us",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "ç³å¤´ç§æ-è®©çæ´»æ´æåè´¨æ åäº¬ç³å¤´ä¸çºªç§ææéå ¬å¸ï¼Roborockï¼ç®ç§°ç³å¤´ç§æï¼æ¯ä¸å®¶ä¸æ³¨äºå®¶ç¨æºè½æ¸ æ´æºå¨äººåå ¶ä»æ¸ æ´çµå¨ç ååçäº§çå ¬å¸ï¼ä¸»è¦äº§åå æ¬ç³å¤´æ«å°æºå¨äººãç±³å®¶æ«å°æ ç³å¤´ç§æ-è®©çæ´»æ´æåè´¨æ",
         "message": "career page reachable, no matching job keywords"
@@ -145,7 +150,7 @@
         "company": "TCL",
         "status": "no_matching_jobs",
         "sourceUrl": "https://campus.tcl.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "TCL招聘 TCL官方招聘平台, 加入TCL, 敢为不凡！ TCL招聘 欢迎为我们多提建议噢~ 点击进入满意度调研 首页 社会招聘 校园招聘 人在TCL 关于TCL AI客服 简体中文 ENGLISH 首页 社会招聘 校园招聘 人在TCL 关于TCL AI客服 个人中心 Language 中文 English 职位名称 关键字搜索 为什么选择TCL 长坡厚雪的职业赛道 科技强国，制造兴国，智能制造产业是国家政策利好的战略核心产业，未来应用领域广泛，有极大的领域发展空间。选择TCL，就是选择一条厚积薄发、持续性强、潜能无限的职业发展赛道。 剑指领先的全球势能 TCL在全球范围内构建了完整的产业链和供应链布局，涵盖了智能终端、半导体显示、半导体光伏及半导体材料等多个领域，近年来市占率节节攀升，稳居全球行业前列。在TCL，你将得到国际化视野和丰富跨文化的工作经验。 变革敢为的活力氛围 在这里你将有一个多元包容的工作环境，每位员工都能感受到被尊重、被理解，充分展现自己的价值和能力。在这里我们不拘泥成规，给你足够的创新空间和试错空间，从不同视角发现并解决问题。 成熟向上的培养体系 TCL有多层次、全方位的鹰系人才培养体系，不仅重技术层",
         "message": "career page reachable, no matching job keywords"
@@ -154,7 +159,7 @@
         "company": "美的",
         "status": "success",
         "sourceUrl": "https://careers.midea.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 3,
         "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
         "message": "matched job keywords"
@@ -163,7 +168,7 @@
         "company": "海尔",
         "status": "blocked_or_failed",
         "sourceUrl": "https://maker.haier.net/client/join",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -172,7 +177,7 @@
         "company": "科沃斯",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ecovacs.cn/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -181,7 +186,7 @@
         "company": "联想",
         "status": "no_matching_jobs",
         "sourceUrl": "https://talent.lenovo.com.cn/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "èæ³æ ¡å­æè èæ³æ ¡å­æè",
         "message": "career page reachable, no matching job keywords"
@@ -190,7 +195,7 @@
         "company": "海信",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hisense.zhiye.com/",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "Not Found Not Found Error! 如果您看见该页，可能有以下几个原因： 您访问的站点出错 页面已经被移走 您请求的页面不存在 @2002-2012北森.人才管理软件及解决方案",
         "message": "career page reachable, no matching job keywords"
@@ -199,7 +204,7 @@
         "company": "九号",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ninebot.com/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -208,7 +213,7 @@
         "company": "安克 Anker",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.anker.com/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -217,7 +222,7 @@
         "company": "绿联",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ugreen.com/pages/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -226,7 +231,7 @@
         "company": "倍思 Baseus",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.baseus.com/pages/careers",
-        "checkedAt": "2026-06-02T17:20:12+08:00",
+        "checkedAt": "2026-06-02T21:39:37+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -253,7 +258,7 @@
       "applyUrl": "https://careers.midea.com/",
       "originalUrl": "https://careers.midea.com/",
       "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
-      "lastCheckedAt": "2026-06-02T17:20:12+08:00",
+      "lastCheckedAt": "2026-06-02T21:39:37+08:00",
       "confidenceScore": 55,
       "date": "2026-06-02",
       "tags": [
@@ -414,112 +419,31 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-213d25824e",
-      "title": "在视频时代，认真拍一张照片：OPPO Find X9 Ultra 影像漫谈",
-      "summary": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
-      "source": "少数派",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110550",
-      "date": "2026-06-02",
-      "importanceScore": 77,
-      "sourceQualityScore": 88,
-      "relevanceScore": 74,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "OPPO",
-      "isGenericSearchResult": false,
-      "evidenceText": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
-      "relatedCompanies": [
-        "OPPO"
-      ],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "OPPO"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-9dc211e988",
-      "title": "派早报：Anthropic 估值超过 OpenAI",
-      "summary": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期",
-      "source": "少数派",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110519",
-      "date": "2026-06-02",
-      "importanceScore": 77,
-      "sourceQualityScore": 88,
-      "relevanceScore": 74,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "vivo",
-      "isGenericSearchResult": false,
-      "evidenceText": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期动态 你可能错过的好文章 查看全文",
-      "relatedCompanies": [
-        "vivo"
-      ],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "vivo"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-4014fd779d",
-      "title": "The Verge：3C产品案例值得加入产品设计观察",
-      "summary": "公开来源提到“An affordable, long-lasting AirTag alternative is $15 right now”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "id": "2026-06-02-hotspot-e70e69ad9b",
+      "title": "The Verge：可穿戴设备案例值得加入产品设计观察",
+      "summary": "公开来源提到“How to watch Microsoft’s Build 2026 conference”。这条信息与可穿戴设备相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
       "source": "The Verge",
-      "category": "3C产品",
-      "url": "https://www.theverge.com/gadgets/940830/find-my-bluetooth-tracker-bose-qc-ultra-google-pixel-buds-deal-sale",
+      "category": "可穿戴设备",
+      "url": "https://www.theverge.com/tech/941379/microsoft-build-conference-2026-how-to-watch-livestream",
       "date": "2026-06-02",
       "importanceScore": 77,
       "sourceQualityScore": 88,
       "relevanceScore": 74,
       "confidenceScore": 88,
       "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
+      "designRelevanceReason": "来源内容命中可穿戴设备与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "可穿戴设备",
       "relatedBrand": "Apple",
       "isGenericSearchResult": false,
-      "evidenceText": "There are many solid Bluetooth trackers for iPhones that tap into Apple’s expansive Find My network. Some are thin, some are a bit chunkier. And, evidently, some look like tiny soccer balls. Ugreen’s FineTrack 2 glows in",
+      "evidenceText": "Microsoft is kicking off its yearly Build developer conference in San Francisco today, sandwiched between the recent Google I/O and Apple's upcoming WWDC event. While tickets to attend Build in person are sold out, the c",
       "relatedCompanies": [
         "Apple"
       ],
       "tags": [
-        "3C产品",
+        "可穿戴设备",
         "高可信",
         "设计热点",
         "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-eabe5ebac9",
-      "title": "派早报：英伟达、华硕等多个厂商在 COMPUTEX 2026 发布新品",
-      "summary": "少数派的近期动态少数派×飞傲多功能便携CD音箱一体机BEATBOX预售开启。火速入手可爱又好玩的经典萌物——监工水獭挂件复刻啦！会员点数也可兑换！给獭一个家首款MBTI定制墨水屏「口袋先知」预售进行中 ... 查看全文",
-      "source": "少数派",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110592",
-      "date": "2026-06-02",
-      "importanceScore": 74,
-      "sourceQualityScore": 88,
-      "relevanceScore": 71,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "少数派",
-      "isGenericSearchResult": false,
-      "evidenceText": "少数派的近期动态少数派×飞傲多功能便携CD音箱一体机BEATBOX预售开启。火速入手可爱又好玩的经典萌物——监工水獭挂件复刻啦！会员点数也可兑换！给獭一个家首款MBTI定制墨水屏「口袋先知」预售进行中 ... 查看全文",
-      "relatedCompanies": [],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点"
       ]
     },
     {
@@ -596,6 +520,81 @@
         "高可信",
         "设计热点"
       ]
+    },
+    {
+      "id": "2026-06-02-hotspot-56817d88fc",
+      "title": "世界模型赛道，VAST 选了一条还没有人走过的路",
+      "summary": "不缺好的画面，缺一个真正运转的世界 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667604?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 74,
+      "sourceQualityScore": 88,
+      "relevanceScore": 71,
+      "confidenceScore": 88,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "3C产品",
+      "relatedBrand": "爱范儿",
+      "isGenericSearchResult": false,
+      "evidenceText": "不缺好的画面，缺一个真正运转的世界 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-2e3eacce35",
+      "title": "英伟达掀桌，Windows 终于迎来真 AI PC",
+      "summary": "Mac mini 最强竞争对手？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667641?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 74,
+      "sourceQualityScore": 88,
+      "relevanceScore": 71,
+      "confidenceScore": 88,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "3C产品",
+      "relatedBrand": "爱范儿",
+      "isGenericSearchResult": false,
+      "evidenceText": "Mac mini 最强竞争对手？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-db6db8212c",
+      "title": "提前看看，今年新 iPhone 系统长什么样｜WWDC26",
+      "summary": "iOS 27，稳中向好 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "source": "爱范儿",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667454?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "importanceScore": 74,
+      "sourceQualityScore": 88,
+      "relevanceScore": 71,
+      "confidenceScore": 88,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "3C产品",
+      "relatedBrand": "爱范儿",
+      "isGenericSearchResult": false,
+      "evidenceText": "iOS 27，稳中向好 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
     }
   ],
   "companyUpdates": [
@@ -640,38 +639,6 @@
       "url": "https://www.ifanr.com/1667599?utm_source=rss&utm_medium=rss&utm_campaign=",
       "date": "2026-06-02",
       "relevanceScore": 81,
-      "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "tags": [
-        "3C产品",
-        "设计热点",
-        "高可信"
-      ]
-    },
-    {
-      "id": "2026-06-02-company-hotspot-660a0fb6f5",
-      "company": "OPPO",
-      "title": "OPPO：产品设计动态值得跟进",
-      "summary": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
-      "category": "产品设计动态",
-      "url": "https://sspai.com/post/110550",
-      "date": "2026-06-02",
-      "relevanceScore": 74,
-      "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "tags": [
-        "3C产品",
-        "设计热点",
-        "高可信"
-      ]
-    },
-    {
-      "id": "2026-06-02-company-hotspot-de2af26cc2",
-      "company": "vivo",
-      "title": "vivo：产品设计动态值得跟进",
-      "summary": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期",
-      "category": "产品设计动态",
-      "url": "https://sspai.com/post/110519",
-      "date": "2026-06-02",
-      "relevanceScore": 74,
       "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "tags": [
         "3C产品",
@@ -763,7 +730,7 @@
       "applyUrl": "https://careers.midea.com/",
       "originalUrl": "https://careers.midea.com/",
       "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
-      "lastCheckedAt": "2026-06-02T17:20:12+08:00",
+      "lastCheckedAt": "2026-06-02T21:39:37+08:00",
       "confidenceScore": 55,
       "date": "2026-06-02",
       "tags": [
@@ -961,74 +928,21 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-213d25824e-trend",
-      "title": "在视频时代，认真拍一张照片：OPPO Find X9 Ultra 影像漫谈",
-      "trendSummary": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
-      "relatedCases": [
-        "OPPO"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110550",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "OPPO"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-9dc211e988-trend",
-      "title": "派早报：Anthropic 估值超过 OpenAI",
-      "trendSummary": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期",
-      "relatedCases": [
-        "vivo"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110519",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "vivo"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-4014fd779d-trend",
-      "title": "The Verge：3C产品案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“An affordable, long-lasting AirTag alternative is $15 right now”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "id": "2026-06-02-hotspot-e70e69ad9b-trend",
+      "title": "The Verge：可穿戴设备案例值得加入产品设计观察",
+      "trendSummary": "公开来源提到“How to watch Microsoft’s Build 2026 conference”。这条信息与可穿戴设备相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
       "relatedCases": [
         "Apple"
       ],
       "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://www.theverge.com/gadgets/940830/find-my-bluetooth-tracker-bose-qc-ultra-google-pixel-buds-deal-sale",
+      "category": "可穿戴设备",
+      "url": "https://www.theverge.com/tech/941379/microsoft-build-conference-2026-how-to-watch-livestream",
       "date": "2026-06-02",
       "keywords": [
-        "3C产品",
+        "可穿戴设备",
         "高可信",
         "设计热点",
         "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-eabe5ebac9-trend",
-      "title": "派早报：英伟达、华硕等多个厂商在 COMPUTEX 2026 发布新品",
-      "trendSummary": "少数派的近期动态少数派×飞傲多功能便携CD音箱一体机BEATBOX预售开启。火速入手可爱又好玩的经典萌物——监工水獭挂件复刻啦！会员点数也可兑换！给獭一个家首款MBTI定制墨水屏「口袋先知」预售进行中 ... 查看全文",
-      "relatedCases": [
-        "少数派"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110592",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点"
       ]
     },
     {
@@ -1075,6 +989,57 @@
       "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "category": "3C产品",
       "url": "https://www.ifanr.com/1667680?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-56817d88fc-trend",
+      "title": "世界模型赛道，VAST 选了一条还没有人走过的路",
+      "trendSummary": "不缺好的画面，缺一个真正运转的世界 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "爱范儿"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667604?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-2e3eacce35-trend",
+      "title": "英伟达掀桌，Windows 终于迎来真 AI PC",
+      "trendSummary": "Mac mini 最强竞争对手？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "爱范儿"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667641?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-db6db8212c-trend",
+      "title": "提前看看，今年新 iPhone 系统长什么样｜WWDC26",
+      "trendSummary": "iOS 27，稳中向好 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+      "relatedCases": [
+        "爱范儿"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://www.ifanr.com/1667454?utm_source=rss&utm_medium=rss&utm_campaign=",
       "date": "2026-06-02",
       "keywords": [
         "3C产品",

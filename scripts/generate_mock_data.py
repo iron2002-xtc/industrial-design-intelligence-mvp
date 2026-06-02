@@ -349,6 +349,9 @@ def enrich_new_structure(report: dict[str, Any]) -> dict[str, Any]:
         "unverifiedJobsCount": 0,
         "fallbackJobsCount": len(jobs_data),
         "officialSourceJobsCount": 0,
+        "jobBoardJobsCount": 0,
+        "searchResultJobsCount": 0,
+        "highMatchVerifiedJobsCount": 0,
         "genericSearchResultsFiltered": 0,
         "failedSources": [],
         "companyCrawlStatus": [],
@@ -408,7 +411,7 @@ def main() -> None:
             "newsCount": len(report["topNews"]),
             "jobsCount": len(report["jobs"]),
             "trendsCount": len(report["trends"]),
-            "highMatchJobsCount": len([job for job in report["jobs"] if job["matchScore"] >= 90]),
+            "highMatchJobsCount": len(report.get("highMatchJobs", [])),
         }
         for report in reports
     ]

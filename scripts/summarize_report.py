@@ -275,6 +275,42 @@ def apply_realness_score(position_score: int, verification_status: str, source_t
     return min(score, 99)
 
 
+def canonical_job_title(title: str, direction: str) -> str:
+    text = re.sub(r"\s+", "", f"{title}{direction}".lower())
+    if "cmf" in text or "色彩" in text or "材料" in text:
+        return "cmf"
+    if "清洁" in text or "扫地" in text or "洗地" in text:
+        return "cleaning-industrial-design"
+    if "机器人" in text or "robot" in text:
+        return "robot-industrial-design"
+    if "家电" in text or "电器" in text:
+        return "appliance-industrial-design"
+    if "影像" in text or "相机" in text or "camera" in text:
+        return "camera-industrial-design"
+    if "3c" in text or "手机" in text or "消费电子" in text:
+        return "3c-industrial-design"
+    if "产品设计" in text:
+        return "product-design"
+    if "工业设计" in text or "id设计" in text or "外观设计" in text:
+        return "industrial-design"
+    return re.sub(r"[^a-z0-9\u4e00-\u9fff]+", "", text)[:24] or "industrial-design"
+
+
+def dedupe_jobs(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    unique: dict[str, dict[str, Any]] = {}
+    for job in jobs:
+        key = f"{job.get('company')}|{job.get('city')}|{canonical_job_title(job.get('title', ''), job.get('direction', ''))}"
+        current = unique.get(key)
+        if current is None:
+            unique[key] = job
+            continue
+        current_rank = (current.get("confidenceScore", 0), current.get("matchScore", 0), current.get("sourceQualityScore", 0))
+        next_rank = (job.get("confidenceScore", 0), job.get("matchScore", 0), job.get("sourceQualityScore", 0))
+        if next_rank > current_rank:
+            unique[key] = job
+    return list(unique.values())
+
+
 def infer_company(text: str, fallback: str = "公开招聘线索") -> str:
     for company in TARGET_COMPANY_NAMES:
         aliases = [company, company.split(" ")[0]]
@@ -446,12 +482,7 @@ def build_job_opportunities(items: list[dict[str, Any]], date: str) -> list[dict
             )
             for company, city, direction, experience, _, url in TARGET_COMPANY_FALLBACKS
         ]
-    unique: dict[str, dict[str, Any]] = {}
-    for job in jobs:
-        key = f"{job['company']}|{job['title']}|{job['city']}"
-        if key not in unique or unique[key].get("confidenceScore", 0) < job.get("confidenceScore", 0):
-            unique[key] = job
-    return sorted(unique.values(), key=lambda item: item["matchScore"], reverse=True)[:28]
+    return sorted(dedupe_jobs(jobs), key=lambda item: item["matchScore"], reverse=True)[:28]
 
 
 def infer_hotspot_category(text: str, fallback: str = "工业设计趋势") -> str:
@@ -747,6 +778,9 @@ def clone_previous_as_fallback(previous_report: dict[str, Any], date: str, gener
             "unverifiedJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus", "unverified") == "unverified"]),
             "fallbackJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "fallback"]),
             "officialSourceJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("sourceType") == "official"]),
+            "jobBoardJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("sourceType") == "job_board"]),
+            "searchResultJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("sourceType") == "search_result"]),
+            "highMatchVerifiedJobsCount": len([job for job in report.get("jobOpportunities", []) if is_high_match_job(job)]),
             "genericSearchResultsFiltered": 0,
             "failedSources": [message],
             "companyCrawlStatus": [],
@@ -821,12 +855,20 @@ def build_quality_report(
     items = collected.get("items", [])
     unique_urls = {item.get("url") or item.get("id") for item in items}
     included_hotspot_urls = {item.get("url") for item in design_hotspots}
+    included_job_urls = {item.get("originalUrl") or item.get("url") for item in job_opportunities}
     hotspot_search_results = [item for item in items if item.get("kind") == "hotspot_search_result"]
+    job_search_results = [item for item in items if item.get("kind") == "job_search_result"]
     generic_search_filtered = len(
         [
             item
             for item in hotspot_search_results
             if not item.get("detailFetched") or item.get("url") not in included_hotspot_urls
+        ]
+    ) + len(
+        [
+            item
+            for item in job_search_results
+            if not item.get("detailFetched") or item.get("url") not in included_job_urls
         ]
     )
     failed_sources = [
@@ -843,6 +885,9 @@ def build_quality_report(
         "unverifiedJobsCount": len([job for job in job_opportunities if job.get("verificationStatus") == "unverified"]),
         "fallbackJobsCount": len([job for job in job_opportunities if job.get("verificationStatus") == "fallback"]),
         "officialSourceJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "official"]),
+        "jobBoardJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "job_board"]),
+        "searchResultJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "search_result"]),
+        "highMatchVerifiedJobsCount": len([job for job in job_opportunities if is_high_match_job(job)]),
         "genericSearchResultsFiltered": generic_search_filtered,
         "failedSources": failed_sources,
         "companyCrawlStatus": collected.get("companyCrawlStatus", []),

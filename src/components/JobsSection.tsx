@@ -1,6 +1,14 @@
 import { BriefcaseBusiness, ExternalLink, Filter, MapPin, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import { cities, directions } from "../data/filterOptions";
+import {
+  getJobActionLabel,
+  getJobActionUrl,
+  isTrustedHighMatchJob,
+  normalizeJob,
+  sourceTypeLabel,
+  verificationLabel,
+} from "../lib/jobVerification";
 import { textMatches } from "../lib/search";
 import type { JobItem } from "../types/report";
 
@@ -15,26 +23,6 @@ const scoreOptions = [
   { label: "80+", value: 80 },
   { label: "70+", value: 70 },
 ];
-
-const verificationLabel: Record<string, string> = {
-  verified: "官网可验证",
-  likely: "招聘平台",
-  unverified: "搜索待验证",
-  fallback: "备用数据",
-};
-
-const sourceTypeLabel: Record<string, string> = {
-  official: "官网来源",
-  job_board: "招聘平台",
-  search_result: "搜索来源",
-  media: "媒体来源",
-  fallback: "备用数据",
-};
-
-const isTrustedJob = (job: JobItem) =>
-  job.matchScore >= 85 &&
-  (job.confidenceScore ?? 0) >= 75 &&
-  (job.verificationStatus === "verified" || job.verificationStatus === "likely");
 
 function SelectField({
   label,
@@ -68,10 +56,11 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
   const [city, setCity] = useState("全部");
   const [direction, setDirection] = useState("全部");
   const [score, setScore] = useState("0");
+  const normalizedJobs = useMemo(() => jobs.map(normalizeJob), [jobs]);
 
   const filteredJobs = useMemo(() => {
     const minScore = Number(score);
-    return jobs
+    return normalizedJobs
       .filter((job) => city === "全部" || job.city === city)
       .filter((job) => direction === "全部" || job.direction === direction)
       .filter((job) => job.matchScore >= minScore)
@@ -95,7 +84,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
         ),
       )
       .sort((a, b) => b.matchScore - a.matchScore);
-  }, [city, direction, jobs, score, searchQuery]);
+  }, [city, direction, normalizedJobs, score, searchQuery]);
   const trustedJobs = filteredJobs.filter((job) => job.verificationStatus === "verified" || job.verificationStatus === "likely");
   const pendingJobs = filteredJobs.filter((job) => job.verificationStatus !== "verified" && job.verificationStatus !== "likely");
 
@@ -170,13 +159,15 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
               {typeof job.sourceQualityScore === "number" && job.sourceQualityScore >= 85 && (
                 <span className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">高可信</span>
               )}
-              <span className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">
-                {verificationLabel[job.verificationStatus ?? "unverified"]}
-              </span>
+              {verificationLabel[job.verificationStatus].map((label) => (
+                <span key={label} className="rounded-md bg-ink px-2 py-1 text-xs font-medium text-white">
+                  {label}
+                </span>
+              ))}
               <span className="rounded-md bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-600">
-                {sourceTypeLabel[job.sourceType ?? "search_result"]}
+                {sourceTypeLabel[job.sourceType]}
               </span>
-              {isTrustedJob(job) && (
+              {isTrustedHighMatchJob(job) && (
                 <span className="rounded-md bg-signal/10 px-2 py-1 text-xs font-medium text-signal">高匹配</span>
               )}
               {(job.confidenceScore ?? 0) >= 75 && (
@@ -202,12 +193,12 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
               </div>
             )}
             <a
-              href={job.url}
+              href={getJobActionUrl(job)}
               target="_blank"
               rel="noreferrer"
               className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50"
             >
-              {job.sourceType === "official" ? "前往投递" : "查看岗位"}
+              {getJobActionLabel(job)}
               <ExternalLink size={15} />
             </a>
           </article>
@@ -242,7 +233,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
                   <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">{job.city}</span>
                   <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">{job.direction}</span>
                   <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">
-                    {verificationLabel[job.verificationStatus ?? "unverified"]}
+                    {verificationLabel[job.verificationStatus].join(" / ")}
                   </span>
                   <span className="rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-600">
                     可信度 {job.confidenceScore ?? 0}
@@ -253,7 +244,7 @@ export function JobsSection({ jobs, searchQuery }: JobsSectionProps) {
                   <p className="mt-2 line-clamp-2 text-xs leading-5 text-zinc-400">证据片段：{job.evidenceText}</p>
                 )}
                 <a
-                  href={job.originalUrl || job.url}
+                  href={getJobActionUrl(job)}
                   target="_blank"
                   rel="noreferrer"
                   className="focus-ring mt-4 inline-flex items-center gap-2 rounded-md border border-line bg-white px-3 py-2 text-sm font-medium text-zinc-600 transition hover:border-zinc-300 hover:bg-zinc-50"

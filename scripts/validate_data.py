@@ -51,6 +51,22 @@ REQUIRED_HOTSPOT_KEYS = [
     "evidenceText",
     "confidenceScore",
 ]
+REQUIRED_QUALITY_KEYS = [
+    "totalCollected",
+    "afterDedup",
+    "afterQualityFilter",
+    "verifiedJobsCount",
+    "likelyJobsCount",
+    "unverifiedJobsCount",
+    "fallbackJobsCount",
+    "officialSourceJobsCount",
+    "jobBoardJobsCount",
+    "searchResultJobsCount",
+    "highMatchVerifiedJobsCount",
+    "genericSearchResultsFiltered",
+    "failedSources",
+    "companyCrawlStatus",
+]
 
 
 def read_json(path: Path, errors: list[str]) -> Any | None:
@@ -103,10 +119,12 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
     if not isinstance(quality_report, dict):
         errors.append(f"{report_name}.qualityReport must be an object")
         strict_quality = False
-    elif not isinstance(quality_report.get("companyCrawlStatus"), list):
-        errors.append(f"{report_name}.qualityReport.companyCrawlStatus must be a list")
-        strict_quality = quality_report.get("totalCollected", 0) > 0
     else:
+        require_keys(f"{report_name}.qualityReport", quality_report, REQUIRED_QUALITY_KEYS, errors)
+        if not isinstance(quality_report.get("companyCrawlStatus"), list):
+            errors.append(f"{report_name}.qualityReport.companyCrawlStatus must be a list")
+        if not isinstance(quality_report.get("failedSources"), list):
+            errors.append(f"{report_name}.qualityReport.failedSources must be a list")
         strict_quality = quality_report.get("totalCollected", 0) > 0
 
     for action in report.get("actions", []):
@@ -134,8 +152,16 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
             errors.append(f"{report_name}.jobOpportunities[{item_index}].sourceType is invalid")
         if status in {"unverified", "fallback"} and match_score >= 90:
             errors.append(f"{report_name}.jobOpportunities[{item_index}] unverified/fallback cannot be 90+")
+        if source_type == "search_result" and match_score > 80:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}] search_result cannot exceed 80")
+        if status == "fallback" and match_score > 65:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}] fallback matchScore cannot exceed 65")
         if status == "fallback" and confidence > 50:
             errors.append(f"{report_name}.jobOpportunities[{item_index}] fallback confidence must be <= 50")
+        if status == "verified" and confidence < 75:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}] verified confidence must be >= 75")
+        if status == "likely" and confidence < 75:
+            errors.append(f"{report_name}.jobOpportunities[{item_index}] likely confidence must be >= 75")
 
     for item_index, job in enumerate(report.get("highMatchJobs", [])):
         if job.get("matchScore", 0) < 85:
@@ -144,6 +170,23 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
             errors.append(f"{report_name}.highMatchJobs[{item_index}] confidenceScore must be >= 75")
         if job.get("verificationStatus") not in {"verified", "likely"}:
             errors.append(f"{report_name}.highMatchJobs[{item_index}] must be verified or likely")
+
+    if isinstance(quality_report, dict):
+        jobs = [job for job in report.get("jobOpportunities", []) if isinstance(job, dict)]
+        high_match_jobs = [job for job in jobs if job.get("matchScore", 0) >= 85 and job.get("confidenceScore", 0) >= 75 and job.get("verificationStatus") in {"verified", "likely"}]
+        expected_counts = {
+            "verifiedJobsCount": len([job for job in jobs if job.get("verificationStatus") == "verified"]),
+            "likelyJobsCount": len([job for job in jobs if job.get("verificationStatus") == "likely"]),
+            "unverifiedJobsCount": len([job for job in jobs if job.get("verificationStatus") == "unverified"]),
+            "fallbackJobsCount": len([job for job in jobs if job.get("verificationStatus") == "fallback"]),
+            "officialSourceJobsCount": len([job for job in jobs if job.get("sourceType") == "official"]),
+            "jobBoardJobsCount": len([job for job in jobs if job.get("sourceType") == "job_board"]),
+            "searchResultJobsCount": len([job for job in jobs if job.get("sourceType") == "search_result"]),
+            "highMatchVerifiedJobsCount": len(high_match_jobs),
+        }
+        for key, expected in expected_counts.items():
+            if quality_report.get(key) != expected:
+                errors.append(f"{report_name}.qualityReport.{key} is {quality_report.get(key)}, expected {expected}")
 
     for item_index, hotspot in enumerate(report.get("designHotspots", [])):
         if not isinstance(hotspot, dict):
