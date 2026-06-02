@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, quote_plus, unquote, urlparse
+from urllib.parse import parse_qs, quote_plus, unquote, urljoin, urlparse
 
 import feedparser
 import requests
@@ -127,12 +127,214 @@ def request_url(ctx: CollectContext, url: str) -> requests.Response | None:
             headers={"User-Agent": ctx.user_agent, "Accept": "text/html,application/rss+xml,application/xml;q=0.9,*/*;q=0.8"},
         )
         response.raise_for_status()
+        if response.apparent_encoding and response.encoding and response.encoding.lower() in {"iso-8859-1", "windows-1252"}:
+            response.encoding = response.apparent_encoding
         return response
     except requests.RequestException as exc:
         ctx.logs.append(f"SKIP {url}: {exc}")
         return None
     finally:
         time.sleep(ctx.delay)
+
+
+def configured_job_keywords(ctx: CollectContext) -> list[str]:
+    keywords = ctx.config.get("keywords", {})
+    return [
+        *keywords.get("job_titles", []),
+        *keywords.get("job_core", []),
+        "工业设计",
+        "产品设计",
+        "ID",
+        "UX",
+        "CMF",
+        "外观设计",
+        "设计类",
+        "Industrial Designer",
+        "Product Designer",
+    ]
+
+
+def configured_experience_keywords(ctx: CollectContext) -> list[str]:
+    keywords = ctx.config.get("keywords", {})
+    return keywords.get("experience", [])
+
+
+def configured_city_keywords(ctx: CollectContext) -> list[str]:
+    keywords = ctx.config.get("keywords", {})
+    return [
+        *ctx.config.get("city_priority", {}).get("first", []),
+        *ctx.config.get("city_priority", {}).get("second", []),
+        *keywords.get("city_first", []),
+        *keywords.get("city_second", []),
+        "北京",
+        "Peking",
+        "Shanghai",
+        "Shenzhen",
+        "Guangzhou",
+        "Suzhou",
+        "Hangzhou",
+        "Dongguan",
+        "Nanjing",
+    ]
+
+
+def company_aliases(company: dict[str, Any]) -> list[str]:
+    aliases = [company["company"], company["company"].split(" ")[0], *company.get("aliases", [])]
+    if "DJI" in company["company"]:
+        aliases.extend(["DJI", "大疆"])
+    if "Insta360" in company["company"]:
+        aliases.extend(["Insta360", "影石"])
+    if "Anker" in company["company"]:
+        aliases.extend(["Anker", "安克"])
+    if "Baseus" in company["company"]:
+        aliases.extend(["Baseus", "倍思"])
+    return sorted({alias for alias in aliases if alias})
+
+
+def city_aliases(city: str) -> list[str]:
+    mapping = {
+        "北京": ["北京", "Peking", "Beijing"],
+        "上海": ["上海", "Shanghai"],
+        "深圳": ["深圳", "Shenzhen"],
+        "广州": ["广州", "Guangzhou"],
+        "苏州": ["苏州", "Suzhou"],
+        "杭州": ["杭州", "Hangzhou"],
+        "东莞": ["东莞", "Dongguan"],
+        "南京": ["南京", "Nanjing"],
+        "佛山": ["佛山", "Foshan"],
+        "青岛": ["青岛", "Qingdao"],
+    }
+    return mapping.get(city, [city])
+
+
+def normalize_city(value: str, fallback: str) -> str:
+    mapping = {
+        "Peking": "北京",
+        "Beijing": "北京",
+        "Shanghai": "上海",
+        "Shenzhen": "深圳",
+        "Guangzhou": "广州",
+        "Suzhou": "苏州",
+        "Hangzhou": "杭州",
+        "Dongguan": "东莞",
+        "Nanjing": "南京",
+        "Foshan": "佛山",
+        "Qingdao": "青岛",
+    }
+    return mapping.get(value, value or fallback)
+
+
+def source_type_from_url(ctx: CollectContext, url: str, fallback: str = "search_result") -> str:
+    domain = domain_name(url)
+    official_domains = [domain_name(company.get("url", "")) for company in ctx.config.get("company_careers", [])]
+    official_domains.extend(["hr.xiaomi.com", "career.huawei.com", "careers.dji.com", "careers.narwal.com", "careers.midea.com", "campus.tcl.com", "maker.haier.net"])
+    job_board_domains = ["nowcoder.com", "shixiseng.com", "liepin.com", "lagou.com", "linkedin.com", "zhipin.com", "51job.com", "zhaopin.com"]
+    if any(item and (domain == item or domain.endswith(f".{item}")) for item in official_domains):
+        return "official"
+    if any(item in domain for item in job_board_domains):
+        return "job_board"
+    return fallback
+
+
+def infer_company_from_config(ctx: CollectContext, text: str) -> dict[str, Any] | None:
+    for company in ctx.config.get("company_careers", []):
+        if any(alias and alias.lower() in text.lower() for alias in company_aliases(company)):
+            return company
+    return None
+
+
+def infer_city_from_text(ctx: CollectContext, text: str, fallback: str = "全国") -> str:
+    for city in configured_city_keywords(ctx):
+        if city and city in text:
+            return normalize_city(city, fallback)
+    return fallback
+
+
+def verify_job_detail_content(
+    ctx: CollectContext,
+    url: str,
+    title: str,
+    evidence: str,
+    expected_company: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    text = " ".join([title, evidence])
+    company = expected_company or infer_company_from_config(ctx, text)
+    source_type = source_type_from_url(ctx, url)
+    aliases = company_aliases(company) if company else []
+    expected_city = company.get("city", "全国") if company else "全国"
+    company_ok = bool(company and any(alias and alias.lower() in text.lower() for alias in aliases))
+    job_terms = matching_terms(text, configured_job_keywords(ctx))
+    city_terms = matching_terms(text, [*city_aliases(expected_city), *configured_city_keywords(ctx)])
+    city = normalize_city(city_terms[0], expected_city) if city_terms else expected_city
+    has_location = bool(city_terms)
+    generic_listing = (
+        any(token in title for token in ["社会招聘", "校园招聘", "职位列表", "岗位投递"])
+        and any(token in evidence for token in ["职位名称", "关键字搜索", "职位筛选", "全部职位", "职位分类"])
+        and not any(token in evidence for token in ["职位详情", "岗位职责", "职位描述", "任职要求", "工作职责"])
+    )
+    status = "unverified"
+    confidence = 58
+
+    if company_ok and job_terms and has_location and not generic_listing:
+        if source_type == "official":
+            status = "verified"
+            confidence = 95
+        elif source_type == "job_board":
+            status = "likely"
+            confidence = 84
+        else:
+            status = "unverified"
+            confidence = 65
+
+    return {
+        "detailFetched": True,
+        "detailTitle": title,
+        "evidenceText": evidence,
+        "detailDomain": domain_name(url),
+        "verificationStatus": status,
+        "confidenceScore": confidence,
+        "sourceType": source_type,
+        "company": company.get("company") if company else "",
+        "city": city,
+        "matchedTerms": [*job_terms[:8], *city_terms[:4]],
+    }
+
+
+def verify_job_detail_page(
+    ctx: CollectContext,
+    url: str,
+    expected_company: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    response = request_url(ctx, url)
+    if response is None:
+        return {
+            "detailFetched": False,
+            "detailTitle": "",
+            "evidenceText": "",
+            "detailDomain": domain_name(url),
+            "verificationStatus": "unverified",
+            "confidenceScore": 45,
+            "sourceType": source_type_from_url(ctx, url),
+            "company": expected_company.get("company", "") if expected_company else "",
+            "city": expected_company.get("city", "全国") if expected_company else "全国",
+            "matchedTerms": [],
+        }
+    title, evidence = extract_page_evidence(response.text)
+    return verify_job_detail_content(ctx, url, title, evidence, expected_company)
+
+
+def discover_job_detail_links(base_url: str, html: str, limit: int) -> list[str]:
+    soup = BeautifulSoup(html, "html.parser")
+    links: list[str] = []
+    for link in soup.find_all("a", href=True):
+        href = urljoin(base_url, link["href"])
+        label = clean_text(link.get_text(" ", strip=True), 80)
+        lowered = f"{href} {label}".lower()
+        looks_like_detail = any(token in lowered for token in ["detail", "job/view", "jobadid", "position/detail", "positionid=", "postid=", "jobid="])
+        looks_like_generic_channel = any(href.rstrip("/").endswith(token) for token in ["/social", "/campus", "/school", "/jobs", "/careers", "/recruit"])
+        if looks_like_detail and not looks_like_generic_channel:
+            links.append(href)
+    return list(dict.fromkeys(links))[:limit]
 
 
 def collect_rss(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
@@ -188,10 +390,8 @@ def collect_rss(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
 def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     company_statuses: list[dict[str, Any]] = ctx.config.setdefault("_company_statuses", [])
-    job_keywords = [
-        *ctx.config.get("keywords", {}).get("job_core", []),
-        *ctx.config.get("keywords", {}).get("job_industries", []),
-    ]
+    job_keywords = [*configured_job_keywords(ctx), *ctx.config.get("keywords", {}).get("job_industries", [])]
+    max_detail_links = int(ctx.config.get("request", {}).get("max_company_detail_links", 6))
     checked_at = datetime.now().astimezone().isoformat(timespec="seconds")
 
     for company in ctx.config.get("company_careers", []):
@@ -201,15 +401,55 @@ def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any
         status = "blocked_or_failed"
         matched: list[str] = []
         message = ""
+        detail_urls = list(dict.fromkeys(company.get("detail_urls", [])))
+        verified_items: list[dict[str, Any]] = []
 
         if response is not None:
             page_title, snippet = extract_page_evidence(response.text)
+            detail_urls.extend(discover_job_detail_links(response.url, response.text, max_detail_links))
+            detail_urls = list(dict.fromkeys(detail_urls))[:max_detail_links]
+            for detail_url in detail_urls:
+                detail = verify_job_detail_page(ctx, detail_url, company)
+                if detail.get("verificationStatus") not in {"verified", "likely"}:
+                    continue
+                verified_items.append(
+                    {
+                        "id": stable_id(company["company"], detail_url, today),
+                        "kind": "job_page",
+                        "company": company["company"],
+                        "title": detail.get("detailTitle") or f"{company['company']} 招聘岗位",
+                        "summary": detail.get("evidenceText") or f"{company['company']} 官方招聘详情页。",
+                        "source": "公司官网招聘页",
+                        "category": "招聘",
+                        "url": detail_url,
+                        "publishedDate": today,
+                        "city": detail.get("city") or company["city"],
+                        "direction": company["direction"],
+                        "experience": company["experience"],
+                        "score": relevance_score(" ".join([detail.get("detailTitle", ""), detail.get("evidenceText", "")]), job_keywords) + 45,
+                        "keywords": [*company.get("keywords", []), *detail.get("matchedTerms", [])],
+                        "matchedTerms": detail.get("matchedTerms", []),
+                        "sourceType": detail.get("sourceType", "official"),
+                        "status": "success",
+                        "crawlStatus": "success",
+                        "detailFetched": True,
+                        "detailTitle": detail.get("detailTitle", ""),
+                        "evidenceText": detail.get("evidenceText", ""),
+                        "lastCheckedAt": checked_at,
+                        "verificationStatus": detail.get("verificationStatus"),
+                        "confidenceScore": detail.get("confidenceScore"),
+                    }
+                )
             actual_text = " ".join([page_title, snippet])
             text = " ".join([actual_text, " ".join(company.get("keywords", []))])
             matched = matching_terms(actual_text, job_keywords)
-            status = "success" if matched else "no_matching_jobs"
-            message = "matched job keywords" if matched else "career page reachable, no matching job keywords"
-            ctx.logs.append(f"OK COMPANY {company['company']}: {status}, matched {len(matched)} terms.")
+            if verified_items:
+                status = "success"
+                message = f"verified {len(verified_items)} public job detail page(s)"
+            else:
+                status = "no_matching_jobs"
+                message = "career page reachable, no verified public job detail"
+            ctx.logs.append(f"OK COMPANY {company['company']}: {status}, matched {len(matched)} terms, details {len(verified_items)}.")
         else:
             message = "career page blocked, failed, or timed out"
             ctx.logs.append(f"WARN COMPANY {company['company']}: blocked_or_failed.")
@@ -220,39 +460,13 @@ def collect_company_pages(ctx: CollectContext, today: str) -> list[dict[str, Any
                 "status": status,
                 "sourceUrl": company["url"],
                 "checkedAt": checked_at,
-                "matchedCount": len(matched),
+                "matchedCount": len(verified_items),
                 "evidenceText": snippet,
                 "message": message,
             }
         )
 
-        text = " ".join([page_title, snippet, " ".join(company.get("keywords", []))])
-        if status == "blocked_or_failed":
-            continue
-        items.append(
-            {
-                "id": stable_id(company["company"], company["url"], today),
-                "kind": "job_page",
-                "company": company["company"],
-                "title": page_title or f"{company['company']} 招聘页",
-                "summary": snippet or f"{company['company']} 官方招聘入口，今日未能稳定解析岗位详情。",
-                "source": "公司官网招聘页",
-                "category": "招聘",
-                "url": company["url"],
-                "publishedDate": today,
-                "city": company["city"],
-                "direction": company["direction"],
-                "experience": company["experience"],
-                "score": relevance_score(text, job_keywords) + 30,
-                "keywords": company.get("keywords", []),
-                "matchedTerms": matched,
-                "sourceType": "official",
-                "status": status,
-                "crawlStatus": status,
-                "evidenceText": snippet,
-                "lastCheckedAt": checked_at,
-            }
-        )
+        items.extend(verified_items)
 
     return items
 
@@ -267,12 +481,7 @@ def fetch_search_detail(ctx: CollectContext, url: str) -> dict[str, Any]:
             "detailDomain": domain_name(url),
         }
     title, evidence = extract_page_evidence(response.text)
-    return {
-        "detailFetched": True,
-        "detailTitle": title,
-        "evidenceText": evidence,
-        "detailDomain": domain_name(url),
-    }
+    return verify_job_detail_content(ctx, url, title, evidence)
 
 
 def collect_bing_group(
@@ -289,6 +498,7 @@ def collect_bing_group(
 
     items: list[dict[str, Any]] = []
     queries = search_config.get("queries", [])[: int(ctx.config.get("request", {}).get("max_search_queries_per_run", 6))]
+    per_query_limit = int(ctx.config.get("request", {}).get("max_search_results_per_query", 1))
     keywords = [
         *ctx.config.get("keywords", {}).get(keyword_key, []),
         *ctx.config.get("keywords", {}).get("job_industries", []),
@@ -301,7 +511,7 @@ def collect_bing_group(
             continue
 
         soup = BeautifulSoup(response.text, "html.parser")
-        result_nodes = soup.select("li.b_algo")[:1]
+        result_nodes = soup.select("li.b_algo")[:per_query_limit]
         accepted = 0
 
         for node in result_nodes:
@@ -316,6 +526,9 @@ def collect_bing_group(
             text = f"{query} {title} {snippet}"
             detail = fetch_search_detail(ctx, result_url)
             detail_text = f"{text} {detail.get('detailTitle', '')} {detail.get('evidenceText', '')}"
+            source_type = detail.get("sourceType") or source_type_from_url(ctx, result_url)
+            inferred_company = detail.get("company") or ""
+            inferred_city = detail.get("city") or infer_city_from_text(ctx, detail_text)
             items.append(
                 {
                     "id": stable_id(query, result_url, title),
@@ -329,7 +542,11 @@ def collect_bing_group(
                     "query": query,
                     "score": relevance_score(detail_text, keywords) + 16,
                     "keywords": [query, *[keyword for keyword in keywords if keyword in detail_text][:8]],
-                    "sourceType": "search_result",
+                    "sourceType": source_type,
+                    "company": inferred_company,
+                    "city": inferred_city,
+                    "verificationStatus": detail.get("verificationStatus", "unverified"),
+                    "confidenceScore": detail.get("confidenceScore", 58),
                     **detail,
                 }
             )

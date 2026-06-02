@@ -232,6 +232,9 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
     quality_report.setdefault("totalCollected", 0)
     quality_report.setdefault("afterDedup", 0)
     quality_report.setdefault("afterQualityFilter", len(report["jobOpportunities"]) + len(report["designHotspots"]))
+    quality_report.setdefault("failedSources", [])
+    quality_report.setdefault("companyCrawlStatus", [])
+    company_status = quality_report.get("companyCrawlStatus", [])
     quality_report.update(
         {
         "verifiedJobsCount": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "verified"]),
@@ -242,11 +245,17 @@ def ensure_report_metadata(report: dict[str, Any]) -> dict[str, Any]:
         "jobBoardJobsCount": len([job for job in report["jobOpportunities"] if job.get("sourceType") == "job_board"]),
         "searchResultJobsCount": len([job for job in report["jobOpportunities"] if job.get("sourceType") == "search_result"]),
         "highMatchVerifiedJobsCount": len([job for job in report["jobOpportunities"] if is_high_match_job(job)]),
+        "configuredOfficialCompanies": len(company_status),
+        "successfulOfficialCompanies": len([item for item in company_status if item.get("status") == "success"]),
+        "noMatchingOfficialCompanies": len([item for item in company_status if item.get("status") == "no_matching_jobs"]),
+        "failedOfficialCompanies": len([item for item in company_status if item.get("status") == "blocked_or_failed"]),
+        "officialJobsFound": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "verified"]),
+        "likelyJobsFound": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "likely"]),
+        "unverifiedSearchLeads": len([job for job in report["jobOpportunities"] if job.get("verificationStatus") == "unverified"]),
+        "highMatchJobsCount": len([job for job in report["jobOpportunities"] if is_high_match_job(job)]),
         }
     )
     quality_report.setdefault("genericSearchResultsFiltered", 0)
-    quality_report.setdefault("failedSources", [])
-    quality_report.setdefault("companyCrawlStatus", [])
     report["qualityReport"] = quality_report
     report["totalItems"] = sum(len(report.get(key, [])) for key in REPORT_KEYS)
     return report
@@ -314,6 +323,10 @@ def update_daily_report(date: str | None = None) -> dict[str, Any]:
         print(f"- job board jobs: {quality.get('jobBoardJobsCount', 0)}")
         print(f"- search result jobs: {quality.get('searchResultJobsCount', 0)}")
         print(f"- high match verified jobs: {quality.get('highMatchVerifiedJobsCount', 0)}")
+        print(f"- configured official companies: {quality.get('configuredOfficialCompanies', 0)}")
+        print(f"- successful official companies: {quality.get('successfulOfficialCompanies', 0)}")
+        print(f"- no matching official companies: {quality.get('noMatchingOfficialCompanies', 0)}")
+        print(f"- failed official companies: {quality.get('failedOfficialCompanies', 0)}")
         print(f"- generic search results filtered: {quality.get('genericSearchResultsFiltered', 0)}")
         failed_sources = quality.get("failedSources", [])
         print(f"- failed sources: {len(failed_sources)}")

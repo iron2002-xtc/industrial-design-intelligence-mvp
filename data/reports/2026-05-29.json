@@ -1978,6 +1978,14 @@
     "companyCrawlStatus": [],
     "jobBoardJobsCount": 0,
     "searchResultJobsCount": 14,
-    "highMatchVerifiedJobsCount": 0
+    "highMatchVerifiedJobsCount": 0,
+    "configuredOfficialCompanies": 0,
+    "successfulOfficialCompanies": 0,
+    "noMatchingOfficialCompanies": 0,
+    "failedOfficialCompanies": 0,
+    "officialJobsFound": 0,
+    "likelyJobsFound": 0,
+    "unverifiedSearchLeads": 14,
+    "highMatchJobsCount": 0
   }
 }

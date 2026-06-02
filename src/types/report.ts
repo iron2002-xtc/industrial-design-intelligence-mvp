@@ -111,6 +111,14 @@ export type QualityReport = {
   searchResultJobsCount: number;
   highMatchVerifiedJobsCount: number;
   genericSearchResultsFiltered: number;
+  configuredOfficialCompanies: number;
+  successfulOfficialCompanies: number;
+  noMatchingOfficialCompanies: number;
+  failedOfficialCompanies: number;
+  officialJobsFound: number;
+  likelyJobsFound: number;
+  unverifiedSearchLeads: number;
+  highMatchJobsCount: number;
   failedSources: string[];
   companyCrawlStatus: CompanyCrawlStatus[];
 };

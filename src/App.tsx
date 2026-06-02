@@ -630,6 +630,39 @@ function App() {
             </div>
           </SectionCard>
 
+          {qualityReport && qualityReport.companyCrawlStatus.length > 0 && (
+            <SectionCard
+              eyebrow="Source Status"
+              title="公司官网抓取状态"
+              description={`已配置 ${qualityReport.configuredOfficialCompanies} 家官网源，成功 ${qualityReport.successfulOfficialCompanies} 家，无匹配 ${qualityReport.noMatchingOfficialCompanies} 家，失败 ${qualityReport.failedOfficialCompanies} 家。`}
+            >
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                {qualityReport.companyCrawlStatus.map((item) => (
+                  <div key={`${item.company}-${item.sourceUrl}`} className="rounded-md border border-line bg-white px-3 py-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="truncate text-sm font-semibold text-ink">{item.company}</span>
+                      <span
+                        className={`rounded-md px-2 py-1 text-[11px] font-semibold ${
+                          item.status === "success"
+                            ? "bg-signal/10 text-signal"
+                            : item.status === "no_matching_jobs"
+                              ? "bg-zinc-100 text-zinc-600"
+                              : "bg-copper/10 text-copper"
+                        }`}
+                      >
+                        {item.status}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs leading-5 text-zinc-500">
+                      匹配 {item.matchedCount} 条
+                      {item.message ? ` / ${item.message}` : ""}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
+          )}
+
           <footer className="rounded-lg border border-line bg-white/70 px-4 py-5 text-sm leading-6 text-zinc-500">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <span className="inline-flex items-center gap-2">

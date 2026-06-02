@@ -125,6 +125,7 @@ export function getQualityReport(
   const jobBoardJobsCount = jobs.filter((job) => job.sourceType === "job_board").length;
   const searchResultJobsCount = jobs.filter((job) => job.sourceType === "search_result").length;
   const highMatchVerifiedJobsCount = jobs.filter(isTrustedHighMatchJob).length;
+  const companyCrawlStatus = current?.companyCrawlStatus ?? [];
 
   return {
     totalCollected: current?.totalCollected ?? jobs.length + hotspots.length,
@@ -139,7 +140,15 @@ export function getQualityReport(
     searchResultJobsCount: current?.searchResultJobsCount ?? searchResultJobsCount,
     highMatchVerifiedJobsCount: current?.highMatchVerifiedJobsCount ?? highMatchVerifiedJobsCount,
     genericSearchResultsFiltered: current?.genericSearchResultsFiltered ?? 0,
+    configuredOfficialCompanies: current?.configuredOfficialCompanies ?? companyCrawlStatus.length,
+    successfulOfficialCompanies: current?.successfulOfficialCompanies ?? companyCrawlStatus.filter((item) => item.status === "success").length,
+    noMatchingOfficialCompanies: current?.noMatchingOfficialCompanies ?? companyCrawlStatus.filter((item) => item.status === "no_matching_jobs").length,
+    failedOfficialCompanies: current?.failedOfficialCompanies ?? companyCrawlStatus.filter((item) => item.status === "blocked_or_failed").length,
+    officialJobsFound: current?.officialJobsFound ?? officialSourceJobsCount,
+    likelyJobsFound: current?.likelyJobsFound ?? likelyJobsCount,
+    unverifiedSearchLeads: current?.unverifiedSearchLeads ?? unverifiedJobsCount,
+    highMatchJobsCount: current?.highMatchJobsCount ?? highMatchVerifiedJobsCount,
     failedSources: current?.failedSources ?? [],
-    companyCrawlStatus: current?.companyCrawlStatus ?? [],
+    companyCrawlStatus,
   };
 }

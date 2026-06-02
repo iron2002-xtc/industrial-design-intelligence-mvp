@@ -140,6 +140,8 @@ def text_blob(item: dict[str, Any]) -> str:
         item.get("source", ""),
         item.get("category", ""),
         item.get("query", ""),
+        item.get("detailTitle", ""),
+        item.get("evidenceText", ""),
         " ".join(item.get("keywords", [])),
     ]
     return " ".join(values)
@@ -208,6 +210,10 @@ def source_quality(item: dict[str, Any], fallback: int = 70) -> int:
     if source in DESIGN_MEDIA:
         return 88
     if kind in {"job_search_result", "hotspot_search_result"}:
+        if item.get("sourceType") == "official" and item.get("verificationStatus") == "verified":
+            return 92
+        if item.get("sourceType") == "job_board" and item.get("verificationStatus") == "likely":
+            return 84
         return 76 if item.get("detailFetched") else 58
     if source == "Fallback Rule":
         return 50
@@ -242,6 +248,9 @@ def detect_source_type(item: dict[str, Any]) -> str:
 
 
 def verification_from_evidence(item: dict[str, Any], company: str, city: str, direction: str) -> tuple[str, int]:
+    if item.get("verificationStatus") in {"verified", "likely", "unverified", "fallback"} and isinstance(item.get("confidenceScore"), int):
+        return item["verificationStatus"], int(item["confidenceScore"])
+
     source_type = detect_source_type(item)
     if source_type == "fallback":
         return "fallback", 45
@@ -404,8 +413,8 @@ def build_job_from_company_page(item: dict[str, Any], date: str) -> dict[str, An
 
 def build_job_from_search(item: dict[str, Any], date: str) -> dict[str, Any]:
     blob = text_blob(item)
-    company = infer_company(blob)
-    city = infer_city(blob, "全国")
+    company = item.get("company") or infer_company(blob)
+    city = item.get("city") or infer_city(blob, "全国")
     direction = infer_direction(blob)
     experience = "应届 / 实习 / 1-3年可核对"
     job_type = infer_job_type(blob, experience)
@@ -423,7 +432,7 @@ def build_job_from_search(item: dict[str, Any], date: str) -> dict[str, Any]:
         "direction": direction,
         "experience": experience,
         "jobType": job_type,
-        "matchScore": max(40, match_score - 8),
+        "matchScore": max(40, match_score - (8 if source_type == "search_result" else 0)),
         "sourceQualityScore": source_score,
         "relevanceScore": relevance_score,
         "reason": "",
@@ -781,6 +790,14 @@ def clone_previous_as_fallback(previous_report: dict[str, Any], date: str, gener
             "jobBoardJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("sourceType") == "job_board"]),
             "searchResultJobsCount": len([job for job in report.get("jobOpportunities", []) if job.get("sourceType") == "search_result"]),
             "highMatchVerifiedJobsCount": len([job for job in report.get("jobOpportunities", []) if is_high_match_job(job)]),
+            "configuredOfficialCompanies": len(report.get("qualityReport", {}).get("companyCrawlStatus", [])),
+            "successfulOfficialCompanies": len([item for item in report.get("qualityReport", {}).get("companyCrawlStatus", []) if item.get("status") == "success"]),
+            "noMatchingOfficialCompanies": len([item for item in report.get("qualityReport", {}).get("companyCrawlStatus", []) if item.get("status") == "no_matching_jobs"]),
+            "failedOfficialCompanies": len([item for item in report.get("qualityReport", {}).get("companyCrawlStatus", []) if item.get("status") == "blocked_or_failed"]),
+            "officialJobsFound": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "verified"]),
+            "likelyJobsFound": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "likely"]),
+            "unverifiedSearchLeads": len([job for job in report.get("jobOpportunities", []) if job.get("verificationStatus") == "unverified"]),
+            "highMatchJobsCount": len([job for job in report.get("jobOpportunities", []) if is_high_match_job(job)]),
             "genericSearchResultsFiltered": 0,
             "failedSources": [message],
             "companyCrawlStatus": [],
@@ -876,6 +893,8 @@ def build_quality_report(
         for log in collected.get("logs", [])
         if log.startswith("SKIP") or log.startswith("WARN")
     ]
+    company_status = collected.get("companyCrawlStatus", [])
+    high_match_count = len([job for job in job_opportunities if is_high_match_job(job)])
     return {
         "totalCollected": len(items),
         "afterDedup": len(unique_urls),
@@ -887,10 +906,18 @@ def build_quality_report(
         "officialSourceJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "official"]),
         "jobBoardJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "job_board"]),
         "searchResultJobsCount": len([job for job in job_opportunities if job.get("sourceType") == "search_result"]),
-        "highMatchVerifiedJobsCount": len([job for job in job_opportunities if is_high_match_job(job)]),
+        "highMatchVerifiedJobsCount": high_match_count,
         "genericSearchResultsFiltered": generic_search_filtered,
+        "configuredOfficialCompanies": len(company_status),
+        "successfulOfficialCompanies": len([item for item in company_status if item.get("status") == "success"]),
+        "noMatchingOfficialCompanies": len([item for item in company_status if item.get("status") == "no_matching_jobs"]),
+        "failedOfficialCompanies": len([item for item in company_status if item.get("status") == "blocked_or_failed"]),
+        "officialJobsFound": len([job for job in job_opportunities if job.get("verificationStatus") == "verified"]),
+        "likelyJobsFound": len([job for job in job_opportunities if job.get("verificationStatus") == "likely"]),
+        "unverifiedSearchLeads": len([job for job in job_opportunities if job.get("verificationStatus") == "unverified"]),
+        "highMatchJobsCount": high_match_count,
         "failedSources": failed_sources,
-        "companyCrawlStatus": collected.get("companyCrawlStatus", []),
+        "companyCrawlStatus": company_status,
     }
 
 
@@ -915,7 +942,12 @@ def build_daily_report(
     quality_report = build_quality_report(collected, job_opportunities, design_hotspots)
     data_mode = "Real" if job_signal_count >= 4 and hotspot_signal_count >= 3 else "Fallback"
     collection_status = status if data_mode == "Real" and status in {"success", "partial"} else "fallback"
-    status_message = "今日部分数据抓取失败，已使用备用数据。" if collection_status != "success" else ""
+    if collection_status == "success":
+        status_message = ""
+    elif data_mode == "Fallback":
+        status_message = "今日关键源抓取不足，已使用备用数据。"
+    else:
+        status_message = "今日部分源抓取失败，已保留可验证岗位与设计热点；未通过详情验证的搜索结果已过滤。"
 
     report = {
         "date": date,

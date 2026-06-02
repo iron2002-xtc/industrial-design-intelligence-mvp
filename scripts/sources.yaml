@@ -3,7 +3,9 @@ request:
   delay_seconds: 0.5
   user_agent: "IndustrialDesignJobHotspotBot/0.2 (+https://github.com/iron2002-xtc/industrial-design-intelligence-mvp)"
   max_rss_items_per_source: 10
-  max_search_queries_per_run: 5
+  max_search_queries_per_run: 18
+  max_search_results_per_query: 1
+  max_company_detail_links: 6
 
 city_priority:
   first: [深圳, 上海, 杭州, 苏州, 广州, 东莞, 北京, 南京]
@@ -15,20 +17,63 @@ target_companies:
   global: [Nothing, Apple, Samsung, Dyson]
 
 keywords:
+  job_titles:
+    - 工业设计师
+    - 产品设计师
+    - ID设计师
+    - CMF设计师
+    - 硬件产品设计师
+    - 消费电子产品设计师
+    - 智能硬件工业设计师
+    - 家电工业设计师
+    - 机器人产品设计师
+    - 清洁电器工业设计师
+  experience:
+    - 校招
+    - 应届
+    - 实习
+    - 社招
+    - 1-3年
+    - 初级
+    - 管培生
+    - 设计培训生
+  city_first:
+    - 深圳
+    - 上海
+    - 杭州
+    - 苏州
+    - 广州
+    - 东莞
+    - 北京
+    - 南京
+  city_second:
+    - 宁波
+    - 无锡
+    - 常州
+    - 佛山
+    - 珠海
+    - 惠州
+    - 中山
+    - 厦门
+    - 武汉
+    - 成都
+    - 重庆
+    - 西安
+    - 青岛
+    - 合肥
+    - 天津
+    - 长沙
   job_core:
     - 工业设计师
     - 产品设计师
     - ID设计师
     - CMF设计师
     - 硬件产品设计师
-    - 设计研究
-    - 用户体验
-    - 校招
-    - 社招
-    - 实习
-    - 应届
-    - 1-3年
-    - 硕士
+    - 消费电子产品设计师
+    - 智能硬件工业设计师
+    - 家电工业设计师
+    - 机器人产品设计师
+    - 清洁电器工业设计师
   job_industries:
     - 3C
     - 消费电子
@@ -100,19 +145,19 @@ rss_sources:
     url: https://www.designboom.com/feed/
 
 company_careers:
-  - { company: DJI 大疆, city: 深圳, direction: 智能硬件, experience: 校招 / 实习 / 社招, url: "https://www.dji.com/cn/careers", keywords: [大疆, DJI, 工业设计, 智能硬件, 影像设备, 深圳] }
-  - { company: 华为, city: 深圳, direction: 3C, experience: 校招 / 社招, url: "https://career.huawei.com/reccampportal/portal5/index.html", keywords: [华为, 终端, 工业设计, 3C, 可穿戴, 深圳] }
-  - { company: 小米, city: 北京, direction: 智能硬件, experience: 校招 / 社招, url: "https://hr.xiaomi.com/", keywords: [小米, IoT, 智能硬件, 工业设计, 北京] }
+  - { company: DJI 大疆, aliases: [DJI, 大疆], city: 深圳, direction: 智能硬件, experience: 校招 / 实习 / 社招, url: "https://careers.dji.com/zh-CN/", keywords: [大疆, DJI, 工业设计, 智能硬件, 影像设备, 深圳] }
+  - { company: 华为, aliases: [华为, Huawei], city: 深圳, direction: 3C, experience: 校招 / 社招, url: "https://career.huawei.com/", detail_urls: ["https://career.huawei.com/reccampportal/globle/huawei-special-recruitment.html"], keywords: [华为, 终端, 工业设计, ID与UX设计师, 3C, 可穿戴, 深圳] }
+  - { company: 小米, aliases: [小米, Xiaomi], city: 北京, direction: 智能硬件, experience: 校招 / 社招, url: "https://hr.xiaomi.com/", detail_urls: ["https://hr.xiaomi.com/job/view/129"], keywords: [小米, Xiaomi, IoT, 智能硬件, 工业设计师, 北京] }
   - { company: OPPO, city: 深圳, direction: CMF, experience: 校招 / 实习 / 社招, url: "https://careers.oppo.com/", keywords: [OPPO, CMF, 工业设计, 深圳] }
   - { company: vivo, city: 东莞, direction: 3C, experience: 校招 / 社招, url: "https://hr.vivo.com/", keywords: [vivo, 手机, 工业设计, 3C, 东莞] }
   - { company: 荣耀, city: 深圳, direction: 3C, experience: 校招 / 社招, url: "https://career.hihonor.com/", keywords: [荣耀, 手机, 工业设计, 3C, 深圳] }
   - { company: Insta360 影石, city: 深圳, direction: 影像设备, experience: 校招 / 社招, url: "https://www.insta360.com/cn/careers", keywords: [影石, Insta360, 相机, 工业设计, 深圳] }
-  - { company: 云鲸, city: 深圳, direction: 清洁电器, experience: 校招 / 社招, url: "https://www.narwal.com/cn/careers", keywords: [云鲸, 清洁电器, 机器人, 工业设计, 深圳] }
+  - { company: 云鲸, aliases: [云鲸, Narwal], city: 深圳, direction: 清洁电器, experience: 校招 / 社招, url: "https://careers.narwal.com/social", keywords: [云鲸, Narwal, 清洁电器, 机器人, 工业设计, 深圳] }
   - { company: 追觅, city: 苏州, direction: 清洁电器, experience: 校招 / 社招, url: "https://www.dreame.tech/cn/careers", keywords: [追觅, 清洁电器, 工业设计, 苏州] }
   - { company: 石头科技, city: 北京, direction: 机器人, experience: 校招 / 社招, url: "https://cn.roborock.com/pages/join-us", keywords: [石头科技, 清洁机器人, 工业设计, 北京] }
   - { company: TCL, city: 广州, direction: 家电, experience: 校招 / 社招, url: "https://campus.tcl.com/", keywords: [TCL, 家电, 工业设计, 广州] }
   - { company: 美的, city: 佛山, direction: 家电, experience: 校招 / 社招, url: "https://careers.midea.com/", keywords: [美的, 家电, 产品设计, 佛山] }
-  - { company: 海尔, city: 青岛, direction: 家电, experience: 校招 / 社招, url: "https://maker.haier.net/client/join", keywords: [海尔, 智慧家庭, CMF, 青岛] }
+  - { company: 海尔, city: 青岛, direction: 家电, experience: 校招 / 社招, url: "https://maker.haier.net/client/campus/index", keywords: [海尔, 智慧家庭, CMF, 青岛] }
   - { company: 科沃斯, city: 苏州, direction: 机器人, experience: 校招 / 社招, url: "https://www.ecovacs.cn/careers", keywords: [科沃斯, 服务机器人, 清洁电器, 苏州] }
   - { company: 联想, city: 北京, direction: 3C, experience: 校招 / 社招, url: "https://talent.lenovo.com.cn/", keywords: [联想, 电脑, 消费电子, 工业设计, 北京] }
   - { company: 海信, city: 青岛, direction: 家电, experience: 校招 / 社招, url: "https://hisense.zhiye.com/", keywords: [海信, 家电, 工业设计, 青岛] }
@@ -125,37 +170,24 @@ job_search_queries:
   enabled: true
   provider: bing
   queries:
-    - 工业设计师 校招
-    - 工业设计师 社招
-    - 工业设计师 应届
-    - 工业设计师 实习
-    - 产品设计师 工业设计
-    - ID设计师 招聘
-    - CMF设计师 招聘
-    - 硬件产品设计师 招聘
-    - 消费电子 工业设计师
-    - 智能硬件 工业设计师
-    - 家电 工业设计师
-    - 机器人 工业设计师
-    - 清洁电器 工业设计师
-    - 3C 产品设计师
-    - 大疆 工业设计师 招聘
-    - 华为 工业设计师 招聘
-    - 小米 工业设计师 招聘
-    - OPPO 工业设计师 招聘
-    - vivo 工业设计师 招聘
-    - 荣耀 工业设计师 招聘
-    - 影石 工业设计师 招聘
-    - 云鲸 工业设计师 招聘
-    - 追觅 工业设计师 招聘
-    - 石头科技 工业设计师 招聘
-    - 美的 工业设计师 招聘
-    - 海尔 工业设计师 招聘
-    - TCL 工业设计师 招聘
-    - 科沃斯 工业设计师 招聘
-    - 安克 工业设计师 招聘
-    - 绿联 工业设计师 招聘
-    - 倍思 工业设计师 招聘
+    - site:hr.xiaomi.com/job/view 小米 工业设计师 北京
+    - site:careers.dji.com 大疆 工业设计师 深圳
+    - site:career.huawei.com 华为 ID与UX设计师 深圳
+    - site:careers.oppo.com OPPO CMF设计师 深圳
+    - site:hr.vivo.com vivo 工业设计师 东莞
+    - site:career.hihonor.com 荣耀 工业设计师 深圳
+    - site:careers.narwal.com 云鲸 工业设计师 深圳
+    - site:careers.midea.com 美的 产品设计师 佛山
+    - site:campus.tcl.com TCL 工业设计师 广州
+    - site:maker.haier.net 海尔 CMF设计师 青岛
+    - site:liepin.com 工业设计师 深圳 智能硬件
+    - site:shixiseng.com 工业设计师 实习 深圳
+    - site:nowcoder.com 工业设计师 校招 深圳
+    - site:linkedin.com/jobs 工业设计师 小米 北京
+    - site:lagou.com 工业设计师 产品设计师 深圳
+    - 大疆 工业设计师 深圳 招聘
+    - 小米 工业设计师 北京 招聘
+    - 美的 产品设计师 佛山 校招
 
 hotspot_search_queries:
   enabled: true

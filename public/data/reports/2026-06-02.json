@@ -1,111 +1,118 @@
 {
   "date": "2026-06-02",
   "title": "2026-06-02 工业设计求职与设计热点日报",
-  "summary": "今日优先看 美的 岗位与 3C产品 设计热点。",
-  "generatedAt": "2026-06-02T21:38:55+08:00",
+  "summary": "今日优先看 小米 岗位与 3C产品 设计热点。",
+  "generatedAt": "2026-06-02T22:27:02+08:00",
   "dataMode": "Real",
   "collectionStatus": "partial",
-  "statusMessage": "今日部分数据抓取失败，已使用备用数据。",
-  "sourceCount": 15,
-  "totalItems": 21,
-  "qualitySummary": "今日收集 77 条，过滤 64 条，官网/高可信岗位 0 个，待核实岗位 1 个。",
+  "statusMessage": "今日部分源抓取失败，已保留可验证岗位与设计热点；未通过详情验证的搜索结果已过滤。",
+  "sourceCount": 22,
+  "totalItems": 23,
+  "qualitySummary": "今日收集 68 条，过滤 55 条，官网/高可信岗位 1 个，待核实岗位 0 个。",
   "qualityReport": {
-    "totalCollected": 77,
-    "afterDedup": 76,
+    "totalCollected": 68,
+    "afterDedup": 68,
     "afterQualityFilter": 13,
-    "verifiedJobsCount": 0,
+    "verifiedJobsCount": 1,
     "likelyJobsCount": 0,
-    "unverifiedJobsCount": 1,
+    "unverifiedJobsCount": 0,
     "fallbackJobsCount": 0,
     "officialSourceJobsCount": 1,
     "jobBoardJobsCount": 0,
     "searchResultJobsCount": 0,
-    "highMatchVerifiedJobsCount": 0,
-    "genericSearchResultsFiltered": 8,
+    "highMatchVerifiedJobsCount": 1,
+    "genericSearchResultsFiltered": 17,
+    "configuredOfficialCompanies": 20,
+    "successfulOfficialCompanies": 1,
+    "noMatchingOfficialCompanies": 12,
+    "failedOfficialCompanies": 7,
+    "officialJobsFound": 1,
+    "likelyJobsFound": 0,
+    "unverifiedSearchLeads": 0,
+    "highMatchJobsCount": 1,
     "failedSources": [
-      "SKIP https://sspai.com/feed: HTTPSConnectionPool(host='sspai.com', port=443): Read timed out. (read timeout=8)",
       "SKIP https://www.huxiu.com/rss/0.xml: HTTPSConnectionPool(host='www.huxiu.com', port=443): Read timed out. (read timeout=8)",
       "WARN 机器之心: RSS parse warning, trying available entries.",
       "SKIP 机器之心: no RSS entries.",
-      "WARN Dezeen: RSS parse warning, trying available entries.",
+      "SKIP https://www.theverge.com/rss/index.xml: HTTPSConnectionPool(host='www.theverge.com', port=443): Read timed out. (read timeout=8)",
+      "SKIP https://www.dezeen.com/feed/: HTTPSConnectionPool(host='www.dezeen.com', port=443): Read timed out. (read timeout=8)",
       "SKIP https://www.core77.com/rss/featured.xml: 404 Client Error: Not Found for url: https://www.core77.com/rss/featured.xml",
-      "SKIP https://www.dji.com/cn/careers: 404 Client Error: Not Found for url: https://www.dji.com/cn/404?from=/cn/careers",
-      "WARN COMPANY DJI 大疆: blocked_or_failed.",
       "SKIP https://career.hihonor.com/: HTTPSConnectionPool(host='career.hihonor.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
       "WARN COMPANY 荣耀: blocked_or_failed.",
       "SKIP https://www.insta360.com/cn/careers: 404 Client Error: Not Found for url: https://www.insta360.com/cn/careers",
       "WARN COMPANY Insta360 影石: blocked_or_failed.",
-      "SKIP https://maker.haier.net/client/join: 404 Client Error: Not Found for url: https://maker.haier.net/client/join",
-      "WARN COMPANY 海尔: blocked_or_failed.",
       "SKIP https://www.ecovacs.cn/careers: 404 Client Error: Not Found for url: https://www.ecovacs.cn/careers",
       "WARN COMPANY 科沃斯: blocked_or_failed.",
       "SKIP https://www.ninebot.com/careers: 404 Client Error: Not Found for url: https://www.ninebot.com/careers.html",
       "WARN COMPANY 九号: blocked_or_failed.",
       "SKIP https://www.anker.com/careers: 404 Client Error: Not Found for url: https://www.anker.com/careers",
       "WARN COMPANY 安克 Anker: blocked_or_failed.",
-      "SKIP https://www.ugreen.com/pages/careers: HTTPSConnectionPool(host='www.ugreen.com', port=443): Read timed out. (read timeout=8)",
+      "SKIP https://www.ugreen.com/pages/careers: 404 Client Error: Not Found for url: https://www.ugreen.com/pages/careers",
       "WARN COMPANY 绿联: blocked_or_failed.",
       "SKIP https://www.baseus.com/pages/careers: 404 Client Error: Not Found for url: https://www.baseus.com/pages/careers",
       "WARN COMPANY 倍思 Baseus: blocked_or_failed.",
-      "SKIP https://sso.doshisha.ac.jp/cgi-bin/portal.cgi: 403 Client Error: Forbidden for url: https://sso.doshisha.ac.jp/cgi-bin/portal.cgi",
-      "SKIP https://askubuntu.com/questions/1259632/convert-pdf-to-word-using-libreoffice-in-terminal: 403 Client Error: Forbidden for url: https://askubuntu.com/questions/1259632/convert-pdf-to-word-using-libreoffice-in-terminal",
+      "SKIP https://www.bing.com/search?q=site%3Acareers.dji.com+%E5%A4%A7%E7%96%86+%E5%B7%A5%E4%B8%9A%E8%AE%BE%E8%AE%A1%E5%B8%88+%E6%B7%B1%E5%9C%B3: HTTPSConnectionPool(host='www.bing.com', port=443): Read timed out. (read timeout=8)",
+      "SKIP https://baike.baidu.com/item/%E7%BE%8E/553: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E7%BE%8E/553",
+      "SKIP https://www.bing.com/search?q=%E5%B7%A5%E4%B8%9A%E8%AE%BE%E8%AE%A1+%E8%B6%8B%E5%8A%BF: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=%E5%B7%A5%E4%B8%9A%E8%AE%BE%E8%AE%A1+%E8%B6%8B%E5%8A%BF (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
       "SKIP https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875",
-      "SKIP https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E4%BA%A7%E5%93%81/105875",
-      "SKIP https://beebom.com/best-chrome-extensions/: HTTPSConnectionPool(host='beebom.com', port=443): Read timed out. (read timeout=8)",
-      "SKIP https://www.bing.com/search?q=AI%E7%A1%AC%E4%BB%B6+%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=AI%E7%A1%AC%E4%BB%B6+%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
-      "SKIP https://www.bing.com/search?q=%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6+%E8%AE%BE%E8%AE%A1: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6+%E8%AE%BE%E8%AE%A1 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))"
+      "SKIP https://upload.facebook.com/login/: HTTPSConnectionPool(host='www.facebook.com', port=443): Read timed out. (read timeout=8)",
+      "SKIP https://www.bing.com/search?q=%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6+%E8%AE%BE%E8%AE%A1: HTTPSConnectionPool(host='www.bing.com', port=443): Max retries exceeded with url: /search?q=%E6%99%BA%E8%83%BD%E7%A1%AC%E4%BB%B6+%E8%AE%BE%E8%AE%A1 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))",
+      "SKIP https://baike.baidu.com/item/%E6%9C%BA/2619190: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E6%9C%BA/2619190",
+      "SKIP https://www.zhihu.com/question/555079885: 403 Client Error: Forbidden for url: https://www.zhihu.com/question/555079885",
+      "SKIP https://baike.baidu.com/item/%E7%BA%A2/138044: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E7%BA%A2/138044",
+      "SKIP https://baike.baidu.com/item/%E8%AE%BE/6120004: 403 Client Error: Forbidden for url: https://baike.baidu.com/item/%E8%AE%BE/6120004"
     ],
     "companyCrawlStatus": [
       {
         "company": "DJI 大疆",
-        "status": "blocked_or_failed",
-        "sourceUrl": "https://www.dji.com/cn/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "status": "no_matching_jobs",
+        "sourceUrl": "https://careers.dji.com/zh-CN/",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "",
-        "message": "career page blocked, failed, or timed out"
+        "evidenceText": "首页 - DJI 大疆招聘 大疆官方招聘平台。社会招聘、校园招聘、实习机会，大疆最新招聘信息尽在这里。加入我们，一起把想象，变成世界现象。 首页 - DJI 大疆招聘 社会招聘 校园招聘 人在大疆 关于大疆 从你的想象 到世界现象 查看在招职位 观看视频 我们致力于 让生命更丰富 将科技与文明的力量和每个人的生命紧密相连 为世界带来全新 视角 了解更多 重塑人们的生产和生活方式 了解更多 培养社会的科技 创新力量 了解更多 人在大疆 一起成为更好的我们 成就志同道合的伙伴，提供体面生活和成长空间 了解更多 团队介绍 找到适合你的团队 在合适的职位，你的想象将大放异彩 研发团队 营销团队 供应链团队 流程 IT 团队 基础架构及信息安全管理团队 产品应用技术支持团队 职能团队 设计团队 RoboMaster 团队 研发团队 让产品“心明眼亮有智慧” 从最初的飞控，到四旋翼航拍机、手持云台专业影像，再到行业应用、农业应用……大疆研发团队用一个个划时代的产品惊艳世界，展现了“中国创造”的无限可能。这背后，是研发人极致的热爱，和挑战不可能的勇气。 我们通过持续深耕影像系统、图传、智能飞行、芯片、软件等核心技术领域，让产品“心明眼亮有",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "华为",
         "status": "no_matching_jobs",
-        "sourceUrl": "https://career.huawei.com/reccampportal/portal5/index.html",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "sourceUrl": "https://career.huawei.com/",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "华为招聘-找工作-求职-最新招聘信息-华为招聘官方网站 华为招聘官方网站，提供最新的华为职位招聘信息，了解华为岗位要求、薪资待遇等等，海量职位等你来选，在华为开启一段崭新的职业生涯。 华为招聘-找工作-求职-最新招聘信息-华为招聘官方网站 校园招聘 社会招聘 新闻公告 成长与发展 华为生活 登录 Worldwide 联系HR Huawei Worldwide Careers - 中文 Huawei Worldwide Careers - English Choose your local Huawei Careers website here: Northeast Europe - English Western Europe - English 登录 登录 校园招聘 社会招聘 新闻公告 成长与发展 华为生活 Huawei Worldwide Careers - English Huawei Worldwide Careers - 中文 Choose your local Huawei website here: Northeast Europe - English Western Europe - English 联系HR",
-        "message": "career page reachable, no matching job keywords"
+        "evidenceText": "华为招聘 ﻿ 华为招聘",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "小米",
-        "status": "no_matching_jobs",
+        "status": "success",
         "sourceUrl": "https://hr.xiaomi.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
-        "matchedCount": 0,
+        "checkedAt": "2026-06-02T22:27:47+08:00",
+        "matchedCount": 1,
         "evidenceText": "小米招聘 小米招聘 You need to enable JavaScript to run this app.",
-        "message": "career page reachable, no matching job keywords"
+        "message": "verified 1 public job detail page(s)"
       },
       {
         "company": "OPPO",
         "status": "no_matching_jobs",
         "sourceUrl": "https://careers.oppo.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "OPPOæè - å å ¥æä»¬ join us OPPOè´åæä¸ºä»¥æé ä¼å¤§äº§åä¸ºåºç³ççæåç§æå ¬å¸ï¼ä¸ºå ¨çç¨æ·æä¾æ´å¥½çæºæ §çæ´»ï¼ä¸æ¶ä»£åé¢åå±ï¼æä»¬ç§ææ¬ååºå ï¼åæäºå©å ±èµ¢ï¼å©åä½ ç»ä¸ä»·å¼åæ¥ç OPPOæè - å å ¥æä»¬ join us",
-        "message": "career page reachable, no matching job keywords"
+        "evidenceText": "OPPO招聘 - 加入我们 join us OPPO致力成为以打造伟大产品为基石的生态型科技公司，为全球用户提供更好的智慧生活，与时代同频发展，我们秉持本分基因，坚持互利共赢，助力你登上价值发挥的舞台。 OPPO招聘 - 加入我们 join us",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "vivo",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hr.vivo.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "vivoæèå®æ¹ç½ç« vivoå®æ¹æèå¹³å°ï¼è¯éç²¾è±å vivoæèå®æ¹ç½ç«",
-        "message": "career page reachable, no matching job keywords"
+        "evidenceText": "vivo招聘官方网站 vivo官方招聘平台，诚邀精英共创智能未来！未来，在世界所有充满渴望极致的角落，vivo与你共同创造令人震撼的奇迹！ vivo招聘官方网站",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "荣耀",
         "status": "blocked_or_failed",
         "sourceUrl": "https://career.hihonor.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -114,7 +121,7 @@
         "company": "Insta360 影石",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.insta360.com/cn/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -122,62 +129,62 @@
       {
         "company": "云鲸",
         "status": "no_matching_jobs",
-        "sourceUrl": "https://www.narwal.com/cn/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "sourceUrl": "https://careers.narwal.com/social",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "äºé²¸æºè½-å®æ¹ç½ç« äºé²¸NARWAL,ç«è¶³å®¶ç¨æºè½æ¸ æ´çµå¨é¢å,è´åäºç åé©å½æ§ç§æäº§å,åæ¶ä¹æ¯ä¸ä¸ªå¡å¯¼\"èªç±èªå¨,ææç­ç±\"ççæ´»æ¹å¼åçãæä»¬å¸æç¨æ°ç§æå°äººè§£æ¾åºæ¥,è®©ç¨æ·è¿ä¸ äºé²¸æºè½-å®æ¹ç½ç«",
-        "message": "career page reachable, no matching job keywords"
+        "evidenceText": "云鲸智能 ﻿ 云鲸智能 <![CDATA[-->",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "追觅",
         "status": "no_matching_jobs",
         "sourceUrl": "https://www.dreame.tech/cn/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "追觅商城-首页 追觅商城 追觅商城-首页 商城 查看购物车 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 全系产品站 创新尖端科技，普惠智能生活/家庭智能清洁全场景解决方案 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 智能清洁 智能洗地 无线吸尘 时尚个护 智能家用 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 品牌故事 全方位了解追觅/一家不断求索和成长的全球化科技公司 了解更多 了解更多 了解更多 会员臻享服务 最高返2倍积分 购物返积分 会员购物后将返还积分奖励，最高返还实付金额 2 倍积分。 一对一辅导 专属客服 提供一对一专属客户服务，帮您解答各类疑问，并提供专业技术支持。 最高享12期免息 分期免息 多款追觅主机商品享专属免息福利，最高可享12 期分期免息。 最高可抵 50% 积分抵现 会员购物时可使用积分抵扣现金，每 100 积分可抵扣 1 元，最高可抵扣订单金额 50%。 最高14天退换",
-        "message": "career page reachable, no matching job keywords"
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "石头科技",
         "status": "no_matching_jobs",
         "sourceUrl": "https://cn.roborock.com/pages/join-us",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "ç³å¤´ç§æ-è®©çæ´»æ´æåè´¨æ åäº¬ç³å¤´ä¸çºªç§ææéå ¬å¸ï¼Roborockï¼ç®ç§°ç³å¤´ç§æï¼æ¯ä¸å®¶ä¸æ³¨äºå®¶ç¨æºè½æ¸ æ´æºå¨äººåå ¶ä»æ¸ æ´çµå¨ç ååçäº§çå ¬å¸ï¼ä¸»è¦äº§åå æ¬ç³å¤´æ«å°æºå¨äººãç±³å®¶æ«å°æ ç³å¤´ç§æ-è®©çæ´»æ´æåè´¨æ",
-        "message": "career page reachable, no matching job keywords"
+        "evidenceText": "石头科技-让生活更有品质感 北京石头世纪科技有限公司（Roborock，简称石头科技）是一家专注于家用智能清洁机器人及其他清洁电器研发和生产的公司，主要产品包括石头扫地机器人、米家扫地机器人等。 石头科技-让生活更有品质感",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "TCL",
         "status": "no_matching_jobs",
         "sourceUrl": "https://campus.tcl.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "TCL招聘 TCL官方招聘平台, 加入TCL, 敢为不凡！ TCL招聘 欢迎为我们多提建议噢~ 点击进入满意度调研 首页 社会招聘 校园招聘 人在TCL 关于TCL AI客服 简体中文 ENGLISH 首页 社会招聘 校园招聘 人在TCL 关于TCL AI客服 个人中心 Language 中文 English 职位名称 关键字搜索 为什么选择TCL 长坡厚雪的职业赛道 科技强国，制造兴国，智能制造产业是国家政策利好的战略核心产业，未来应用领域广泛，有极大的领域发展空间。选择TCL，就是选择一条厚积薄发、持续性强、潜能无限的职业发展赛道。 剑指领先的全球势能 TCL在全球范围内构建了完整的产业链和供应链布局，涵盖了智能终端、半导体显示、半导体光伏及半导体材料等多个领域，近年来市占率节节攀升，稳居全球行业前列。在TCL，你将得到国际化视野和丰富跨文化的工作经验。 变革敢为的活力氛围 在这里你将有一个多元包容的工作环境，每位员工都能感受到被尊重、被理解，充分展现自己的价值和能力。在这里我们不拘泥成规，给你足够的创新空间和试错空间，从不同视角发现并解决问题。 成熟向上的培养体系 TCL有多层次、全方位的鹰系人才培养体系，不仅重技术层",
-        "message": "career page reachable, no matching job keywords"
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "美的",
-        "status": "success",
+        "status": "no_matching_jobs",
         "sourceUrl": "https://careers.midea.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
-        "matchedCount": 3,
+        "checkedAt": "2026-06-02T22:27:47+08:00",
+        "matchedCount": 0,
         "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
-        "message": "matched job keywords"
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "海尔",
-        "status": "blocked_or_failed",
-        "sourceUrl": "https://maker.haier.net/client/join",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "status": "no_matching_jobs",
+        "sourceUrl": "https://maker.haier.net/client/campus/index",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "",
-        "message": "career page blocked, failed, or timed out"
+        "evidenceText": "海尔校园官网--海尔招聘-海尔官方招聘网站 海尔集团校园频道首页，未来合伙人项目、实习生项目、未来规划局项目，还在校园的你，我们实时来关注，来海尔创造未来的你！ 海尔校园官网--海尔招聘-海尔官方招聘网站 您的浏览器不支持 video 标签。 海尔集团2026届校园招聘 No Boundary 立即投递 校招 首页 岗位投递 招聘动态 活动日历 应届生招聘 实习生招聘 校企俱乐部 了解海尔 登录 / 注册 校招项目 海尔集团2027校招提前批 海尔集团2027校园招聘提前批项目——面向2027届应届毕业生 投递简历 海尔集团博士登陆计划 海尔集团博士登陆计划 投递简历 实习生招聘 面向海内外院校全部在校生，提供实习实践机会。 投递简历 未来规划局 在校大学生（26届以后毕业） 投递简历 提前批聚焦智领生、GEDP、MEDP、GMTP和DMAP。 海尔生活 Haier Life 创客说 “探索高低温的边界，让可靠的冷热成为科技与生活的坚实后盾，是我的热忱所在。” -Kerry “投身项目不仅能深化我对产品的理解，更能见证自己在社会化能力上的成长与蜕变。” -Flora “保持思考和洞察的能力，保持对生活的热爱，那是你点燃灵感的",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "科沃斯",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ecovacs.cn/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -186,25 +193,25 @@
         "company": "联想",
         "status": "no_matching_jobs",
         "sourceUrl": "https://talent.lenovo.com.cn/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
-        "evidenceText": "èæ³æ ¡å­æè èæ³æ ¡å­æè",
-        "message": "career page reachable, no matching job keywords"
+        "evidenceText": "联想校园招聘 联想校园招聘",
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "海信",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hisense.zhiye.com/",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "Not Found Not Found Error! 如果您看见该页，可能有以下几个原因： 您访问的站点出错 页面已经被移走 您请求的页面不存在 @2002-2012北森.人才管理软件及解决方案",
-        "message": "career page reachable, no matching job keywords"
+        "message": "career page reachable, no verified public job detail"
       },
       {
         "company": "九号",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ninebot.com/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -213,7 +220,7 @@
         "company": "安克 Anker",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.anker.com/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -222,7 +229,7 @@
         "company": "绿联",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ugreen.com/pages/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -231,7 +238,7 @@
         "company": "倍思 Baseus",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.baseus.com/pages/careers",
-        "checkedAt": "2026-06-02T21:39:37+08:00",
+        "checkedAt": "2026-06-02T22:27:47+08:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -240,46 +247,86 @@
   },
   "jobOpportunities": [
     {
-      "id": "2026-06-02-job-d96e56791c",
-      "company": "美的",
-      "title": "家电产品设计机会跟踪",
-      "city": "佛山",
-      "direction": "家电",
+      "id": "2026-06-02-job-86335eea1c",
+      "company": "小米",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "智能硬件",
       "experience": "校招 / 社招",
-      "jobType": "实习",
-      "matchScore": 58,
+      "jobType": "校招",
+      "matchScore": 99,
       "sourceQualityScore": 92,
-      "relevanceScore": 45,
-      "reason": "该岗位位于佛山，属于家电方向，二优城市和方向匹配；岗位类型为实习，偏应届/初级经验；搜索或官网入口待核实，尚未验证完整岗位详情。匹配分已按真实性系数折算，建议先打开原始链接核对是否可投。",
+      "relevanceScore": 61,
+      "reason": "该岗位位于北京，属于智能硬件方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；官网可验证，页面能看到岗位/公司/城市证据。匹配分已按真实性系数折算，建议先打开原始链接核对是否可投。",
       "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
-      "url": "https://careers.midea.com/",
-      "verificationStatus": "unverified",
+      "url": "https://hr.xiaomi.com/job/view/129",
+      "verificationStatus": "verified",
       "sourceType": "official",
-      "applyUrl": "https://careers.midea.com/",
-      "originalUrl": "https://careers.midea.com/",
-      "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
-      "lastCheckedAt": "2026-06-02T21:39:37+08:00",
-      "confidenceScore": 55,
+      "applyUrl": "https://hr.xiaomi.com/job/view/129",
+      "originalUrl": "https://hr.xiaomi.com/job/view/129",
+      "evidenceText": "小米-北京-设计师-工业设计师-职位详情 小米招聘职位详情 小米-北京-设计师-工业设计师-职位详情 小米商城 | MIUI | IoT | 云服务 | 天星数科 | 有品 | 小爱开放平台 | 企业团购 | 资质证照 | 协议规则 | 下载App | 智能生活  购物车 登录 | 注册 小米官网 全部商品分类 Xiaomi手机 Xiaomi Civi 2 2399元起 Xiaomi MIX Fold 2 8999元起 Xiaomi ",
+      "lastCheckedAt": "2026-06-02T22:27:47+08:00",
+      "confidenceScore": 95,
       "date": "2026-06-02",
       "tags": [
         "官网来源",
-        "unverified",
+        "verified",
         "official",
-        "实习",
-        "家电",
-        "二优城市"
+        "校招",
+        "智能硬件",
+        "一优城市"
       ],
       "keywords": [
-        "美的",
-        "佛山",
-        "家电",
-        "实习",
+        "小米",
+        "北京",
+        "智能硬件",
+        "校招",
         "工业设计",
         "招聘"
       ]
     }
   ],
-  "highMatchJobs": [],
+  "highMatchJobs": [
+    {
+      "id": "2026-06-02-job-86335eea1c",
+      "company": "小米",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "智能硬件",
+      "experience": "校招 / 社招",
+      "jobType": "校招",
+      "matchScore": 99,
+      "sourceQualityScore": 92,
+      "relevanceScore": 61,
+      "reason": "该岗位位于北京，属于智能硬件方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；官网可验证，页面能看到岗位/公司/城市证据。匹配分已按真实性系数折算，建议先打开原始链接核对是否可投。",
+      "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
+      "url": "https://hr.xiaomi.com/job/view/129",
+      "verificationStatus": "verified",
+      "sourceType": "official",
+      "applyUrl": "https://hr.xiaomi.com/job/view/129",
+      "originalUrl": "https://hr.xiaomi.com/job/view/129",
+      "evidenceText": "小米-北京-设计师-工业设计师-职位详情 小米招聘职位详情 小米-北京-设计师-工业设计师-职位详情 小米商城 | MIUI | IoT | 云服务 | 天星数科 | 有品 | 小爱开放平台 | 企业团购 | 资质证照 | 协议规则 | 下载App | 智能生活  购物车 登录 | 注册 小米官网 全部商品分类 Xiaomi手机 Xiaomi Civi 2 2399元起 Xiaomi MIX Fold 2 8999元起 Xiaomi ",
+      "lastCheckedAt": "2026-06-02T22:27:47+08:00",
+      "confidenceScore": 95,
+      "date": "2026-06-02",
+      "tags": [
+        "官网来源",
+        "verified",
+        "official",
+        "校招",
+        "智能硬件",
+        "一优城市"
+      ],
+      "keywords": [
+        "小米",
+        "北京",
+        "智能硬件",
+        "校招",
+        "工业设计",
+        "招聘"
+      ]
+    }
+  ],
   "designHotspots": [
     {
       "id": "2026-06-02-hotspot-212177b904",
@@ -366,31 +413,31 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-1028147f61",
-      "title": "The Verge：消费电子案例值得加入产品设计观察",
-      "summary": "公开来源提到“This could be Windows’ M1 moment — but expect it to cost a ton”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "The Verge",
-      "category": "消费电子",
-      "url": "https://www.theverge.com/tech/941215/windows-laptops-nvidia-rtx-spark-apple-m1-arm-price-ram",
+      "id": "2026-06-02-hotspot-1d6554a23f",
+      "title": "hk.nothing.tech：CMF案例值得加入产品设计观察",
+      "summary": "公开来源提到“CMF | Nothing | HK”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "source": "hk.nothing.tech",
+      "category": "CMF",
+      "url": "https://hk.nothing.tech/collections/cmf",
       "date": "2026-06-02",
-      "importanceScore": 84,
-      "sourceQualityScore": 88,
-      "relevanceScore": 81,
-      "confidenceScore": 88,
+      "importanceScore": 82,
+      "sourceQualityScore": 76,
+      "relevanceScore": 79,
+      "confidenceScore": 76,
       "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中消费电子与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "消费电子",
-      "relatedBrand": "Apple",
+      "designRelevanceReason": "来源内容命中CMF与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "CMF",
+      "relatedBrand": "Nothing",
       "isGenericSearchResult": false,
-      "evidenceText": "Nvidia's announcement that it's getting into the consumer laptop chip space with RTX Spark is huge. Apple has proved for years that Arm-based chips can perform incredibly well while also delivering great battery life - a",
+      "evidenceText": "CMF | Nothing | HK CMF | Nothing | HK Nothing (R) CMF CMF Headphone Pro CMF Headphone Pro CMF Headphone Pro CMF Phone 2 Pro HK$2,199 CMF Phone 2 Pro HK$2,199 CMF Phone 2 Pro HK$2,199 CMF Watch 3 Pro HK$799 CMF Watch 3 Pr",
       "relatedCompanies": [
-        "Apple"
+        "Nothing"
       ],
       "tags": [
-        "消费电子",
-        "高可信",
+        "CMF",
+        "可核对来源",
         "设计热点",
-        "Apple"
+        "Nothing"
       ]
     },
     {
@@ -419,31 +466,109 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-e70e69ad9b",
-      "title": "The Verge：可穿戴设备案例值得加入产品设计观察",
-      "summary": "公开来源提到“How to watch Microsoft’s Build 2026 conference”。这条信息与可穿戴设备相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "The Verge",
-      "category": "可穿戴设备",
-      "url": "https://www.theverge.com/tech/941379/microsoft-build-conference-2026-how-to-watch-livestream",
+      "id": "2026-06-02-hotspot-ab6332db5b",
+      "title": "下载 IntelliJ IDEA",
+      "summary": "下载 IntelliJ IDEA 下载适用于专业 Java 和 Kotlin 开发的卓越 IDE IntelliJ IDEA 的最新版本。 支持 Windows、macOS 和 Linux。 下载 IntelliJ IDEA IntelliJ IDEA 下载 我们注意到您的Web浏览器已禁用JavaScript。 为了充分利用本网站的所有",
+      "source": "jetbrains.com",
+      "category": "设计奖项",
+      "url": "https://www.jetbrains.com/zh-cn/idea/download/",
+      "date": "2026-06-02",
+      "importanceScore": 79,
+      "sourceQualityScore": 76,
+      "relevanceScore": 76,
+      "confidenceScore": 76,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "designRelevanceReason": "来源内容命中设计奖项与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "设计奖项",
+      "relatedBrand": "jetbrains.com",
+      "isGenericSearchResult": false,
+      "evidenceText": "下载 IntelliJ IDEA 下载适用于专业 Java 和 Kotlin 开发的卓越 IDE IntelliJ IDEA 的最新版本。 支持 Windows、macOS 和 Linux。 下载 IntelliJ IDEA IntelliJ IDEA 下载 我们注意到您的Web浏览器已禁用JavaScript。 为了充分利用本网站的所有功能，请 启用 JavaScript 。 下载适用于您的操作系统 Windows 、 macOS 、",
+      "relatedCompanies": [],
+      "tags": [
+        "设计奖项",
+        "可核对来源",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-213d25824e",
+      "title": "在视频时代，认真拍一张照片：OPPO Find X9 Ultra 影像漫谈",
+      "summary": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
+      "source": "少数派",
+      "category": "3C产品",
+      "url": "https://sspai.com/post/110550",
       "date": "2026-06-02",
       "importanceScore": 77,
       "sourceQualityScore": 88,
       "relevanceScore": 74,
       "confidenceScore": 88,
       "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中可穿戴设备与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "可穿戴设备",
-      "relatedBrand": "Apple",
+      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "3C产品",
+      "relatedBrand": "OPPO",
       "isGenericSearchResult": false,
-      "evidenceText": "Microsoft is kicking off its yearly Build developer conference in San Francisco today, sandwiched between the recent Google I/O and Apple's upcoming WWDC event. While tickets to attend Build in person are sold out, the c",
+      "evidenceText": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
       "relatedCompanies": [
-        "Apple"
+        "OPPO"
       ],
       "tags": [
-        "可穿戴设备",
+        "3C产品",
         "高可信",
         "设计热点",
-        "Apple"
+        "OPPO"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-9dc211e988",
+      "title": "派早报：Anthropic 估值超过 OpenAI",
+      "summary": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期",
+      "source": "少数派",
+      "category": "3C产品",
+      "url": "https://sspai.com/post/110519",
+      "date": "2026-06-02",
+      "importanceScore": 77,
+      "sourceQualityScore": 88,
+      "relevanceScore": 74,
+      "confidenceScore": 88,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "3C产品",
+      "relatedBrand": "vivo",
+      "isGenericSearchResult": false,
+      "evidenceText": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期动态 你可能错过的好文章 查看全文",
+      "relatedCompanies": [
+        "vivo"
+      ],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "vivo"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-eabe5ebac9",
+      "title": "派早报：英伟达、华硕等多个厂商在 COMPUTEX 2026 发布新品",
+      "summary": "少数派的近期动态少数派×飞傲多功能便携CD音箱一体机BEATBOX预售开启。火速入手可爱又好玩的经典萌物——监工水獭挂件复刻啦！会员点数也可兑换！给獭一个家首款MBTI定制墨水屏「口袋先知」预售进行中 ... 查看全文",
+      "source": "少数派",
+      "category": "3C产品",
+      "url": "https://sspai.com/post/110592",
+      "date": "2026-06-02",
+      "importanceScore": 74,
+      "sourceQualityScore": 88,
+      "relevanceScore": 71,
+      "confidenceScore": 88,
+      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
+      "productCategory": "3C产品",
+      "relatedBrand": "少数派",
+      "isGenericSearchResult": false,
+      "evidenceText": "少数派的近期动态少数派×飞傲多功能便携CD音箱一体机BEATBOX预售开启。火速入手可爱又好玩的经典萌物——监工水獭挂件复刻啦！会员点数也可兑换！给獭一个家首款MBTI定制墨水屏「口袋先知」预售进行中 ... 查看全文",
+      "relatedCompanies": [],
+      "tags": [
+        "3C产品",
+        "高可信",
+        "设计热点"
       ]
     },
     {
@@ -520,84 +645,25 @@
         "高可信",
         "设计热点"
       ]
-    },
-    {
-      "id": "2026-06-02-hotspot-56817d88fc",
-      "title": "世界模型赛道，VAST 选了一条还没有人走过的路",
-      "summary": "不缺好的画面，缺一个真正运转的世界 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "source": "爱范儿",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667604?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "importanceScore": 74,
-      "sourceQualityScore": 88,
-      "relevanceScore": 71,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "爱范儿",
-      "isGenericSearchResult": false,
-      "evidenceText": "不缺好的画面，缺一个真正运转的世界 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCompanies": [],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-2e3eacce35",
-      "title": "英伟达掀桌，Windows 终于迎来真 AI PC",
-      "summary": "Mac mini 最强竞争对手？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "source": "爱范儿",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667641?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "importanceScore": 74,
-      "sourceQualityScore": 88,
-      "relevanceScore": 71,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "爱范儿",
-      "isGenericSearchResult": false,
-      "evidenceText": "Mac mini 最强竞争对手？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCompanies": [],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-db6db8212c",
-      "title": "提前看看，今年新 iPhone 系统长什么样｜WWDC26",
-      "summary": "iOS 27，稳中向好 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "source": "爱范儿",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667454?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "importanceScore": 74,
-      "sourceQualityScore": 88,
-      "relevanceScore": 71,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "爱范儿",
-      "isGenericSearchResult": false,
-      "evidenceText": "iOS 27，稳中向好 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCompanies": [],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
     }
   ],
   "companyUpdates": [
+    {
+      "id": "2026-06-02-company-f77a872a71",
+      "company": "小米",
+      "title": "小米：智能硬件岗位入口值得核对",
+      "summary": "北京 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
+      "category": "招聘",
+      "url": "https://hr.xiaomi.com/job/view/129",
+      "date": "2026-06-02",
+      "relevanceScore": 99,
+      "designRelation": "与智能硬件、作品集项目选择和求职投递优先级直接相关。",
+      "tags": [
+        "智能硬件",
+        "校招",
+        "官网来源"
+      ]
+    },
     {
       "id": "2026-06-02-company-hotspot-7e78964bb3",
       "company": "华为",
@@ -605,22 +671,6 @@
       "summary": "nova 的变与不变 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
       "category": "产品设计动态",
       "url": "https://www.ifanr.com/1667771?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "relevanceScore": 81,
-      "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "tags": [
-        "3C产品",
-        "设计热点",
-        "高可信"
-      ]
-    },
-    {
-      "id": "2026-06-02-company-hotspot-76b65ead36",
-      "company": "小米",
-      "title": "小米：产品设计动态值得跟进",
-      "summary": "新增 0.5 寸 ingBar 琥珀屏，160W 高能巡航 ，4×140W 盲插，支持小米 120W 澎湃秒充，CanOS 2.0 如意系统 + OTW 云桥让充电头持续进化，从桌面电站到差旅随行充，全新定义 AI 时代的万能充。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "category": "产品设计动态",
-      "url": "https://www.ifanr.com/1667606?utm_source=rss&utm_medium=rss&utm_campaign=",
       "date": "2026-06-02",
       "relevanceScore": 81,
       "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
@@ -647,19 +697,51 @@
       ]
     },
     {
-      "id": "2026-06-02-company-88205e0500",
-      "company": "美的",
-      "title": "美的：家电岗位入口值得核对",
-      "summary": "佛山 / 实习 / 匹配度 58，建议查看原始招聘链接确认岗位是否开放。",
-      "category": "招聘",
-      "url": "https://careers.midea.com/",
+      "id": "2026-06-02-company-hotspot-7c7821a6d9",
+      "company": "Nothing",
+      "title": "Nothing：产品设计动态值得跟进",
+      "summary": "公开来源提到“CMF | Nothing | HK”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "category": "产品设计动态",
+      "url": "https://hk.nothing.tech/collections/cmf",
       "date": "2026-06-02",
-      "relevanceScore": 58,
-      "designRelation": "与家电、作品集项目选择和求职投递优先级直接相关。",
+      "relevanceScore": 79,
+      "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "tags": [
-        "家电",
-        "实习",
-        "官网来源"
+        "CMF",
+        "设计热点",
+        "可核对来源"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-hotspot-660a0fb6f5",
+      "company": "OPPO",
+      "title": "OPPO：产品设计动态值得跟进",
+      "summary": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
+      "category": "产品设计动态",
+      "url": "https://sspai.com/post/110550",
+      "date": "2026-06-02",
+      "relevanceScore": 74,
+      "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "tags": [
+        "3C产品",
+        "设计热点",
+        "高可信"
+      ]
+    },
+    {
+      "id": "2026-06-02-company-hotspot-de2af26cc2",
+      "company": "vivo",
+      "title": "vivo：产品设计动态值得跟进",
+      "summary": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期",
+      "category": "产品设计动态",
+      "url": "https://sspai.com/post/110519",
+      "date": "2026-06-02",
+      "relevanceScore": 74,
+      "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "tags": [
+        "3C产品",
+        "设计热点",
+        "高可信"
       ]
     }
   ],
@@ -667,13 +749,13 @@
     {
       "id": "2026-06-02-action-7830f0f388",
       "title": "今日建议重点关注的岗位",
-      "description": "优先打开 美的 的原始链接，核对佛山 / 家电 / 实习是否可投。",
+      "description": "优先打开 小米 的原始链接，核对北京 / 智能硬件 / 校招是否可投。",
       "priority": "high",
       "keywords": [
         "求职",
-        "美的",
-        "佛山",
-        "家电"
+        "小米",
+        "北京",
+        "智能硬件"
       ]
     },
     {
@@ -701,51 +783,51 @@
     {
       "id": "2026-06-02-action-262371b33c",
       "title": "今日建议跟进的公司动态",
-      "description": "跟进 华为：建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "description": "跟进 小米：与智能硬件、作品集项目选择和求职投递优先级直接相关。",
       "priority": "low",
       "keywords": [
         "公司动态",
-        "华为",
-        "产品设计动态"
+        "小米",
+        "招聘"
       ]
     }
   ],
   "jobs": [
     {
-      "id": "2026-06-02-job-d96e56791c",
-      "company": "美的",
-      "title": "家电产品设计机会跟踪",
-      "city": "佛山",
-      "direction": "家电",
+      "id": "2026-06-02-job-86335eea1c",
+      "company": "小米",
+      "title": "工业设计 / 产品设计机会跟踪",
+      "city": "北京",
+      "direction": "智能硬件",
       "experience": "校招 / 社招",
-      "jobType": "实习",
-      "matchScore": 58,
+      "jobType": "校招",
+      "matchScore": 99,
       "sourceQualityScore": 92,
-      "relevanceScore": 45,
-      "reason": "该岗位位于佛山，属于家电方向，二优城市和方向匹配；岗位类型为实习，偏应届/初级经验；搜索或官网入口待核实，尚未验证完整岗位详情。匹配分已按真实性系数折算，建议先打开原始链接核对是否可投。",
+      "relevanceScore": 61,
+      "reason": "该岗位位于北京，属于智能硬件方向，一优城市和方向匹配；岗位类型为校招，偏应届/初级经验；官网可验证，页面能看到岗位/公司/城市证据。匹配分已按真实性系数折算，建议先打开原始链接核对是否可投。",
       "requirementsSummary": "重点核对岗位是否要求工业设计、产品设计、CMF、结构理解、渲染表达和作品集完整项目叙事。",
-      "url": "https://careers.midea.com/",
-      "verificationStatus": "unverified",
+      "url": "https://hr.xiaomi.com/job/view/129",
+      "verificationStatus": "verified",
       "sourceType": "official",
-      "applyUrl": "https://careers.midea.com/",
-      "originalUrl": "https://careers.midea.com/",
-      "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
-      "lastCheckedAt": "2026-06-02T21:39:37+08:00",
-      "confidenceScore": 55,
+      "applyUrl": "https://hr.xiaomi.com/job/view/129",
+      "originalUrl": "https://hr.xiaomi.com/job/view/129",
+      "evidenceText": "小米-北京-设计师-工业设计师-职位详情 小米招聘职位详情 小米-北京-设计师-工业设计师-职位详情 小米商城 | MIUI | IoT | 云服务 | 天星数科 | 有品 | 小爱开放平台 | 企业团购 | 资质证照 | 协议规则 | 下载App | 智能生活  购物车 登录 | 注册 小米官网 全部商品分类 Xiaomi手机 Xiaomi Civi 2 2399元起 Xiaomi MIX Fold 2 8999元起 Xiaomi ",
+      "lastCheckedAt": "2026-06-02T22:27:47+08:00",
+      "confidenceScore": 95,
       "date": "2026-06-02",
       "tags": [
         "官网来源",
-        "unverified",
+        "verified",
         "official",
-        "实习",
-        "家电",
-        "二优城市"
+        "校招",
+        "智能硬件",
+        "一优城市"
       ],
       "keywords": [
-        "美的",
-        "佛山",
-        "家电",
-        "实习",
+        "小米",
+        "北京",
+        "智能硬件",
+        "校招",
         "工业设计",
         "招聘"
       ]
@@ -804,20 +886,20 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-1028147f61",
-      "title": "The Verge：消费电子案例值得加入产品设计观察",
-      "summary": "公开来源提到“This could be Windows’ M1 moment — but expect it to cost a ton”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "The Verge",
-      "category": "消费电子",
-      "url": "https://www.theverge.com/tech/941215/windows-laptops-nvidia-rtx-spark-apple-m1-arm-price-ram",
+      "id": "2026-06-02-hotspot-1d6554a23f",
+      "title": "hk.nothing.tech：CMF案例值得加入产品设计观察",
+      "summary": "公开来源提到“CMF | Nothing | HK”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "source": "hk.nothing.tech",
+      "category": "CMF",
+      "url": "https://hk.nothing.tech/collections/cmf",
       "date": "2026-06-02",
-      "importanceScore": 84,
+      "importanceScore": 82,
       "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "keywords": [
-        "消费电子",
-        "高可信",
+        "CMF",
+        "可核对来源",
         "设计热点",
-        "Apple"
+        "Nothing"
       ]
     },
     {
@@ -893,21 +975,21 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-1028147f61-trend",
-      "title": "The Verge：消费电子案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“This could be Windows’ M1 moment — but expect it to cost a ton”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "id": "2026-06-02-hotspot-1d6554a23f-trend",
+      "title": "hk.nothing.tech：CMF案例值得加入产品设计观察",
+      "trendSummary": "公开来源提到“CMF | Nothing | HK”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
       "relatedCases": [
-        "Apple"
+        "Nothing"
       ],
       "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "消费电子",
-      "url": "https://www.theverge.com/tech/941215/windows-laptops-nvidia-rtx-spark-apple-m1-arm-price-ram",
+      "category": "CMF",
+      "url": "https://hk.nothing.tech/collections/cmf",
       "date": "2026-06-02",
       "keywords": [
-        "消费电子",
-        "高可信",
+        "CMF",
+        "可核对来源",
         "设计热点",
-        "Apple"
+        "Nothing"
       ]
     },
     {
@@ -928,21 +1010,73 @@
       ]
     },
     {
-      "id": "2026-06-02-hotspot-e70e69ad9b-trend",
-      "title": "The Verge：可穿戴设备案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“How to watch Microsoft’s Build 2026 conference”。这条信息与可穿戴设备相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "id": "2026-06-02-hotspot-ab6332db5b-trend",
+      "title": "下载 IntelliJ IDEA",
+      "trendSummary": "下载 IntelliJ IDEA 下载适用于专业 Java 和 Kotlin 开发的卓越 IDE IntelliJ IDEA 的最新版本。 支持 Windows、macOS 和 Linux。 下载 IntelliJ IDEA IntelliJ IDEA 下载 我们注意到您的Web浏览器已禁用JavaScript。 为了充分利用本网站的所有",
       "relatedCases": [
-        "Apple"
+        "jetbrains.com"
       ],
       "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "可穿戴设备",
-      "url": "https://www.theverge.com/tech/941379/microsoft-build-conference-2026-how-to-watch-livestream",
+      "category": "设计奖项",
+      "url": "https://www.jetbrains.com/zh-cn/idea/download/",
       "date": "2026-06-02",
       "keywords": [
-        "可穿戴设备",
+        "设计奖项",
+        "可核对来源",
+        "设计热点"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-213d25824e-trend",
+      "title": "在视频时代，认真拍一张照片：OPPO Find X9 Ultra 影像漫谈",
+      "trendSummary": "HDR 为静态图像的观看体验打开了一种新的可能。 查看全文",
+      "relatedCases": [
+        "OPPO"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://sspai.com/post/110550",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
         "高可信",
         "设计热点",
-        "Apple"
+        "OPPO"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-9dc211e988-trend",
+      "title": "派早报：Anthropic 估值超过 OpenAI",
+      "trendSummary": "Anthropic 估值超过 OpenAI 海盗湾被查封二十周年，至今仍维持运营 高通推出骁龙 C 系列，用于对标 MacBook Neo 的笔记本 PC Last.fm 重归独立运营 vivo 发布 vivo S60 系列 北京互联网法院称有未成年人游戏充值单案超 60 万元 比尔·盖茨公众形象面临空前危机 看看就行的简讯 少数派的近期",
+      "relatedCases": [
+        "vivo"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://sspai.com/post/110519",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点",
+        "vivo"
+      ]
+    },
+    {
+      "id": "2026-06-02-hotspot-eabe5ebac9-trend",
+      "title": "派早报：英伟达、华硕等多个厂商在 COMPUTEX 2026 发布新品",
+      "trendSummary": "少数派的近期动态少数派×飞傲多功能便携CD音箱一体机BEATBOX预售开启。火速入手可爱又好玩的经典萌物——监工水獭挂件复刻啦！会员点数也可兑换！给獭一个家首款MBTI定制墨水屏「口袋先知」预售进行中 ... 查看全文",
+      "relatedCases": [
+        "少数派"
+      ],
+      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
+      "category": "3C产品",
+      "url": "https://sspai.com/post/110592",
+      "date": "2026-06-02",
+      "keywords": [
+        "3C产品",
+        "高可信",
+        "设计热点"
       ]
     },
     {
@@ -989,57 +1123,6 @@
       "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "category": "3C产品",
       "url": "https://www.ifanr.com/1667680?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-56817d88fc-trend",
-      "title": "世界模型赛道，VAST 选了一条还没有人走过的路",
-      "trendSummary": "不缺好的画面，缺一个真正运转的世界 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCases": [
-        "爱范儿"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667604?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-2e3eacce35-trend",
-      "title": "英伟达掀桌，Windows 终于迎来真 AI PC",
-      "trendSummary": "Mac mini 最强竞争对手？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCases": [
-        "爱范儿"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667641?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-02",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-02-hotspot-db6db8212c-trend",
-      "title": "提前看看，今年新 iPhone 系统长什么样｜WWDC26",
-      "trendSummary": "iOS 27，稳中向好 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCases": [
-        "爱范儿"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667454?utm_source=rss&utm_medium=rss&utm_campaign=",
       "date": "2026-06-02",
       "keywords": [
         "3C产品",

@@ -63,6 +63,14 @@ REQUIRED_QUALITY_KEYS = [
     "jobBoardJobsCount",
     "searchResultJobsCount",
     "highMatchVerifiedJobsCount",
+    "configuredOfficialCompanies",
+    "successfulOfficialCompanies",
+    "noMatchingOfficialCompanies",
+    "failedOfficialCompanies",
+    "officialJobsFound",
+    "likelyJobsFound",
+    "unverifiedSearchLeads",
+    "highMatchJobsCount",
     "genericSearchResultsFiltered",
     "failedSources",
     "companyCrawlStatus",
@@ -183,10 +191,25 @@ def validate_report(report: dict[str, Any], report_name: str, errors: list[str])
             "jobBoardJobsCount": len([job for job in jobs if job.get("sourceType") == "job_board"]),
             "searchResultJobsCount": len([job for job in jobs if job.get("sourceType") == "search_result"]),
             "highMatchVerifiedJobsCount": len(high_match_jobs),
+            "officialJobsFound": len([job for job in jobs if job.get("verificationStatus") == "verified"]),
+            "likelyJobsFound": len([job for job in jobs if job.get("verificationStatus") == "likely"]),
+            "unverifiedSearchLeads": len([job for job in jobs if job.get("verificationStatus") == "unverified"]),
+            "highMatchJobsCount": len(high_match_jobs),
         }
         for key, expected in expected_counts.items():
             if quality_report.get(key) != expected:
                 errors.append(f"{report_name}.qualityReport.{key} is {quality_report.get(key)}, expected {expected}")
+        company_status = quality_report.get("companyCrawlStatus", [])
+        if isinstance(company_status, list):
+            status_counts = {
+                "configuredOfficialCompanies": len(company_status),
+                "successfulOfficialCompanies": len([item for item in company_status if isinstance(item, dict) and item.get("status") == "success"]),
+                "noMatchingOfficialCompanies": len([item for item in company_status if isinstance(item, dict) and item.get("status") == "no_matching_jobs"]),
+                "failedOfficialCompanies": len([item for item in company_status if isinstance(item, dict) and item.get("status") == "blocked_or_failed"]),
+            }
+            for key, expected in status_counts.items():
+                if quality_report.get(key) != expected:
+                    errors.append(f"{report_name}.qualityReport.{key} is {quality_report.get(key)}, expected {expected}")
 
     for item_index, hotspot in enumerate(report.get("designHotspots", [])):
         if not isinstance(hotspot, dict):
