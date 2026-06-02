@@ -19,3 +19,9 @@ vite.config.d.ts
 # Logs and OS files
 *.log
 .DS_Store
+
+# Tencent Cloud EdgeOne
+.env
+.edgeone/*
+.tef_dist/*
+  
