@@ -7,7 +7,7 @@
   "collectionStatus": "partial",
   "statusMessage": "今日部分源抓取失败，已保留可验证岗位与设计热点；未通过详情验证的搜索结果已过滤。",
   "sourceCount": 29,
-  "totalItems": 22,
+  "totalItems": 12,
   "qualitySummary": "今日收集 89 条，过滤 76 条，官网/高可信岗位 1 个，待核实岗位 0 个。",
   "qualityReport": {
     "totalCollected": 89,
@@ -236,7 +236,13 @@
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
       }
-    ]
+    ],
+    "verifiedJobDetailsChecked": 0,
+    "verifiedJobsDowngraded": 0,
+    "genericHotspotsFiltered": 10,
+    "concreteHotspotsKept": 2,
+    "jobDetailPagesFailed": 0,
+    "jobDetailPagesPassed": 0
   },
   "jobOpportunities": [
     {
@@ -276,7 +282,9 @@
         "校招",
         "工业设计",
         "招聘"
-      ]
+      ],
+      "jobCategory": "",
+      "responsibilitiesSummary": ""
     }
   ],
   "highMatchJobs": [
@@ -317,224 +325,12 @@
         "校招",
         "工业设计",
         "招聘"
-      ]
+      ],
+      "jobCategory": "",
+      "responsibilitiesSummary": ""
     }
   ],
   "designHotspots": [
-    {
-      "id": "2026-06-04-hotspot-40ae31cf42",
-      "title": "dyson.com：清洁电器案例值得加入产品设计观察",
-      "summary": "公开来源提到“Official Dyson® Website | Shop Dyson.com for Exclusive Savings”。这条信息与清洁电器相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "dyson.com",
-      "category": "清洁电器",
-      "url": "https://www.dyson.com/en",
-      "date": "2026-06-04",
-      "importanceScore": 89,
-      "sourceQualityScore": 76,
-      "relevanceScore": 86,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中清洁电器与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "清洁电器",
-      "relatedBrand": "Dyson",
-      "isGenericSearchResult": false,
-      "evidenceText": "Official Dyson® Website | Shop Dyson.com for Exclusive Savings Shop at Dyson.com for free shipping and warranty. Dyson vacuum cleaners, hair dryers, hair straighteners, hair stylers, air purifiers, humidifiers, hand drye",
-      "relatedCompanies": [
-        "Dyson"
-      ],
-      "tags": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点",
-        "Dyson"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-7b53227cbf",
-      "title": "openai.com：AI硬件案例值得加入产品设计观察",
-      "summary": "公开来源提到“OpenAI | Research & Deployment”。这条信息与AI硬件相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "openai.com",
-      "category": "AI硬件",
-      "url": "https://openai.com/",
-      "date": "2026-06-04",
-      "importanceScore": 86,
-      "sourceQualityScore": 76,
-      "relevanceScore": 83,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中AI硬件与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "AI硬件",
-      "relatedBrand": "openai.com",
-      "isGenericSearchResult": false,
-      "evidenceText": "OpenAI | Research & Deployment We believe our research will eventually lead to artificial general intelligence, a system that can solve human-level problems. Building safe and beneficial AGI is our mission. OpenAI | Rese",
-      "relatedCompanies": [],
-      "tags": [
-        "AI硬件",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-5ce0dc93e3",
-      "title": "miami.flapest.com：消费电子案例值得加入产品设计观察",
-      "summary": "公开来源提到“Pest Identification Library - Florida Pest Control - Miami/Ft. Lauderdale”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "miami.flapest.com",
-      "category": "消费电子",
-      "url": "https://miami.flapest.com/pest-info/page/2/",
-      "date": "2026-06-04",
-      "importanceScore": 86,
-      "sourceQualityScore": 76,
-      "relevanceScore": 83,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中消费电子与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "消费电子",
-      "relatedBrand": "miami.flapest.com",
-      "isGenericSearchResult": false,
-      "evidenceText": "Pest Identification Library - Florida Pest Control - Miami/Ft. Lauderdale Wondering what type of pest is infesting your Florida home? Check out our Pest Identification Library and get expert pest tips today! Pest Identif",
-      "relatedCompanies": [],
-      "tags": [
-        "消费电子",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-ff00f399e0",
-      "title": "早报｜曝苹果Vision Pro系列被砍/多地高考将查验智能眼镜/DeepSeek首轮融资规模约500亿元",
-      "summary": "· 荣耀 YOYO 智能体可直接操控微信 · 苹果公布 2026 Apple 设计大奖得主 · Google 允许网站退出 AI 搜索 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "source": "爱范儿",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1668044?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-04",
-      "importanceScore": 84,
-      "sourceQualityScore": 88,
-      "relevanceScore": 81,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "荣耀、Apple",
-      "isGenericSearchResult": false,
-      "evidenceText": "· 荣耀 YOYO 智能体可直接操控微信 · 苹果公布 2026 Apple 设计大奖得主 · Google 允许网站退出 AI 搜索 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCompanies": [
-        "荣耀",
-        "Apple"
-      ],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "荣耀",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-5f5f27dcd6",
-      "title": "The Verge：消费电子案例值得加入产品设计观察",
-      "summary": "公开来源提到“Apple is bringing age verification to Texas this week”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "The Verge",
-      "category": "消费电子",
-      "url": "https://www.theverge.com/tech/942761/apple-texas-age-verification-app-store",
-      "date": "2026-06-04",
-      "importanceScore": 84,
-      "sourceQualityScore": 88,
-      "relevanceScore": 81,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中消费电子与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "消费电子",
-      "relatedBrand": "Apple",
-      "isGenericSearchResult": false,
-      "evidenceText": "Apple will introduce age verification in the App Store for users in Texas starting on Thursday, June 4th. The move, as spotted by MacRumors, comes just days after a federal appeals court allowed Texas' App Store Accounta",
-      "relatedCompanies": [
-        "Apple"
-      ],
-      "tags": [
-        "消费电子",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-12b1c568cb",
-      "title": "us.nothing.tech：CMF案例值得加入产品设计观察",
-      "summary": "公开来源提到“CMF | Nothing | US”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "us.nothing.tech",
-      "category": "CMF",
-      "url": "https://us.nothing.tech/collections/cmf",
-      "date": "2026-06-04",
-      "importanceScore": 82,
-      "sourceQualityScore": 76,
-      "relevanceScore": 79,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中CMF与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "CMF",
-      "relatedBrand": "Nothing",
-      "isGenericSearchResult": false,
-      "evidenceText": "CMF | Nothing | US CMF | Nothing | US Nothing (R) Explore Offers Learn More CMF CMF Headphone Pro $99 CMF Headphone Pro $99 CMF Headphone Pro $99 CMF Watch 3 Pro $99 CMF Watch 3 Pro $99 CMF Watch 3 Pro $99 CMF Watch 3 Pr",
-      "relatedCompanies": [
-        "Nothing"
-      ],
-      "tags": [
-        "CMF",
-        "可核对来源",
-        "设计热点",
-        "Nothing"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-4cec9801b8",
-      "title": "早报｜微软发布Windows「梦中神机」/腾讯云DeepSeek-V4最高降价97.5%/徕卡相机或被中国资本收购",
-      "summary": "· Alphabet 拟融资 800 亿美元投入 AI 基建 · 字节 Seed 机器人团队转向周畅汇报 · Codex 免费账号配额缩水，7 天重置周期变 30 天 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "source": "爱范儿",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667902?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-04",
-      "importanceScore": 81,
-      "sourceQualityScore": 88,
-      "relevanceScore": 78,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "爱范儿",
-      "isGenericSearchResult": false,
-      "evidenceText": "· Alphabet 拟融资 800 亿美元投入 AI 基建 · 字节 Seed 机器人团队转向周畅汇报 · Codex 免费账号配额缩水，7 天重置周期变 30 天 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCompanies": [],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-aec1fcb00b",
-      "title": "3c.healthcare：3C产品案例值得加入产品设计观察",
-      "summary": "公开来源提到“3C Comprehensive Correctional Care – Customized, Customer-Centric Care for Correctional Fa”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "3c.healthcare",
-      "category": "3C产品",
-      "url": "https://3c.healthcare/",
-      "date": "2026-06-04",
-      "importanceScore": 79,
-      "sourceQualityScore": 76,
-      "relevanceScore": 76,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中3C产品与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "3C产品",
-      "relatedBrand": "3c.healthcare",
-      "isGenericSearchResult": false,
-      "evidenceText": "3C Comprehensive Correctional Care – Customized, Customer-Centric Care for Correctional Facilities 3C Comprehensive Correctional Care – Customized, Customer-Centric Care for Correctional Facilities P.O. Box 735 Benton, K",
-      "relatedCompanies": [],
-      "tags": [
-        "3C产品",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
     {
       "id": "2026-06-04-hotspot-057600dc43",
       "title": "中国机器人链接世界的“第一站” 国际机器人顶尖赛事落地北京_公告提示_首都之窗_北京市人民政府门户网站",
@@ -556,56 +352,6 @@
       "relatedCompanies": [],
       "tags": [
         "机器人",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-7a2a3e6d8a",
-      "title": "en.wikipedia.org：设计奖项案例值得加入产品设计观察",
-      "summary": "公开来源提到“IF (film) - Wikipedia”。这条信息与设计奖项相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "en.wikipedia.org",
-      "category": "设计奖项",
-      "url": "https://en.wikipedia.org/wiki/IF_(film)",
-      "date": "2026-06-04",
-      "importanceScore": 79,
-      "sourceQualityScore": 76,
-      "relevanceScore": 76,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中设计奖项与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "设计奖项",
-      "relatedBrand": "en.wikipedia.org",
-      "isGenericSearchResult": false,
-      "evidenceText": "IF (film) - Wikipedia IF (film) - Wikipedia Jump to content Main menu Main menu move to sidebar hide Navigation Main page Contents Current events Random article About Wikipedia Contact us Contribute Help Learn to edit Co",
-      "relatedCompanies": [],
-      "tags": [
-        "设计奖项",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-b54d5d2ba2",
-      "title": "jetbrains.com：设计奖项案例值得加入产品设计观察",
-      "summary": "公开来源提到“Download IntelliJ IDEA”。这条信息与设计奖项相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "jetbrains.com",
-      "category": "设计奖项",
-      "url": "https://www.jetbrains.com/idea/download/?section=windows%C2%A0",
-      "date": "2026-06-04",
-      "importanceScore": 79,
-      "sourceQualityScore": 76,
-      "relevanceScore": 76,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "来源内容命中设计奖项与产品设计关键词，具备可追溯原始链接。",
-      "productCategory": "设计奖项",
-      "relatedBrand": "jetbrains.com",
-      "isGenericSearchResult": false,
-      "evidenceText": "Download IntelliJ IDEA Download the latest version of IntelliJ IDEA, the leading IDE for professional development in Java and Kotlin. Available for Windows, macOS, and Linux. Download IntelliJ IDEA IntelliJ IDEA Download",
-      "relatedCompanies": [],
-      "tags": [
-        "设计奖项",
         "可核对来源",
         "设计热点"
       ]
@@ -806,238 +552,47 @@
         "校招",
         "工业设计",
         "招聘"
-      ]
+      ],
+      "jobCategory": "",
+      "responsibilitiesSummary": ""
     }
   ],
   "topNews": [
     {
-      "id": "2026-06-04-hotspot-40ae31cf42",
-      "title": "dyson.com：清洁电器案例值得加入产品设计观察",
-      "summary": "公开来源提到“Official Dyson® Website | Shop Dyson.com for Exclusive Savings”。这条信息与清洁电器相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "dyson.com",
-      "category": "清洁电器",
-      "url": "https://www.dyson.com/en",
+      "id": "2026-06-04-hotspot-057600dc43",
+      "title": "中国机器人链接世界的“第一站” 国际机器人顶尖赛事落地北京_公告提示_首都之窗_北京市人民政府门户网站",
+      "summary": "中国机器人链接世界的“第一站” 国际机器人顶尖赛事落地北京_公告提示_首都之窗_北京市人民政府门户网站 中国机器人链接世界的“第一站” 国际机器人顶尖赛事落地北京_公告提示_首都之窗_北京市人民政府门户网站 政务服务 > 利企服务 > 公告提示 中国机器人链接世界的“第一站” 国际机器人顶尖赛事落地北京 日期：2026-06-03 08:",
+      "source": "beijing.gov.cn",
+      "category": "机器人",
+      "url": "https://www.beijing.gov.cn/fuwu/lqfw/gggs/202606/t20260603_4683170.html",
       "date": "2026-06-04",
-      "importanceScore": 89,
+      "importanceScore": 79,
       "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "keywords": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点",
-        "Dyson"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-7b53227cbf",
-      "title": "openai.com：AI硬件案例值得加入产品设计观察",
-      "summary": "公开来源提到“OpenAI | Research & Deployment”。这条信息与AI硬件相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "openai.com",
-      "category": "AI硬件",
-      "url": "https://openai.com/",
-      "date": "2026-06-04",
-      "importanceScore": 86,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "AI硬件",
+        "机器人",
         "可核对来源",
         "设计热点"
       ]
     },
     {
-      "id": "2026-06-04-hotspot-5ce0dc93e3",
-      "title": "miami.flapest.com：消费电子案例值得加入产品设计观察",
-      "summary": "公开来源提到“Pest Identification Library - Florida Pest Control - Miami/Ft. Lauderdale”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "miami.flapest.com",
-      "category": "消费电子",
-      "url": "https://miami.flapest.com/pest-info/page/2/",
-      "date": "2026-06-04",
-      "importanceScore": 86,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "消费电子",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-ff00f399e0",
-      "title": "早报｜曝苹果Vision Pro系列被砍/多地高考将查验智能眼镜/DeepSeek首轮融资规模约500亿元",
-      "summary": "· 荣耀 YOYO 智能体可直接操控微信 · 苹果公布 2026 Apple 设计大奖得主 · Google 允许网站退出 AI 搜索 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "source": "爱范儿",
+      "id": "2026-06-04-hotspot-d0451f32c3",
+      "title": "小车车里的大世界：车模收藏入坑指南",
+      "summary": "从小时候第一台保时捷卡宴车模，到工作后重新入坑小米 SU7，本文的作者把自己这些年收藏车模的经验整理成了一篇新手指南。文章从 1:18、1:43、1:64 等常见的车模比例谈起，涵盖了品牌选择、购买渠道、创意玩法等，很适合新手入坑。车模不只是玩具，也是一种能放在桌面上的汽车梦。 查看全文",
+      "source": "少数派",
       "category": "3C产品",
-      "url": "https://www.ifanr.com/1668044?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "url": "https://sspai.com/post/110114",
       "date": "2026-06-04",
-      "importanceScore": 84,
+      "importanceScore": 77,
       "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "keywords": [
         "3C产品",
         "高可信",
         "设计热点",
-        "荣耀",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-5f5f27dcd6",
-      "title": "The Verge：消费电子案例值得加入产品设计观察",
-      "summary": "公开来源提到“Apple is bringing age verification to Texas this week”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "source": "The Verge",
-      "category": "消费电子",
-      "url": "https://www.theverge.com/tech/942761/apple-texas-age-verification-app-store",
-      "date": "2026-06-04",
-      "importanceScore": 84,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "消费电子",
-        "高可信",
-        "设计热点",
-        "Apple"
+        "小米"
       ]
     }
   ],
   "trends": [
-    {
-      "id": "2026-06-04-hotspot-40ae31cf42-trend",
-      "title": "dyson.com：清洁电器案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“Official Dyson® Website | Shop Dyson.com for Exclusive Savings”。这条信息与清洁电器相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "Dyson"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "清洁电器",
-      "url": "https://www.dyson.com/en",
-      "date": "2026-06-04",
-      "keywords": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点",
-        "Dyson"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-7b53227cbf-trend",
-      "title": "openai.com：AI硬件案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“OpenAI | Research & Deployment”。这条信息与AI硬件相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "openai.com"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "AI硬件",
-      "url": "https://openai.com/",
-      "date": "2026-06-04",
-      "keywords": [
-        "AI硬件",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-5ce0dc93e3-trend",
-      "title": "miami.flapest.com：消费电子案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“Pest Identification Library - Florida Pest Control - Miami/Ft. Lauderdale”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "miami.flapest.com"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "消费电子",
-      "url": "https://miami.flapest.com/pest-info/page/2/",
-      "date": "2026-06-04",
-      "keywords": [
-        "消费电子",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-ff00f399e0-trend",
-      "title": "早报｜曝苹果Vision Pro系列被砍/多地高考将查验智能眼镜/DeepSeek首轮融资规模约500亿元",
-      "trendSummary": "· 荣耀 YOYO 智能体可直接操控微信 · 苹果公布 2026 Apple 设计大奖得主 · Google 允许网站退出 AI 搜索 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCases": [
-        "荣耀",
-        "Apple"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1668044?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-04",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "荣耀",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-5f5f27dcd6-trend",
-      "title": "The Verge：消费电子案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“Apple is bringing age verification to Texas this week”。这条信息与消费电子相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "Apple"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "消费电子",
-      "url": "https://www.theverge.com/tech/942761/apple-texas-age-verification-app-store",
-      "date": "2026-06-04",
-      "keywords": [
-        "消费电子",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-12b1c568cb-trend",
-      "title": "us.nothing.tech：CMF案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“CMF | Nothing | US”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "Nothing"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "CMF",
-      "url": "https://us.nothing.tech/collections/cmf",
-      "date": "2026-06-04",
-      "keywords": [
-        "CMF",
-        "可核对来源",
-        "设计热点",
-        "Nothing"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-4cec9801b8-trend",
-      "title": "早报｜微软发布Windows「梦中神机」/腾讯云DeepSeek-V4最高降价97.5%/徕卡相机或被中国资本收购",
-      "trendSummary": "· Alphabet 拟融资 800 亿美元投入 AI 基建 · 字节 Seed 机器人团队转向周畅汇报 · Codex 免费账号配额缩水，7 天重置周期变 30 天 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-      "relatedCases": [
-        "爱范儿"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://www.ifanr.com/1667902?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "date": "2026-06-04",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-aec1fcb00b-trend",
-      "title": "3c.healthcare：3C产品案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“3C Comprehensive Correctional Care – Customized, Customer-Centric Care for Correctional Fa”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "3c.healthcare"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://3c.healthcare/",
-      "date": "2026-06-04",
-      "keywords": [
-        "3C产品",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
     {
       "id": "2026-06-04-hotspot-057600dc43-trend",
       "title": "中国机器人链接世界的“第一站” 国际机器人顶尖赛事落地北京_公告提示_首都之窗_北京市人民政府门户网站",
@@ -1051,40 +606,6 @@
       "date": "2026-06-04",
       "keywords": [
         "机器人",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-7a2a3e6d8a-trend",
-      "title": "en.wikipedia.org：设计奖项案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“IF (film) - Wikipedia”。这条信息与设计奖项相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "en.wikipedia.org"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "设计奖项",
-      "url": "https://en.wikipedia.org/wiki/IF_(film)",
-      "date": "2026-06-04",
-      "keywords": [
-        "设计奖项",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-04-hotspot-b54d5d2ba2-trend",
-      "title": "jetbrains.com：设计奖项案例值得加入产品设计观察",
-      "trendSummary": "公开来源提到“Download IntelliJ IDEA”。这条信息与设计奖项相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
-      "relatedCases": [
-        "jetbrains.com"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "设计奖项",
-      "url": "https://www.jetbrains.com/idea/download/?section=windows%C2%A0",
-      "date": "2026-06-04",
-      "keywords": [
-        "设计奖项",
         "可核对来源",
         "设计热点"
       ]
