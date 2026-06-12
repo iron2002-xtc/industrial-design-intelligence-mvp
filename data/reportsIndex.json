@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-06-12",
+    "title": "2026-06-12 工业设计求职与设计热点日报",
+    "summary": "今日优先看 DJI 大疆 岗位与 CMF 设计热点。",
+    "newsCount": 0,
+    "jobsCount": 24,
+    "trendsCount": 0,
+    "highMatchJobsCount": 0
+  },
+  {
     "date": "2026-06-11",
     "title": "2026-06-11 工业设计求职与设计热点日报",
     "summary": "今日优先看 小米 岗位与 CMF 设计热点。",
@@ -114,15 +123,6 @@
     "newsCount": 11,
     "jobsCount": 14,
     "trendsCount": 11,
-    "highMatchJobsCount": 0
-  },
-  {
-    "date": "2026-05-29",
-    "title": "2026-05-29 工业设计早报",
-    "summary": "机器人产品的家庭化表达继续增强；杭州、南京机器人与智能硬件岗位更值得看；作品集重点：用场景地图解释形态为什么变柔和。",
-    "newsCount": 12,
-    "jobsCount": 14,
-    "trendsCount": 12,
     "highMatchJobsCount": 0
   }
 ]
