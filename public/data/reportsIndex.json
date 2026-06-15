@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-06-15",
+    "title": "2026-06-15 工业设计求职与设计热点日报",
+    "summary": "今日优先看 小米 岗位与 清洁电器 设计热点。",
+    "newsCount": 5,
+    "jobsCount": 1,
+    "trendsCount": 5,
+    "highMatchJobsCount": 1
+  },
+  {
     "date": "2026-06-14",
     "title": "2026-06-14 工业设计求职与设计热点日报",
     "summary": "今日优先看 小米 岗位与 CMF 设计热点。",
@@ -115,14 +124,5 @@
     "jobsCount": 1,
     "trendsCount": 5,
     "highMatchJobsCount": 1
-  },
-  {
-    "date": "2026-06-01",
-    "title": "2026-06-01 工业设计早报",
-    "summary": "AI硬件从概念验证转向随身场景；深圳、上海、杭州岗位密度最高；作品集重点：用一页讲清楚产品判断和设计取舍。",
-    "newsCount": 11,
-    "jobsCount": 14,
-    "trendsCount": 11,
-    "highMatchJobsCount": 0
   }
 ]
