@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-06-17",
+    "title": "2026-06-17 工业设计求职与设计热点日报",
+    "summary": "今日优先看 小米 岗位与 清洁电器 设计热点。",
+    "newsCount": 3,
+    "jobsCount": 1,
+    "trendsCount": 3,
+    "highMatchJobsCount": 1
+  },
+  {
     "date": "2026-06-16",
     "title": "2026-06-16 工业设计求职与设计热点日报",
     "summary": "今日优先看 小米 岗位与 CMF 设计热点。",
@@ -114,15 +123,6 @@
     "newsCount": 2,
     "jobsCount": 1,
     "trendsCount": 2,
-    "highMatchJobsCount": 1
-  },
-  {
-    "date": "2026-06-03",
-    "title": "2026-06-03 工业设计求职与设计热点日报",
-    "summary": "今日优先看 小米 岗位与 CMF 设计热点。",
-    "newsCount": 6,
-    "jobsCount": 1,
-    "trendsCount": 6,
     "highMatchJobsCount": 1
   }
 ]
