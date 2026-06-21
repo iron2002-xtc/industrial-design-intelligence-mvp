@@ -1,17 +1,17 @@
 {
-  "date": "2026-06-07",
-  "title": "2026-06-07 工业设计求职与设计热点日报",
+  "date": "2026-06-21",
+  "title": "2026-06-21 工业设计求职与设计热点日报",
   "summary": "今日优先看 小米 岗位与 CMF 设计热点。",
-  "generatedAt": "2026-06-07T09:35:43+08:00",
+  "generatedAt": "2026-06-21T09:45:10+08:00",
   "dataMode": "Real",
   "collectionStatus": "partial",
   "statusMessage": "今日部分源抓取失败，已保留可验证岗位与设计热点；未通过详情验证的搜索结果已过滤。",
-  "sourceCount": 28,
-  "totalItems": 12,
-  "qualitySummary": "今日收集 87 条，过滤 78 条，官网/高可信岗位 1 个，待核实岗位 0 个。",
+  "sourceCount": 29,
+  "totalItems": 9,
+  "qualitySummary": "今日收集 90 条，过滤 81 条，官网/高可信岗位 1 个，待核实岗位 0 个。",
   "qualityReport": {
-    "totalCollected": 87,
-    "afterDedup": 87,
+    "totalCollected": 90,
+    "afterDedup": 90,
     "afterQualityFilter": 9,
     "verifiedJobsCount": 1,
     "likelyJobsCount": 0,
@@ -21,7 +21,7 @@
     "jobBoardJobsCount": 0,
     "searchResultJobsCount": 0,
     "highMatchVerifiedJobsCount": 1,
-    "genericSearchResultsFiltered": 15,
+    "genericSearchResultsFiltered": 16,
     "configuredOfficialCompanies": 20,
     "successfulOfficialCompanies": 1,
     "noMatchingOfficialCompanies": 13,
@@ -32,8 +32,8 @@
     "highMatchJobsCount": 1,
     "verifiedJobDetailsChecked": 3,
     "verifiedJobsDowngraded": 2,
-    "genericHotspotsFiltered": 75,
-    "concreteHotspotsKept": 3,
+    "genericHotspotsFiltered": 78,
+    "concreteHotspotsKept": 0,
     "jobDetailPagesFailed": 0,
     "jobDetailPagesPassed": 1,
     "failedSources": [
@@ -54,15 +54,14 @@
       "WARN COMPANY 绿联: blocked_or_failed.",
       "SKIP https://www.baseus.com/pages/careers: 404 Client Error: Not Found for url: https://www.baseus.com/pages/careers",
       "WARN COMPANY 倍思 Baseus: blocked_or_failed.",
-      "SKIP https://www.reddit.com/r/amazon/about/: 403 Client Error: Blocked for url: https://www.reddit.com/r/amazon/about/",
-      "SKIP https://www.sevenforums.com/tutorials/943-date-time-change.html: 403 Client Error: Forbidden for url: https://www.sevenforums.com/tutorials/943-date-time-change.html"
+      "SKIP https://www.toyotanation.com/threads/toyotas-that-do-not-have-cvt-transmission.1663012/: HTTPSConnectionPool(host='www.toyotanation.com', port=443): Read timed out. (read timeout=8)"
     ],
     "companyCrawlStatus": [
       {
         "company": "DJI 大疆",
         "status": "no_matching_jobs",
         "sourceUrl": "https://careers.dji.com/zh-CN/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "首页 - DJI 大疆招聘 大疆官方招聘平台。社会招聘、校园招聘、实习机会，大疆最新招聘信息尽在这里。加入我们，一起把想象，变成世界现象。 首页 - DJI 大疆招聘 社会招聘 校园招聘 人在大疆 关于大疆 从你的想象 到世界现象 查看在招职位 观看视频 我们致力于 让生命更丰富 将科技与文明的力量和每个人的生命紧密相连 为世界带来全新 视角 了解更多 重塑人们的生产和生活方式 了解更多 培养社会的科技 创新力量 了解更多 人在大疆 一起成为更好的我们 成就志同道合的伙伴，提供体面生活和成长空间 了解更多 团队介绍 找到适合你的团队 在合适的职位，你的想象将大放异彩 研发团队 营销团队 供应链团队 流程 IT 团队 基础架构及信息安全管理团队 产品应用技术支持团队 职能团队 设计团队 RoboMaster 团队 研发团队 让产品“心明眼亮有智慧” 从最初的飞控，到四旋翼航拍机、手持云台专业影像，再到行业应用、农业应用……大疆研发团队用一个个划时代的产品惊艳世界，展现了“中国创造”的无限可能。这背后，是研发人极致的热爱，和挑战不可能的勇气。 我们通过持续深耕影像系统、图传、智能飞行、芯片、软件等核心技术领域，让产品“心明眼亮有智慧”。在创造产品的同时，我们像打磨产品一样打磨自身，不断追求成为更好的自己，让“更好”发生。 在招职位 营销团队 为科技赋能，让大疆的理念和产品走向全球 这里是技术和人文交汇的地方，也是大疆迈向广阔天地的起点。我们汇聚全球各地的灵感与创意，将大疆打造成国际一线品牌；用深入人心的文字与影像，让更多人了解大疆产品如何为影像、农业及行业应用等各个领域带来全新视角；更奔赴全球一线市场，推动我们的产品走进千家万户，让每一个人都有机会领略科技之美。欢迎加入营销团队，向世界传递大疆的影响力。 在招职位 供应链团队 产品量产化、产业化的主导者与使能者 全球供应链从来没有这么复杂过，站在这个时代的潮头，我们呼唤更多志同道合者同行。大疆的全球供应链根植于无人机，但不局限于无人机——各种智能机器产业链，是我们的新底色。一个创意飞向全球，全球物料汇聚一地，在这里，千万物料最终蜕变成极致的产品。在大疆梦想变成现实的征途上，这支专业朝气且勇于担当的团队是最坚实的守护者。身处供应链变局时代，我们向内求解，化危为机，立志打造大疆攻守俱佳的核心竞争力，敢为产业担当，做受人尊敬的供应链。 在招职位 流程 IT 团队 为公司打造智慧轻盈的数字化平台，为用户构建智能舒适的云端产品 大疆流程 IT 团队（全称“流程 IT 与质量运营团队”）是数字化转型的总设计师，是业务流程卓越运营的守护者，是公司从战略规划到高效落地的推动者。 我们负责公司业务变革管理、数字化平台建设与质量运营体系建设，通过线上化、自动化、智能化技术深度赋能业务，提升公司在运营效率、质量保障和持续创新维度的核心竞争力。 若你渴望参与甚至主导公司级 IT 变革项目落地；若你渴望学习和应用行业前沿技术和思想，打造极致的产品；若你喜欢思考、渴望突破，追求将技术、流程、系统、体验做得越来越好，欢迎加入我们，一起创造更多可能！ 在招职位 基础架构及信息安全管理团队 铸就稳定安全的信息环境 基础架构团队统筹管理大疆的 IT 基础设施，以打造简单、高效、智能的 IT 基础设施为目标，筑牢业务底座，为创新加速。 信息安全管理团队负责建设简单高效的安全体系，聚焦网络安全、终端安全和应用安全，全面守护核心资产，为公司健康发展保驾护航。 无论你是专精于 IT Infra 的架构设计、运维运营、IT 支持服务，还是安全体系建设、数据保护和网络攻防，加入我们，你都能大展身手，铸就更安全可靠的信息环境。 在招职位 产品应用技术支持团队 从心出发，让科技更有温度 产品应用技术支持团队，致力于为全球大疆用户提供从售前到售后的全生命周期服务。通过遍布全球的服务网络、多样化的服务渠道、智能化的服务工具、创新性的服务解决方案，我们守护每一次空间智能探索之旅，让每一次服务体验充满惊喜。加入我们，共同打造温暖而有质感的服务，让科技之美超越用户想象。 在招职位 职能团队 做业务方最有价值的伙伴 组织是我们最大的产品。为同心同德的伙伴打造一个理想的平台，需要一群专业且懂大疆的人。我们的职能团队由人力资源、行政、法务、财务、企业发展、政府关系等多个领域的专家组成，以专业赋能业务。 你将与我们一起，或是通过人与事的交互，促进组织的跨维度升级；或是为员工提供专业、高效、有温度的办公服务；或是以法律为业务化解纠纷、促成交易、平衡风险；或是通过财务解决方案，做公司经营的指南针……在职能团队，你需要思考如何让“我们”成为“更好的我们”，也将亲眼见证，大疆成为一群志同道合之人实现梦想、超越自我的精神家园。 在招职位 设计团队 用设计之美，拉近用户与科技的距离 这里是大疆独立的设计中心化团队。我们用设计搭起产品与用户之间的桥梁，探索视觉传达、品牌运营、用户体验、零售体验、产品周边等不同领域。成立以来，我们始终追求别具匠心的创意与设计影响力，同时致力于打造行业内最受设计师喜爱的设计氛围，和一流的工作环境。希望与志同道合的你一起，探索设计的更多可能，让好的设计发生。 在招职位 RoboMaster 团队 培养科创新势力，拓展教育新边界 培养未来社会所需的科技创新人才，是 RoboMaster 团队的最高使命。我们悉心打造面向全球青年工程师的最高荣誉殿堂——RoboMaster 机甲大师赛。来自世界各地的优秀学子汇聚于此，在实践中锤炼技能、追逐理想。我们倾力构建这一成长平台，并不断为社会输送引领未来的科技新星。在这里，你将亲历科技工程的初心，感受追求极致的纯粹魅力，见证科技创新的无限可能。 在招职位 大疆创新官网 大疆创新商城 天空之城 RoboMaster DJI 大疆招聘公众号 简体中文 | English Copyright © 2026 DJI 大疆创新 版权所有",
         "message": "career page reachable, no verified public job detail"
@@ -71,7 +70,7 @@
         "company": "华为",
         "status": "no_matching_jobs",
         "sourceUrl": "https://career.huawei.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "华为招聘 ﻿ 华为招聘",
         "message": "career page reachable, no verified public job detail"
@@ -80,7 +79,7 @@
         "company": "小米",
         "status": "success",
         "sourceUrl": "https://hr.xiaomi.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 1,
         "evidenceText": "小米招聘 小米招聘 You need to enable JavaScript to run this app.",
         "message": "verified 1 public job detail page(s)"
@@ -89,7 +88,7 @@
         "company": "OPPO",
         "status": "no_matching_jobs",
         "sourceUrl": "https://careers.oppo.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "OPPO招聘 - 加入我们 join us OPPO致力成为以打造伟大产品为基石的生态型科技公司，为全球用户提供更好的智慧生活，与时代同频发展，我们秉持本分基因，坚持互利共赢，助力你登上价值发挥的舞台。 OPPO招聘 - 加入我们 join us",
         "message": "career page reachable, no verified public job detail"
@@ -98,7 +97,7 @@
         "company": "vivo",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hr.vivo.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "vivo招聘官方网站 vivo官方招聘平台，诚邀精英共创智能未来！未来，在世界所有充满渴望极致的角落，vivo与你共同创造令人震撼的奇迹！ vivo招聘官方网站",
         "message": "career page reachable, no verified public job detail"
@@ -107,7 +106,7 @@
         "company": "荣耀",
         "status": "blocked_or_failed",
         "sourceUrl": "https://career.hihonor.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -116,7 +115,7 @@
         "company": "Insta360 影石",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.insta360.com/cn/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -125,7 +124,7 @@
         "company": "云鲸",
         "status": "no_matching_jobs",
         "sourceUrl": "https://careers.narwal.com/social",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "云鲸智能 ﻿ 云鲸智能 -->",
         "message": "career page reachable, no verified public job detail"
@@ -134,7 +133,7 @@
         "company": "追觅",
         "status": "no_matching_jobs",
         "sourceUrl": "https://www.dreame.tech/cn/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "追觅商城-首页 追觅商城 追觅商城-首页 商城 查看购物车 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 全系产品站 创新尖端科技，普惠智能生活/家庭智能清洁全场景解决方案 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 进一步了解 立即购买 智能清洁 智能洗地 无线吸尘 时尚个护 智能家用 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 观看视频 了解更多 品牌故事 全方位了解追觅/一家不断求索和成长的全球化科技公司 了解更多 了解更多 了解更多 会员臻享服务 最高返2倍积分 购物返积分 会员购物后将返还积分奖励，最高返还实付金额 2 倍积分。 一对一辅导 专属客服 提供一对一专属客户服务，帮您解答各类疑问，并提供专业技术支持。 最高享12期免息 分期免息 多款追觅主机商品享专属免息福利，最高可享12 期分期免息。 最高可抵 50% 积分抵现 会员购物时可使用积分抵扣现金，每 100 积分可抵扣 1 元，最高可抵扣订单金额 50%。 最高14天退换货服务 退换无忧 会员购物享最高 14 天退换货服务，助您购物无忧。 最高14天保价服务 贵必赔 会员购物享最高 14 天保价服务，买贵退差。 换新补贴 以旧换新 追觅不定期开展旧机换新活动，购物享换新补贴。 最高5折优惠 每月领券 会员每月均可领取配件折扣券福利，最高享5 折优惠。",
         "message": "career page reachable, no verified public job detail"
@@ -143,7 +142,7 @@
         "company": "石头科技",
         "status": "no_matching_jobs",
         "sourceUrl": "https://cn.roborock.com/pages/join-us",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "石头科技-让生活更有品质感 北京石头世纪科技有限公司（Roborock，简称石头科技）是一家专注于家用智能清洁机器人及其他清洁电器研发和生产的公司，主要产品包括石头扫地机器人、米家扫地机器人等。 石头科技-让生活更有品质感",
         "message": "career page reachable, no verified public job detail"
@@ -152,7 +151,7 @@
         "company": "TCL",
         "status": "no_matching_jobs",
         "sourceUrl": "https://campus.tcl.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "TCL招聘 TCL官方招聘平台, 加入TCL, 敢为不凡！ TCL招聘 欢迎为我们多提建议噢~ 点击进入满意度调研 首页 社会招聘 校园招聘 人在TCL 关于TCL AI客服 简体中文 ENGLISH 首页 社会招聘 校园招聘 人在TCL 关于TCL AI客服 个人中心 Language 中文 English 职位名称 关键字搜索 为什么选择TCL 长坡厚雪的职业赛道 科技强国，制造兴国，智能制造产业是国家政策利好的战略核心产业，未来应用领域广泛，有极大的领域发展空间。选择TCL，就是选择一条厚积薄发、持续性强、潜能无限的职业发展赛道。 剑指领先的全球势能 TCL在全球范围内构建了完整的产业链和供应链布局，涵盖了智能终端、半导体显示、半导体光伏及半导体材料等多个领域，近年来市占率节节攀升，稳居全球行业前列。在TCL，你将得到国际化视野和丰富跨文化的工作经验。 变革敢为的活力氛围 在这里你将有一个多元包容的工作环境，每位员工都能感受到被尊重、被理解，充分展现自己的价值和能力。在这里我们不拘泥成规，给你足够的创新空间和试错空间，从不同视角发现并解决问题。 成熟向上的培养体系 TCL有多层次、全方位的鹰系人才培养体系，不仅重技术层面的培养，还强调综合素质的提升，涵盖学习力、执行力、计划力、沟通力和控制力，帮助你快速适应工作环境，提升专业技能并推动你的职业成长。 TCLer故事 张鑫：创造世界，创造未来 大家总是根据自己主观的既定印象对新材料、信技术进行否定，但是我这个人做事有一股“倔劲”。在研发团队几轮的论证后，最终成功将不可能的技术变为可能，做任何事情之前都不能限制自己，不能凭借模糊的经验和概念做判断。大数据时候，自然用数据说话才是王道！ 了解更多 > 秦世龙：以人为本，低调前行 低调、务实的笨工作、苦工作既是一种默默无闻的积累，也是竞争力的源泉，逐渐构筑起中环高质量可持续发展道路上不可或缺的坚实支撑。透过现象看本质，在百亿到千亿市值增长的背后，其实是一家高科技制造企业历经千帆始终坚守工程师文化和「以人为本」文化理念的历史缩影。在高质量可持续发展的道路上，中环将持续关注工程师文化和「以人为本」理念，致力于让「以人为本」真正落在一线，进一步实现「让员工更有尊严地工作和生活」，打造员工与企业的「命运共同体」。 了解更多 > 陈思敏：三年雏鹰晋级达人，实现降本千万 在做出行动之前，先要认清方向，展望需要的结果。这样不但可以对目前的处境了如指掌，而且不至于在追求目标的过程中，迷失方向、白费功夫。从最终目标出发，以终为始，把它们分解为一个个小的模块，一步步去完成。 了解更多 > TCLer心声 郑加章 华中科技大学_软件工程_高级算法工程师 入职6年 最大的收获是能够在一个支持创新和个人成长的环境中不断进步。工作中可以得到专业的指导与支持，尊重个体的兴趣和发展规划。这种注重个人发展的理念让我在工作中充满动力，也让我相信未来更加光明，充满无限可能。 马莉娜 OLED工艺器件开发资深工程师 西安交通大学毕业 入职5年 这里充满着机遇与挑战，充满着创新与发展，是年轻人梦想起航的地方。 王倬 行政办公室（党群服务部）副总监 入职7年 从生产一线到行政工作，王倬职业生涯道路的转换与中环加入TCL的转型同步进行，她是中环加入TCL后转型的见证者，也是参与者。 她说，中环的企业文化中强调“没有永恒的组织，只有永恒的任务”。公司内部有很多这样的机会和案例，在新的状态下公司出现的很多新任务，个人需要快速自我调整、自我挑战去胜任新的任务。虽然我现在身在行政岗位，是辅助性的角色，但是在每天的工作中，我都亲身感受到公司的快速发展，数字化转型、技术水平提升、全球化战略等多方工作都在紧锣密鼓地进行。我相信在不久的将来，TCL中环全球领先的战略目标一定能够实现。 郭素雅 显示器业务中心系统业务部工业销售助理 入职3年 在跟进一个全新的客户时候，客户对质量的要求把控非常严格，我每一步都会小心翼翼，抱着以客户为中心的理念，每天都会和客户积极沟通，及时地传达给我们的内部，也会和客户及时去汇报，让客户看到我们积极诚恳的态度，这个过程让我收获很大 陈昕濠 技术企划专员 入职2年 TCL的人才培养体系会考虑到个人的研究方向和工作兴趣进行对应的工作安排，也会在新人不知所措的时候给出一定的指引，让每一个新人都有计划、有方向的成长，而这也不仅是新人才有的特权。在这里工作的我，最大的感受就是未来可期。 关注TCL招聘，获取最新动态 公众号 领英 TCL FAMILY 成为全球领先的智能科技公司 TCL金融 TCL金融 TCL金融是TCL业务板块的重要组成部分。秉持“简单温暖，专业高效”的理念，TCL金融立足产业金融协同优势，建立面向产业链合作伙伴和个人用户的金融服务平台，在支持产业发展的同时，向外部拓展金融业务空间。 目前，TCL金融主要包括集团财资业务、供应链金融业务、普惠金融业务。 格创东智 格创东智 格创东智于2018年由TCL投资创立，深度融合物联网、AI、大数据等前沿技术与制造行业经验。格创东智的核心任务为“对内赋能、对外输出”，对内赋能指的是支撑TCL集团成为世界级的数字化企业集团，对外输出指的是向外部企业复制推广成功经验，由点带面推动中国制造业转型升级。 TCL实业 TCL实业 TCL实业聚焦智能终端业务，主要涵盖显示、智能家电、创新业务及家庭互联网等全品类智能消费电子产品及服务，同时大力发展包括环保科技、产业园运营、智能制造、产业金融等在内的其他业务。公司以智慧显示为核心，全面深化全品类智能物联生态布局。TCL实业现有员工4万余名，销售机构遍布80多个国家和地区，业务遍及160多个国家和地区。公司在全球多个国家与地区共设立20个智能制造基地。截至2023年5月，TCL实业累计申请专利总数达27,098件，位居行业前列。2022年度，TCL实业实现营业总收入1,060.9亿元。未来，TCL实业将把握全球化带来的竞争与机遇，围绕“显示、连接、渠道”三大竞争核心，致力于成为全球领先的智能科技产业集团。 TCL华星光电 TCL华星光电 TCL华星光电成立于2009年11月，作为半导体显示领域的创新型科技企业以及全球半导体显示龙头之一，总投资额超2600亿元，是国家级半导体显示高新技术企业和国家首批智能制造试点示范单位。 TCL华星光电通过积极布局下一代Mini LED、Mic LED、柔性OLED、印刷OLED等新型显示技术，产覆盖大中小尺寸面板及触控模组、电子白板、拼接墙车载、电竞等高端显示应用领域，构建了在全球面板行业的核心竞争力。 TCL中环 TCL中环 TCL中环创立于1958年，长期专注于新能源光伏产业，主营业务围绕硅材料研发与制造展开，业务覆盖新能源光伏材料，高效叠瓦组件，智慧光伏解决方案等领域。 TCL中环始终坚持创新驱动发展，始终引领行业先进技术、先进制造方式的产业化应用，不断推动光伏行业技术革新，实现全球绿色能源产业的高质量、可持续、跨越式发展。 TCL中环作为一家对生态环境负责任的企业，坚持企业与社会、环境共同发展的原则，奉行“为人类奉献蓝天和白云”的绿色生态理念。长期奋斗于节能减排的最前沿，为全球绿色能源产业提供力量。 茂佳科技 茂佳科技 茂佳科技 (MOKA)，TCL科技集团成员企业，成立于2012年，聚焦于智能电视、显示器、商显等带屏智能终端产品，集研、供、产、销为一体，是全球前三智能电视头部代工企业。 总部位于惠州，设有深圳销售分部，在全球拥有5家制造基地(中国惠州、中国成都、墨西哥、波兰、印度）， 惠州潼湖基地作为世界知名智能制造基地，具备先进生产技术及超前管理理念，拥有一流自动化生产设施和先进制造工艺，",
         "message": "career page reachable, no verified public job detail"
@@ -161,7 +160,7 @@
         "company": "美的",
         "status": "no_matching_jobs",
         "sourceUrl": "https://careers.midea.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "美的集团-校园招聘官网 美的全球校园招聘，提供最新的美的应届生招聘、实习生招聘、海外留学生招聘、博士招聘等职位信息，一键直达美的校招最新岗位。 美的集团-校园招聘官网",
         "message": "career page reachable, no verified public job detail"
@@ -170,7 +169,7 @@
         "company": "海尔",
         "status": "no_matching_jobs",
         "sourceUrl": "https://maker.haier.net/client/campus/index",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "海尔校园官网--海尔招聘-海尔官方招聘网站 海尔集团校园频道首页，未来合伙人项目、实习生项目、未来规划局项目，还在校园的你，我们实时来关注，来海尔创造未来的你！ 海尔校园官网--海尔招聘-海尔官方招聘网站 您的浏览器不支持 video 标签。 海尔集团2026届校园招聘 No Boundary 立即投递 校招 首页 岗位投递 招聘动态 活动日历 应届生招聘 实习生招聘 校企俱乐部 了解海尔 登录 / 注册 校招项目 海尔集团2027校招提前批 海尔集团2027校园招聘提前批项目——面向2027届应届毕业生 投递简历 海尔集团博士登陆计划 海尔集团博士登陆计划 投递简历 实习生招聘 面向海内外院校全部在校生，提供实习实践机会。 投递简历 未来规划局 在校大学生（26届以后毕业） 投递简历 提前批聚焦智领生、GEDP、MEDP、GMTP和DMAP。 海尔生活 Haier Life 创客说 “探索高低温的边界，让可靠的冷热成为科技与生活的坚实后盾，是我的热忱所在。” -Kerry “投身项目不仅能深化我对产品的理解，更能见证自己在社会化能力上的成长与蜕变。” -Flora “保持思考和洞察的能力，保持对生活的热爱，那是你点燃灵感的火焰。” -Gabby 智能助手 登录后小助手将为你提供服务 立即登录 智能招聘助手 Tip：内容由AI生成，仅供参考 智能助手 {{userInputFileObj.name}} {{userInputFileObj.name.split('.').pop()}} ・ {{userInputFileObj.size_label}} 温馨提示： 为提升系统使用体验，请使用 谷歌 、 火狐 或者IE9及以上的浏览器。 关于我们 | 合作伙伴 | 注册协议 | 联系我们 鲁ICP备09096283 Copyright ©2020 海尔集团 版权所有",
         "message": "career page reachable, no verified public job detail"
@@ -179,7 +178,7 @@
         "company": "科沃斯",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ecovacs.cn/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -188,7 +187,7 @@
         "company": "联想",
         "status": "no_matching_jobs",
         "sourceUrl": "https://talent.lenovo.com.cn/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "联想校园招聘 联想校园招聘",
         "message": "career page reachable, no verified public job detail"
@@ -197,7 +196,7 @@
         "company": "海信",
         "status": "no_matching_jobs",
         "sourceUrl": "https://hisense.zhiye.com/",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "Not Found Not Found Error! 如果您看见该页，可能有以下几个原因： 您访问的站点出错 页面已经被移走 您请求的页面不存在 @2002-2012北森.人才管理软件及解决方案",
         "message": "career page reachable, no verified public job detail"
@@ -206,7 +205,7 @@
         "company": "九号",
         "status": "no_matching_jobs",
         "sourceUrl": "https://www.ninebot.com/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "Welcome to Segway ,Your Premier Choice for Personal Transportation Discover the world of Segway, where innovative mobility solutions meet personal transportation need Welcome to Segway ,Your Premier Choice for Personal Transportation {{chooseCountryObj.description}} {{chooseLan}} {{item.countryLanguageName}} {{chooseCountryObj.confirmButtonName}} {{chooseCountryObj.description}} {{chooseLan}} {{item.countryLanguageName}} {{chooseCountryObj.confirmButtonName}} {{menuItem.title}} {{menuItem.title}} {{menuItem.title}} {{menuItem.title}} {{menuItem.title}} {{level2item.title}} {{headerdata.storeLabel}} {{type.typeName}} {{product.productTag}} {{parseProductName(product.productName)}} {{heavyEntrance.itemTitle}} {{lightEntrance.itemTitle}} {{ textType.typeName }} {{ textType.typeName }} {{ textEntrance.itemTitle }} {{menuItem.title}} {{level2item.itemTitle}} {{item.eyebrow}} {{item.eyebrow}} {{item.description}} {{item.description}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{item.tabName}} Document {{item.title}} {{item.subtitle}} {{buttonItem.buttonTitle}} {{buttonItem.buttonTitle}} {{colItem.eyebrowPromotional}} {{colItem.titlePromotional}} {{colItem.descriptionPromotional}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{colItem.eyebrowPromotional}} {{colItem.titlePromotional}} {{colItem.descriptionPromotional}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{colItem.eyebrow}} {{colItem.title}} {{colItem.description}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{colItem.eyebrow}} {{colItem.title}} {{colItem.description}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{item.eyebrowPromotional}} {{item.titlePromotional}} {{item.descriptionPromotional}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{item.title}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} {{bannerItem.title}} {{bannerItem.description}} {{bannerItem.ctaButtonName}} {{bannerItem.ctaButtonName}} {{bannerItem.title}} {{bannerItem.descriptionMob}} {{bannerItem.ctaButtonName}} {{bannerItem.ctaButtonName}} {{homeAboutObj.title}} {{homeAboutObj.description}} {{homeAboutObj.description}} {{morebannercardObj.title}} {{morebannercardObj.title}} {{item.title}} {{item.description}} {{buttonItem.ctaButtonName}} {{buttonItem.ctaButtonName}} Home {{menuItem.title}} {{menuItem.title}} {{menuItem.title}} {{menuItem.title}} {{footerObj.region}} / {{footerObj.language}} {{infoItem.menuName}} Do Not Sell My Personal Information {{footerObj.text}} {{footerObj.icpText}} {{footerObj.wangAnText}} {{footerObj.businessLicenseText}} {{footerObj.permitText}} {{footerObj.region}} / {{footerObj.language}} {{footerObj.text}} {{footerObj.icpText}} {{footerObj.wangAnText}} {{footerObj.businessLicenseText}} {{footerObj.permitText}} {{infoItem.menuName}} Do Not Sell My Personal Information",
         "message": "career page reachable, no verified public job detail"
@@ -215,7 +214,7 @@
         "company": "安克 Anker",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.anker.com/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -224,7 +223,7 @@
         "company": "绿联",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.ugreen.com/pages/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -233,7 +232,7 @@
         "company": "倍思 Baseus",
         "status": "blocked_or_failed",
         "sourceUrl": "https://www.baseus.com/pages/careers",
-        "checkedAt": "2026-06-07T01:36:09+00:00",
+        "checkedAt": "2026-06-21T01:45:39+00:00",
         "matchedCount": 0,
         "evidenceText": "",
         "message": "career page blocked, failed, or timed out"
@@ -242,7 +241,7 @@
   },
   "jobOpportunities": [
     {
-      "id": "2026-06-07-job-b4eadc9ee2",
+      "id": "2026-06-21-job-8433ae9b84",
       "company": "小米",
       "title": "工业设计师",
       "city": "北京",
@@ -262,9 +261,9 @@
       "applyUrl": "https://hr.xiaomi.com/job/view/129",
       "originalUrl": "https://hr.xiaomi.com/job/view/129",
       "evidenceText": "小米-北京-设计师-工业设计师-职位详情 小米招聘职位详情 小米-北京-设计师-工业设计师-职位详情 小米商城 | MIUI | IoT | 云服务 | 天星数科 | 有品 | 小爱开放平台 | 企业团购 | 资质证照 | 协议规则 | 下载App | 智能生活  购物车 登录 | 注册 小米官网 全部商品分类 Xiaomi手机 Xiaomi Civi 2 2399元起 Xiaomi MIX Fold 2 8999元起 Xiaomi 12S Ultra 5999元起 Xiaomi 12S Pro 4699元起 Xiaomi 12S 3999元起 Xiaomi 12 Pro 天玑版 3999元起 Redmi手机 Redmi Note 12 5G 1199元起 Redmi Note 12 Pro 1699元起 Redmi Note 12 Pro+ 2199元起 Redmi K50 至尊版 2999元起 Redmi Note 11T Pro+ 2099元起 Redmi Note 11T Pro 1799元起 电视 Redmi智能电视X55 2022 2999元 Redmi智能电视X65 2022 3999元 小米电视6 65” OLED 6999元 小米电视 大师 77” OLED 19999元 小米透明电视 49999元 小米电视 大师 65英寸OLED 9999元 笔记本 Xiaomi Book Air 13 5999元起 Redmi G 游戏本 锐龙版 R5 7299元 Redmi G Pro 游戏本 2022 8999元起 Redmi G Pro 游戏本 锐龙版 R7 8799元 Xiaomi Book Pro ",
-      "lastCheckedAt": "2026-06-07T01:36:09+00:00",
+      "lastCheckedAt": "2026-06-21T01:45:39+00:00",
       "confidenceScore": 95,
-      "date": "2026-06-07",
+      "date": "2026-06-21",
       "tags": [
         "官网来源",
         "verified",
@@ -285,7 +284,7 @@
   ],
   "highMatchJobs": [
     {
-      "id": "2026-06-07-job-b4eadc9ee2",
+      "id": "2026-06-21-job-8433ae9b84",
       "company": "小米",
       "title": "工业设计师",
       "city": "北京",
@@ -305,9 +304,9 @@
       "applyUrl": "https://hr.xiaomi.com/job/view/129",
       "originalUrl": "https://hr.xiaomi.com/job/view/129",
       "evidenceText": "小米-北京-设计师-工业设计师-职位详情 小米招聘职位详情 小米-北京-设计师-工业设计师-职位详情 小米商城 | MIUI | IoT | 云服务 | 天星数科 | 有品 | 小爱开放平台 | 企业团购 | 资质证照 | 协议规则 | 下载App | 智能生活  购物车 登录 | 注册 小米官网 全部商品分类 Xiaomi手机 Xiaomi Civi 2 2399元起 Xiaomi MIX Fold 2 8999元起 Xiaomi 12S Ultra 5999元起 Xiaomi 12S Pro 4699元起 Xiaomi 12S 3999元起 Xiaomi 12 Pro 天玑版 3999元起 Redmi手机 Redmi Note 12 5G 1199元起 Redmi Note 12 Pro 1699元起 Redmi Note 12 Pro+ 2199元起 Redmi K50 至尊版 2999元起 Redmi Note 11T Pro+ 2099元起 Redmi Note 11T Pro 1799元起 电视 Redmi智能电视X55 2022 2999元 Redmi智能电视X65 2022 3999元 小米电视6 65” OLED 6999元 小米电视 大师 77” OLED 19999元 小米透明电视 49999元 小米电视 大师 65英寸OLED 9999元 笔记本 Xiaomi Book Air 13 5999元起 Redmi G 游戏本 锐龙版 R5 7299元 Redmi G Pro 游戏本 2022 8999元起 Redmi G Pro 游戏本 锐龙版 R7 8799元 Xiaomi Book Pro ",
-      "lastCheckedAt": "2026-06-07T01:36:09+00:00",
+      "lastCheckedAt": "2026-06-21T01:45:39+00:00",
       "confidenceScore": 95,
-      "date": "2026-06-07",
+      "date": "2026-06-21",
       "tags": [
         "官网来源",
         "verified",
@@ -326,98 +325,16 @@
       ]
     }
   ],
-  "designHotspots": [
-    {
-      "id": "2026-06-07-hotspot-a181e654c1",
-      "title": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。",
-      "summary": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 跳至主要内容 RoboHorizon 人形机器人 工业机器人 自主机",
-      "source": "robohorizon.cn",
-      "category": "清洁电器",
-      "url": "https://robohorizon.cn/zh/",
-      "date": "2026-06-07",
-      "importanceScore": 86,
-      "sourceQualityScore": 76,
-      "relevanceScore": 83,
-      "confidenceScore": 76,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "保留原因：涉及robohorizon.cn的清洁电器具体产品/设计动态，可作为产品造型、CMF、结构或交互趋势参考。",
-      "productCategory": "清洁电器",
-      "relatedBrand": "robohorizon.cn",
-      "isGenericSearchResult": false,
-      "evidenceText": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 跳至主要内容 RoboHorizon 人形机器人 工业机器人 自主机器 服务机器人 仿生学 机器人大脑 菜单 ✕ 主题 🤖 人形机器人 🏭 工业机器人 🚗 自主机器 🏠",
-      "relatedCompanies": [],
-      "tags": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-07-hotspot-2a9d175ec2",
-      "title": "2026 Apple 设计奖正式揭晓，细数 12 款 App 的特别之处",
-      "summary": "Apple 设计大奖结果公布，而这 12 款 app 又有什么特别之处呢？ 查看全文",
-      "source": "少数派",
-      "category": "设计奖项",
-      "url": "https://sspai.com/post/110763",
-      "date": "2026-06-07",
-      "importanceScore": 84,
-      "sourceQualityScore": 88,
-      "relevanceScore": 81,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "保留原因：涉及Apple的设计奖项具体产品/设计动态，可作为产品造型、CMF、结构或交互趋势参考。",
-      "productCategory": "设计奖项",
-      "relatedBrand": "Apple",
-      "isGenericSearchResult": false,
-      "evidenceText": "Apple 设计大奖结果公布，而这 12 款 app 又有什么特别之处呢？ 查看全文",
-      "relatedCompanies": [
-        "Apple"
-      ],
-      "tags": [
-        "设计奖项",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-07-hotspot-4b1213742b",
-      "title": "WWDC26 开幕在即，今年有哪些看点值得关注？",
-      "summary": "今年WWDC全球开发者大会即将在北京时间6月9日凌晨拉开帷幕，对Apple来说今年这一次活动是一个非常关键的节点：首先，2024年WWDC上画的饼至今没有兑现，而AI竞赛在2026年已经进入了白热化， ... 查看全文",
-      "source": "少数派",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110669",
-      "date": "2026-06-07",
-      "importanceScore": 77,
-      "sourceQualityScore": 88,
-      "relevanceScore": 74,
-      "confidenceScore": 88,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "designRelevanceReason": "保留原因：涉及Apple的3C产品具体产品/设计动态，可作为产品造型、CMF、结构或交互趋势参考。",
-      "productCategory": "3C产品",
-      "relatedBrand": "Apple",
-      "isGenericSearchResult": false,
-      "evidenceText": "今年WWDC全球开发者大会即将在北京时间6月9日凌晨拉开帷幕，对Apple来说今年这一次活动是一个非常关键的节点：首先，2024年WWDC上画的饼至今没有兑现，而AI竞赛在2026年已经进入了白热化， ... 查看全文",
-      "relatedCompanies": [
-        "Apple"
-      ],
-      "tags": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    }
-  ],
+  "designHotspots": [],
   "companyUpdates": [
     {
-      "id": "2026-06-07-company-59cf854650",
+      "id": "2026-06-21-company-688cd71884",
       "company": "小米",
       "title": "小米：智能硬件岗位入口值得核对",
       "summary": "北京 / 校招 / 匹配度 99，建议查看原始招聘链接确认岗位是否开放。",
       "category": "招聘",
       "url": "https://hr.xiaomi.com/job/view/129",
-      "date": "2026-06-07",
+      "date": "2026-06-21",
       "relevanceScore": 99,
       "designRelation": "与智能硬件、作品集项目选择和求职投递优先级直接相关。",
       "tags": [
@@ -427,13 +344,13 @@
       ]
     },
     {
-      "id": "2026-06-07-company-hotspot-d024ddae13",
+      "id": "2026-06-21-company-hotspot-7e1e1becb8",
       "company": "Nothing",
       "title": "Nothing：产品设计动态值得跟进",
       "summary": "公开来源提到“Nothing | US”。这条信息与CMF相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
       "category": "产品设计动态",
       "url": "https://us.nothing.tech/",
-      "date": "2026-06-07",
+      "date": "2026-06-21",
       "relevanceScore": 93,
       "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "tags": [
@@ -443,29 +360,29 @@
       ]
     },
     {
-      "id": "2026-06-07-company-hotspot-165db2b82a",
-      "company": "Dyson",
-      "title": "Dyson：产品设计动态值得跟进",
-      "summary": "公开来源提到“Official Dyson® Website | Shop Dyson.com for Exclusive Savings”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "id": "2026-06-21-company-hotspot-941c020123",
+      "company": "Apple",
+      "title": "Apple：产品设计动态值得跟进",
+      "summary": "公开来源提到“‎Apple Music - Web Player”。这条信息与可穿戴设备相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
       "category": "产品设计动态",
-      "url": "https://www.dyson.com/en",
-      "date": "2026-06-07",
+      "url": "https://music.apple.com/us/new",
+      "date": "2026-06-21",
       "relevanceScore": 86,
       "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "tags": [
-        "3C产品",
+        "可穿戴设备",
         "设计热点",
         "可核对来源"
       ]
     },
     {
-      "id": "2026-06-07-company-hotspot-0e3046420b",
-      "company": "Apple",
-      "title": "Apple：产品设计动态值得跟进",
-      "summary": "公开来源提到“Apple”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
+      "id": "2026-06-21-company-hotspot-66bfd65ea5",
+      "company": "Dyson",
+      "title": "Dyson：产品设计动态值得跟进",
+      "summary": "公开来源提到“Official Dyson® Website | Shop Dyson.com for Exclusive Savings”。这条信息与3C产品相关，可作为产品设计趋势、竞品语言或作品集调研线索。",
       "category": "产品设计动态",
-      "url": "https://www.apple.com/",
-      "date": "2026-06-07",
+      "url": "https://www.dyson.com/en",
+      "date": "2026-06-21",
       "relevanceScore": 86,
       "designRelation": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
       "tags": [
@@ -477,7 +394,7 @@
   ],
   "actions": [
     {
-      "id": "2026-06-07-action-e1c24e41c2",
+      "id": "2026-06-21-action-d8647eeca7",
       "title": "今日建议重点关注的岗位",
       "description": "优先打开 小米 的原始链接，核对北京 / 智能硬件 / 校招是否可投。",
       "priority": "high",
@@ -489,7 +406,7 @@
       ]
     },
     {
-      "id": "2026-06-07-action-c4a00df66b",
+      "id": "2026-06-21-action-a5aab7d42e",
       "title": "今日建议收藏的设计热点",
       "description": "收藏“us.nothing.tech：CMF案例值得加入产品设计观察”，把它拆成场景、形态、CMF、交互四个观察点。",
       "priority": "medium",
@@ -500,7 +417,7 @@
       ]
     },
     {
-      "id": "2026-06-07-action-c4becfd352",
+      "id": "2026-06-21-action-91a3c5f638",
       "title": "今日适合补充到作品集调研的案例",
       "description": "围绕CMF补一页竞品矩阵，重点写清楚设计语言变化和你自己的判断。",
       "priority": "medium",
@@ -511,7 +428,7 @@
       ]
     },
     {
-      "id": "2026-06-07-action-3e3480e3ad",
+      "id": "2026-06-21-action-5e54d0700f",
       "title": "今日建议跟进的公司动态",
       "description": "跟进 小米：与智能硬件、作品集项目选择和求职投递优先级直接相关。",
       "priority": "low",
@@ -524,7 +441,7 @@
   ],
   "jobs": [
     {
-      "id": "2026-06-07-job-b4eadc9ee2",
+      "id": "2026-06-21-job-8433ae9b84",
       "company": "小米",
       "title": "工业设计师",
       "city": "北京",
@@ -544,9 +461,9 @@
       "applyUrl": "https://hr.xiaomi.com/job/view/129",
       "originalUrl": "https://hr.xiaomi.com/job/view/129",
       "evidenceText": "小米-北京-设计师-工业设计师-职位详情 小米招聘职位详情 小米-北京-设计师-工业设计师-职位详情 小米商城 | MIUI | IoT | 云服务 | 天星数科 | 有品 | 小爱开放平台 | 企业团购 | 资质证照 | 协议规则 | 下载App | 智能生活  购物车 登录 | 注册 小米官网 全部商品分类 Xiaomi手机 Xiaomi Civi 2 2399元起 Xiaomi MIX Fold 2 8999元起 Xiaomi 12S Ultra 5999元起 Xiaomi 12S Pro 4699元起 Xiaomi 12S 3999元起 Xiaomi 12 Pro 天玑版 3999元起 Redmi手机 Redmi Note 12 5G 1199元起 Redmi Note 12 Pro 1699元起 Redmi Note 12 Pro+ 2199元起 Redmi K50 至尊版 2999元起 Redmi Note 11T Pro+ 2099元起 Redmi Note 11T Pro 1799元起 电视 Redmi智能电视X55 2022 2999元 Redmi智能电视X65 2022 3999元 小米电视6 65” OLED 6999元 小米电视 大师 77” OLED 19999元 小米透明电视 49999元 小米电视 大师 65英寸OLED 9999元 笔记本 Xiaomi Book Air 13 5999元起 Redmi G 游戏本 锐龙版 R5 7299元 Redmi G Pro 游戏本 2022 8999元起 Redmi G Pro 游戏本 锐龙版 R7 8799元 Xiaomi Book Pro ",
-      "lastCheckedAt": "2026-06-07T01:36:09+00:00",
+      "lastCheckedAt": "2026-06-21T01:45:39+00:00",
       "confidenceScore": 95,
-      "date": "2026-06-07",
+      "date": "2026-06-21",
       "tags": [
         "官网来源",
         "verified",
@@ -565,130 +482,8 @@
       ]
     }
   ],
-  "topNews": [
-    {
-      "id": "2026-06-07-hotspot-a181e654c1",
-      "title": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。",
-      "summary": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 跳至主要内容 RoboHorizon 人形机器人 工业机器人 自主机",
-      "source": "robohorizon.cn",
-      "category": "清洁电器",
-      "url": "https://robohorizon.cn/zh/",
-      "date": "2026-06-07",
-      "importanceScore": 86,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-07-hotspot-2a9d175ec2",
-      "title": "2026 Apple 设计奖正式揭晓，细数 12 款 App 的特别之处",
-      "summary": "Apple 设计大奖结果公布，而这 12 款 app 又有什么特别之处呢？ 查看全文",
-      "source": "少数派",
-      "category": "设计奖项",
-      "url": "https://sspai.com/post/110763",
-      "date": "2026-06-07",
-      "importanceScore": 84,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "设计奖项",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-07-hotspot-4b1213742b",
-      "title": "WWDC26 开幕在即，今年有哪些看点值得关注？",
-      "summary": "今年WWDC全球开发者大会即将在北京时间6月9日凌晨拉开帷幕，对Apple来说今年这一次活动是一个非常关键的节点：首先，2024年WWDC上画的饼至今没有兑现，而AI竞赛在2026年已经进入了白热化， ... 查看全文",
-      "source": "少数派",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110669",
-      "date": "2026-06-07",
-      "importanceScore": 77,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    }
-  ],
-  "trends": [
-    {
-      "id": "2026-06-07-hotspot-a181e654c1-trend",
-      "title": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。",
-      "trendSummary": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 跳至主要内容 RoboHorizon 人形机器人 工业机器人 自主机",
-      "relatedCases": [
-        "robohorizon.cn"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "清洁电器",
-      "url": "https://robohorizon.cn/zh/",
-      "date": "2026-06-07",
-      "keywords": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点"
-      ]
-    },
-    {
-      "id": "2026-06-07-hotspot-2a9d175ec2-trend",
-      "title": "2026 Apple 设计奖正式揭晓，细数 12 款 App 的特别之处",
-      "trendSummary": "Apple 设计大奖结果公布，而这 12 款 app 又有什么特别之处呢？ 查看全文",
-      "relatedCases": [
-        "Apple"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "设计奖项",
-      "url": "https://sspai.com/post/110763",
-      "date": "2026-06-07",
-      "keywords": [
-        "设计奖项",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    },
-    {
-      "id": "2026-06-07-hotspot-4b1213742b-trend",
-      "title": "WWDC26 开幕在即，今年有哪些看点值得关注？",
-      "trendSummary": "今年WWDC全球开发者大会即将在北京时间6月9日凌晨拉开帷幕，对Apple来说今年这一次活动是一个非常关键的节点：首先，2024年WWDC上画的饼至今没有兑现，而AI竞赛在2026年已经进入了白热化， ... 查看全文",
-      "relatedCases": [
-        "Apple"
-      ],
-      "designInspiration": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "category": "3C产品",
-      "url": "https://sspai.com/post/110669",
-      "date": "2026-06-07",
-      "keywords": [
-        "3C产品",
-        "高可信",
-        "设计热点",
-        "Apple"
-      ]
-    }
-  ],
+  "topNews": [],
+  "trends": [],
   "aiTools": [],
-  "hardwareObservation": [
-    {
-      "id": "2026-06-07-hotspot-a181e654c1",
-      "title": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。",
-      "summary": "RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 RoboHorizon | 现代机器人技术的指南针，为商业和私人部门提供最新新闻、全面分析和测试。 跳至主要内容 RoboHorizon 人形机器人 工业机器人 自主机",
-      "source": "robohorizon.cn",
-      "category": "清洁电器",
-      "url": "https://robohorizon.cn/zh/",
-      "date": "2026-06-07",
-      "importanceScore": 86,
-      "designInsight": "建议把它拆成“场景需求、形态/结构约束、CMF与交互细节、对作品集的启发”四个点记录。",
-      "keywords": [
-        "清洁电器",
-        "可核对来源",
-        "设计热点"
-      ]
-    }
-  ]
+  "hardwareObservation": []
 }
