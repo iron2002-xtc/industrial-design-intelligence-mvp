@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-08-20",
+    "title": "2026-08-20 工业设计求职与设计热点日报",
+    "summary": "今日优先看 DJI 大疆 岗位与 3C产品 设计热点。",
+    "newsCount": 4,
+    "jobsCount": 24,
+    "trendsCount": 4,
+    "highMatchJobsCount": 0
+  },
+  {
     "date": "2026-08-19",
     "title": "2026-08-19 工业设计求职与设计热点日报",
     "summary": "今日优先看 小米 岗位与 CMF 设计热点。",
@@ -115,14 +124,5 @@
     "jobsCount": 1,
     "trendsCount": 1,
     "highMatchJobsCount": 1
-  },
-  {
-    "date": "2026-08-06",
-    "title": "2026-08-06 工业设计求职与设计热点日报",
-    "summary": "今日优先看 DJI 大疆 岗位与 3C产品 设计热点。",
-    "newsCount": 1,
-    "jobsCount": 24,
-    "trendsCount": 1,
-    "highMatchJobsCount": 0
   }
 ]
